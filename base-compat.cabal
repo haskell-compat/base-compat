@@ -7,6 +7,25 @@ author:           Simon Hengel <sol@typeful.net>
 maintainer:       Simon Hengel <sol@typeful.net>
 build-type:       Simple
 cabal-version:    >= 1.8
+category:         System
+synopsis:         Provide new additions to base for older versions of base
+description:      Provide new additions to base for older versions of base, so
+                  that you can use them without sacrificing backward
+                  compatibility.
+                  .
+                  Currently the following is covered:
+                  .
+                  * Text.Read.readMaybe
+                  .
+                  * Text.Read.readEither
+                  .
+                  * System.Environment.lookupEnv
+                  .
+                  * System.Environment.getExecutablePath
+
+source-repository head
+  type: git
+  location: https://github.com/sol/base-compat
 
 library
   ghc-options:
@@ -21,7 +40,7 @@ library
       -- probably want to prevent this.
       System.Environment.ExecutablePath
   build-depends:
-      base
+      base == 4.*
 
 test-suite spec
   type:

@@ -8,12 +8,12 @@ maintainer:       Simon Hengel <sol@typeful.net>
 build-type:       Simple
 cabal-version:    >= 1.8
 category:         System
-synopsis:         Provide new additions to base for older versions of base
-description:      Provide new additions to base for older versions of base, so
-                  that you can use them without sacrificing backward
+synopsis:         Provides readMaybe, lookupEnv, etc. for older versions of base
+description:      Provides new additions to base for older versions of base, so
+                  that they can be used without sacrificing backward
                   compatibility.
                   .
-                  Currently the following is covered:
+                  So far the following is covered:
                   .
                   * readMaybe
                   .

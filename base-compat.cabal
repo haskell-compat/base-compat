@@ -16,6 +16,8 @@ library
   exposed-modules:
       System.Environment.Compat
   other-modules:
+      -- This is compiled, even if it is not needed (base >= 4.6.0.0).  We
+      -- probably want to prevent this.
       System.Environment.ExecutablePath
   build-depends:
       base

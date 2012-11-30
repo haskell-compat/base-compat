@@ -1,0 +1,3 @@
+[submodule "base"]
+	path = base
+	url = https://github.com/ghc/packages-base.git

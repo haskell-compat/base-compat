@@ -15,6 +15,8 @@ library
       src
   exposed-modules:
       System.Environment.Compat
+  other-modules:
+      System.Environment.ExecutablePath
   build-depends:
       base
 
@@ -23,14 +25,12 @@ test-suite spec
       exitcode-stdio-1.0
   ghc-options:
       -Wall -Werror
-  cpp-options:
-      -DTEST
   hs-source-dirs:
-      src, test
+      test
   main-is:
       Spec.hs
   build-depends:
       base
+    , base-compat
     , hspec >= 1.3
-    , hspec-experimental
     , setenv

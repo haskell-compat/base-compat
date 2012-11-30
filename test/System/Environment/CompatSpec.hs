@@ -1,6 +1,6 @@
 module System.Environment.CompatSpec (main, spec) where
 
-import           Test.Hspec.Experimental
+import           Test.Hspec
 
 import           System.Environment.Compat
 import           System.SetEnv
@@ -25,16 +25,11 @@ withoutEnv k action = E.bracket save restore $ \_ -> do
 
 spec :: Spec
 spec = do
-  describe "lookupEnv_compat" $ do
+  describe "lookupEnv" $ do
     it "returns specified environment variable" $ do
       withEnv "FOOBAR" "23" $ do
-        lookupEnv_compat "FOOBAR" `shouldReturn` Just "23"
+        lookupEnv "FOOBAR" `shouldReturn` Just "23"
 
     it "returns Nothing if specified environment variable is not set" $ do
       withoutEnv "FOOBAR" $ do
-        lookupEnv_compat "FOOBAR" `shouldReturn` Nothing
-
-    it "behaves like lookupEnv" $ \k -> do
-      r1 <- lookupEnv_compat k
-      r2 <- lookupEnv k
-      r1 `shouldBe` r2
+        lookupEnv "FOOBAR" `shouldReturn` Nothing

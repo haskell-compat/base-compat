@@ -1,27 +1,24 @@
 {-# LANGUAGE CPP #-}
-{-# OPTIONS_GHC -fno-warn-unused-binds #-}
 -- | Miscellaneous information about the system environment.
 module System.Environment.Compat (
   getArgs
 , getProgName
--- , getExecutablePath
+, getExecutablePath
 , getEnv
 , lookupEnv
 , withArgs
 , withProgName
 , getEnvironment
-
-#ifdef TEST
-, lookupEnv_compat
-#endif
 ) where
 
 import           System.Environment
+import           System.Environment.ExecutablePath
 
 #if !MIN_VERSION_base(4,6,0)
+-- | Return the value of the environment variable @var@, or @Nothing@ if
+-- there is no such value.
+--
+-- For POSIX users, this is equivalent to 'System.Posix.Env.getEnv'.
 lookupEnv :: String -> IO (Maybe String)
-lookupEnv = lookupEnv_compat
+lookupEnv k = lookup k `fmap` getEnvironment
 #endif
-
-lookupEnv_compat :: String -> IO (Maybe String)
-lookupEnv_compat k = lookup k `fmap` getEnvironment

@@ -3,7 +3,6 @@
 module System.Environment.Compat (
   getArgs
 , getProgName
-, getExecutablePath
 , getEnv
 , lookupEnv
 , withArgs
@@ -12,10 +11,6 @@ module System.Environment.Compat (
 ) where
 
 import           System.Environment
-
-#if !MIN_VERSION_base(4,6,0)
-import           System.Environment.ExecutablePath
-#endif
 
 #if !MIN_VERSION_base(4,6,0)
 -- | Return the value of the environment variable @var@, or @Nothing@ if

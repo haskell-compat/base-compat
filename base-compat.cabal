@@ -1,5 +1,5 @@
 name:             base-compat
-version:          0.0.0
+version:          0.1.0
 license:          MIT
 license-file:     LICENSE
 copyright:        (c) 2012 Simon Hengel
@@ -15,13 +15,11 @@ description:      Provide new additions to base for older versions of base, so
                   .
                   Currently the following is covered:
                   .
-                  * Text.Read.readMaybe
+                  * readMaybe
                   .
-                  * Text.Read.readEither
+                  * readEither
                   .
-                  * System.Environment.lookupEnv
-                  .
-                  * System.Environment.getExecutablePath
+                  * lookupEnv
 
 source-repository head
   type: git
@@ -35,10 +33,6 @@ library
   exposed-modules:
       System.Environment.Compat
       Text.Read.Compat
-  other-modules:
-      -- This is compiled, even if it is not needed (base >= 4.6.0.0).  We
-      -- probably want to prevent this.
-      System.Environment.ExecutablePath
   build-depends:
       base == 4.*
 

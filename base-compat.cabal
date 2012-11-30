@@ -15,6 +15,7 @@ library
       src
   exposed-modules:
       System.Environment.Compat
+      Text.Read.Compat
   other-modules:
       -- This is compiled, even if it is not needed (base >= 4.6.0.0).  We
       -- probably want to prevent this.

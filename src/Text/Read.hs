@@ -6,8 +6,6 @@ module Text.Read (
 ) where
 import "base" Text.Read as Base
 
-import Text.ParserCombinators.ReadPrec
-
 #if !MIN_VERSION_base(4,6,0)
 import qualified Text.ParserCombinators.ReadP as P
 

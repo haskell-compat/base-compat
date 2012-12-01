@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module Data.Either (module Base) where
+module Data.Either (
+  module Base
+) where
 import "base" Data.Either as Base

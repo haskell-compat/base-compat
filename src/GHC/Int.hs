@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module GHC.Int (module Base) where
+module GHC.Int (
+  module Base
+) where
 import "base" GHC.Int as Base

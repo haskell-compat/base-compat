@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module GHC.Show (module Base) where
+module GHC.Show (
+  module Base
+) where
 import "base" GHC.Show as Base

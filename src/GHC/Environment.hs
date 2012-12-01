@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module GHC.Environment (module Base) where
+module GHC.Environment (
+  module Base
+) where
 import "base" GHC.Environment as Base

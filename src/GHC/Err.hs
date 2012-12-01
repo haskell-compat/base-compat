@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module GHC.Err (module Base) where
+module GHC.Err (
+  module Base
+) where
 import "base" GHC.Err as Base

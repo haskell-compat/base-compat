@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module GHC.Conc.Signal (module Base) where
+module GHC.Conc.Signal (
+  module Base
+) where
 import "base" GHC.Conc.Signal as Base

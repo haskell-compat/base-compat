@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module Text.ParserCombinators.ReadP (module Base) where
+module Text.ParserCombinators.ReadP (
+  module Base
+) where
 import "base" Text.ParserCombinators.ReadP as Base

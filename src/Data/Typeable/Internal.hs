@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module Data.Typeable.Internal (module Base) where
+module Data.Typeable.Internal (
+  module Base
+) where
 import "base" Data.Typeable.Internal as Base

@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module GHC.Float.RealFracMethods (module Base) where
+module GHC.Float.RealFracMethods (
+  module Base
+) where
 import "base" GHC.Float.RealFracMethods as Base

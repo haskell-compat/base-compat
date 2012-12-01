@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module GHC.Stack (module Base) where
+module GHC.Stack (
+  module Base
+) where
 import "base" GHC.Stack as Base

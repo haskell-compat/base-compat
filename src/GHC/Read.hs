@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module GHC.Read (module Base) where
+module GHC.Read (
+  module Base
+) where
 import "base" GHC.Read as Base

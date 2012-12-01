@@ -10,7 +10,8 @@ MODULE=$1
 FILE=src/$(echo $MODULE | sed 's/\./\//g').hs
 DIR=$(echo $FILE | sed 's/\w*.hs$//')
 mkdir -p $DIR
-echo "{-# LANGUAGE PackageImports #-}" > $FILE
-echo "module $MODULE (module Base) where" >> $FILE
+echo "module $MODULE (" > $FILE
+echo "  module Base" >> $FILE
+echo ") where" >> $FILE
 echo "import \"base\" $MODULE as Base" >> $FILE
 git add $FILE

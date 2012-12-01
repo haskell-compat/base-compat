@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module Debug.Trace (module Base) where
+module Debug.Trace (
+  module Base
+) where
 import "base" Debug.Trace as Base

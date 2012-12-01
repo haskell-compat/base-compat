@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module Foreign (module Base) where
+module Foreign (
+  module Base
+) where
 import "base" Foreign as Base

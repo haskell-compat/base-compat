@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module Data.Functor (module Base) where
+module Data.Functor (
+  module Base
+) where
 import "base" Data.Functor as Base

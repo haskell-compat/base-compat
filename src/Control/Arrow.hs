@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module Control.Arrow (module Base) where
+module Control.Arrow (
+  module Base
+) where
 import "base" Control.Arrow as Base

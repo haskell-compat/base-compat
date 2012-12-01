@@ -1,3 +1,4 @@
-{-# LANGUAGE PackageImports #-}
-module Data.Traversable (module Base) where
+module Data.Traversable (
+  module Base
+) where
 import "base" Data.Traversable as Base

@@ -48,6 +48,18 @@ library
     include-dirs: includes/ghc-7.4.1/
   if impl(ghc == 7.2.2)
     include-dirs: includes/ghc-7.2.2/
+  if impl(ghc == 7.2.1)
+    include-dirs: includes/ghc-7.2.1/
+  if impl(ghc == 7.0.4)
+    include-dirs: includes/ghc-7.0.4/
+  if impl(ghc == 7.0.3)
+    include-dirs: includes/ghc-7.0.3/
+  if impl(ghc == 7.0.2)
+    include-dirs: includes/ghc-7.0.2/
+  if impl(ghc == 7.0.1)
+    include-dirs: includes/ghc-7.0.1/
+  if impl(ghc == 6.12.3)
+    include-dirs: includes/ghc-6.12.3/
 
   install-includes:
     base-compat.h

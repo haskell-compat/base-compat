@@ -1,5 +1,5 @@
 module GHC.Stack (
-#if MIN_VERSION_base(4,4,0)
+#if MIN_VERSION_base(4,5,0)
   module Base
 ) where
 import "base" GHC.Stack as Base

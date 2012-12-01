@@ -6,6 +6,7 @@ module System.Environment (
 import "base" System.Environment as Base
 
 #if !MIN_VERSION_base(4,6,0)
+import Prelude
 -- | Return the value of the environment variable @var@, or @Nothing@ if
 -- there is no such value.
 --

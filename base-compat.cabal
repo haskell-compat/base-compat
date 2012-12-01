@@ -5,7 +5,7 @@ license-file:     LICENSE
 copyright:        (c) 2012 Simon Hengel
 author:           Simon Hengel <sol@typeful.net>
 maintainer:       Simon Hengel <sol@typeful.net>
-build-type:       Custom
+build-type:       Simple
 cabal-version:    >= 1.8
 category:         System
 synopsis:         Provides readMaybe, lookupEnv, etc. for older versions of base
@@ -31,6 +31,27 @@ library
   exposed: False
   ghc-options:
       -Wall
+  build-depends:
+      base == 4.*
+  extensions:
+      CPP
+    , PackageImports
+    , NoImplicitPrelude
+  ghc-options:
+    -fno-warn-duplicate-exports
+
+  if impl(ghc == 7.6.1)
+    include-dirs: includes/ghc-7.6.1/
+  if impl(ghc == 7.4.2)
+    include-dirs: includes/ghc-7.4.2/
+  if impl(ghc == 7.4.1)
+    include-dirs: includes/ghc-7.4.1/
+  if impl(ghc == 7.2.2)
+    include-dirs: includes/ghc-7.2.2/
+
+  install-includes:
+    base-compat.h
+
   hs-source-dirs:
       src
   exposed-modules:
@@ -52,7 +73,11 @@ library
       GHC.IO.Encoding.CodePage
       Text.Show.Functions
 
-      -- stubbed out for base < 4.4.0
+      -- stubbed for base < 4.5.0
+      GHC.Stack
+      GHC.Stats
+
+      -- stubbed for base < 4.4.0
       Control.Monad.ST.Lazy.Safe
       Control.Monad.ST.Lazy.Unsafe
       Control.Monad.ST.Safe
@@ -71,8 +96,6 @@ library
       GHC.Float.RealFracMethods
       GHC.Foreign
       GHC.IO.Encoding.Failure
-      GHC.Stack
-      GHC.Stats
 
       -- pristine
       Prelude
@@ -210,13 +233,6 @@ library
       Text.Read.Lex
       Text.Show
       Unsafe.Coerce
-  install-includes:
-    base-compat.h
-  build-depends:
-      base == 4.*
-
-  extensions: CPP, PackageImports
-  ghc-options: -fno-warn-duplicate-exports
 
 test-suite spec
   type:

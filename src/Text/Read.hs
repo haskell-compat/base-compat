@@ -7,6 +7,7 @@ import "base" Text.Read as Base
 
 #if !MIN_VERSION_base(4,6,0)
 import qualified Text.ParserCombinators.ReadP as P
+import Prelude
 
 -- | Parse a string using the 'Read' instance.
 -- Succeeds if there is exactly one valid result.

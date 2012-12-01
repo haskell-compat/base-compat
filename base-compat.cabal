@@ -5,7 +5,7 @@ license-file:     LICENSE
 copyright:        (c) 2012 Simon Hengel
 author:           Simon Hengel <sol@typeful.net>
 maintainer:       Simon Hengel <sol@typeful.net>
-build-type:       Simple
+build-type:       Custom
 cabal-version:    >= 1.8
 category:         System
 synopsis:         Provides readMaybe, lookupEnv, etc. for older versions of base
@@ -36,6 +36,8 @@ library
       Data.Monoid.Compat
       System.Environment.Compat
       Text.Read.Compat
+  install-includes:
+    base-compat.h
   build-depends:
       base == 4.*
 

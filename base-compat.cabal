@@ -39,6 +39,10 @@ library
       System.Environment
       Text.Read
 
+      -- stubbed out for base < 4.4.0
+      Control.Monad.ST.Lazy.Safe
+      Control.Monad.ST.Lazy.Unsafe
+
       -- pristine
       Prelude
       Control.Applicative
@@ -57,8 +61,6 @@ library
       Control.Monad.Instances
       Control.Monad.ST
       Control.Monad.ST.Lazy
-      Control.Monad.ST.Lazy.Safe
-      Control.Monad.ST.Lazy.Unsafe
       Control.Monad.ST.Safe
       Control.Monad.ST.Strict
       Control.Monad.ST.Unsafe

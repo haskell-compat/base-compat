@@ -1,8 +1,8 @@
-module System.Environment.CompatSpec (main, spec) where
+module System.EnvironmentSpec (main, spec) where
 
 import           Test.Hspec
 
-import           System.Environment.Compat
+import           System.Environment
 import           System.SetEnv
 import qualified Control.Exception as E
 

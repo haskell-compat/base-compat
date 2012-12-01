@@ -1,1 +1,1 @@
-:set -isrc -itest -XHaskell98 -optP-include -optPdist/build/autogen/cabal_macros.h -idist/build/
+:set -isrc -itest -XHaskell98 -XCPP -optP-include -optPdist/build/autogen/cabal_macros.h

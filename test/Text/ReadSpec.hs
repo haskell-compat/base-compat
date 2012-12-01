@@ -1,8 +1,8 @@
-module Text.Read.CompatSpec (main, spec) where
+module Text.ReadSpec (main, spec) where
 
 import           Test.Hspec
 
-import           Text.Read.Compat
+import           Text.Read
 
 main :: IO ()
 main = hspec spec

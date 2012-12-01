@@ -34,12 +34,13 @@ library
   hs-source-dirs:
       src
   exposed-modules:
-      Data.Monoid.Compat
-      System.Environment.Compat
-      Text.Read.Compat
+      -- with modifications
+      Data.Monoid
+      System.Environment
+      Text.Read
 
+      -- pristine
       Prelude
-
       Control.Applicative
       Control.Arrow
       Control.Category
@@ -81,7 +82,6 @@ library
       Data.Ix
       Data.List
       Data.Maybe
-      Data.Monoid
       Data.Ord
       Data.Ratio
       Data.STRef
@@ -187,7 +187,6 @@ library
       Numeric
       System.Console.GetOpt
       System.CPUTime
-      System.Environment
       System.Exit
       System.Info
       System.IO
@@ -202,7 +201,6 @@ library
       Text.ParserCombinators.ReadP
       Text.ParserCombinators.ReadPrec
       Text.Printf
-      Text.Read
       Text.Read.Lex
       Text.Show
       Text.Show.Functions
@@ -211,6 +209,8 @@ library
     base-compat.h
   build-depends:
       base == 4.*
+
+  extensions: CPP
 
 test-suite spec
   type:

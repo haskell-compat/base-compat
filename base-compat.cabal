@@ -39,10 +39,6 @@ library
       System.Environment
       Text.Read
 
-      -- stubbed out for base < 4.4.0
-      Control.Monad.ST.Lazy.Safe
-      Control.Monad.ST.Lazy.Unsafe
-
       -- deprecated
       GHC.IOBase
       GHC.Handle
@@ -55,6 +51,28 @@ library
       GHC.ConsoleHandler
       GHC.IO.Encoding.CodePage
       Text.Show.Functions
+
+      -- stubbed out for base < 4.4.0
+      Control.Monad.ST.Lazy.Safe
+      Control.Monad.ST.Lazy.Unsafe
+      Control.Monad.ST.Safe
+      Control.Monad.ST.Unsafe
+      Control.Monad.Zip
+      Data.Typeable.Internal
+      Foreign.ForeignPtr.Safe
+      Foreign.ForeignPtr.Unsafe
+      Foreign.Marshal.Safe
+      Foreign.Marshal.Unsafe
+      Foreign.Safe
+      GHC.Event
+      GHC.Fingerprint
+      GHC.Fingerprint.Type
+      GHC.Float.ConversionUtils
+      GHC.Float.RealFracMethods
+      GHC.Foreign
+      GHC.IO.Encoding.Failure
+      GHC.Stack
+      GHC.Stats
 
       -- pristine
       Prelude
@@ -71,10 +89,7 @@ library
       Control.Monad.Instances
       Control.Monad.ST
       Control.Monad.ST.Lazy
-      Control.Monad.ST.Safe
       Control.Monad.ST.Strict
-      Control.Monad.ST.Unsafe
-      Control.Monad.Zip
       Data.Bits
       Data.Bool
       Data.Char
@@ -101,7 +116,6 @@ library
       Data.Traversable
       Data.Tuple
       Data.Typeable
-      Data.Typeable.Internal
       Data.Unique
       Data.Version
       Data.Word
@@ -113,18 +127,13 @@ library
       Foreign.C.String
       Foreign.C.Types
       Foreign.ForeignPtr
-      Foreign.ForeignPtr.Safe
-      Foreign.ForeignPtr.Unsafe
       Foreign.Marshal
       Foreign.Marshal.Alloc
       Foreign.Marshal.Array
       Foreign.Marshal.Error
       Foreign.Marshal.Pool
-      Foreign.Marshal.Safe
-      Foreign.Marshal.Unsafe
       Foreign.Marshal.Utils
       Foreign.Ptr
-      Foreign.Safe
       Foreign.StablePtr
       Foreign.Storable
       GHC.Arr
@@ -138,15 +147,9 @@ library
       GHC.Enum
       GHC.Environment
       GHC.Err
-      GHC.Event
       GHC.Exception
       GHC.Exts
-      GHC.Fingerprint
-      GHC.Fingerprint.Type
       GHC.Float
-      GHC.Float.ConversionUtils
-      GHC.Float.RealFracMethods
-      GHC.Foreign
       GHC.ForeignPtr
       GHC.Int
       GHC.IO
@@ -155,7 +158,6 @@ library
       GHC.IO.BufferedIO
       GHC.IO.Device
       GHC.IO.Encoding
-      GHC.IO.Encoding.Failure
       GHC.IO.Encoding.Iconv
       GHC.IO.Encoding.Latin1
       GHC.IO.Encoding.Types
@@ -182,8 +184,6 @@ library
       GHC.Show
       GHC.ST
       GHC.Stable
-      GHC.Stack
-      GHC.Stats
       GHC.Storable
       GHC.STRef
       GHC.TopHandler

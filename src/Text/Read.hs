@@ -1,4 +1,3 @@
-{-# LANGUAGE PackageImports #-}
 module Text.Read (
   module Base
 , readEither

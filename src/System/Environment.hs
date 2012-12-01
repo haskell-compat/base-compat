@@ -1,4 +1,3 @@
-{-# LANGUAGE PackageImports #-}
 module System.Environment (
   module Base
 , lookupEnv

@@ -1,4 +1,3 @@
-{-# LANGUAGE PackageImports #-}
 module Data.Monoid (
   module Base
 , (<>)

@@ -28,6 +28,7 @@ source-repository head
   location: https://github.com/sol/base-compat
 
 library
+  exposed: False
   ghc-options:
       -Wall
   hs-source-dirs:
@@ -36,6 +37,176 @@ library
       Data.Monoid.Compat
       System.Environment.Compat
       Text.Read.Compat
+
+      Prelude
+
+      Control.Applicative
+      Control.Arrow
+      Control.Category
+      Control.Concurrent
+      Control.Concurrent.Chan
+      Control.Concurrent.MVar
+      Control.Concurrent.QSem
+      Control.Concurrent.QSemN
+      Control.Concurrent.SampleVar
+      Control.Exception
+      Control.Exception.Base
+      Control.Monad
+      Control.Monad.Fix
+      Control.Monad.Instances
+      Control.Monad.ST
+      Control.Monad.ST.Lazy
+      Control.Monad.ST.Lazy.Safe
+      Control.Monad.ST.Lazy.Unsafe
+      Control.Monad.ST.Safe
+      Control.Monad.ST.Strict
+      Control.Monad.ST.Unsafe
+      Control.Monad.Zip
+      Control.OldException
+      Data.Bits
+      Data.Bool
+      Data.Char
+      Data.Complex
+      Data.Data
+      Data.Dynamic
+      Data.Either
+      Data.Eq
+      Data.Fixed
+      Data.Foldable
+      Data.Function
+      Data.Functor
+      Data.HashTable
+      Data.Int
+      Data.IORef
+      Data.Ix
+      Data.List
+      Data.Maybe
+      Data.Monoid
+      Data.Ord
+      Data.Ratio
+      Data.STRef
+      Data.STRef.Lazy
+      Data.STRef.Strict
+      Data.String
+      Data.Traversable
+      Data.Tuple
+      Data.Typeable
+      Data.Typeable.Internal
+      Data.Unique
+      Data.Version
+      Data.Word
+      Debug.Trace
+      Foreign
+      Foreign.C
+      Foreign.C.Error
+      Foreign.Concurrent
+      Foreign.C.String
+      Foreign.C.Types
+      Foreign.ForeignPtr
+      Foreign.ForeignPtr.Safe
+      Foreign.ForeignPtr.Unsafe
+      Foreign.Marshal
+      Foreign.Marshal.Alloc
+      Foreign.Marshal.Array
+      Foreign.Marshal.Error
+      Foreign.Marshal.Pool
+      Foreign.Marshal.Safe
+      Foreign.Marshal.Unsafe
+      Foreign.Marshal.Utils
+      Foreign.Ptr
+      Foreign.Safe
+      Foreign.StablePtr
+      Foreign.Storable
+      GHC.Arr
+      GHC.Base
+      GHC.Conc
+      GHC.Conc.IO
+      GHC.Conc.Signal
+      GHC.Conc.Sync
+      GHC.ConsoleHandler
+      GHC.Constants
+      GHC.Desugar
+      GHC.Enum
+      GHC.Environment
+      GHC.Err
+      GHC.Event
+      GHC.Exception
+      GHC.Exts
+      GHC.Fingerprint
+      GHC.Fingerprint.Type
+      GHC.Float
+      GHC.Float.ConversionUtils
+      GHC.Float.RealFracMethods
+      GHC.Foreign
+      GHC.ForeignPtr
+      GHC.Handle
+      GHC.Int
+      GHC.IO
+      GHC.IOArray
+      GHC.IOBase
+      GHC.IO.Buffer
+      GHC.IO.BufferedIO
+      GHC.IO.Device
+      GHC.IO.Encoding
+      GHC.IO.Encoding.CodePage
+      GHC.IO.Encoding.Failure
+      GHC.IO.Encoding.Iconv
+      GHC.IO.Encoding.Latin1
+      GHC.IO.Encoding.Types
+      GHC.IO.Encoding.UTF16
+      GHC.IO.Encoding.UTF32
+      GHC.IO.Encoding.UTF8
+      GHC.IO.Exception
+      GHC.IO.FD
+      GHC.IO.Handle
+      GHC.IO.Handle.FD
+      GHC.IO.Handle.Internals
+      GHC.IO.Handle.Text
+      GHC.IO.Handle.Types
+      GHC.IO.IOMode
+      GHC.IORef
+      GHC.List
+      GHC.MVar
+      GHC.Num
+      GHC.Pack
+      GHC.PArr
+      GHC.Ptr
+      GHC.Read
+      GHC.Real
+      GHC.Show
+      GHC.ST
+      GHC.Stable
+      GHC.Stack
+      GHC.Stats
+      GHC.Storable
+      GHC.STRef
+      GHC.TopHandler
+      GHC.Unicode
+      GHC.Weak
+      GHC.Word
+      Numeric
+      System.Console.GetOpt
+      System.CPUTime
+      System.Environment
+      System.Exit
+      System.Info
+      System.IO
+      System.IO.Error
+      System.IO.Unsafe
+      System.Mem
+      System.Mem.StableName
+      System.Mem.Weak
+      System.Posix.Internals
+      System.Posix.Types
+      System.Timeout
+      Text.ParserCombinators.ReadP
+      Text.ParserCombinators.ReadPrec
+      Text.Printf
+      Text.Read
+      Text.Read.Lex
+      Text.Show
+      Text.Show.Functions
+      Unsafe.Coerce
   install-includes:
     base-compat.h
   build-depends:
@@ -51,7 +222,6 @@ test-suite spec
   main-is:
       Spec.hs
   build-depends:
-      base
-    , base-compat
+      base-compat
     , hspec >= 1.3
     , setenv

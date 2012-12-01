@@ -109,6 +109,11 @@ library
       GHC.Foreign
       GHC.IO.Encoding.Failure
 
+      -- stubbed for base < 4.3.0
+      GHC.Conc.IO
+      GHC.Conc.Signal
+      GHC.Conc.Sync
+
       -- pristine
       Prelude
       Control.Applicative
@@ -174,9 +179,6 @@ library
       GHC.Arr
       GHC.Base
       GHC.Conc
-      GHC.Conc.IO
-      GHC.Conc.Signal
-      GHC.Conc.Sync
       GHC.Constants
       GHC.Desugar
       GHC.Enum

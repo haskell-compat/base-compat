@@ -16,7 +16,7 @@ cp dist/build/autogen/cabal_macros.h $DST
 git add $DST
 
 echo $VERSION
-BASE=$(ghc-pkg list | grep base | grep -v base-compat | sed 's/.*base-//')
+BASE=$(ghc-pkg list | grep 'base-4' | sed 's/.*base-//')
 echo $BASE
 cat $DST | grep ' VERSION_base ' | sed 's/.*"\(.*\)"/\1/'
 

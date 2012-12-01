@@ -63,7 +63,6 @@ library
       Control.Monad.ST.Strict
       Control.Monad.ST.Unsafe
       Control.Monad.Zip
-      Control.OldException
       Data.Bits
       Data.Bool
       Data.Char
@@ -211,6 +210,7 @@ library
       base == 4.*
 
   extensions: CPP
+  ghc-options: -fno-warn-duplicate-exports
 
 test-suite spec
   type:

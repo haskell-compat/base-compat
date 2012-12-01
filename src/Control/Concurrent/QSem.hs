@@ -1,3 +1,4 @@
 {-# LANGUAGE PackageImports #-}
-module Control.Concurrent.QSem (module Base) where
+{-# OPTIONS_GHC -fno-warn-deprecations #-}
+module Control.Concurrent.QSem {-# DEPRECATED "Control.Concurrent.QSem will be removed in GHC 7.8. Please use an alternative, e.g. the SafeSemaphore package, instead." #-} (module Base) where
 import "base" Control.Concurrent.QSem as Base

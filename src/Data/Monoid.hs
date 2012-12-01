@@ -1,5 +1,4 @@
 {-# LANGUAGE PackageImports #-}
-{-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 module Data.Monoid (
   module Base
 , (<>)

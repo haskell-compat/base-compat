@@ -1,5 +1,4 @@
 {-# LANGUAGE PackageImports #-}
-{-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 module System.Environment (
   module Base
 , lookupEnv

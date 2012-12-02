@@ -79,14 +79,6 @@ library
       System.Environment
       Text.Read
 
-      -- deprecated
-      GHC.IOBase
-      GHC.Handle
-      Control.Concurrent.QSem
-      Control.Concurrent.QSemN
-      Control.Concurrent.SampleVar
-      Data.HashTable
-
       -- fixed warnings
       GHC.ConsoleHandler
       GHC.IO.Encoding.CodePage

@@ -24,6 +24,15 @@ Added:
 
  * `Eq` and `Ord` instance for `ErrorCall`
 
+Removed:
+
+ * `GHC.IOBase`
+ * `GHC.Handle`
+ * `Control.Concurrent.QSem`
+ * `Control.Concurrent.QSemN`
+ * `Control.Concurrent.SampleVar`
+ * `Data.HashTable`
+
 ## Supported versions of GHC/base
 
  * `ghc-7.6.1` / `base-4.6.0.0`

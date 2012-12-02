@@ -1,4 +1,7 @@
-## next
+## Changes in 0.2.1
+ - Fix build on windows
+
+## Changes in 0.2.0
  - Re-export everything from base
  - provides access to `VERSION_base` and `MIN_VERSION_base` CPP macros (with
    `#include "base-compat.h"`)

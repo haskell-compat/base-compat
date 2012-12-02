@@ -59,6 +59,12 @@ library
 
   hs-source-dirs:
       src
+
+  if !os(windows)
+    exposed-modules:
+      -- stubbed for base < 4.4.0
+      GHC.Event
+
   exposed-modules:
       -- with modifications
       Data.Monoid
@@ -86,7 +92,6 @@ library
       Foreign.Marshal.Safe
       Foreign.Marshal.Unsafe
       Foreign.Safe
-      GHC.Event
       GHC.Fingerprint
       GHC.Fingerprint.Type
       GHC.Float.ConversionUtils

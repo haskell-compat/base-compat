@@ -1,5 +1,11 @@
-The focus of `base-compat` is to provides the same functionality as the latest
+# A compatibility layer on top of base
+## Scope
+
+The scope of `base-compat` is to provides the same functionality as the latest
 version of `base` for a wider range of compilers.
+
+In addition, successful library proposals that will be included in an upcoming
+version of `base` are include.
 
 ## What is covered
 So far the following is covered.

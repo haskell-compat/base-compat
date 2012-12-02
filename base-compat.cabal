@@ -8,23 +8,9 @@ maintainer:       Simon Hengel <sol@typeful.net>
 build-type:       Simple
 cabal-version:    >= 1.8
 category:         System
-synopsis:         Provides readMaybe, lookupEnv, etc. for older versions of base
-description:      Provides new additions to base for older versions of base, so
-                  that they can be used without sacrificing backward
-                  compatibility.
-                  .
-                  So far the following is covered:
-                  .
-                  * readMaybe
-                  .
-                  * readEither
-                  .
-                  * lookupEnv
-                  .
-                  * \<\>
-                  .
-                  * System.IO.Error.catch is not re-exported from Prelude for
-                    older versions of base
+synopsis:         A compatibility layer for base
+description:      Ban CPP from your code.  See the README for what is covered:
+                  https://github.com/sol/base-compat#readme
 
 source-repository head
   type: git

@@ -1,4 +1,4 @@
-# A compatibility layer on top of base
+# A compatibility layer for `base`
 ## Scope
 
 The scope of `base-compat` is to provides the same functionality as the latest

@@ -4,7 +4,7 @@
 The scope of `base-compat` is to provides the same functionality as the latest
 version of `base` for a wider range of compilers.
 
-In addition, successful library proposals that will be included in an upcoming
+In addition, successful library proposals that will be part of an upcoming
 version of `base` are include.
 
 ## What is covered

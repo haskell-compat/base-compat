@@ -4,7 +4,7 @@ version of `base` for a wider range of compilers.
 ## What is covered
 So far the following is covered.
 
-## For compatibility with the latest released version of `base`
+### For compatibility with the latest released version of `base`
 
 Added:
 
@@ -18,7 +18,7 @@ Removed:
  * `System.IO.Error.catch` is not re-exported from Prelude for older versions
    of `base`
 
-## For forward compatibility with the upcoming release of base
+### For forward compatibility with the upcoming release of base
 
 Added:
 

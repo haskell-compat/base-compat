@@ -22,6 +22,9 @@ description:      Provides new additions to base for older versions of base, so
                   * lookupEnv
                   .
                   * \<\>
+                  .
+                  * System.IO.Error.catch is not re-exported from Prelude for
+                    older versions of base
 
 source-repository head
   type: git

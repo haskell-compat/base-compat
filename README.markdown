@@ -1,7 +1,30 @@
 The focus of `base-compat` is to provides the same functionality as the latest
 version of `base` for a wider range of compilers.
 
-Tested with:
+## What is covered
+So far the following is covered.
+
+## For compatibility with the latest released version of `base`
+
+Added:
+
+ * `Text.Read.readMaybe`
+ * `Text.Read.readEither`
+ * `System.Environment.lookupEnv`
+ * `Data.Monoid.<>`
+
+Removed:
+
+ * `System.IO.Error.catch` is not re-exported from Prelude for older versions
+   of `base`
+
+## For forward compatibility with the upcoming release of base
+
+Added:
+
+ * `Eq` and `Ord` instance for `ErrorCall`
+
+## Supported versions of GHC/base
 
  * `ghc-7.6.1` / `base-4.6.0.0`
  * `ghc-7.4.2` / `base-4.5.1.0`

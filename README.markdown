@@ -1,4 +1,5 @@
-Patches are welcome; add tests for new code!
+The focus of `base-compat` is to provides the same functionality as the latest
+version of `base` for a wider range of compilers.
 
 Tested with:
 
@@ -14,3 +15,5 @@ Tested with:
  * `ghc-6.12.3` / `base-4.2.0.2`
  * `ghc-6.12.2` / `base-4.2.0.1`
  * `ghc-6.12.1` / `base-4.2.0.0`
+
+Patches are welcome; add tests for new code!

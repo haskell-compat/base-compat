@@ -4,9 +4,9 @@ module GHC.Exception (
   module Base
 ) where
 import "base" GHC.Exception as Base
+import Control.Exception.ErrorCall.EqInstance ()
 
 #if __GLASGOW_HASKELL__ <= 706
 import Prelude
-deriving instance Eq ErrorCall
 deriving instance Ord ErrorCall
 #endif

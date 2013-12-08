@@ -22,6 +22,7 @@ library
       -Wall
   build-depends:
       base == 4.*
+    , errorcall-eq-instance
   extensions:
       CPP
     , PackageImports

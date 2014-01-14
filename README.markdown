@@ -29,6 +29,14 @@ Removed:
 Added:
 
  * `Eq` and `Ord` instance for `ErrorCall`
+ * `Monoid` instance for `Const`
+ * `Monad` instance for `WrappedMonad`
+ * `bool` function to `Data.Bool`
+ * `isLeft` and `isRight` to `Data.Either`
+ * `Either`, `(,)` and `Const` instances for `Foldable`
+ * `Either`, `(,)` and `Const` instances for `Traversable`
+ * `($>)` and `void` functions to `Data.Functor`
+
 
 Removed:
 

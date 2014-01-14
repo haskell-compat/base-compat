@@ -1,8 +1,8 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Control.Applicative (
   module Base
-, Monoid(..)
-, Monad(..)
+, Const(..)
+, WrappedMonad(..)
 ) where
 import "base" Control.Applicative as Base
 

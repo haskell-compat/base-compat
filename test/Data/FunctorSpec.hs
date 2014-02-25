@@ -1,7 +1,7 @@
 module Data.FunctorSpec (main, spec) where
 
 import           Test.Hspec
-import           Data.Functor
+import           Data.Functor.Compat
 
 main :: IO ()
 main = hspec spec

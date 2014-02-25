@@ -3,8 +3,8 @@ module Data.TraversableSpec (main, spec) where
 
 import           Test.Hspec
 
-import           Data.Traversable as Tr
-import           Control.Applicative (Const(..))
+import           Data.Traversable.Compat as Tr
+import           Control.Applicative.Compat (Const(..))
 
 main :: IO ()
 main = hspec spec

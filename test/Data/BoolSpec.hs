@@ -2,7 +2,7 @@ module Data.BoolSpec (main, spec) where
 
 import           Test.Hspec
 
-import           Data.Bool
+import           Data.Bool.Compat
 
 main :: IO ()
 main = hspec spec

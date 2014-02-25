@@ -2,9 +2,9 @@ module Data.FoldableSpec (main, spec) where
 
 import           Test.Hspec
 
-import           Data.Foldable as F
-import           Data.Monoid
-import           Control.Applicative (Const(..))
+import           Data.Foldable.Compat as F
+import           Data.Monoid.Compat
+import           Control.Applicative.Compat (Const(..))
 
 main :: IO ()
 main = hspec spec

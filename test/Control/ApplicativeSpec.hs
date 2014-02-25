@@ -2,8 +2,8 @@ module Control.ApplicativeSpec (main, spec) where
 
 import           Test.Hspec
 
-import           Control.Applicative
-import           Data.Monoid
+import           Control.Applicative.Compat
+import           Data.Monoid.Compat
 
 -- simplest one to use
 newtype Identity a = Identity { runIdentity :: a }

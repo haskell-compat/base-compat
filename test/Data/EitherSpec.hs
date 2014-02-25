@@ -2,7 +2,7 @@ module Data.EitherSpec (main, spec) where
 
 import           Test.Hspec
 
-import           Data.Either
+import           Data.Either.Compat
 
 main :: IO ()
 main = hspec spec

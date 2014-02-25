@@ -2,7 +2,7 @@ module Text.ReadSpec (main, spec) where
 
 import           Test.Hspec
 
-import           Text.Read
+import           Text.Read.Compat
 
 main :: IO ()
 main = hspec spec

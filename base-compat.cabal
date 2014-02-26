@@ -60,34 +60,6 @@ library
       GHC.IO.Encoding.CodePage.Compat
       Text.Show.Functions.Compat
 
-      -- stubbed for base < 4.5.0
-      GHC.Stack.Compat
-      GHC.Stats.Compat
-
-      -- stubbed for base < 4.4.0
-      Control.Monad.ST.Lazy.Safe.Compat
-      Control.Monad.ST.Lazy.Unsafe.Compat
-      Control.Monad.ST.Safe.Compat
-      Control.Monad.ST.Unsafe.Compat
-      Control.Monad.Zip.Compat
-      Data.Typeable.Internal.Compat
-      Foreign.ForeignPtr.Safe.Compat
-      Foreign.ForeignPtr.Unsafe.Compat
-      Foreign.Marshal.Safe.Compat
-      Foreign.Marshal.Unsafe.Compat
-      Foreign.Safe.Compat
-      GHC.Fingerprint.Compat
-      GHC.Fingerprint.Type.Compat
-      GHC.Float.ConversionUtils.Compat
-      GHC.Float.RealFracMethods.Compat
-      GHC.Foreign.Compat
-      GHC.IO.Encoding.Failure.Compat
-
-      -- stubbed for base < 4.3.0
-      GHC.Conc.IO.Compat
-      GHC.Conc.Signal.Compat
-      GHC.Conc.Sync.Compat
-
 test-suite spec
   type:
       exitcode-stdio-1.0

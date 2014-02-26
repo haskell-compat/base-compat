@@ -4,7 +4,7 @@ license:          MIT
 license-file:     LICENSE
 copyright:        (c) 2012 Simon Hengel
 author:           Simon Hengel <sol@typeful.net>, João Cristóvão <jmacristovao@gmail.com>
-maintainer:       Simon Hengel <sol@typeful.net>
+maintainer:       Simon Hengel <sol@typeful.net>, João Cristóvão <jmacristovao@gmail.com>
 build-type:       Simple
 cabal-version:    >= 1.8
 category:         System
@@ -33,11 +33,6 @@ library
   hs-source-dirs:
       src
 
-  if !os(windows)
-    exposed-modules:
-      -- stubbed for base < 4.4.0
-      GHC.Event.Compat
-
   exposed-modules:
       -- with modifications
       Control.Applicative.Compat
@@ -55,10 +50,6 @@ library
       Control.Exception.Base.Compat
       GHC.Exception.Compat
 
-      -- fixed warnings
-      GHC.ConsoleHandler.Compat
-      GHC.IO.Encoding.CodePage.Compat
-      Text.Show.Functions.Compat
 
 test-suite spec
   type:

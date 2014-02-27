@@ -1,11 +1,48 @@
 # A compatibility layer for `base`
 ## Scope
 
-The scope of `base-compat` is to provides the same functionality as the latest
-version of `base` for a wider range of compilers.
+The scope of `base-compat` is to provide functions available in later
+versions of base to a wider (older) range of compilers.
 
-In addition, successful library proposals that will be part of an upcoming
-version of `base` are include.
+In addition, successful library proposals that have been accepted to be 
+part of upcoming versions of `base` are also included. 
+This module is not intended to replace `base`, but to complement it.
+
+## Usage
+
+In your cabal file, you should have something like this:
+
+```
+  build-depends:      base              >= 4.5
+                    , base-compat       >= 0.4
+```
+
+Then, lets say you want to use the `isRight` function defined in base-4.7.
+Replace:
+
+```
+import Data.Either
+```
+
+with
+
+```
+import Data.Either.Compat
+```
+
+_Note (1)_: do not import both unqualified, as you will have name conflicts.
+The `.Compat` modules re-exports the original module.
+
+_Note (2)_: if a given module `.Compat` version is not defined, that either
+means that:
+	
+* The module has not changed in recent base versions, thus no `.Compat`
+  is needed.
+* The module has changed, but the changes depend on newer versions of 
+  GHC, and thus are not portable.
+* The module has changed, but those changes have not yet been merged in
+  `base-compat`: patches are welcomed!
+
 
 ## What is covered
 So far the following is covered.
@@ -24,11 +61,19 @@ Removed:
  * `System.IO.Error.catch` is not re-exported from Prelude for older versions
    of `base`
 
-### For forward compatibility with the upcoming release of base
+### For forward compatibility with the upcoming release of base (4.8)
 
 Added:
 
  * `Eq` and `Ord` instance for `ErrorCall`
+ * `Monoid` instance for `Const`
+ * `Monad` instance for `WrappedMonad`
+ * `bool` function to `Data.Bool`
+ * `isLeft` and `isRight` to `Data.Either`
+ * `Either`, `(,)` and `Const` instances for `Foldable`
+ * `Either`, `(,)` and `Const` instances for `Traversable`
+ * `($>)` and `void` functions to `Data.Functor`
+
 
 Removed:
 

@@ -2,7 +2,7 @@ module Control.ExceptionSpec (main, spec) where
 
 import           Test.Hspec
 
-import           Control.Exception
+import           Control.Exception.Compat
 
 main :: IO ()
 main = hspec spec

@@ -33,7 +33,7 @@ import Data.Either.Compat
 _Note (1)_: do not import both unqualified, as you will have name conflicts.
 The `.Compat` modules re-exports the original module.
 
-_Note (2)_: if a given module `.compat` version is not defined, that either
+_Note (2)_: if a given module `.Compat` version is not defined, that either
 means that:
 	
 * The module has not changed in recent base versions, thus no `.Compat`

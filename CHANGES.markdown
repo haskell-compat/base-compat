@@ -1,3 +1,11 @@
+## Changes in 0.4
+ - Major refactoring: base-compat no longer aims to replace all base,
+   only new code is included in module .compat
+ - Removed stubbed modules
+ - Removed generation scripts
+## Changes in 0.3
+ - Added functions from Base 4.7 (bool, isLeft, isRight)
+ - Added instances from Base 4.7 (Either Foldable, Traversable,...)
 ## Changes in 0.2.1
  - Fix build on windows
 

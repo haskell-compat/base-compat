@@ -35,6 +35,8 @@ library
 
   exposed-modules:
       -- with modifications
+      Prelude.Compat
+      Control.Monad.Compat
       Control.Applicative.Compat
       Data.Bool.Compat
       Data.Either.Compat
@@ -55,7 +57,7 @@ test-suite spec
   type:
       exitcode-stdio-1.0
   ghc-options:
-      -Wall -Werror
+      -Wall
   hs-source-dirs:
       test
   main-is:

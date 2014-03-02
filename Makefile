@@ -1,6 +1,7 @@
 current:
 	ghc --version
 	cabal clean
+	cabal install --only-dependencies --enable-tests
 	cabal configure --disable-optimization --disable-library-profiling --enable-tests
 	cabal build
 	cabal test

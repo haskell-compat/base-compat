@@ -1,4 +1,4 @@
-module System.EnvironmentSpec (main, spec) where
+module System.Environment.CompatSpec (main, spec) where
 
 import           Test.Hspec
 

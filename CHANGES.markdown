@@ -1,6 +1,9 @@
-## Changes in 0.4
+## Changes in 0.4.1
+ - Add `setEnv` and `unsetEnv` to `System.Environment.Compat`
+
+## Changes in 0.4.0
  - Major refactoring: base-compat no longer aims to replace all base,
-   only new code is included in module .compat
+   only new code is included in module .Compat
  - Removed stubbed modules
  - Removed generation scripts
 

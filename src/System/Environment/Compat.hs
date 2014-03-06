@@ -1,9 +1,21 @@
 module System.Environment.Compat (
-  module Base
+  getArgs
+, getProgName
+, getExecutablePath
+, getEnv
 , lookupEnv
+, setEnv
+, unsetEnv
+, withArgs
+, withProgName
+, getEnvironment
 ) where
 
-import "base" System.Environment as Base
+import           System.Environment
+
+#if !MIN_VERSION_base(4,7,0)
+import           System.SetEnv
+#endif
 
 #if !MIN_VERSION_base(4,6,0)
 import Prelude

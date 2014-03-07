@@ -6,6 +6,8 @@ current:
 	cabal build
 	cabal test
 all:
+	env-ghc-7.8.sh   make current
+	env-ghc-7.6.2.sh make current
 	env-ghc-7.6.1.sh make current
 	env-ghc-7.4.2.sh make current
 	env-ghc-7.4.1.sh make current

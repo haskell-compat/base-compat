@@ -1,7 +1,6 @@
 module System.Environment.Compat (
   getArgs
 , getProgName
-, getExecutablePath
 , getEnv
 , lookupEnv
 , setEnv

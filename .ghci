@@ -1,1 +1,1 @@
-:set -isrc -itest -XCPP -XPackageImports -optP-include -optPdist/build/autogen/cabal_macros.h -fno-warn-duplicate-exports
+:set -isrc -itest -XCPP -XNoImplicitPrelude -optP-include -optPdist/build/autogen/cabal_macros.h -fno-warn-duplicate-exports

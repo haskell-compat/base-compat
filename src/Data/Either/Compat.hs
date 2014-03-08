@@ -3,7 +3,7 @@ module Data.Either.Compat (
 , isLeft
 , isRight
 ) where
-import "base" Data.Either as Base
+import Data.Either as Base
 
 #if !MIN_VERSION_base(4,7,0)
 import Data.Bool (Bool(..))

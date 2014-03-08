@@ -3,7 +3,7 @@
 module GHC.Exception.Compat (
   module Base
 ) where
-import "base" GHC.Exception as Base
+import GHC.Exception as Base
 import Control.Exception.ErrorCall.EqInstance ()
 
 #if __GLASGOW_HASKELL__ <= 706

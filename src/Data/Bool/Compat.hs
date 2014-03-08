@@ -2,7 +2,7 @@ module Data.Bool.Compat (
   module Base
 , bool
 ) where
-import "base" Data.Bool as Base
+import Data.Bool as Base
 
 #if !MIN_VERSION_base(4,7,0)
 -- | Case analysis for the 'Bool' type.

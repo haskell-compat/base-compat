@@ -4,7 +4,7 @@ module Control.Applicative.Compat (
 , Const(..)
 , WrappedMonad(..)
 ) where
-import "base" Control.Applicative as Base
+import Control.Applicative as Base
 
 #if !MIN_VERSION_base(4,7,0)
 import Data.Monoid (Monoid(..),mempty,mappend)

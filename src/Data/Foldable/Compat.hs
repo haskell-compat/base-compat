@@ -3,7 +3,7 @@ module Data.Foldable.Compat (
   module Base
 , Foldable(..)
 ) where
-import "base" Data.Foldable as Base
+import Data.Foldable as Base
 
 #if !MIN_VERSION_base(4,7,0)
 import Data.Either (Either(..))

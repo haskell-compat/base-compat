@@ -26,7 +26,6 @@ library
     , setenv
   extensions:
       CPP
-    , PackageImports
     , NoImplicitPrelude
   ghc-options:
     -fno-warn-duplicate-exports

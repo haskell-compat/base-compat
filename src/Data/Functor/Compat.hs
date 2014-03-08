@@ -3,7 +3,7 @@ module Data.Functor.Compat (
 , ($>)
 , void
 ) where
-import "base" Data.Functor as Base
+import Data.Functor as Base
 
 #if !MIN_VERSION_base(4,7,0)
 import Control.Monad.Compat (void)

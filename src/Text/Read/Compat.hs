@@ -3,7 +3,7 @@ module Text.Read.Compat (
 , readEither
 , readMaybe
 ) where
-import "base" Text.Read as Base
+import Text.Read as Base
 
 #if !MIN_VERSION_base(4,6,0)
 import qualified Text.ParserCombinators.ReadP as P

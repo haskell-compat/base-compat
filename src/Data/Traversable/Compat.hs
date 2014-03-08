@@ -3,7 +3,7 @@ module Data.Traversable.Compat (
   module Base
 , Traversable(..)
 ) where
-import "base" Data.Traversable as Base
+import Data.Traversable as Base
 
 #if !MIN_VERSION_base(4,7,0)
 import Data.Either (Either(..))

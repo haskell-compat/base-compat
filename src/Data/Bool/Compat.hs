@@ -1,8 +1,15 @@
 module Data.Bool.Compat (
-  module Base
-, bool
-) where
-import Data.Bool as Base
+   -- * Booleans
+   Bool(..),
+   -- ** Operations
+   (&&),
+   (||),
+   not,
+   otherwise,
+   bool,
+  ) where
+
+import Data.Bool
 
 #if !MIN_VERSION_base(4,7,0)
 -- | Case analysis for the 'Bool' type.

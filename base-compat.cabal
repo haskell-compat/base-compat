@@ -1,5 +1,5 @@
 name:             base-compat
-version:          0.4.2
+version:          0.5.0
 license:          MIT
 license-file:     LICENSE
 copyright:        (c) 2012-2014 Simon Hengel,
@@ -34,10 +34,10 @@ library
       src
 
   exposed-modules:
-      -- with modifications
       Prelude.Compat
-      Control.Monad.Compat
       Control.Applicative.Compat
+      Control.Exception.Compat
+      Control.Monad.Compat
       Data.Bool.Compat
       Data.Either.Compat
       Data.Foldable.Compat
@@ -46,12 +46,6 @@ library
       Data.Traversable.Compat
       System.Environment.Compat
       Text.Read.Compat
-
-      -- added Eq/Ord instance for ErrorCall
-      Control.Exception.Compat
-      Control.Exception.Base.Compat
-      GHC.Exception.Compat
-
 
 test-suite spec
   type:

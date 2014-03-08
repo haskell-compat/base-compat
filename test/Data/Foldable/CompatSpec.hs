@@ -1,4 +1,4 @@
-module Data.FoldableSpec (main, spec) where
+module Data.Foldable.CompatSpec (main, spec) where
 
 import           Test.Hspec
 

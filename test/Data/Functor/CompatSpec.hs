@@ -1,4 +1,4 @@
-module Data.FunctorSpec (main, spec) where
+module Data.Functor.CompatSpec (main, spec) where
 
 import           Test.Hspec
 import           Data.Functor.Compat

@@ -1,4 +1,4 @@
-module Data.EitherSpec (main, spec) where
+module Data.Either.CompatSpec (main, spec) where
 
 import           Test.Hspec
 

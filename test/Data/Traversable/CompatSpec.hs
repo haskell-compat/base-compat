@@ -1,5 +1,5 @@
 {-# LANGUAGE TupleSections #-}
-module Data.TraversableSpec (main, spec) where
+module Data.Traversable.CompatSpec (main, spec) where
 
 import           Test.Hspec
 

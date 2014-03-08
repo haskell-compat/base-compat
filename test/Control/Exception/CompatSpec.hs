@@ -1,4 +1,4 @@
-module Control.ExceptionSpec (main, spec) where
+module Control.Exception.CompatSpec (main, spec) where
 
 import           Test.Hspec
 

@@ -1,4 +1,4 @@
-module Data.BoolSpec (main, spec) where
+module Data.Bool.CompatSpec (main, spec) where
 
 import           Test.Hspec
 

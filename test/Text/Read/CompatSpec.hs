@@ -1,4 +1,4 @@
-module Text.ReadSpec (main, spec) where
+module Text.Read.CompatSpec (main, spec) where
 
 import           Test.Hspec
 

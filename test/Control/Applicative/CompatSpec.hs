@@ -1,4 +1,4 @@
-module Control.ApplicativeSpec (main, spec) where
+module Control.Applicative.CompatSpec (main, spec) where
 
 import           Test.Hspec
 

@@ -60,4 +60,4 @@ test-suite spec
       base > 4.0
     , base-compat
     , hspec >= 1.3
-    , setenv
+    , QuickCheck

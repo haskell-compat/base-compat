@@ -45,6 +45,7 @@ library
       Data.Monoid.Compat
       Data.Traversable.Compat
       System.Environment.Compat
+      System.Exit.Compat
       Text.Read.Compat
 
 test-suite spec

@@ -22,7 +22,6 @@ library
       -Wall
   build-depends:
       base == 4.*
-    , errorcall-eq-instance
     , setenv
   extensions:
       CPP

@@ -100,3 +100,14 @@ Removed:
  * `ghc-6.12.1` / `base-4.2.0.0`
 
 Patches are welcome; add tests for new code!
+
+## Development
+
+For `Prelude.Compat` there is an `Prelude.index` file that was generated from
+the output of
+
+    ghc --show-iface Prelude.hi
+
+To verify that `Prelude.Compat` matches the specification given in `Prelude.types` run:
+
+    runhaskell dumptypes.hs | typediff Prelude.types -

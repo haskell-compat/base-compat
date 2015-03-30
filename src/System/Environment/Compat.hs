@@ -1,3 +1,4 @@
+-- | Miscellaneous information about the system environment.
 module System.Environment.Compat (
   getArgs
 , getProgName

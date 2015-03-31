@@ -1,3 +1,11 @@
+## Changes in 0.6.0
+ - Update `Prelude.Compat` for `base-4.8.0.0` and AMP
+
+## Changes in 0.5.0
+ - Remove Control.Exception.Base.Compat and GHC.Exception.Compat
+ - Add System.Exit.Compat.die
+ - Compatibility with base-4.7.1
+
 ## Changes in 0.4.1
  - Add `setEnv` and `unsetEnv` to `System.Environment.Compat`
 

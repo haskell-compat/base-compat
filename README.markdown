@@ -110,4 +110,4 @@ the output of
 
 To verify that `Prelude.Compat` matches the specification given in `Prelude.types` run:
 
-    runhaskell dumptypes.hs | typediff Prelude.types -
+    ./check-Prelude.sh

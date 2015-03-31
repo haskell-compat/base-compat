@@ -1,9 +1,9 @@
-{-# LANGUAGE TupleSections #-}
+{-# LANGUAGE TupleSections, NoImplicitPrelude #-}
 module Data.Traversable.CompatSpec (main, spec) where
 
+import           Prelude.Compat
 import           Test.Hspec
 
-import           Data.Traversable.Compat as Tr
 import           Control.Applicative.Compat (Const(..))
 
 main :: IO ()

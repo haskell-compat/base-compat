@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveFunctor #-}
 module Control.Applicative.CompatSpec (main, spec) where
 
 import           Test.Hspec
@@ -7,10 +8,15 @@ import           Data.Monoid.Compat
 
 -- simplest one to use
 newtype Identity a = Identity { runIdentity :: a }
+  deriving Functor
+
+instance Applicative Identity where
+  pure     = Identity
+  Identity f <*> x = f <$> x
 
 instance Monad Identity where
-    return a = Identity a
-    m >>= k  = k (runIdentity m)
+  return = Identity
+  m >>= k  = k (runIdentity m)
 
 main :: IO ()
 main = hspec spec

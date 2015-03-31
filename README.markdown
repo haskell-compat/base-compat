@@ -72,6 +72,7 @@ Added:
  * `isLeft` and `isRight` to `Data.Either`
  * `Either`, `(,)` and `Const` instances for `Foldable`
  * `Either`, `(,)` and `Const` instances for `Traversable`
+ * `(&)` function to `Data.Function`
  * `($>)` and `void` functions to `Data.Functor`
 
 

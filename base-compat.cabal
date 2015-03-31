@@ -40,6 +40,7 @@ library
       Data.Bool.Compat
       Data.Either.Compat
       Data.Foldable.Compat
+      Data.Function.Compat
       Data.Functor.Compat
       Data.Monoid.Compat
       Data.Traversable.Compat

@@ -115,8 +115,8 @@ module Prelude.Compat (
 , null
 , Data.Foldable.product
 , Data.Foldable.sum
-, Data.Traversable.mapM
-, Data.Traversable.sequence
+, mapM
+, sequence
 , sequenceA
 , traverse
 , (*>)
@@ -262,11 +262,11 @@ import Prelude as Base
 
 #else
 
-import Prelude hiding (length, null, foldr)
+import Prelude hiding (length, null, foldr, mapM, sequence)
 
 import Data.Word
 import Data.Foldable
-import Data.Traversable
+import Data.Traversable.Compat
 import Data.Monoid
 import Control.Applicative
 

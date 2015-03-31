@@ -7,15 +7,16 @@ module System.Exit.Compat (
 , die
 ) where
 
+import System.Exit
+
+#if !MIN_VERSION_base(4,8,0)
+
 import Prelude
 import System.IO
 
-import System.Exit
-
-#if !MIN_VERSION_base(4,7,1)
 -- | Write given error message to `stderr` and terminate with `exitFailure`.
 --
--- /Since: 4.7.1.0/
+-- @since 4.8.0.0
 die :: String -> IO a
 die err = hPutStrLn stderr err >> exitFailure
 #endif

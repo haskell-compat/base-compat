@@ -42,6 +42,7 @@ library
       Data.Foldable.Compat
       Data.Function.Compat
       Data.Functor.Compat
+      Data.List.Compat
       Data.Monoid.Compat
       Data.Traversable.Compat
       System.Environment.Compat

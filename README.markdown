@@ -61,6 +61,11 @@ Removed:
  * `System.IO.Error.catch` is not re-exported from Prelude for older versions
    of `base`
 
+### For forward compatibility with base-4.5
+
+Added:
+ * `dropWhileEnd` function to `Data.List`
+
 ### For forward compatibility with the upcoming release of base (4.8)
 
 Added:
@@ -74,6 +79,7 @@ Added:
  * `Either`, `(,)` and `Const` instances for `Traversable`
  * `(&)` function to `Data.Function`
  * `($>)` and `void` functions to `Data.Functor`
+ * `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List`
 
 
 Removed:

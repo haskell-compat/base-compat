@@ -11,7 +11,7 @@ infixl 1 &
 -- convenience.  Its precedence is one higher than that of the forward
 -- application operator '$', which allows '&' to be nested in '$'.
 --
--- @since 4.8.0.0
+-- /Since: 4.8.0.0/
 (&) :: a -> (a -> b) -> b
 x & f = f x
 

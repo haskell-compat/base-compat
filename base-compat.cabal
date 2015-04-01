@@ -46,6 +46,8 @@ library
       Data.Monoid.Compat
       Data.Traversable.Compat
       Data.Version.Compat
+      Foreign.Marshal.Alloc.Compat
+      Foreign.Marshal.Array.Compat
       Foreign.Storable.Compat
       System.Environment.Compat
       System.Exit.Compat

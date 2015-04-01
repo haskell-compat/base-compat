@@ -1,12 +1,17 @@
 # A compatibility layer for `base`
 ## Scope
 
-The scope of `base-compat` is to provide functions available in later versions
-of base to a wider (older) range of compilers.
+The scope of `base-compat` is to provide functions, data types and instances
+available in later versions of base to a wider (older) range of compilers.
 
 In addition, successful library proposals that have been accepted to be part of
 upcoming versions of `base` are also included.  This package is not intended to
 replace `base`, but to complement it.
+
+**Note:** `base-compat` never redefines data types or classes, it only adds
+missing functions, data types and instances.  This implies that `base-compat`
+is a best-effort approach.  If a data type or class is changed in a backward
+incompatible way, `base-compat` may not be able to address this.
 
 ## Basic usage
 

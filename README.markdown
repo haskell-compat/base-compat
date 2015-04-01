@@ -99,6 +99,7 @@ So far the following is covered.
  * `Foldable` instance for `Either`, `(,)` and `Const`
  * `Traversable` instance for `Either`, `(,)` and `Const`
  * `Version` instance for `IsList`
+ * Added `(<$!>)` function to `Control.Monad.Compat`
  * Added `($>)` and `void` functions to `Data.Functor.Compat`
  * `(&)` function to `Data.Function.Compat`
  * `($>)` and `void` functions to `Data.Functor.Compat`

@@ -45,8 +45,17 @@ means that:
 
 ## Using `Prelude.Compat`
 
-`Prelude.Compat` is best used in combination with the `NoImplicitPrelude`
-language extension.  Here is an example:
+If you want to use `Prelude.Compat` (which provides all the
+AMP/Traversable/Foldable changes from `base-4.8.0.0`), it's best to hide
+`Prelude`, e.g.:
+
+    import Prelude ()
+    import Prelude.Compat
+
+    main :: IO ()
+    main = mapM_ print (Just 23)
+
+Alternatively, you can use the `NoImplicitPrelude` language extension:
 
     {-# LANGUAGE NoImplicitPrelude #-}
     import Prelude.Compat
@@ -58,7 +67,7 @@ Note that we use
 
     mapM_ :: (Foldable t, Monad m) => (a -> m b) -> t a -> m ()
 
-from `Data.Foldable` here, which is exposed from `Prelude` since
+from `Data.Foldable` here, which is only exposed from `Prelude` since
 `base-4.8.0.0`.
 
 Using this approach allows you to write code that works seamlessly with all

@@ -77,9 +77,11 @@ Added:
  * `isLeft` and `isRight` to `Data.Either`
  * `Either`, `(,)` and `Const` instances for `Foldable`
  * `Either`, `(,)` and `Const` instances for `Traversable`
+ * `Version` instance for `IsList`
  * `(&)` function to `Data.Function`
  * `($>)` and `void` functions to `Data.Functor`
  * `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List`
+ * `makeVersion` function to `Data.Version`
 
 
 Removed:

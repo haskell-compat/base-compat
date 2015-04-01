@@ -45,6 +45,7 @@ library
       Data.List.Compat
       Data.Monoid.Compat
       Data.Traversable.Compat
+      Data.Version.Compat
       System.Environment.Compat
       System.Exit.Compat
       Text.Read.Compat

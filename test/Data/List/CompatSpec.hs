@@ -18,8 +18,8 @@ spec = do
       isSubsequenceOf "JHC" "The Glorious Haskell Compiler" `shouldBe` False
   describe "sortOn" $ do
     it "sorts a list by comparing the results of a key function applied to each element" $ do
-      sortOn (>=2) [3,2,1] `shouldBe` [1,3,2]
+      sortOn (>='b') "cba" `shouldBe` "acb"
   describe "uncons" $ do
     it "decomposes a list into its head and tail" $ do
       uncons ""   `shouldBe` Nothing
-      uncons "12" `shouldBe` ('1', "2")
+      uncons "12" `shouldBe` Just ('1', "2")

@@ -97,6 +97,7 @@ So far the following is covered.
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft` and `isRight` to `Data.Either.Compat`
  * `Foldable` instance for `Either`, `(,)` and `Const`
+ * `Storable` instance for `Complex` and `Ratio`
  * `Traversable` instance for `Either`, `(,)` and `Const`
  * `Version` instance for `IsList`
  * Added `(<$!>)` function to `Control.Monad.Compat`

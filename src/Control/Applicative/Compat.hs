@@ -1,3 +1,6 @@
+#if !MIN_VERSION_base(4,8,0)
+{-# LANGUAGE StandaloneDeriving #-}
+#endif
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Control.Applicative.Compat (
   module Base
@@ -19,4 +22,17 @@ instance Monoid a => Monoid (Const a b) where
 instance Monad m => Monad (WrappedMonad m) where
     return = WrapMonad . return
     a >>= f = WrapMonad (unwrapMonad a >>= unwrapMonad . f)
+#endif
+
+#if !MIN_VERSION_base(4,8,0)
+deriving instance Eq a => Eq (Const a b)
+deriving instance Ord a => Ord (Const a b)
+
+instance Read a => Read (Const a b) where
+    readsPrec d = readParen (d > 10)
+        $ \r -> [(Const x,t) | ("Const", s) <- lex r, (x, t) <- readsPrec 11 s]
+
+instance Show a => Show (Const a b) where
+    showsPrec d (Const x) = showParen (d > 10) $
+                            showString "Const " . showsPrec 11 x
 #endif

@@ -30,6 +30,24 @@ spec = do
       getConst ((Const "aaa" :: Const String Int) <> (Const "bbb" :: Const String Int))
         `shouldBe` "aaabbb"
 
+  describe "Eq (Const a b)" $
+    it "allows checking if two Const values are equal" $ do
+      (Const "a" :: Const String Int) == Const "a" `shouldBe` True
+      (Const "a" :: Const String Int) == Const "b" `shouldBe` False
+
+  describe "Ord (Const a b)" $
+    it "allows comparing of two Const values" $ do
+      (Const 'b' :: Const Char Int) >  Const 'a' `shouldBe` True
+      (Const 'b' :: Const Char Int) <= Const 'a' `shouldBe` False
+
+  describe "Read (Const a b)" $
+    it "allows a Const value to be read from a string" $
+      read "Const 1" `shouldBe` (Const 1 :: Const Int Int)
+
+  describe "Show (Const a b)" $
+    it "allows a Const value to be converted to a String" $
+      show (Const 1 :: Const Int Int) `shouldBe` "Const 1"
+
   describe "Monad (WrappedMonad m)" $
     it "allows to use a Monad interface in a WrappedMonad" $
       (runIdentity . unwrapMonad

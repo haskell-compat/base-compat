@@ -92,7 +92,7 @@ So far the following is covered.
  * `System.Environment.Compat.lookupEnv`
  * `Data.Monoid.Compat.<>`
  * Added `Eq` and `Ord` instance for `Contro.Exception.ErrorCall`
- * Added `Monoid` instance for `Const`
+ * Added `Monoid`, `Eq`, `Ord`, `Read`, and `Show` instances for `Const`
  * Added `Monad` instance for `WrappedMonad`
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft` and `isRight` to `Data.Either.Compat`

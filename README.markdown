@@ -91,12 +91,13 @@ So far the following is covered.
  * `Text.Read.Compat.readEither`
  * `System.Environment.Compat.lookupEnv`
  * `Data.Monoid.Compat.<>`
- * Added `Eq` and `Ord` instance for `Contro.Exception.ErrorCall`
+ * Added `Eq` and `Ord` instances for `Contro.Exception.ErrorCall`
  * Added `Monoid`, `Eq`, `Ord`, `Read`, and `Show` instances for `Const`
  * Added `Monad` instance for `WrappedMonad`
  * Added `Data` and `IsList` instances for `Version`
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft` and `isRight` to `Data.Either.Compat`
+ * `Bits` instance for `Bool`
  * `Foldable` instance for `Either`, `(,)` and `Const`
  * `Storable` instance for `Complex` and `Ratio`
  * `Traversable` instance for `Either`, `(,)` and `Const`

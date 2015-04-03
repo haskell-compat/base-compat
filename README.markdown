@@ -92,12 +92,15 @@ So far the following is covered.
  * `System.Environment.Compat.lookupEnv`
  * `Data.Monoid.Compat.<>`
  * Added `Eq` and `Ord` instances for `Contro.Exception.ErrorCall`
+ * Added `Eq`, `Ord`, `Read`, and `Show` instances for data types in `GHC.Generics`
  * Added `Monoid`, `Eq`, `Ord`, `Read`, and `Show` instances for `Const`
  * Added `Monad` instance for `WrappedMonad`
  * Added `Data` and `IsList` instances for `Version`
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft` and `isRight` to `Data.Either.Compat`
  * `Bits` instance for `Bool`
+ * `Generic` instance for `All`, `Any`, `Const`, `Dual`, `Endo`, `First`, `Last`, `Product`, `Sum`, `WrappedArrow`, `WrappedMonad`, and `ZipList`
+ * `Generic1` instance for `Const`, `Dual`, `First`, `Last`, `Product`, `Sum`, `WrappedArrow`, `WrappedMonad`, and `ZipList`
  * `Foldable` instance for `Either`, `(,)` and `Const`
  * `Storable` instance for `Complex` and `Ratio`
  * `Traversable` instance for `Either`, `(,)` and `Const`

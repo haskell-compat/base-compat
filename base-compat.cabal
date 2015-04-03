@@ -53,6 +53,14 @@ library
       System.Exit.Compat
       Text.Read.Compat
 
+  if impl(ghc >= 7.2)
+    exposed-modules:
+      GHC.Generics.Compat
+    
+    if impl(ghc < 7.6)
+      -- Prior to GHC 7.6, GHC generics lived in ghc-prim
+      build-depends: ghc-prim
+
 test-suite spec
   type:
       exitcode-stdio-1.0

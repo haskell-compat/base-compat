@@ -10,7 +10,13 @@ import GHC.Generics as Base
 #if !MIN_VERSION_base(4,7,0)
 import Control.Applicative
 import Control.Arrow
+
 import Data.Monoid
+
+import GHC.Read
+
+import Text.ParserCombinators.ReadPrec (prec, step)
+import Text.Read.Lex
 
 deriving instance Generic All
 deriving instance Generic Any
@@ -74,8 +80,23 @@ deriving instance (Show (f p), Show (g p)) => Show ((f :+: g) p)
 deriving instance (Eq (f p), Eq (g p)) => Eq ((f :*: g) p)
 deriving instance Generic ((f :*: g) p)
 deriving instance (Ord (f p), Ord (g p)) => Ord ((f :*: g) p)
-deriving instance (Read (f p), Read (g p)) => Read ((f :*: g) p)
-deriving instance (Show (f p), Show (g p)) => Show ((f :*: g) p)
+-- Due to a GHC bug (https://ghc.haskell.org/trac/ghc/ticket/9830), the derived
+-- Read and Show instances for infix data constructors will use the wrong
+-- precedence (prior to GHC 7.10).
+-- We'll manually derive Read :*: and Show :*: instances to avoid this.
+instance (Read (f p), Read (g p)) => Read ((f :*: g) p) where
+    readPrec = parens . prec 6 $ do
+        fp <- step readPrec
+        Symbol ":*:" <- lexP
+        gp <- step readPrec
+        return $ fp :*: gp
+    readListPrec = readListPrecDefault
+instance (Show (f p), Show (g p)) => Show ((f :*: g) p) where
+     showsPrec p (l :*: r) = showParen (p > sixPrec) $
+            showsPrec (sixPrec + 1) l
+         . showString " :*: "
+         . showsPrec (sixPrec + 1) r
+       where sixPrec = 6
 
 deriving instance Eq (f (g p)) => Eq ((f :.: g) p)
 deriving instance Generic ((f :.: g) p)

@@ -108,6 +108,7 @@ So far the following is covered.
  * `Num` instance for `Sum` and `Product`
  * `Storable` instance for `Complex` and `Ratio`
  * `Traversable` instance for `Either`, `(,)` and `Const`
+ * `Typeable` instance for `(->)` and `RealWorld`
  * Added `withMVarMasked` function to `Control.Concurrent.MVar.Compat`
  * Added `(<$!>)` function to `Control.Monad.Compat`
  * Added `($>)` and `void` functions to `Data.Functor.Compat`

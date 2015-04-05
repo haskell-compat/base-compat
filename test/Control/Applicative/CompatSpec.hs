@@ -55,3 +55,20 @@ spec = do
         >> (WrapMonad (return 2 :: Identity Int)))
         `shouldBe` (2::Int)
 
+  describe "Eq (ZipList a)" $
+    it "allows checking if two ZipLists are equal" $ do
+      ZipList "a" == ZipList "a" `shouldBe` True
+      ZipList "a" == ZipList "b" `shouldBe` False
+
+  describe "Ord (ZipList a)" $
+    it "allows comparing of two ZipLists" $ do
+      ZipList "b" >  ZipList "a" `shouldBe` True
+      ZipList "b" <= ZipList "a" `shouldBe` False
+
+  describe "Read (ZipList a)" $
+    it "allows a ZipList to be read from a string" $
+      read "ZipList {getZipList = \"a\"}" `shouldBe` ZipList "a"
+
+  describe "Show (ZipList a)" $
+    it "allows a ZipList to be converted to a String" $
+      show (ZipList "a") `shouldBe` "ZipList {getZipList = \"a\"}"

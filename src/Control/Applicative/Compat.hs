@@ -22,6 +22,11 @@ instance Monoid a => Monoid (Const a b) where
 instance Monad m => Monad (WrappedMonad m) where
     return = WrapMonad . return
     a >>= f = WrapMonad (unwrapMonad a >>= unwrapMonad . f)
+
+deriving instance Eq a => Eq (ZipList a)
+deriving instance Ord a => Ord (ZipList a)
+deriving instance Read a => Read (ZipList a)
+deriving instance Show a => Show (ZipList a)
 #endif
 
 #if !MIN_VERSION_base(4,8,0)

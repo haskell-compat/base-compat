@@ -94,6 +94,7 @@ So far the following is covered.
  * Added `Eq` and `Ord` instances for `Contro.Exception.ErrorCall`
  * Added `Eq`, `Ord`, `Read`, and `Show` instances for data types in `GHC.Generics`
  * Added `Monoid`, `Eq`, `Ord`, `Read`, and `Show` instances for `Const`
+ * Added `Eq`, `Ord`, `Read`, and `Show` instances for `Down`
  * Added `Eq`, `Ord`, `Read`, and `Show` instances for `ZipList`
  * Added `Monad` instance for `WrappedMonad`
  * Added `Data` and `IsList` instances for `Version`

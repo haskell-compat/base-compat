@@ -44,6 +44,7 @@ library
       Data.Functor.Compat
       Data.List.Compat
       Data.Monoid.Compat
+      Data.Ord.Compat
       Data.Traversable.Compat
       Data.Version.Compat
       Foreign.Marshal.Alloc.Compat

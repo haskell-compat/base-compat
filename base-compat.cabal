@@ -35,6 +35,7 @@ library
   exposed-modules:
       Prelude.Compat
       Control.Applicative.Compat
+      Control.Concurrent.MVar.Compat
       Control.Exception.Compat
       Control.Monad.Compat
       Data.Bool.Compat

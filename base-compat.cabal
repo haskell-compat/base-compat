@@ -50,6 +50,7 @@ library
       Foreign.Marshal.Alloc.Compat
       Foreign.Marshal.Array.Compat
       Foreign.Storable.Compat
+      System.Console.GetOpt.Compat
       System.Environment.Compat
       System.Exit.Compat
       Text.Read.Compat

@@ -1,3 +1,7 @@
+#if !MIN_VERSION_base(4,7,0)
+{-# LANGUAGE GeneralizedNewtypeDeriving, StandaloneDeriving #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
+#endif
 module Data.Monoid.Compat (
         -- * Monoid typeclass
         Monoid(..),
@@ -27,4 +31,9 @@ infixr 6 <>
 (<>) :: Monoid m => m -> m -> m
 (<>) = mappend
 {-# INLINE (<>) #-}
+#endif
+
+#if !MIN_VERSION_base(4,7,0)
+deriving instance Num a => Num (Sum a)
+deriving instance Num a => Num (Product a)
 #endif

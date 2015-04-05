@@ -116,6 +116,7 @@ So far the following is covered.
  * `($>)` and `void` functions to `Data.Functor.Compat`
  * `dropWhileEnd`, `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List.Compat`
  * `makeVersion` function to `Data.Version.Compat`
+ * `byteSwap16`, `byteSwap32`, and `byteSwap64` functions to `Data.Word.Compat`
  * `calloc` and `callocBytes` functions to `Foreign.Marshal.Alloc.Compat`
  * `callocArray` and `callocArray0` functions to `Foreign.Marshal.Array.Compat`
 

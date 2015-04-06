@@ -1,4 +1,7 @@
-{-# LANGUAGE CPP, OverloadedLists #-}
+{-# LANGUAGE CPP #-}
+#if MIN_VERSION_base(4,7,0)
+{-# LANGUAGE OverloadedLists #-}
+#endif
 module Data.Version.CompatSpec (main, spec) where
 
 import           Test.Hspec

@@ -19,12 +19,6 @@ import GHC.Exts (IsList(..))
 #endif
 
 #if !MIN_VERSION_base(4,7,0)
-versionConstr :: Constr
-versionConstr = mkConstr versionDataType "Version" ["versionBranch","versionTags"] Prefix
-
-versionDataType :: DataType
-versionDataType = mkDataType "Data.Version.Version" [versionConstr]
-
 deriving instance Data Version
 #endif
 

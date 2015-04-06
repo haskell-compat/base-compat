@@ -1,4 +1,8 @@
-{-# LANGUAGE FlexibleContexts, DeriveGeneric, StandaloneDeriving, TypeOperators #-}
+{-# LANGUAGE FlexibleContexts, StandaloneDeriving, TypeOperators #-}
+
+#if __GLASGOW_HASKELL__ >= 702
+{-# LANGUAGE DeriveGeneric #-}
+#endif
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module GHC.Generics.Compat (
 -- GHC.Generics is only available on GHC 7.2 and later, so we can't export anything

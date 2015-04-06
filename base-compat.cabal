@@ -51,6 +51,8 @@ library
       Data.Traversable.Compat
       Data.Version.Compat
       Debug.Trace.Compat
+      Foreign.Compat
+      Foreign.Marshal.Compat
       Foreign.Marshal.Alloc.Compat
       Foreign.Marshal.Array.Compat
       Foreign.Storable.Compat

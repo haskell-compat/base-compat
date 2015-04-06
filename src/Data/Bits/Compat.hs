@@ -7,7 +7,6 @@ import Data.Bits as Base
 -- These instances are only valid if Bits isn't a subclass of Num (as Bool is
 -- not a Num instance), which is only true as of base-4.6.0.0 and later.
 #if MIN_VERSION_base(4,6,0) && !MIN_VERSION_base(4,7,0)
-import Data.Eq ((/=))
 import Prelude.Compat
 
 instance Bits Bool where

@@ -7,11 +7,8 @@ module Data.List.Compat (
 ) where
 import Data.List as Base
 
-#if !MIN_VERSION_base(4,5,0)
-import Prelude.Compat hiding (foldr, null)
-#endif
-
 #if !MIN_VERSION_base(4,8,0)
+import Prelude.Compat hiding (foldr, null)
 import Data.Ord (comparing)
 #endif
 

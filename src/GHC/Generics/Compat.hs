@@ -3,7 +3,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 #endif
 
-#if __GLASGOW_HASKELL__ >= 704
+#if __GLASGOW_HASKELL__ >= 706
 {-# LANGUAGE DeriveGeneric #-}
 #endif
 module GHC.Generics.Compat (
@@ -17,7 +17,7 @@ import           Prelude.Compat
 import qualified Text.ParserCombinators.ReadPrec as ReadPrec
 import           Text.Read.Lex
 
-# if __GLASGOW_HASKELL__ >= 704
+# if __GLASGOW_HASKELL__ >= 706
 import           Control.Applicative
 import           Control.Arrow 
 import           Data.Monoid
@@ -35,7 +35,6 @@ deriving instance Generic (WrappedArrow a b c)
 deriving instance Generic (WrappedMonad m a)
 deriving instance Generic (ZipList a)
 
-#  if __GLASGOW_HASKELL__ >= 706
 deriving instance Generic1 (Const a)
 deriving instance Generic1 Dual
 deriving instance Generic1 First
@@ -45,7 +44,6 @@ deriving instance Generic1 Sum
 deriving instance Generic1 (WrappedArrow a b)
 deriving instance Generic1 (WrappedMonad m)
 deriving instance Generic1 ZipList
-#  endif
 
 deriving instance Generic (U1 p)
 deriving instance Generic (Par1 p)

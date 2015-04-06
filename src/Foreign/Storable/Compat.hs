@@ -12,7 +12,7 @@ import Data.Complex (Complex(..), realPart)
 import Foreign.Ptr (castPtr)
 import Prelude.Compat
 
-# if __GLASGOW_HASKELL__ > 702
+# if __GLASGOW_HASKELL__ > 704
 import GHC.Real (Ratio(..), (%))
 # endif
 
@@ -32,8 +32,8 @@ instance (Storable a, RealFloat a) => Storable (Complex a) where
                         poke q r
                         pokeElemOff q 1 i
 
--- A bug in GHC 7.2 and earlier prevents the code below from compiling
-# if __GLASGOW_HASKELL__ > 702
+-- A bug in GHC 7.4 and earlier prevents the code below from compiling
+# if __GLASGOW_HASKELL__ > 704
 instance (Storable a, Integral a) => Storable (Ratio a) where
     sizeOf _    = 2 * sizeOf (undefined :: a)
     alignment _ = alignment (undefined :: a )

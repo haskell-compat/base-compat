@@ -15,7 +15,7 @@ spec = do
       sizeOf ((1 :: Double) :+ 2) `shouldBe` 2*sizeOf (1 :: Double)
     it "has the alignment of its realPart" $ do
       alignment ((1 :: Double) :+ 2) `shouldBe` alignment (1 :: Double)
-  
+
   describe "Storable Ratio instance" $ do
     it "has twice the sizeOf its parameterized type" $ do
       sizeOf ((1 :: Int) % 2) `shouldBe` 2*sizeOf (1 :: Int)

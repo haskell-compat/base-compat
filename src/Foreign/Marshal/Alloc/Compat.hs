@@ -34,7 +34,7 @@ failWhenNULL :: String -> IO (Ptr a) -> IO (Ptr a)
 failWhenNULL name f = do
    addr <- f
    if addr == nullPtr
-      then ioError (IOError Nothing ResourceExhausted name 
+      then ioError (IOError Nothing ResourceExhausted name
                                         "out of memory" Nothing Nothing)
       else return addr
 

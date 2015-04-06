@@ -10,7 +10,6 @@ module Control.Applicative.Compat (
 import Control.Applicative as Base
 
 #if !MIN_VERSION_base(4,7,0)
-import Data.Monoid (Monoid(..),mempty,mappend)
 import Prelude.Compat
 
 -- Added in base-4.7.0.0

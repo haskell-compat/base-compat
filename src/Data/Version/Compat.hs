@@ -1,6 +1,9 @@
+#if !MIN_VERSION_base(4,7,0)
+{-# OPTIONS_GHC -fno-warn-orphans #-}
+#endif
+
 #if __GLASGOW_HASKELL__ >= 708
 {-# LANGUAGE TypeFamilies #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 #endif
 module Data.Version.Compat (
   module Base

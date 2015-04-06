@@ -1,6 +1,4 @@
-#if !MIN_VERSION_base(4,8,0)
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-#endif
 module Foreign.Storable.Compat (
   module Base
 , Storable(..)

@@ -1,6 +1,4 @@
-#if !MIN_VERSION_base(4,8,0)
 {-# LANGUAGE ForeignFunctionInterface #-}
-#endif
 module Foreign.Marshal.Alloc.Compat (
   module Base
 , calloc

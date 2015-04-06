@@ -1,7 +1,4 @@
-{-# LANGUAGE CPP #-}
-#if __GLASGOW_HASKELL__ >= 708
-{-# LANGUAGE OverloadedLists #-}
-#endif
+{-# LANGUAGE CPP, OverloadedLists #-}
 module Data.Version.CompatSpec (main, spec) where
 
 import           Test.Hspec
@@ -21,7 +18,7 @@ spec = do
     it "allows obtaining a Version constructor" $
       dataTypeName (dataTypeOf (makeVersion [1,2,3])) `shouldBe` "Data.Version.Version"
   
-#if __GLASGOW_HASKELL__ >= 708
+#if MIN_VERSION_base(4,7,0)
   describe "IsList Version instance" $
     it "creates a Version from an Int list" $
       [1,2,3] `shouldBe` makeVersion [1,2,3]

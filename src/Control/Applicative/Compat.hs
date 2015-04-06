@@ -1,6 +1,4 @@
-#if !MIN_VERSION_base(4,8,0)
 {-# LANGUAGE StandaloneDeriving #-}
-#endif
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Control.Applicative.Compat (
   module Base
@@ -10,6 +8,8 @@ module Control.Applicative.Compat (
 import Control.Applicative as Base
 
 #if !MIN_VERSION_base(4,8,0)
+import Data.Traversable.Compat ()
+import GHC.Generics.Compat ()
 import Prelude.Compat
 #endif
 

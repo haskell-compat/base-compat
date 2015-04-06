@@ -1,7 +1,5 @@
-#if !MIN_VERSION_base(4,7,0)
 {-# LANGUAGE GeneralizedNewtypeDeriving, StandaloneDeriving #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-#endif
 module Data.Monoid.Compat (
         -- * Monoid typeclass
         Monoid(..),
@@ -23,6 +21,7 @@ module Data.Monoid.Compat (
 import Data.Monoid as Base
 
 #if !MIN_VERSION_base(4,7,0)
+import GHC.Generics.Compat ()
 import Prelude.Compat (Num)
 #endif
 

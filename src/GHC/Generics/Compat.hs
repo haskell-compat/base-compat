@@ -1,23 +1,25 @@
-#if !MIN_VERSION_base(4,7,0)
-{-# LANGUAGE FlexibleContexts, StandaloneDeriving, TypeOperators #-}
+{-# LANGUAGE FlexibleContexts, DeriveGeneric, StandaloneDeriving, TypeOperators #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-#endif
-
-#if __GLASGOW_HASKELL__ >= 706
-{-# LANGUAGE DeriveGeneric #-}
-#endif
 module GHC.Generics.Compat (
+-- GHC.Generics is only available on GHC 7.2 and later, so we can't export anything
+-- if we're using a GHC prior to 7.2
+#if __GLASGOW_HASKELL__ < 702
+) where
+#else
   module Base
 ) where
 import           GHC.Generics as Base
 
-#if !MIN_VERSION_base(4,7,0)
+# if !MIN_VERSION_base(4,7,0)
 import           GHC.Read
 import           Prelude.Compat
 import qualified Text.ParserCombinators.ReadPrec as ReadPrec
 import           Text.Read.Lex
 
-# if __GLASGOW_HASKELL__ >= 706
+-- Although DeriveGeneric has been around since GHC 7.2, various bugs cause
+-- the standalone-derived code below to fail to compile unless a fairly
+-- recent version of GHC is used.
+#  if __GLASGOW_HASKELL__ >= 706
 import           Control.Applicative
 import           Data.Monoid
 
@@ -52,7 +54,7 @@ deriving instance Generic (M1 i c f p)
 deriving instance Generic ((f :+: g) p)
 deriving instance Generic ((f :*: g) p)
 deriving instance Generic ((f :.: g) p)
-# endif
+#  endif
 
 deriving instance Eq (U1 p)
 deriving instance Ord (U1 p)
@@ -108,4 +110,6 @@ deriving instance Eq (f (g p)) => Eq ((f :.: g) p)
 deriving instance Ord (f (g p)) => Ord ((f :.: g) p)
 deriving instance Read (f (g p)) => Read ((f :.: g) p)
 deriving instance Show (f (g p)) => Show ((f :.: g) p)
+# endif
+
 #endif

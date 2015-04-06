@@ -21,6 +21,8 @@ void = fmap (const ())
 #endif
 
 #if !MIN_VERSION_base(4,8,0)
+infixl 4 <$!>
+
 -- | Strict version of 'Data.Functor.<$>'.
 --
 -- /Since: 4.8.0.0/

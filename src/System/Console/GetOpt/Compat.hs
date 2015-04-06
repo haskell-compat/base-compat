@@ -1,6 +1,4 @@
-#if !MIN_VERSION_base(4,7,0)
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-#endif
 module System.Console.GetOpt.Compat (
   module Base
 ) where

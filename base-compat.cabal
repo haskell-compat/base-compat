@@ -22,6 +22,7 @@ library
       -Wall
   build-depends:
       base == 4.*
+    , ghc-prim
     , setenv
   extensions:
       CPP
@@ -38,6 +39,7 @@ library
       Control.Concurrent.MVar.Compat
       Control.Exception.Compat
       Control.Monad.Compat
+      Data.Bits.Compat
       Data.Bool.Compat
       Data.Either.Compat
       Data.Foldable.Compat
@@ -52,17 +54,11 @@ library
       Foreign.Marshal.Alloc.Compat
       Foreign.Marshal.Array.Compat
       Foreign.Storable.Compat
+      GHC.Generics.Compat
       System.Console.GetOpt.Compat
       System.Environment.Compat
       System.Exit.Compat
       Text.Read.Compat
-
-  if impl(ghc >= 7.2)
-    exposed-modules:
-      GHC.Generics.Compat
-    if impl(ghc < 7.6)
-      -- Prior to GHC 7.6, GHC.Generics lived in ghc-prim
-      build-depends: ghc-prim
 
 test-suite spec
   type:

@@ -10,11 +10,8 @@ import Foreign.Storable as Base
 #if !MIN_VERSION_base(4,8,0)
 import Data.Complex (Complex(..), realPart)
 import Foreign.Ptr (castPtr)
-import Prelude.Compat
-
-# if __GLASGOW_HASKELL__ > 706
 import GHC.Real (Ratio(..), (%))
-# endif
+import Prelude.Compat
 
 -- The actual constraint in base-4.8.0.0 doesn't include RealFloat a, but it
 -- is needed in previous versions of base due to Complex having lots of
@@ -32,11 +29,9 @@ instance (Storable a, RealFloat a) => Storable (Complex a) where
                         poke q r
                         pokeElemOff q 1 i
 
--- A bug in GHC 7.6 and earlier prevents the code below from compiling
-# if __GLASGOW_HASKELL__ > 706
 instance (Storable a, Integral a) => Storable (Ratio a) where
-    sizeOf _    = 2 * sizeOf (undefined :: a)
-    alignment _ = alignment (undefined :: a )
+    sizeOf (n :% _)    = 2 * sizeOf n
+    alignment (n :% _) = alignment n
     peek p           = do
                         q <- return $ castPtr p
                         r <- peek q
@@ -46,5 +41,4 @@ instance (Storable a, Integral a) => Storable (Ratio a) where
                         q <-return $  (castPtr p)
                         poke q r
                         pokeElemOff q 1 i
-# endif
 #endif

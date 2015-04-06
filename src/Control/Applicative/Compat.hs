@@ -9,9 +9,11 @@ module Control.Applicative.Compat (
 ) where
 import Control.Applicative as Base
 
-#if !MIN_VERSION_base(4,7,0)
+#if !MIN_VERSION_base(4,8,0)
 import Prelude.Compat
+#endif
 
+#if !MIN_VERSION_base(4,7,0)
 -- Added in base-4.7.0.0
 instance Monoid a => Monoid (Const a b) where
     mempty = Const mempty

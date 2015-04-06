@@ -1,4 +1,7 @@
+#if __GLASGOW_HASKELL__ >= 708
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
+#endif
 module Data.Version.Compat (
   module Base
 , makeVersion
@@ -7,11 +10,14 @@ import Data.Version as Base
 
 #if !MIN_VERSION_base(4,7,0)
 import Data.Data
-import Prelude.Compat
 #endif
 
-#if !MIN_VERSION_base(4,8,0) && __GLASGOW_HASKELL__ >= 708
+#if !MIN_VERSION_base(4,8,0)
+import Prelude.Compat
+
+# if __GLASGOW_HASKELL__ >= 708
 import GHC.Exts (IsList(..))
+# endif
 #endif
 
 #if !MIN_VERSION_base(4,7,0)

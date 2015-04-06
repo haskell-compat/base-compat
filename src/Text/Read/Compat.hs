@@ -26,7 +26,7 @@ import Text.ParserCombinators.ReadPrec
 import qualified Text.Read.Lex as L
 
 #if !MIN_VERSION_base(4,6,0)
-import Prelude
+import Prelude.Compat
 import qualified Text.ParserCombinators.ReadP as P
 
 -- | Parse a string using the 'Read' instance.

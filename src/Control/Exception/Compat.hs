@@ -7,7 +7,7 @@ module Control.Exception.Compat (
 import Control.Exception as Base
 
 #if __GLASGOW_HASKELL__ <= 706
-import Prelude
+import Prelude.Compat
 deriving instance Ord ErrorCall
 deriving instance Eq ErrorCall
 #endif

@@ -8,6 +8,8 @@ module Debug.Trace.Compat (
 import Debug.Trace as Base
 
 #if !MIN_VERSION_base(4,7,0)
+import Prelude.Compat
+
 {-|
 Like 'trace' but returns the message instead of a third value.
 

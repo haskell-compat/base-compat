@@ -1,3 +1,6 @@
+#if MIN_VERSION_base(4,6,0) && !MIN_VERSION_base(4,7,0)
+{-# OPTIONS_GHC -fno-warn-orphans #-}
+#endif
 module Data.Bool.Compat (
    -- * Booleans
    Bool(..),
@@ -12,6 +15,13 @@ module Data.Bool.Compat (
 import Data.Bool
 
 #if !MIN_VERSION_base(4,7,0)
+
+-- These instances are only valid if Bits isn't a subclass of Num (as Bool is
+-- not a Num instance), which is only true as of base-4.6.0.0 and later.
+# if MIN_VERSION_base(4,6,0)
+import Data.Bits (Bits(..))
+import Data.Eq ((/=))
+
 instance Bits Bool where
     (.&.) = (&&)
 
@@ -36,7 +46,6 @@ instance Bits Bool where
 
     isSigned _ = False
 
-# if MIN_VERSION_base(4,5,0)
     popCount False = 0
     popCount True  = 1
 # endif

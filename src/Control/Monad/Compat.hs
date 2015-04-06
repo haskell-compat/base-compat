@@ -3,13 +3,18 @@ module Control.Monad.Compat (
 , void
 , (<$!>)
 ) where
-
-import           Control.Monad as Base
+import Control.Monad as Base
 
 #if !MIN_VERSION_base(4,3,0)
+import Data.Function (const)
+import Data.Functor (Functor(..))
+#endif
 
-import           Prelude.Compat
+#if !MIN_VERSION_base(4,8,0)
+import Prelude.Compat (seq)
+#endif
 
+#if !MIN_VERSION_base(4,3,0)
 -- | @'void' value@ discards or ignores the result of evaluation, such as the return value of an 'IO' action.
 void :: Functor f => f a -> f ()
 void = fmap (const ())

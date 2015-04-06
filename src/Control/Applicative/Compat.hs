@@ -11,8 +11,8 @@ import Control.Applicative as Base
 
 #if !MIN_VERSION_base(4,7,0)
 import Data.Monoid (Monoid(..),mempty,mappend)
-import Control.Monad (Monad(..))
-import Data.Function ((.))
+import Prelude.Compat
+
 -- Added in base-4.7.0.0
 instance Monoid a => Monoid (Const a b) where
     mempty = Const mempty

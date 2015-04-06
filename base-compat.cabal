@@ -50,7 +50,6 @@ library
       Data.Traversable.Compat
       Data.Typeable.Compat
       Data.Version.Compat
-      Data.Word.Compat
       Debug.Trace.Compat
       Foreign.Marshal.Alloc.Compat
       Foreign.Marshal.Array.Compat

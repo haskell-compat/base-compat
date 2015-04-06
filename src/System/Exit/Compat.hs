@@ -11,7 +11,7 @@ import System.Exit
 
 #if !MIN_VERSION_base(4,8,0)
 
-import Prelude
+import Prelude.Compat
 import System.IO
 
 -- | Write given error message to `stderr` and terminate with `exitFailure`.

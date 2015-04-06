@@ -9,7 +9,11 @@ module Foreign.Marshal.Alloc.Compat (
 import Foreign.Marshal.Alloc as Base
 
 #if !MIN_VERSION_base(4,8,0)
+import Foreign.C.Types (CSize)
+import Foreign.Ptr (Ptr, nullPtr)
+import Foreign.Storable.Compat (Storable(..))
 import GHC.IO.Exception
+import Prelude.Compat
 
 -- |Like 'malloc' but memory is filled with bytes of value zero.
 --

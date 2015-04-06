@@ -18,7 +18,7 @@ import           System.SetEnv
 #endif
 
 #if !MIN_VERSION_base(4,6,0)
-import Prelude
+import Prelude.Compat
 -- | Return the value of the environment variable @var@, or @Nothing@ if
 -- there is no such value.
 --

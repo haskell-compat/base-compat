@@ -8,8 +8,14 @@ module Data.List.Compat (
 import Data.List as Base
 
 #if !MIN_VERSION_base(4,5,0)
-import Data.Bool
+import Prelude.Compat hiding (foldr, null)
+#endif
 
+#if !MIN_VERSION_base(4,8,0)
+import Data.Ord (comparing)
+#endif
+
+#if !MIN_VERSION_base(4,5,0)
 -- | The 'dropWhileEnd' function drops the largest suffix of a list
 -- in which the given predicate holds for all elements.  For example:
 --

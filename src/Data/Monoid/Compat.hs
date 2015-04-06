@@ -22,6 +22,10 @@ module Data.Monoid.Compat (
 
 import Data.Monoid as Base
 
+#if !MIN_VERSION_base(4,7,0)
+import Prelude.Compat (Num)
+#endif
+
 #if !MIN_VERSION_base(4,5,0)
 infixr 6 <>
 

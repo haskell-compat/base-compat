@@ -7,6 +7,9 @@ module System.Console.GetOpt.Compat (
 import System.Console.GetOpt as Base
 
 #if !MIN_VERSION_base(4,7,0)
+import Data.Function ((.))
+import Data.Functor (Functor(..))
+
 instance Functor ArgOrder where
     fmap _ RequireOrder      = RequireOrder
     fmap _ Permute           = Permute

@@ -4,8 +4,6 @@ import           Test.Hspec
 
 import           Control.Exception.Compat
 import           Foreign.Marshal.Alloc.Compat
-import           Foreign.Marshal.Utils
-import           Foreign.Ptr
 import           Foreign.Storable.Compat
 
 main :: IO ()

@@ -8,9 +8,8 @@ module Data.Ord.Compat (
 import Data.Ord as Base
 
 #if MIN_VERSION_base(4,6,0) && !MIN_VERSION_base(4,7,0)
-deriving instance Eq a => Eq (Down a)
+import Prelude.Compat
+
 deriving instance Read a => Read (Down a)
 deriving instance Show a => Show (Down a)
-instance Ord a => Ord (Down a) where
-    compare (Down x) (Down y) = y `compare` x
 #endif

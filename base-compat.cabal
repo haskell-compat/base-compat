@@ -48,7 +48,6 @@ library
       Data.Monoid.Compat
       Data.Ord.Compat
       Data.Traversable.Compat
-      Data.Typeable.Compat
       Data.Version.Compat
       Debug.Trace.Compat
       Foreign.Marshal.Alloc.Compat

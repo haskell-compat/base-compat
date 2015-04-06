@@ -19,7 +19,6 @@ import           Text.Read.Lex
 
 # if __GLASGOW_HASKELL__ >= 706
 import           Control.Applicative
-import           Control.Arrow 
 import           Data.Monoid
 
 deriving instance Generic All

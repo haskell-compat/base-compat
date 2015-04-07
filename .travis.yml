@@ -30,5 +30,5 @@ install:
 
 script:
   - cabal configure --enable-tests --ghc-options=-Werror && cabal build && cabal test
-  - (cd typediff && wget https://github.com/sol/base-compat/releases/download/typediff-0.0.0/typediff && chmod +x typediff)
-  - PATH=typediff/:$PATH ./check-Prelude.sh
+  - (cd typediff && wget https://github.com/sol/base-compat/releases/download/typediff-0.1.0/typediff && chmod +x typediff)
+  - PATH=typediff/:$PATH ./run-check.sh

@@ -3,15 +3,15 @@ module Prelude.Compat (
   module Base
 #else
   either
-, Data.Foldable.all
-, Data.Foldable.and
-, Data.Foldable.any
-, Data.Foldable.concat
-, Data.Foldable.concatMap
-, Data.Foldable.mapM_
-, Data.Foldable.notElem
-, Data.Foldable.or
-, Data.Foldable.sequence_
+, all
+, and
+, any
+, concat
+, concatMap
+, mapM_
+, notElem
+, or
+, sequence_
 , (<$>)
 , maybe
 , lines
@@ -103,18 +103,18 @@ module Prelude.Compat (
 , undefined
 , seq
 
-, Data.Foldable.elem
+, elem
 , foldMap
-, Data.Foldable.foldl
-, Data.Foldable.foldl1
+, foldl
+, foldl1
 , foldr
-, Data.Foldable.foldr1
+, foldr1
 , length
-, Data.Foldable.maximum
-, Data.Foldable.minimum
+, maximum
+, minimum
 , null
-, Data.Foldable.product
-, Data.Foldable.sum
+, product
+, sum
 , mapM
 , sequence
 , sequenceA
@@ -262,23 +262,34 @@ import Prelude as Base
 
 #else
 
-import Prelude hiding (length, null, foldr, mapM, sequence)
+import Prelude hiding (
+    length
+  , null
+  , foldr
+  , mapM
+  , sequence
+  , all
+  , and
+  , any
+  , concat
+  , concatMap
+  , mapM_
+  , notElem
+  , or
+  , sequence_
+  , elem
+  , foldl
+  , foldl1
+  , foldr1
+  , maximum
+  , minimum
+  , product
+  , sum
+  )
 
 import Data.Word
-import Data.Foldable
+import Data.Foldable.Compat
 import Data.Traversable.Compat
 import Data.Monoid
 import Control.Applicative
-
--- | Test whether the structure is empty. The default implementation is
--- optimized for structures that are similar to cons-lists, because there
--- is no general way to do better.
-null :: Foldable t => t a -> Bool
-null = foldr (\_ _ -> False) True
-
--- | Returns the size/length of a finite structure as an 'Int'.  The
--- default implementation is optimized for structures that are similar to
--- cons-lists, because there is no general way to do better.
-length :: Foldable t => t a -> Int
-length = foldl' (\c _ -> c+1) 0
 #endif

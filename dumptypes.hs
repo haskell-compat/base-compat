@@ -1,13 +1,16 @@
 module Main (main) where
 
+import           System.Environment
 import           System.Process
-import           Data.Char
 
 main :: IO ()
-main = readFile "Prelude.index" >>= signatures . lines
+main = do
+  [module_] <- getArgs
+  readFile ("check/" ++ module_ ++ ".index") >>= signatures module_ . lines
 
-signatures :: [String] -> IO ()
-signatures names = readProcess "ghci" ["-v0", "-isrc", "-XNoImplicitPrelude", "-ignore-dot-ghci", "-XCPP", "-optP-include", "-optPdist/build/autogen/cabal_macros.h", "PreludeTest.hs"] input >>= putStr . normalize
+signatures :: String -> [String] -> IO ()
+signatures module_ names =
+  readProcess "ghci" ["-v0", "-isrc", "-XNoImplicitPrelude", "-ignore-dot-ghci", "-XCPP", "-optP-include", "-optPdist/build/autogen/cabal_macros.h", "check/" ++ module_ ++ ".check.hs"] input >>= putStr . normalize
   where
     input = unlines $ map (":t " ++) names
 

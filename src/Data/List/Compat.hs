@@ -1,9 +1,11 @@
 module Data.List.Compat (
   module Base
+#if !MIN_VERSION_base(4,8,0)
 , dropWhileEnd
 , isSubsequenceOf
 , sortOn
 , uncons
+#endif
 ) where
 import Data.List as Base
 

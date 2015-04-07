@@ -1,3 +1,3 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module PreludeTest where
+module Test where
 import Prelude.Compat

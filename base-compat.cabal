@@ -23,8 +23,12 @@ library
       -Wall
   build-depends:
       base == 4.*
-    , ghc-prim
     , setenv
+
+  if impl(ghc >= 7.2) && impl(ghc < 7.6)
+    -- Prior to GHC 7.6, GHC.Generics lived in ghc-prim
+    build-depends: ghc-prim
+
   extensions:
       CPP
     , NoImplicitPrelude

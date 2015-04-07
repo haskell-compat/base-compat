@@ -66,11 +66,6 @@ deriving instance Num a => Num (Product a)
 -- /Since: 4.8.0.0/
 newtype Alt f a = Alt {getAlt :: f a}
   deriving ( Read, Show, Eq, Ord, Num, Enum
--- Due to a bug in GHC 7.6, GeneralizedNewtypeDeriving breaks when deriving
--- poly-kinded data types.
-# if __GLASGOW_HASKELL__ >= 708
-            , Monad, MonadPlus, Applicative, Alternative, Functor
-# endif
 # if __GLASGOW_HASKELL__ >= 702
            , Generic
 # endif
@@ -79,27 +74,13 @@ newtype Alt f a = Alt {getAlt :: f a}
 # endif
            )
 
--- To work around a GHC 7.6 bug, we'll manually derive instances.
-# if __GLASGOW_HASKELL__ >= 706 && __GLASGOW_HASKELL__ < 708
-instance Functor f => Functor (Alt f) where
-    fmap f = Alt . fmap f . getAlt
-
-instance Applicative f => Applicative (Alt f) where
-    pure = Alt . pure
-    Alt f <*> Alt a = Alt (f <*> a)
-
-instance Monad m => Monad (Alt m) where
-    return = Alt . return
-    Alt x >>= f = Alt (x >>= getAlt . f)
-
-instance Alternative f => Alternative (Alt f) where
-    empty = Alt empty
-    Alt x <|> Alt y = Alt (x <|> y)
-
-instance MonadPlus m => MonadPlus (Alt m) where
-    mzero = Alt mzero
-    mplus (Alt x) (Alt y) = Alt (mplus x y)
-# endif
+-- To work around a GHC 7.6 bug, we'll use StandaloneDeriving for generalized
+-- derivations that involve higher-kinded typeclasses.
+deriving instance Functor f => Functor (Alt f)
+deriving instance Applicative f => Applicative (Alt f)
+deriving instance Monad m => Monad (Alt m)
+deriving instance Alternative f => Alternative (Alt f)
+deriving instance MonadPlus m => MonadPlus (Alt m)
 
 instance Alternative f => Monoid (Alt f a) where
     mempty = Alt empty

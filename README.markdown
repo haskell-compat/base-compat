@@ -120,6 +120,7 @@ So far the following is covered.
  * `callocArray` and `callocArray0` functions to `Foreign.Marshal.Array.Compat`
  * Backported `Alt` data type to `Data.Monoid`
  * Backported `Down` data type to `Data.Ord`
+ * Added `Data.List.Compat.scanl'`
 
 ## Supported versions of GHC/base
 

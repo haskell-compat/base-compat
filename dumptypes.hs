@@ -10,7 +10,7 @@ main = do
 
 signatures :: String -> [String] -> IO ()
 signatures module_ names =
-  readProcess "ghci" ["-v0", "-isrc", "-XNoImplicitPrelude", "-ignore-dot-ghci", "-XCPP", "-optP-include", "-optPdist/build/autogen/cabal_macros.h", "check/" ++ module_ ++ ".check.hs"] input >>= putStr . normalize
+  readProcess "ghci" ["-v0", "-fno-warn-duplicate-exports", "-isrc", "-XNoImplicitPrelude", "-ignore-dot-ghci", "-XCPP", "-optP-include", "-optPdist/build/autogen/cabal_macros.h", "check/" ++ module_ ++ ".check.hs"] input >>= putStr . normalize
   where
     input = unlines $ map (":t " ++) names
 

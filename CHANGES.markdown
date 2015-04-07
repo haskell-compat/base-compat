@@ -1,3 +1,7 @@
+## next
+ - Update `Data.List.Compat` for `base-4.8.0.0`
+ - Update `Data.Foldable.Compat` for `base-4.8.0.0`
+
 ## Changes in 0.7.1
  - Backported `Alt` to `Data.Monoid.Compat`
  - Backported `Down` to `Data.Ord.Compat`

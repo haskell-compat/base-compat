@@ -1,15 +1,74 @@
+{-# LANGUAGE BangPatterns #-}
 module Data.List.Compat (
   module Base
 #if !MIN_VERSION_base(4,8,0)
-, dropWhileEnd
+, all
+, and
+, any
+, concat
+, concatMap
+, elem
+, find
+, foldl
+, foldl'
+, foldl1
+, foldr
+, foldr1
+, length
+, maximum
+, maximumBy
+, minimum
+, minimumBy
+, notElem
+, null
+, or
+, product
+, sum
+, mapAccumL
+, mapAccumR
+
 , isSubsequenceOf
 , sortOn
 , uncons
+, scanl'
+#endif
+
+#if !MIN_VERSION_base(4,5,0)
+, dropWhileEnd
 #endif
 ) where
-import Data.List as Base
 
-#if !MIN_VERSION_base(4,8,0)
+#if MIN_VERSION_base(4,8,0)
+import Data.List as Base
+#else
+import Data.List as Base hiding (
+    all
+  , and
+  , any
+  , concat
+  , concatMap
+  , elem
+  , find
+  , foldl
+  , foldl'
+  , foldl1
+  , foldr
+  , foldr1
+  , length
+  , maximum
+  , maximumBy
+  , minimum
+  , minimumBy
+  , notElem
+  , null
+  , or
+  , product
+  , sum
+  , mapAccumL
+  , mapAccumR
+  )
+import Data.Foldable.Compat
+import Data.Traversable.Compat
 import Prelude.Compat hiding (foldr, null)
 import Data.Ord (comparing)
 #endif
@@ -70,4 +129,15 @@ uncons                  :: [a] -> Maybe (a, [a])
 uncons []               = Nothing
 uncons (x:xs)           = Just (x, xs)
 
+-- | A strictly accumulating version of 'scanl'
+{-# NOINLINE [1] scanl' #-}
+scanl'           :: (b -> a -> b) -> b -> [a] -> [b]
+-- This peculiar form is needed to prevent scanl' from being rewritten
+-- in its own right hand side.
+scanl' = scanlGo'
+  where
+    scanlGo'           :: (b -> a -> b) -> b -> [a] -> [b]
+    scanlGo' f !q ls    = q : (case ls of
+                            []   -> []
+                            x:xs -> scanlGo' f (f q x) xs)
 #endif

@@ -77,3 +77,35 @@ spec = do
       let ParseOk x = parseType "Int -> Float"
           ParseOk y = parseType "Int -> Float"
       alphaNormalize x `shouldBe` y
+
+  describe "normalizeConstrainNames" $ do
+    it "normalizes qualified name for Applicative" $ do
+      let ParseOk x = parseType "GHC.Base.Applicative f => f a"
+          ParseOk y = parseType "Control.Applicative.Applicative f => f a"
+      normalizeConstrainNames x `shouldBe` y
+
+    it "normalizes qualified name for Alternative" $ do
+      let ParseOk x = parseType "GHC.Base.Alternative f => f a"
+          ParseOk y = parseType "Control.Applicative.Alternative f => f a"
+      normalizeConstrainNames x `shouldBe` y
+
+    it "normalizes qualified name for MonadPlus" $ do
+      let ParseOk x = parseType "GHC.Base.MonadPlus m => m a"
+          ParseOk y = parseType "Control.Monad.MonadPlus m => m a"
+      normalizeConstrainNames x `shouldBe` y
+
+
+    it "normalizes qualified name for Maybe" $ do
+      let ParseOk x = parseType "GHC.Base.Maybe a"
+          ParseOk y = parseType "Data.Maybe.Maybe a"
+      normalizeConstrainNames x `shouldBe` y
+
+    it "normalizes qualified name for Monoid" $ do
+      let ParseOk x = parseType "GHC.Base.Monoid m => m"
+          ParseOk y = parseType "Data.Monoid.Monoid m => m"
+      normalizeConstrainNames x `shouldBe` y
+
+    it "normalizes qualified name for Bool" $ do
+      let ParseOk x = parseType "GHC.Types.Ordering"
+          ParseOk y = parseType "GHC.Ordering.Ordering"
+      normalizeConstrainNames x `shouldBe` y

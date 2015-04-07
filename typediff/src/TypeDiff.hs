@@ -5,6 +5,7 @@ module TypeDiff (
 , sigMap
 , typeEq
 , alphaNormalize
+, normalizeConstrainNames
 ) where
 
 import           Data.Char
@@ -68,7 +69,7 @@ sigMap = Map.fromList . map splitType . lines
 
 typeEq :: Type -> Type -> Bool
 typeEq t1 t2 = normalize t1 == normalize t2
-  where normalize = alphaNormalize . normalizeConstrains . sortConstrains
+  where normalize = alphaNormalize . normalizeConstrainNames . normalizeConstrains . sortConstrains
 
 sortConstrains :: Type -> Type
 sortConstrains x = case x of
@@ -99,3 +100,17 @@ alphaNormalize t = transformBi f t
 
     vars :: [Name]
     vars = map (Ident . ('t' :) . show) [0 :: Integer ..]
+
+normalizeConstrainNames :: Type -> Type
+normalizeConstrainNames t = transformBi f t
+  where
+    f :: QName -> QName
+    f name = case name of
+      Qual (ModuleName "GHC.Base") (Ident "Applicative") -> Qual (ModuleName "Control.Applicative") (Ident "Applicative")
+      Qual (ModuleName "GHC.Base") (Ident "Alternative") -> Qual (ModuleName "Control.Applicative") (Ident "Alternative")
+      Qual (ModuleName "GHC.Base") (Ident "MonadPlus") -> Qual (ModuleName "Control.Monad") (Ident "MonadPlus")
+      Qual (ModuleName "GHC.Base") (Ident "Maybe") -> Qual (ModuleName "Data.Maybe") (Ident "Maybe")
+      Qual (ModuleName "GHC.Base") (Ident "Monoid") -> Qual (ModuleName "Data.Monoid") (Ident "Monoid")
+      Qual (ModuleName "GHC.Types") (Ident "Bool") -> Qual (ModuleName "GHC.Bool") (Ident "Bool")
+      Qual (ModuleName "GHC.Types") (Ident "Ordering") -> Qual (ModuleName "GHC.Ordering") (Ident "Ordering")
+      _ -> name

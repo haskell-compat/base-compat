@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Control.Exception.Compat (
   module Base
+, ErrorCall(..)
 ) where
 
 import Control.Exception as Base

@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Data.Version.Compat (
   module Base
+, Version(..)
 , makeVersion
 ) where
 import Data.Version as Base

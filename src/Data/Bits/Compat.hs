@@ -1,6 +1,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Data.Bits.Compat (
   module Base
+, Bits(..)
 ) where
 import Data.Bits as Base
 

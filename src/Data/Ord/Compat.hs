@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Data.Ord.Compat (
   module Base
+, Ord(..)
 , Down(..)
 ) where
 import Data.Ord as Base

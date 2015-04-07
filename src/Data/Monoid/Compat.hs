@@ -1,4 +1,9 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving, StandaloneDeriving #-}
+
+#if __GLASGOW_HASKELL__ >= 702
+{-# LANGUAGE DeriveGeneric #-}
+#endif
+
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Data.Monoid.Compat (
         -- * Monoid typeclass

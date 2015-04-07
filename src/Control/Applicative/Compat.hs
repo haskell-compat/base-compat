@@ -2,8 +2,12 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Control.Applicative.Compat (
   module Base
+, Applicative(..)
+, Alternative(..)
 , Const(..)
 , WrappedMonad(..)
+, WrappedArrow(..)
+, ZipList(..)
 ) where
 import Control.Applicative as Base
 

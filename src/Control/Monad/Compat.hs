@@ -1,5 +1,7 @@
 module Control.Monad.Compat (
   module Base
+, Monad(..)
+, MonadPlus(..)
 , void
 , (<$!>)
 ) where

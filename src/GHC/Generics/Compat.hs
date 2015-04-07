@@ -11,6 +11,18 @@ module GHC.Generics.Compat (
 ) where
 #else
   module Base
+  -- * Generic representation types
+, U1(..)
+, Par1(..)
+, Rec1(..)
+, K1(..)
+, M1(..)
+, (:+:)(..)
+, (:*:)(..)
+, (:.:)(..)
+  -- * Generic type classes
+, Generic(..)
+, Generic1(..)
 ) where
 import           GHC.Generics as Base
 

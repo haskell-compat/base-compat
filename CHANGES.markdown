@@ -1,3 +1,11 @@
+## Changes in 0.7.1
+ - Backported `Alt` to `Data.Monoid.Compat`
+ - Backported `Down` to `Data.Ord.Compat`
+
+## Changes in 0.7.0
+ - Add functions and orphan instances introduced by changes to
+   `base-4.7.0.0` and `base-4.8.0.0`
+
 ## Changes in 0.6.0
  - Update `Prelude.Compat` for `base-4.8.0.0` and AMP
 

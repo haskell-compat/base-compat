@@ -1,5 +1,6 @@
 module Data.Functor.Compat (
   module Base
+, Functor(..)
 , ($>)
 , void
 ) where

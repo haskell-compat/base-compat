@@ -1,6 +1,9 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module System.Console.GetOpt.Compat (
   module Base
+, ArgOrder(..)
+, OptDescr(..)
+, ArgDescr(..)
 ) where
 import System.Console.GetOpt as Base
 

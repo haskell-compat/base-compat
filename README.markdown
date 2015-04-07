@@ -118,6 +118,8 @@ So far the following is covered.
  * `traceId`, `traceShowId`, `traceM`, and `traceShowM` functions to `Debug.Trace.Compat`
  * `calloc` and `callocBytes` functions to `Foreign.Marshal.Alloc.Compat`
  * `callocArray` and `callocArray0` functions to `Foreign.Marshal.Array.Compat`
+ * Backported `Alt` data type to `Data.Monoid`
+ * Backported `Down` data type to `Data.Ord`
 
 ## Supported versions of GHC/base
 

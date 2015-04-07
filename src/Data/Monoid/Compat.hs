@@ -26,7 +26,7 @@ import Data.Monoid as Base
 import GHC.Generics.Compat ()
 
 #if !MIN_VERSION_base(4,8,0)
-import Control.Applicative (Alternative)
+import Control.Applicative (Alternative(..))
 import Control.Monad (MonadPlus)
 import Prelude.Compat
 

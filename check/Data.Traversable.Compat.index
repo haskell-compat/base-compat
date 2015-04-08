@@ -1,0 +1,10 @@
+fmapDefault
+foldMapDefault
+for
+forM
+mapAccumL
+mapAccumR
+mapM
+sequence
+sequenceA
+traverse

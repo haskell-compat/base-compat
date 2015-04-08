@@ -1,0 +1,10 @@
+fmapDefault :: Traversable t => (a -> b) -> t a -> t b
+foldMapDefault :: (Traversable t, GHC.Base.Monoid m) => (a -> m) -> t a -> m
+for :: (GHC.Base.Applicative f, Traversable t) =>    t a -> (a -> f b) -> f (t b)
+forM :: (GHC.Base.Monad m, Traversable t) =>    t a -> (a -> m b) -> m (t b)
+mapAccumL :: Traversable t => (a -> b -> (a, c)) -> a -> t b -> (a, t c)
+mapAccumR :: Traversable t => (a -> b -> (a, c)) -> a -> t b -> (a, t c)
+mapM :: (GHC.Base.Monad m, Traversable t) =>    (a -> m b) -> t a -> m (t b)
+sequence :: (GHC.Base.Monad m, Traversable t) => t (m a) -> m (t a)
+sequenceA :: (GHC.Base.Applicative f, Traversable t) => t (f a) -> f (t a)
+traverse :: (GHC.Base.Applicative f, Traversable t) =>    (a -> f b) -> t a -> f (t b)

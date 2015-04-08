@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 {-# LANGUAGE FlexibleContexts, StandaloneDeriving, TypeOperators #-}
 
 #if __GLASGOW_HASKELL__ >= 702

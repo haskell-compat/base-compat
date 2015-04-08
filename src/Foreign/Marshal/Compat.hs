@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Foreign.Marshal.Compat (
   module Base
 , module Alloc

@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Data.Bool.Compat (
    -- * Booleans
    Bool(..),

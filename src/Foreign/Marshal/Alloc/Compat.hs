@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 {-# LANGUAGE ForeignFunctionInterface #-}
 module Foreign.Marshal.Alloc.Compat (
   module Base

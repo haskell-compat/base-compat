@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Control.Concurrent.MVar.Compat (
   module Base
 , withMVarMasked

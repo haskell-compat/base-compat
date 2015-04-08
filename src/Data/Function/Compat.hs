@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Data.Function.Compat (
   module Base
 , (&)

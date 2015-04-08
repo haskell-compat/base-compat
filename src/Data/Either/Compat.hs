@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Data.Either.Compat (
   module Base
 , isLeft

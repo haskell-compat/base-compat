@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Prelude.Compat (
 #if MIN_VERSION_base(4,8,0)
   module Base

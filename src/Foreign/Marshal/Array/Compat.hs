@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Foreign.Marshal.Array.Compat (
   module Base
 , callocArray

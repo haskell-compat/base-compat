@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Foreign.Compat (
   module Base
 , module Bits

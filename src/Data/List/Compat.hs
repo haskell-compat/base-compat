@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 {-# LANGUAGE BangPatterns #-}
 module Data.List.Compat (
   module Base

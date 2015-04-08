@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 {-# LANGUAGE CPP #-}
 module System.Exit.Compat (
   ExitCode(..)

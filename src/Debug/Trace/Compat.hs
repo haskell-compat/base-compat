@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Debug.Trace.Compat (
   module Base
 , traceId

@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Control.Monad.Compat (
   module Base
 , Monad(..)

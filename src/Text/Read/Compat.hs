@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Text.Read.Compat (
    -- * The 'Read' class
    Read(..),

@@ -274,9 +274,11 @@ import Prelude hiding (
   , any
   , concat
   , concatMap
+  , mapM
   , mapM_
   , notElem
   , or
+  , sequence
   , sequence_
   , elem
   , foldl

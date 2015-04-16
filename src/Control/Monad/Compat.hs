@@ -45,7 +45,7 @@ import Control.Monad as Base hiding (
 import Control.Applicative.Compat (Alternative(..))
 import Data.Foldable.Compat
 import Data.Traversable.Compat
-import Prelude.Compat hiding (mapM, mapM_, sequence, sequence_)
+import Prelude.Compat
 #endif
 
 #if !MIN_VERSION_base(4,3,0)

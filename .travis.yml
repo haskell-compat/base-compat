@@ -14,6 +14,7 @@ env:
   - CABALVER=1.18 GHCVER=7.8.1
   - CABALVER=1.18 GHCVER=7.8.2
   - CABALVER=1.18 GHCVER=7.8.3
+  - CABALVER=1.18 GHCVER=7.8.4
   - CABALVER=1.22 GHCVER=7.10.1
 
 before_install:
@@ -30,5 +31,5 @@ install:
 
 script:
   - cabal configure --enable-tests --ghc-options=-Werror && cabal build && cabal test
-  - (cd typediff && wget https://github.com/sol/base-compat/releases/download/typediff-0.1.0/typediff && chmod +x typediff)
+  - (cd typediff && wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.0/typediff && chmod +x typediff)
   - PATH=typediff/:$PATH ./run-check.sh

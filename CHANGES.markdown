@@ -1,4 +1,5 @@
 ## next
+ - Update `Control.Monad.Compat` for `base-4.8.0.0`
  - Update `Data.List.Compat` for `base-4.8.0.0`
  - Update `Data.Foldable.Compat` for `base-4.8.0.0`
 

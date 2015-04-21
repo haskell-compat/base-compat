@@ -1,16 +1,13 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
 {-# LANGUAGE CPP #-}
 module System.Exit.Compat (
-  ExitCode(..)
-, exitWith
-, exitFailure
-, exitSuccess
+  module Base
 , die
 ) where
 
-import System.Exit
+import System.Exit as Base
 
-#if !MIN_VERSION_base(4,8,0)
+#if !(MIN_VERSION_base(4,8,0))
 
 import Prelude.Compat
 import System.IO

@@ -6,9 +6,8 @@ module Data.Either.Compat (
 ) where
 import Data.Either as Base
 
-#if !MIN_VERSION_base(4,7,0)
+#if !(MIN_VERSION_base(4,7,0))
 import Data.Bool (Bool(..))
-import Data.Traversable.Compat ()
 
 -- | Return `True` if the given value is a `Left`-value, `False` otherwise.
 --

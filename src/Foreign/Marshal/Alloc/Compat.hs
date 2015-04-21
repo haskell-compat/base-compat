@@ -7,10 +7,10 @@ module Foreign.Marshal.Alloc.Compat (
 ) where
 import Foreign.Marshal.Alloc as Base
 
-#if !MIN_VERSION_base(4,8,0)
+#if !(MIN_VERSION_base(4,8,0))
 import Foreign.C.Types
 import Foreign.Ptr (Ptr, nullPtr)
-import Foreign.Storable.Compat (Storable(..))
+import Foreign.Storable (Storable(..))
 import GHC.IO.Exception
 import Prelude.Compat
 

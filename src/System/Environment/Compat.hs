@@ -14,11 +14,11 @@ module System.Environment.Compat (
 
 import           System.Environment
 
-#if !MIN_VERSION_base(4,7,0)
+#if !(MIN_VERSION_base(4,7,0))
 import           System.SetEnv
 #endif
 
-#if !MIN_VERSION_base(4,6,0)
+#if !(MIN_VERSION_base(4,6,0))
 import Prelude.Compat
 -- | Return the value of the environment variable @var@, or @Nothing@ if
 -- there is no such value.

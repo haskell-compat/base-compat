@@ -2,7 +2,7 @@
 {-# LANGUAGE BangPatterns #-}
 module Data.List.Compat (
   module Base
-#if !MIN_VERSION_base(4,8,0)
+#if !(MIN_VERSION_base(4,8,0))
 , all
 , and
 , any
@@ -34,7 +34,7 @@ module Data.List.Compat (
 , scanl'
 #endif
 
-#if !MIN_VERSION_base(4,5,0)
+#if !(MIN_VERSION_base(4,5,0))
 , dropWhileEnd
 #endif
 ) where
@@ -69,12 +69,12 @@ import Data.List as Base hiding (
   , mapAccumR
   )
 import Data.Foldable.Compat
-import Data.Traversable.Compat
+import Data.Traversable
 import Prelude.Compat hiding (foldr, null)
 import Data.Ord (comparing)
 #endif
 
-#if !MIN_VERSION_base(4,5,0)
+#if !(MIN_VERSION_base(4,5,0))
 -- | The 'dropWhileEnd' function drops the largest suffix of a list
 -- in which the given predicate holds for all elements.  For example:
 --
@@ -88,7 +88,7 @@ dropWhileEnd p = foldr (\x xs -> if p x && null xs then [] else x : xs) []
 
 #endif
 
-#if !MIN_VERSION_base(4,8,0)
+#if !(MIN_VERSION_base(4,8,0))
 -- | The 'isSubsequenceOf' function takes two lists and returns 'True' if the
 -- first list is a subsequence of the second list.
 --

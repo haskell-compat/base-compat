@@ -3,7 +3,7 @@ module Control.Monad.Compat (
   module Base
 , Monad(..)
 , MonadPlus(..)
-#if !MIN_VERSION_base(4,8,0)
+#if !(MIN_VERSION_base(4,8,0))
 , foldM
 , foldM_
 , forM
@@ -20,7 +20,7 @@ module Control.Monad.Compat (
 , (<$!>)
 #endif
 
-#if !MIN_VERSION_base(4,5,0)
+#if !(MIN_VERSION_base(4,5,0))
 , void
 #endif
 ) where
@@ -42,19 +42,19 @@ import Control.Monad as Base hiding (
   , unless
   , when
   )
-import Control.Applicative.Compat (Alternative(..))
+import Control.Applicative (Alternative(..))
 import Data.Foldable.Compat
-import Data.Traversable.Compat
+import Data.Traversable
 import Prelude.Compat
 #endif
 
-#if !MIN_VERSION_base(4,3,0)
+#if !(MIN_VERSION_base(4,3,0))
 -- | @'void' value@ discards or ignores the result of evaluation, such as the return value of an 'IO' action.
 void :: Functor f => f a -> f ()
 void = fmap (const ())
 #endif
 
-#if !MIN_VERSION_base(4,8,0)
+#if !(MIN_VERSION_base(4,8,0))
 -- | Conditional execution of 'Applicative' expressions. For example,
 --
 -- > when debug (putStrLn "Debugging")

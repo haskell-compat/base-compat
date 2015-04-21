@@ -292,7 +292,7 @@ import Prelude hiding (
 
 import Data.Word
 import Data.Foldable.Compat
-import Data.Traversable.Compat
+import Data.Traversable
 import Data.Monoid
 import Control.Applicative
 #endif

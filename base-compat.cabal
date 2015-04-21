@@ -27,7 +27,6 @@ library
       -Wall
   build-depends:
       base == 4.*
-    , ghc-prim
     , setenv
   ghc-options:
     -fno-warn-duplicate-exports
@@ -36,12 +35,8 @@ library
       src
 
   exposed-modules:
-      Prelude.Compat
-      Control.Applicative.Compat
       Control.Concurrent.MVar.Compat
-      Control.Exception.Compat
       Control.Monad.Compat
-      Data.Bits.Compat
       Data.Bool.Compat
       Data.Either.Compat
       Data.Foldable.Compat
@@ -49,17 +44,13 @@ library
       Data.Functor.Compat
       Data.List.Compat
       Data.Monoid.Compat
-      Data.Ord.Compat
-      Data.Traversable.Compat
       Data.Version.Compat
       Debug.Trace.Compat
       Foreign.Compat
-      Foreign.Marshal.Compat
       Foreign.Marshal.Alloc.Compat
       Foreign.Marshal.Array.Compat
-      Foreign.Storable.Compat
-      GHC.Generics.Compat
-      System.Console.GetOpt.Compat
+      Foreign.Marshal.Compat
+      Prelude.Compat
       System.Environment.Compat
       System.Exit.Compat
       Text.Read.Compat

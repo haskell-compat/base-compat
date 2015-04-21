@@ -5,7 +5,7 @@ module Data.Function.Compat (
 ) where
 import Data.Function as Base
 
-#if !MIN_VERSION_base(4,8,0)
+#if !(MIN_VERSION_base(4,8,0))
 infixl 1 &
 
 -- | '&' is a reverse application operator.  This provides notational

@@ -1,17 +1,16 @@
 # A compatibility layer for `base`
 ## Scope
 
-The scope of `base-compat` is to provide functions, data types and instances
-available in later versions of base to a wider (older) range of compilers.
+The scope of `base-compat` is to provide functions available in later versions
+of base to a wider (older) range of compilers.
 
 In addition, successful library proposals that have been accepted to be part of
 upcoming versions of `base` are also included.  This package is not intended to
 replace `base`, but to complement it.
 
-**Note:** `base-compat` never redefines data types or classes, it only adds
-missing functions, data types and instances.  This implies that `base-compat`
-is a best-effort approach.  If a data type or class is changed in a backward
-incompatible way, `base-compat` may not be able to address this.
+Note that `base-compat` does not add any orphan instances.  There is a separate
+package [`base-orphans`](https://github.com/haskell-compat/base-orphans) for
+that.
 
 ## Basic usage
 
@@ -19,7 +18,7 @@ In your cabal file, you should have something like this:
 
 ```
   build-depends:      base              == 4.*
-                    , base-compat       >= 0.6
+                    , base-compat       >= 0.8.0
 ```
 
 Then, lets say you want to use the `isRight` function introduced with
@@ -91,23 +90,8 @@ So far the following is covered.
  * `Text.Read.Compat.readEither`
  * `System.Environment.Compat.lookupEnv`
  * `Data.Monoid.Compat.<>`
- * Added `Eq` and `Ord` instances for `Contro.Exception.ErrorCall`
- * Added `Eq`, `Ord`, `Read`, and `Show` instances for data types in `GHC.Generics`
- * Added `Monoid`, `Eq`, `Ord`, `Read`, and `Show` instances for `Const`
- * Added `Read` and `Show` instances for `Down`
- * Added `Eq`, `Ord`, `Read`, and `Show` instances for `ZipList`
- * Added `Monad` instance for `WrappedMonad`
- * Added `Data` and `IsList` instances for `Version`
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft` and `isRight` to `Data.Either.Compat`
- * `Bits` instance for `Bool`
- * `Generic` instance for `All`, `Any`, `Const`, `Dual`, `Endo`, `First`, `Last`, `Product`, `Sum`, `WrappedArrow`, `WrappedMonad`, and `ZipList`
- * `Generic1` instance for `Const`, `Dual`, `First`, `Last`, `Product`, `Sum`, `WrappedArrow`, `WrappedMonad`, and `ZipList`
- * `Foldable` instance for `Either`, `(,)` and `Const`
- * `Functor` instance for `ArgOrder`, `OptDescr`, and `ArgDescr`
- * `Num` instance for `Sum` and `Product`
- * `Storable` instance for `Complex` and `Ratio`
- * `Traversable` instance for `Either`, `(,)` and `Const`
  * Added `withMVarMasked` function to `Control.Concurrent.MVar.Compat`
  * Added `(<$!>)` function to `Control.Monad.Compat`
  * Added `($>)` and `void` functions to `Data.Functor.Compat`
@@ -118,8 +102,6 @@ So far the following is covered.
  * `traceId`, `traceShowId`, `traceM`, and `traceShowM` functions to `Debug.Trace.Compat`
  * `calloc` and `callocBytes` functions to `Foreign.Marshal.Alloc.Compat`
  * `callocArray` and `callocArray0` functions to `Foreign.Marshal.Array.Compat`
- * Backported `Alt` data type to `Data.Monoid`
- * Backported `Down` data type to `Data.Ord`
  * Added `Data.List.Compat.scanl'`
 
 ## Supported versions of GHC/base
@@ -153,6 +135,7 @@ the output of
 
     ghc --show-iface Prelude.hi
 
-To verify that `Prelude.Compat` matches the specification given in `Prelude.types` run:
+To verify that `Prelude.Compat` matches the specification given in
+`Prelude.types` run:
 
     ./check-Prelude.sh

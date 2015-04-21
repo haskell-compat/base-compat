@@ -6,10 +6,10 @@ module Foreign.Marshal.Array.Compat (
 ) where
 import Foreign.Marshal.Array as Base
 
-#if !MIN_VERSION_base(4,8,0)
+#if !(MIN_VERSION_base(4,8,0))
 import Foreign.Marshal.Alloc.Compat
 import Foreign.Ptr (Ptr)
-import Foreign.Storable.Compat (Storable(..))
+import Foreign.Storable (Storable(..))
 import Prelude.Compat
 
 -- |Like 'mallocArray', but allocated memory is filled with bytes of value zero.

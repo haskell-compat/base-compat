@@ -5,7 +5,7 @@ module Control.Concurrent.MVar.Compat (
 ) where
 import Control.Concurrent.MVar as Base
 
-#if !MIN_VERSION_base(4,7,0)
+#if !(MIN_VERSION_base(4,7,0))
 import Control.Exception (mask_, onException)
 import Control.Monad (return)
 import Data.Function (($))

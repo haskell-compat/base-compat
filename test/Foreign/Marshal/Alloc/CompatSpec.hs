@@ -2,9 +2,9 @@ module Foreign.Marshal.Alloc.CompatSpec (main, spec) where
 
 import           Test.Hspec
 
-import           Control.Exception.Compat
+import           Control.Exception
 import           Foreign.Marshal.Alloc.Compat
-import           Foreign.Storable.Compat
+import           Foreign.Storable
 
 main :: IO ()
 main = hspec spec

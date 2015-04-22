@@ -1,5 +1,5 @@
 name:             base-compat
-version:          0.8.0
+version:          0.8.0.1
 license:          MIT
 license-file:     LICENSE
 copyright:        (c) 2012-2015 Simon Hengel,
@@ -15,8 +15,19 @@ build-type:       Simple
 cabal-version:    >= 1.8
 category:         System
 synopsis:         A compatibility layer for base
-description:      Ban CPP from your code.  See the README for what is covered:
-                  <https://github.com/haskell-compat/base-compat#readme>
+description:      Provides functions available in later versions of @base@ to
+                  a wider range of compilers, without requiring you to use CPP
+                  pragmas in your code.  See the
+                  <https://github.com/haskell-compat/base-compat#readme README>
+                  for what is covered. Also see the
+                  <https://github.com/haskell-compat/base-compat/blob/master/CHANGES.markdown changelog>
+                  for recent changes.
+                  .
+                  Note that @base-compat@ does not add any orphan instances.
+                  There is a separate package
+                  @<http://hackage.haskell.org/package/base-orphans base-orphans>@
+                  for that.
+extra-source-files: CHANGES.markdown, README.markdown
 
 source-repository head
   type: git

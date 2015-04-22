@@ -1,4 +1,13 @@
-## next
+## Changes in 0.8.0.1
+ - Retrospective version bump updating the changelog to reflect the changes
+   made in 0.8.0
+
+## Changes 0.8.0
+ - All orphan instances were split off into a separate package,
+   [`base-orphans`](https://github.com/haskell-compat/base-orphans)
+ - `base-compat` no longer redefines the data types `Down` and `Alt`. See
+   [here](https://github.com/haskell-compat/base-compat/issues/17) for
+   the discussion that led to this change.
  - Update `Control.Monad.Compat` for `base-4.8.0.0`
  - Update `Data.List.Compat` for `base-4.8.0.0`
  - Update `Data.Foldable.Compat` for `base-4.8.0.0`

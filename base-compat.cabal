@@ -38,9 +38,10 @@ library
       -Wall
   build-depends:
       base == 4.*
-    , setenv
+  if !os(windows)
+      build-depends: unix
   ghc-options:
-    -fno-warn-duplicate-exports
+      -fno-warn-duplicate-exports
 
   hs-source-dirs:
       src

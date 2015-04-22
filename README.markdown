@@ -1,4 +1,4 @@
-# A compatibility layer for `base`
+# A compatibility layer for `base` [![Hackage version](https://img.shields.io/hackage/v/base-compat.svg?style=flat)](http://hackage.haskell.org/package/base-compat) [![Build Status](https://img.shields.io/travis/haskell-compat/base-compat.svg?style=flat)](https://travis-ci.org/haskell-compat/base-compat)
 ## Scope
 
 The scope of `base-compat` is to provide functions available in later versions
@@ -88,7 +88,6 @@ So far the following is covered.
    versions of `base`
  * `Text.Read.Compat.readMaybe`
  * `Text.Read.Compat.readEither`
- * `System.Environment.Compat.lookupEnv`
  * `Data.Monoid.Compat.<>`
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft` and `isRight` to `Data.Either.Compat`
@@ -103,6 +102,7 @@ So far the following is covered.
  * `calloc` and `callocBytes` functions to `Foreign.Marshal.Alloc.Compat`
  * `callocArray` and `callocArray0` functions to `Foreign.Marshal.Array.Compat`
  * Added `Data.List.Compat.scanl'`
+ * `lookupEnv`, `setEnv` and `unsetEnv` to `System.Environment.Compat`
 
 ## Supported versions of GHC/base
 

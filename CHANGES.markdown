@@ -1,3 +1,8 @@
+## Changes in next
+ - Add `setEnv` and `unsetEnv` to `System.Environment.Compat` (which were
+   ported from the `setenv` package). As a result, `base-compat` now depends
+   on `unix` on POSIX-like operating systems.
+
 ## Changes in 0.8.0.1
  - Retrospective version bump updating the changelog to reflect the changes
    made in 0.8.0

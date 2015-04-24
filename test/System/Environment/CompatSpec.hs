@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 module System.Environment.CompatSpec (main, spec) where
 
 import           Test.Hspec
@@ -91,10 +92,12 @@ spec = do
       setEnv "FOO\NULBAR" "foo"
       getEnv "FOO" `shouldReturn` "foo"
 
+#if __GLASGOW_HASKELL__ >= 702
     it "works for unicode" $ do
       unsetEnv "FOO"
       setEnv "FOO" "foo-\955-bar"
       getEnv "FOO" `shouldReturn` "foo-\955-bar"
+#endif
 
     it "works for arbitrary values" $
       property $ \v -> ('\NUL' `notElem` v && (not . null) v) ==> do

@@ -77,6 +77,9 @@ lookupEnv k = lookup k `fmap` getEnvironment
 --
 -- Throws `Control.Exception.IOException` if @name@ is the empty string or
 -- contains an equals sign.
+-- 
+-- Note that setting Unicode values may not work correctly on versions of GHC
+-- prior to 7.2.
 setEnv :: String -> String -> IO ()
 setEnv key value_
   | null value = unsetEnv key

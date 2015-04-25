@@ -13,7 +13,7 @@ maintainer:       Simon Hengel <sol@typeful.net>,
                   Ryan Scott <ryan.gl.scott@ku.edu>
 build-type:       Simple
 cabal-version:    >= 1.8
-category:         System
+category:         Compatibility
 synopsis:         A compatibility layer for base
 description:      Provides functions available in later versions of @base@ to
                   a wider range of compilers, without requiring you to use CPP

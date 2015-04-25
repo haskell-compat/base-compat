@@ -1,5 +1,5 @@
-## Changes in next
- - Add `setEnv` and `unsetEnv` to `System.Environment.Compat` (which were
+## Changes in 0.8.1
+ - Implement `setEnv` and `unsetEnv` in `System.Environment.Compat` (which were
    ported from the `setenv` package). As a result, `base-compat` now depends
    on `unix` on POSIX-like operating systems.
  - Drop GHC 6.12 (and `base-4.2.0.0`) compatibility

@@ -1,3 +1,7 @@
+-- This file has been generated from package.yaml by hpack.
+--
+-- see: https://github.com/sol/hpack
+
 name:             typediff
 version:          0.1.0
 build-type:       Simple
@@ -6,6 +10,8 @@ cabal-version:    >= 1.10
 executable typediff
   hs-source-dirs: driver, src
   main-is: Main.hs
+  other-modules:
+      TypeDiff
   build-depends:
       base == 4.*
     , containers
@@ -18,6 +24,9 @@ test-suite spec
   type: exitcode-stdio-1.0
   hs-source-dirs: test, src
   main-is: Spec.hs
+  other-modules:
+      TypeDiffSpec
+      TypeDiff
   build-depends:
       base == 4.*
     , containers

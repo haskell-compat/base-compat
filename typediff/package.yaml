@@ -1,0 +1,25 @@
+version: 0.1.0
+
+ghc-options: -Wall
+
+dependencies:
+  - base == 4.*
+  - containers
+  - uniplate
+  - haskell-src-exts
+
+executables:
+  typediff:
+    main: Main.hs
+    source-dirs:
+      - driver
+      - src
+
+tests:
+  spec:
+    main: Spec.hs
+    source-dirs:
+      - test
+      - src
+    dependencies:
+      - hspec == 2.*

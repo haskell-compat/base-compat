@@ -17,9 +17,6 @@ all:
 	env-ghc-7.0.3.sh make current
 	env-ghc-7.0.2.sh make current
 	env-ghc-7.0.1.sh make current
-	env-ghc-6.12.3.sh make current
-	env-ghc-6.12.2.sh make current
-	env-ghc-6.12.1.sh make current
 
 install:
 	cabal clean

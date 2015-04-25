@@ -19,10 +19,6 @@ module Control.Monad.Compat (
 
 , (<$!>)
 #endif
-
-#if !(MIN_VERSION_base(4,5,0))
-, void
-#endif
 ) where
 
 #if MIN_VERSION_base(4,8,0)
@@ -46,12 +42,6 @@ import Control.Applicative (Alternative(..))
 import Data.Foldable.Compat
 import Data.Traversable
 import Prelude.Compat
-#endif
-
-#if !(MIN_VERSION_base(4,3,0))
--- | @'void' value@ discards or ignores the result of evaluation, such as the return value of an 'IO' action.
-void :: Functor f => f a -> f ()
-void = fmap (const ())
 #endif
 
 #if !(MIN_VERSION_base(4,8,0))

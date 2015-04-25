@@ -17,7 +17,7 @@ that.
 In your cabal file, you should have something like this:
 
 ```
-  build-depends:      base              == 4.*
+  build-depends:      base              >= 4.3
                     , base-compat       >= 0.8.0
 ```
 
@@ -122,9 +122,6 @@ So far the following is covered.
  * `ghc-7.0.3`  / `base-4.3.1.0`
  * `ghc-7.0.2`  / `base-4.3.1.0`
  * `ghc-7.0.1`  / `base-4.3.0.0`
- * `ghc-6.12.3` / `base-4.2.0.2`
- * `ghc-6.12.2` / `base-4.2.0.1`
- * `ghc-6.12.1` / `base-4.2.0.0`
 
 Patches are welcome; add tests for new code!
 

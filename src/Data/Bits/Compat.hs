@@ -1,4 +1,5 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
+{-# LANGUAGE BangPatterns #-}
 module Data.Bits.Compat (
   module Base
 , bitDefault

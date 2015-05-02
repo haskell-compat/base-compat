@@ -1,3 +1,6 @@
+## Changes in 0.8.1.1
+ - Fixed Windows build
+
 ## Changes in 0.8.1
  - Implement `setEnv` and `unsetEnv` in `System.Environment.Compat` (which were
    ported from the `setenv` package). As a result, `base-compat` now depends

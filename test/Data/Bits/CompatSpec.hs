@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 module Data.Bits.CompatSpec (main, spec) where
 
 import Test.Hspec
@@ -22,6 +23,12 @@ spec = do
       testBitDefault (10 :: Int) 3 `shouldBe` True
   describe "popCountDefault" $
     it "returns the number of set bits in the argument" $ do
-      popCount (0  :: Int) `shouldBe` 0
-      popCount (1  :: Int) `shouldBe` 1
-      popCount (10 :: Int) `shouldBe` 2
+      popCountDefault (0  :: Int) `shouldBe` 0
+      popCountDefault (1  :: Int) `shouldBe` 1
+      popCountDefault (10 :: Int) `shouldBe` 2
+#if MIN_VERSION_base(4,7,0)
+  describe "toIntegralSized" $
+    it "converts an Integral type to another as measured by bitSizeMaybe" $ do
+      toIntegralSized (42 :: Integer)                   `shouldBe` (Just 42 :: Maybe Int)
+      toIntegralSized (12345678901234567890 :: Integer) `shouldBe` (Nothing :: Maybe Int)
+#endif

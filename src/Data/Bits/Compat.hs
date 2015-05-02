@@ -5,8 +5,8 @@ module Data.Bits.Compat (
 , bitDefault
 , testBitDefault
 , popCountDefault
-#if MIN_VERSION_base(4,7,0) && !(MIN_VERSION_base(4,8,0))
-, toIntegralBits
+#if MIN_VERSION_base(4,7,0)
+, toIntegralSized
 #endif
 ) where
 

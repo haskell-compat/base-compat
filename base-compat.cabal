@@ -65,6 +65,7 @@ library
       Foreign.Marshal.Array.Compat
       Foreign.Marshal.Compat
       Foreign.Marshal.Utils.Compat
+      Numeric.Compat
       Prelude.Compat
       System.Environment.Compat
       System.Exit.Compat

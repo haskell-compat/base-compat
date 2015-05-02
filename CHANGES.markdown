@@ -6,6 +6,7 @@
    implemented in terms of them) to fix logic error in `Data.List.Compat`
  - Backport `byteSwap16`, `byteSwap32`, and `byteSwap64` to `Data.Word.Compat`
  - Backport `fillBytes` in `Foreign.Marshal.Utils.Compat`
+ - Backport `showFFloatAlt` and `showGFloatAlt` to `Numeric.Compat`
 
 ## Changes in 0.8.1.1
  - Fixed Windows build

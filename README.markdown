@@ -107,6 +107,7 @@ So far the following is covered.
  * `callocArray` and `callocArray0` functions to `Foreign.Marshal.Array.Compat`
  * `fillBytes` to `Foreign.Marshal.Utils.Compat`
  * Added `Data.List.Compat.scanl'`
+ * `showFFloatAlt` and `showGFloatAlt` to `Numeric.Compat`
  * `lookupEnv`, `setEnv` and `unsetEnv` to `System.Environment.Compat`
 
 ## Supported versions of GHC/base

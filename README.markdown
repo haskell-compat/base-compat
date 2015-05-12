@@ -93,6 +93,8 @@ So far the following is covered.
  * Added `isLeft` and `isRight` to `Data.Either.Compat`
  * Added `withMVarMasked` function to `Control.Concurrent.MVar.Compat`
  * Added `(<$!>)` function to `Control.Monad.Compat`
+ * Weakened `RealFloat` constraints on `realPart`, `imagPart`, `conjugate`, `mkPolar`,
+   and `cis` in `Data.Complex.Compat`
  * Added `($>)` and `void` functions to `Data.Functor.Compat`
  * `(&)` function to `Data.Function.Compat`
  * `($>)` and `void` functions to `Data.Functor.Compat`

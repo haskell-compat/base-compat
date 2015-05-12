@@ -1,3 +1,7 @@
+## Changes in next
+ - Weakened `RealFloat` constraints on `realPart`, `imagPart`, `conjugate`,
+   `mkPolar`, and `cis` in `Data.Complex.Compat`
+
 ## Changes in 0.8.1.1
  - Fixed Windows build
 

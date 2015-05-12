@@ -50,6 +50,7 @@ library
       Control.Concurrent.MVar.Compat
       Control.Monad.Compat
       Data.Bool.Compat
+      Data.Complex.Compat
       Data.Either.Compat
       Data.Foldable.Compat
       Data.Function.Compat

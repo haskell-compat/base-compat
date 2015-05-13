@@ -21,10 +21,14 @@ module Data.List.Compat (
 , minimum
 , minimumBy
 , notElem
+, nub
+, nubBy
 , null
 , or
 , product
 , sum
+, union
+, unionBy
 , mapAccumL
 , mapAccumR
 
@@ -61,10 +65,14 @@ import Data.List as Base hiding (
   , minimum
   , minimumBy
   , notElem
+  , nub
+  , nubBy
   , null
   , or
   , product
   , sum
+  , union
+  , unionBy
   , mapAccumL
   , mapAccumR
   )
@@ -141,4 +149,54 @@ scanl' = scanlGo'
     scanlGo' f !q ls    = q : (case ls of
                             []   -> []
                             x:xs -> scanlGo' f (f q x) xs)
+
+-- | /O(n^2)/. The 'nub' function removes duplicate elements from a list.
+-- In particular, it keeps only the first occurrence of each element.
+-- (The name 'nub' means \`essence\'.)
+-- It is a special case of 'nubBy', which allows the programmer to supply
+-- their own equality test.
+nub                     :: (Eq a) => [a] -> [a]
+nub                     =  nubBy (==)
+
+
+-- | The 'nubBy' function behaves just like 'nub', except it uses a
+-- user-supplied equality predicate instead of the overloaded '=='
+-- function.
+nubBy                   :: (a -> a -> Bool) -> [a] -> [a]
+-- stolen from HBC
+nubBy eq l              = nubBy' l []
+  where
+    nubBy' [] _         = []
+    nubBy' (y:ys) xs
+       | elem_by eq y xs = nubBy' ys xs
+       | otherwise       = y : nubBy' ys (y:xs)
+
+-- Not exported:
+-- Note that we keep the call to `eq` with arguments in the
+-- same order as in the reference (prelude) implementation,
+-- and that this order is different from how `elem` calls (==).
+-- See #2528, #3280 and #7913.
+-- 'xs' is the list of things we've seen so far,
+-- 'y' is the potential new element
+elem_by :: (a -> a -> Bool) -> a -> [a] -> Bool
+elem_by _  _ []         =  False
+elem_by eq y (x:xs)     =  x `eq` y || elem_by eq y xs
+
+-- | The 'union' function returns the list union of the two lists.
+-- For example,
+--
+-- > "dog" `union` "cow" == "dogcw"
+--
+-- Duplicates, and elements of the first list, are removed from the
+-- the second list, but if the first list contains duplicates, so will
+-- the result.
+-- It is a special case of 'unionBy', which allows the programmer to supply
+-- their own equality test.
+
+union                   :: (Eq a) => [a] -> [a] -> [a]
+union                   = unionBy (==)
+
+-- | The 'unionBy' function is the non-overloaded version of 'union'.
+unionBy                 :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+unionBy eq xs ys        =  xs ++ foldl (flip (deleteBy eq)) (nubBy eq ys) xs
 #endif

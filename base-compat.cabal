@@ -49,6 +49,7 @@ library
   exposed-modules:
       Control.Concurrent.MVar.Compat
       Control.Monad.Compat
+      Data.Bits.Compat
       Data.Bool.Compat
       Data.Either.Compat
       Data.Foldable.Compat
@@ -57,11 +58,14 @@ library
       Data.List.Compat
       Data.Monoid.Compat
       Data.Version.Compat
+      Data.Word.Compat
       Debug.Trace.Compat
       Foreign.Compat
       Foreign.Marshal.Alloc.Compat
       Foreign.Marshal.Array.Compat
       Foreign.Marshal.Compat
+      Foreign.Marshal.Utils.Compat
+      Numeric.Compat
       Prelude.Compat
       System.Environment.Compat
       System.Exit.Compat

@@ -1,4 +1,4 @@
-## Changes in next
+## Changes in 0.8.2
  - Backport `bitDefault`, `testBitDefault`, and `popCountDefault` in
    `Data.Bits.Compat` to all versions of `base`
    - Backport `toIntegralSized` to `base-4.7`

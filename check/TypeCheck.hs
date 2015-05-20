@@ -27,8 +27,8 @@ modules = [ "Prelude.Compat"
 
 typeCheck :: FilePath -> String -> Spec
 typeCheck pwd module_ = describe module_
-                  . it "should have the expected type signatures"
-                  . withTempFile pwd "Temp.types" $ \fp h -> do
+                      . it "should have the expected type signatures"
+                      . withTempFile pwd "Temp.types" $ \fp h -> do
     types <- typeDump module_
     hPutStr h types
     hFlush h

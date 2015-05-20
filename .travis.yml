@@ -30,4 +30,4 @@ install:
 
 script:
   - cabal configure --enable-tests --ghc-options=-Werror && cabal build && cabal install && cabal test
-  - ( cd check/ ; ./run-check.sh )
+  - ( cd check/ ; cabal configure --enable-tests && ./run-check.sh )

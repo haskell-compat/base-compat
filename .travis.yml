@@ -29,5 +29,5 @@ install:
   - cabal install . check/ --only-dependencies --enable-tests
 
 script:
-  - cabal configure --enable-tests --ghc-options=-Werror && cabal build && cabal install && cabal test
-  - ( cd check/ ; cabal configure --enable-tests && ./run-check.sh )
+  - cabal configure --enable-tests --ghc-options=-Werror && cabal build && cabal install --enable-tests --ghc-options=-Werror && cabal test
+  - ( cd check/ && cabal configure --enable-tests && ./run-check.sh )

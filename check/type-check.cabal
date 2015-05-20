@@ -1,0 +1,52 @@
+name:                type-check
+version:             0.1.0
+synopsis:            Checks that exported type signatures match what's expected
+author:              Simon Hengel <sol@typeful.net>,
+                     João Cristóvão <jmacristovao@gmail.com>,
+                     Ryan Scott <ryan.gl.scott@ku.edu>
+maintainer:          Simon Hengel <sol@typeful.net>,
+                     João Cristóvão <jmacristovao@gmail.com>,
+                     Ryan Scott <ryan.gl.scott@ku.edu>
+copyright:           (c) 2012-2015 Simon Hengel,
+                     (c) 2014 João Cristóvão,
+                     (c) 2015 Ryan Scott
+category:            Compatibility
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.markdown,
+                     check-hs/*.check.hs,
+                     index/*.index,
+                     types/*.types
+
+library
+  exposed-modules:
+      TypeDump
+      Util
+  ghc-options:
+      -Wall
+  default-language:
+      Haskell2010
+  hs-source-dirs:
+      .
+  build-depends:
+      base >= 4.3 && < 5
+    , process
+
+test-suite type-check-test
+  type:
+      exitcode-stdio-1.0
+  ghc-options:
+      -Wall
+  default-language:
+      Haskell2010
+  hs-source-dirs:
+      .
+  main-is:
+      TypeCheck.hs
+  build-depends:
+      base >= 4.3 && < 5
+    , directory
+    , hspec >= 1.8
+    , HUnit >= 1.2.5
+    , process
+    , temporary-rc

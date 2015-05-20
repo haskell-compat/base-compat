@@ -11,7 +11,7 @@ main = do
   index module_
 
 index :: String -> IO ()
-index module_ = ghci ["check/" ++ module_ ++ ".check.hs"] input >>= putStr . normalize
+index module_ = ghci ["check-hs/" ++ module_ ++ ".check.hs"] input >>= putStr . normalize
   where
     input = ":browse " ++ module_
 

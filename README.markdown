@@ -130,15 +130,3 @@ So far the following is covered.
  * `ghc-7.0.1`  / `base-4.3.0.0`
 
 Patches are welcome; add tests for new code!
-
-## Development
-
-For `Prelude.Compat` there is an `Prelude.index` file that was generated from
-the output of
-
-    ghc --show-iface Prelude.hi
-
-To verify that `Prelude.Compat` matches the specification given in
-`Prelude.types` run:
-
-    ./check-Prelude.sh

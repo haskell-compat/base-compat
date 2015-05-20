@@ -26,9 +26,8 @@ install:
   - cabal --version
   - echo "$(ghc --version) [$(ghc --print-project-git-commit-id 2> /dev/null || echo '?')]"
   - travis_retry cabal update
-  - cabal install --only-dependencies --enable-tests
+  - cabal install . check/ --only-dependencies --enable-tests
 
 script:
-  - cabal configure --enable-tests --ghc-options=-Werror && cabal build && cabal test
-  - (cd typediff && wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.0/typediff && chmod +x typediff)
-  - PATH=typediff/:$PATH ./run-check.sh
+  - cabal configure --enable-tests --ghc-options=-Werror && cabal build && cabal install && cabal test
+  - ( cd check/ ; ./run-check.sh )

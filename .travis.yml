@@ -29,7 +29,7 @@ install:
   - cabal install . check/ --only-dependencies --enable-tests
 
 script:
-  - cabal configure --enable-tests --ghc-options=-Werror && cabal build && cabal install --enable-tests --ghc-options=-Werror && cabal test
+  - cabal configure --enable-tests --ghc-options=-Werror && cabal build && cabal test && cabal install --enable-tests --ghc-options=-Werror
   - cd check/
   - wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.0/typediff && chmod +x typediff
   - cabal configure --enable-tests && cabal build && PATH=./:$PATH cabal test

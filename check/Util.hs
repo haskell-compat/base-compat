@@ -1,6 +1,6 @@
 module Util where
 
-import System.Process
+import           System.Process
 
 ghci :: [String] -> String -> IO String
 ghci args_ input = readProcess "ghci" args input

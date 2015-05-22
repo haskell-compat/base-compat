@@ -46,7 +46,8 @@ test-suite type-check-test
   build-depends:
       base >= 4.3 && < 5
     , directory
+    , filepath
     , hspec >= 1.8
     , HUnit >= 1.2.5
-    , process
+    , process >= 1.0.1.1
     , temporary-rc

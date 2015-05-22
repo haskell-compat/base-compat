@@ -1,7 +1,7 @@
 module Main (main) where
 
-import System.Environment (getArgs)
-import TypeDump (typeDump)
+import           System.Environment (getArgs)
+import           TypeDump (typeDump)
 
 main :: IO ()
 main = do

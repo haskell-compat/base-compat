@@ -17,9 +17,12 @@ modules to ensure that they match what is expected.
 
 ## Running the type checks
 
-The easiest way to run these tests is to use this command:
+First, download the `typediff` executable (if you haven't already):
 
-    ./run-check.sh
+    wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.0/typediff
+    chmod +x typediff
 
-This will ensure that the `typediff` executable is downloaded (if it hasn't
-been already) and added to the user `PATH` when the tests are run.
+Then run the test suite, ensuring that `typediff` is added to the user `PATH`
+when the tests are run:
+
+    PATH=./:$PATH cabal test

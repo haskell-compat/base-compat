@@ -80,6 +80,22 @@ test-suite spec
       test
   main-is:
       Spec.hs
+  other-modules:
+      Control.Monad.CompatSpec
+      Data.Bits.CompatSpec
+      Data.Bool.CompatSpec
+      Data.Either.CompatSpec
+      Data.Function.CompatSpec
+      Data.Functor.CompatSpec
+      Data.List.CompatSpec
+      Data.Monoid.CompatSpec
+      Data.Version.CompatSpec
+      Data.Word.CompatSpec
+      Foreign.Marshal.Alloc.CompatSpec
+      Foreign.Marshal.Utils.CompatSpec
+      Numeric.CompatSpec
+      System.Environment.CompatSpec
+      Text.Read.CompatSpec
   build-depends:
       base >= 4.3 && < 5
     , base-compat

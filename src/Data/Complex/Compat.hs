@@ -1,7 +1,7 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Data.Complex.Compat (
   module Base
-#if !(MIN_VERSION_base(4,8,0))
+#if MIN_VERSION_base(4,4,0) && !(MIN_VERSION_base(4,8,0))
 , realPart
 , imagPart
 , mkPolar
@@ -10,7 +10,7 @@ module Data.Complex.Compat (
 #endif
 ) where
 
-#if MIN_VERSION_base(4,8,0)
+#if !(MIN_VERSION_base(4,4,0)) || MIN_VERSION_base(4,8,0)
 import Data.Complex as Base
 #else
 import Data.Complex as Base hiding (
@@ -23,7 +23,7 @@ import Data.Complex as Base hiding (
 import Prelude
 #endif
 
-#if !(MIN_VERSION_base(4,8,0))
+#if MIN_VERSION_base(4,4,0) && !(MIN_VERSION_base(4,8,0))
 -- | Extracts the real part of a complex number.
 realPart :: Complex a -> a
 realPart (x :+ _) =  x

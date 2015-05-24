@@ -1,5 +1,5 @@
 name:             base-compat
-version:          0.8.1.1
+version:          0.8.2
 license:          MIT
 license-file:     LICENSE
 copyright:        (c) 2012-2015 Simon Hengel,
@@ -49,6 +49,7 @@ library
   exposed-modules:
       Control.Concurrent.MVar.Compat
       Control.Monad.Compat
+      Data.Bits.Compat
       Data.Bool.Compat
       Data.Complex.Compat
       Data.Either.Compat
@@ -58,11 +59,14 @@ library
       Data.List.Compat
       Data.Monoid.Compat
       Data.Version.Compat
+      Data.Word.Compat
       Debug.Trace.Compat
       Foreign.Compat
       Foreign.Marshal.Alloc.Compat
       Foreign.Marshal.Array.Compat
       Foreign.Marshal.Compat
+      Foreign.Marshal.Utils.Compat
+      Numeric.Compat
       Prelude.Compat
       System.Environment.Compat
       System.Exit.Compat
@@ -77,6 +81,22 @@ test-suite spec
       test
   main-is:
       Spec.hs
+  other-modules:
+      Control.Monad.CompatSpec
+      Data.Bits.CompatSpec
+      Data.Bool.CompatSpec
+      Data.Either.CompatSpec
+      Data.Function.CompatSpec
+      Data.Functor.CompatSpec
+      Data.List.CompatSpec
+      Data.Monoid.CompatSpec
+      Data.Version.CompatSpec
+      Data.Word.CompatSpec
+      Foreign.Marshal.Alloc.CompatSpec
+      Foreign.Marshal.Utils.CompatSpec
+      Numeric.CompatSpec
+      System.Environment.CompatSpec
+      Text.Read.CompatSpec
   build-depends:
       base >= 4.3 && < 5
     , base-compat

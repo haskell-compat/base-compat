@@ -89,6 +89,8 @@ So far the following is covered.
  * `Text.Read.Compat.readMaybe`
  * `Text.Read.Compat.readEither`
  * `Data.Monoid.Compat.<>`
+ * Added `bitDefault`, `testBitDefault`, and `popCountDefault` to `Data.Bits.Compat`
+ * Added `toIntegralSized` to `Data.Bits.Compat` (if using `base-4.7`)
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft` and `isRight` to `Data.Either.Compat`
  * Added `withMVarMasked` function to `Control.Concurrent.MVar.Compat`
@@ -99,11 +101,15 @@ So far the following is covered.
  * `(&)` function to `Data.Function.Compat`
  * `($>)` and `void` functions to `Data.Functor.Compat`
  * `dropWhileEnd`, `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List.Compat`
+ * Correct versions of `nub`, `nubBy`, `union`, and `unionBy` to `Data.List.Compat`
  * `makeVersion` function to `Data.Version.Compat`
  * `traceId`, `traceShowId`, `traceM`, and `traceShowM` functions to `Debug.Trace.Compat`
+ * `byteSwap16`, `byteSwap32`, and `byteSwap64` to `Data.Word.Compat`
  * `calloc` and `callocBytes` functions to `Foreign.Marshal.Alloc.Compat`
  * `callocArray` and `callocArray0` functions to `Foreign.Marshal.Array.Compat`
+ * `fillBytes` to `Foreign.Marshal.Utils.Compat`
  * Added `Data.List.Compat.scanl'`
+ * `showFFloatAlt` and `showGFloatAlt` to `Numeric.Compat`
  * `lookupEnv`, `setEnv` and `unsetEnv` to `System.Environment.Compat`
 
 ## Supported versions of GHC/base
@@ -126,15 +132,3 @@ So far the following is covered.
  * `ghc-7.0.1`  / `base-4.3.0.0`
 
 Patches are welcome; add tests for new code!
-
-## Development
-
-For `Prelude.Compat` there is an `Prelude.index` file that was generated from
-the output of
-
-    ghc --show-iface Prelude.hi
-
-To verify that `Prelude.Compat` matches the specification given in
-`Prelude.types` run:
-
-    ./check-Prelude.sh

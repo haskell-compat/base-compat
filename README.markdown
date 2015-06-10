@@ -103,6 +103,7 @@ So far the following is covered.
  * `dropWhileEnd`, `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List.Compat`
  * Correct versions of `nub`, `nubBy`, `union`, and `unionBy` to `Data.List.Compat`
  * `modifySTRef'` to `Data.STRef.Compat`
+ * `String`, `lines`, `words`, `unlines`, and `unwords` to `Data.String.Compat`
  * `makeVersion` function to `Data.Version.Compat`
  * `traceId`, `traceShowId`, `traceM`, and `traceShowM` functions to `Debug.Trace.Compat`
  * `byteSwap16`, `byteSwap32`, and `byteSwap64` to `Data.Word.Compat`

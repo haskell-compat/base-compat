@@ -3,6 +3,7 @@
  - Backport `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to
    `Data.IORef.Compat`
  - Backport `modifySTRef'` to `Data.STRef.Compat`
+ - Export `String`, `lines`, `words`, `unlines`, and `unwords` from `Data.String.Compat`
  - Backport `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
 
 ## Changes in 0.8.2

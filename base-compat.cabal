@@ -60,6 +60,7 @@ library
       Data.List.Compat
       Data.Monoid.Compat
       Data.STRef.Compat
+      Data.String.Compat
       Data.Version.Compat
       Data.Word.Compat
       Debug.Trace.Compat

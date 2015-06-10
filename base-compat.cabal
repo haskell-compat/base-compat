@@ -50,6 +50,8 @@ library
       Control.Concurrent.Compat
       Control.Concurrent.MVar.Compat
       Control.Monad.Compat
+      Control.Monad.ST.Lazy.Unsafe.Compat
+      Control.Monad.ST.Unsafe.Compat
       Data.Bits.Compat
       Data.Bool.Compat
       Data.Either.Compat
@@ -65,9 +67,11 @@ library
       Data.Word.Compat
       Debug.Trace.Compat
       Foreign.Compat
+      Foreign.ForeignPtr.Unsafe.Compat
       Foreign.Marshal.Alloc.Compat
       Foreign.Marshal.Array.Compat
       Foreign.Marshal.Compat
+      Foreign.Marshal.Unsafe.Compat
       Foreign.Marshal.Utils.Compat
       Numeric.Compat
       Prelude.Compat

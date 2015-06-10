@@ -1,4 +1,5 @@
 ## Changes in next
+ - Backport `modifySTRef'` to `Data.STRef.Compat`
  - Backport `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
 
 ## Changes in 0.8.2

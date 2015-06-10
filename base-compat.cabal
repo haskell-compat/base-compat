@@ -57,6 +57,7 @@ library
       Data.Functor.Compat
       Data.List.Compat
       Data.Monoid.Compat
+      Data.STRef.Compat
       Data.Version.Compat
       Data.Word.Compat
       Debug.Trace.Compat
@@ -90,6 +91,7 @@ test-suite spec
       Data.Functor.CompatSpec
       Data.List.CompatSpec
       Data.Monoid.CompatSpec
+      Data.STRef.CompatSpec
       Data.Version.CompatSpec
       Data.Word.CompatSpec
       Foreign.Marshal.Alloc.CompatSpec

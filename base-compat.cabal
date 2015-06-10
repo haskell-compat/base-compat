@@ -69,6 +69,7 @@ library
       Prelude.Compat
       System.Environment.Compat
       System.Exit.Compat
+      System.IO.Unsafe.Compat
       Text.Read.Compat
 
 test-suite spec

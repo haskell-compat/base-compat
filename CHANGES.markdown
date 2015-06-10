@@ -1,3 +1,6 @@
+## Changes in next
+ - Backport `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
+
 ## Changes in 0.8.2
  - Backport `bitDefault`, `testBitDefault`, and `popCountDefault` in
    `Data.Bits.Compat` to all versions of `base`

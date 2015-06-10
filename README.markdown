@@ -109,6 +109,7 @@ So far the following is covered.
  * Added `Data.List.Compat.scanl'`
  * `showFFloatAlt` and `showGFloatAlt` to `Numeric.Compat`
  * `lookupEnv`, `setEnv` and `unsetEnv` to `System.Environment.Compat`
+ * `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
 
 ## Supported versions of GHC/base
 

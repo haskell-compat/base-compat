@@ -1,5 +1,4 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
-{-# LANGUAGE MagicHash, UnboxedTuples #-}
 module System.IO.Unsafe.Compat (
   module Base
 , unsafeFixIO

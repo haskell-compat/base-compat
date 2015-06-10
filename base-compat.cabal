@@ -55,6 +55,7 @@ library
       Data.Foldable.Compat
       Data.Function.Compat
       Data.Functor.Compat
+      Data.IORef.Compat
       Data.List.Compat
       Data.Monoid.Compat
       Data.STRef.Compat
@@ -89,6 +90,7 @@ test-suite spec
       Data.Either.CompatSpec
       Data.Function.CompatSpec
       Data.Functor.CompatSpec
+      Data.IORef.CompatSpec
       Data.List.CompatSpec
       Data.Monoid.CompatSpec
       Data.STRef.CompatSpec

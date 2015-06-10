@@ -1,4 +1,6 @@
 ## Changes in next
+ - Backport `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to
+   `Data.IORef.Compat`
  - Backport `modifySTRef'` to `Data.STRef.Compat`
  - Backport `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
 

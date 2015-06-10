@@ -98,6 +98,7 @@ So far the following is covered.
  * Added `($>)` and `void` functions to `Data.Functor.Compat`
  * `(&)` function to `Data.Function.Compat`
  * `($>)` and `void` functions to `Data.Functor.Compat`
+ * `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to `Data.IORef.Compat`
  * `dropWhileEnd`, `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List.Compat`
  * Correct versions of `nub`, `nubBy`, `union`, and `unionBy` to `Data.List.Compat`
  * `modifySTRef'` to `Data.STRef.Compat`

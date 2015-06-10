@@ -47,6 +47,7 @@ library
       src
 
   exposed-modules:
+      Control.Concurrent.Compat
       Control.Concurrent.MVar.Compat
       Control.Monad.Compat
       Data.Bits.Compat

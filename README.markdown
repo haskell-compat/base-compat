@@ -93,6 +93,7 @@ So far the following is covered.
  * Added `toIntegralSized` to `Data.Bits.Compat` (if using `base-4.7`)
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft` and `isRight` to `Data.Either.Compat`
+ * Added `forkFinally` to `Control.Concurrent.Compat`
  * Added `withMVarMasked` function to `Control.Concurrent.MVar.Compat`
  * Added `(<$!>)` function to `Control.Monad.Compat`
  * Added `($>)` and `void` functions to `Data.Functor.Compat`

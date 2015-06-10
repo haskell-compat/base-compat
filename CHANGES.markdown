@@ -1,4 +1,5 @@
 ## Changes in next
+ - Backport `forkFinally` to `Control.Concurrent.Compat`
  - Backport `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to
    `Data.IORef.Compat`
  - Backport `modifySTRef'` to `Data.STRef.Compat`

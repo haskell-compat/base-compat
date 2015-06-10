@@ -1,4 +1,5 @@
 ## Changes in next
+ - Backport `Foreign.ForeignPtr.Safe` and `Foreign.Marshal.Safe`
  - Backport `.Unsafe.Compat` modules (for `Control.Monad.ST`,
    `Control.Monad.ST.Lazy`, `Foreign.ForeignPtr`, and `Foreign.Marshal`)
  - Backport `forkFinally` to `Control.Concurrent.Compat`

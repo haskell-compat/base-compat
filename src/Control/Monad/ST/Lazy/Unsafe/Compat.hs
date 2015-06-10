@@ -5,4 +5,8 @@ module Control.Monad.ST.Lazy.Unsafe.Compat (
 , unsafeIOToST
 ) where
 
+#if MIN_VERSION_base(4,6,0)
+import Control.Monad.ST.Lazy.Unsafe (unsafeInterleaveST, unsafeIOToST)
+#else
 import Control.Monad.ST.Lazy (unsafeInterleaveST, unsafeIOToST)
+#endif

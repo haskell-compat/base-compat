@@ -67,10 +67,12 @@ library
       Data.Word.Compat
       Debug.Trace.Compat
       Foreign.Compat
+      Foreign.ForeignPtr.Safe.Compat
       Foreign.ForeignPtr.Unsafe.Compat
       Foreign.Marshal.Alloc.Compat
       Foreign.Marshal.Array.Compat
       Foreign.Marshal.Compat
+      Foreign.Marshal.Safe.Compat
       Foreign.Marshal.Unsafe.Compat
       Foreign.Marshal.Utils.Compat
       Numeric.Compat

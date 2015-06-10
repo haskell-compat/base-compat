@@ -4,4 +4,8 @@ module Foreign.ForeignPtr.Unsafe.Compat (
   unsafeForeignPtrToPtr
 ) where
 
+#if MIN_VERSION_base(4,6,0)
+import Foreign.ForeignPtr.Unsafe (unsafeForeignPtrToPtr)
+#else
 import Foreign.ForeignPtr (unsafeForeignPtrToPtr)
+#endif

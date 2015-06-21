@@ -47,28 +47,39 @@ library
       src
 
   exposed-modules:
+      Control.Concurrent.Compat
       Control.Concurrent.MVar.Compat
       Control.Monad.Compat
+      Control.Monad.ST.Lazy.Unsafe.Compat
+      Control.Monad.ST.Unsafe.Compat
       Data.Bits.Compat
       Data.Bool.Compat
       Data.Either.Compat
       Data.Foldable.Compat
       Data.Function.Compat
       Data.Functor.Compat
+      Data.IORef.Compat
       Data.List.Compat
       Data.Monoid.Compat
+      Data.STRef.Compat
+      Data.String.Compat
       Data.Version.Compat
       Data.Word.Compat
       Debug.Trace.Compat
       Foreign.Compat
+      Foreign.ForeignPtr.Safe.Compat
+      Foreign.ForeignPtr.Unsafe.Compat
       Foreign.Marshal.Alloc.Compat
       Foreign.Marshal.Array.Compat
       Foreign.Marshal.Compat
+      Foreign.Marshal.Safe.Compat
+      Foreign.Marshal.Unsafe.Compat
       Foreign.Marshal.Utils.Compat
       Numeric.Compat
       Prelude.Compat
       System.Environment.Compat
       System.Exit.Compat
+      System.IO.Unsafe.Compat
       Text.Read.Compat
 
 test-suite spec
@@ -87,8 +98,10 @@ test-suite spec
       Data.Either.CompatSpec
       Data.Function.CompatSpec
       Data.Functor.CompatSpec
+      Data.IORef.CompatSpec
       Data.List.CompatSpec
       Data.Monoid.CompatSpec
+      Data.STRef.CompatSpec
       Data.Version.CompatSpec
       Data.Word.CompatSpec
       Foreign.Marshal.Alloc.CompatSpec

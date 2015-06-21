@@ -1,3 +1,15 @@
+## Changes in next
+ - Backport `Foreign.ForeignPtr.Safe` and `Foreign.Marshal.Safe`
+ - Backport `.Unsafe.Compat` modules (for `Control.Monad.ST`,
+   `Control.Monad.ST.Lazy`, `Foreign.ForeignPtr`, and `Foreign.Marshal`)
+ - Backport `forkFinally` to `Control.Concurrent.Compat`
+ - Backport `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to
+   `Data.IORef.Compat`
+ - Backport `modifySTRef'` to `Data.STRef.Compat`
+ - Export `String`, `lines`, `words`, `unlines`, and `unwords` to
+   `Data.String.Compat`
+ - Backport `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
+
 ## Changes in 0.8.2
  - Backport `bitDefault`, `testBitDefault`, and `popCountDefault` in
    `Data.Bits.Compat` to all versions of `base`

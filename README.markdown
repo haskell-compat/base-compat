@@ -93,13 +93,17 @@ So far the following is covered.
  * Added `toIntegralSized` to `Data.Bits.Compat` (if using `base-4.7`)
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft` and `isRight` to `Data.Either.Compat`
+ * Added `forkFinally` to `Control.Concurrent.Compat`
  * Added `withMVarMasked` function to `Control.Concurrent.MVar.Compat`
  * Added `(<$!>)` function to `Control.Monad.Compat`
  * Added `($>)` and `void` functions to `Data.Functor.Compat`
  * `(&)` function to `Data.Function.Compat`
  * `($>)` and `void` functions to `Data.Functor.Compat`
+ * `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to `Data.IORef.Compat`
  * `dropWhileEnd`, `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List.Compat`
  * Correct versions of `nub`, `nubBy`, `union`, and `unionBy` to `Data.List.Compat`
+ * `modifySTRef'` to `Data.STRef.Compat`
+ * `String`, `lines`, `words`, `unlines`, and `unwords` to `Data.String.Compat`
  * `makeVersion` function to `Data.Version.Compat`
  * `traceId`, `traceShowId`, `traceM`, and `traceShowM` functions to `Debug.Trace.Compat`
  * `byteSwap16`, `byteSwap32`, and `byteSwap64` to `Data.Word.Compat`
@@ -109,6 +113,7 @@ So far the following is covered.
  * Added `Data.List.Compat.scanl'`
  * `showFFloatAlt` and `showGFloatAlt` to `Numeric.Compat`
  * `lookupEnv`, `setEnv` and `unsetEnv` to `System.Environment.Compat`
+ * `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
 
 ## Supported versions of GHC/base
 

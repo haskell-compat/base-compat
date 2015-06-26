@@ -61,6 +61,7 @@ library
       Data.IORef.Compat
       Data.List.Compat
       Data.Monoid.Compat
+      Data.Proxy.Compat
       Data.STRef.Compat
       Data.String.Compat
       Data.Version.Compat
@@ -101,6 +102,7 @@ test-suite spec
       Data.IORef.CompatSpec
       Data.List.CompatSpec
       Data.Monoid.CompatSpec
+      Data.Proxy.CompatSpec
       Data.STRef.CompatSpec
       Data.Version.CompatSpec
       Data.Word.CompatSpec

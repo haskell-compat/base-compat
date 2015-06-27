@@ -183,7 +183,7 @@ compatibility packages on Hackage. Here is a list of such packages:
   for the [`Proxy`](http://hackage.haskell.org/package/base-4.7.0.0/docs/Data-Proxy.html#t:Proxy)
   data type, introduced in `base-4.7.0.0`
 * [`transformers`](http://hackage.haskell.org/package/transformers)
-  for the [`Identity](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Functor-Identity.html#t:Identity)
+  for the [`Identity`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Functor-Identity.html#t:Identity)
   data type, introduced in `base-4.8.0.0`
 * [`void`](http://hackage.haskell.org/package/void)
   for the [`Void`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Void.html#t:Void)

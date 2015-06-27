@@ -12,6 +12,12 @@ Note that `base-compat` does not add any orphan instances.  There is a separate
 package [`base-orphans`](https://github.com/haskell-compat/base-orphans) for
 that.
 
+In addition, `base-compat` only backports functions. In particular, we
+purposefully do not backport data types or type classes introduced in newer
+versions of `base`. For more info, see the
+[Data types and type classes](#data-types-and-type-classes)
+section.
+
 ## Basic usage
 
 In your cabal file, you should have something like this:
@@ -114,6 +120,74 @@ So far the following is covered.
  * `showFFloatAlt` and `showGFloatAlt` to `Numeric.Compat`
  * `lookupEnv`, `setEnv` and `unsetEnv` to `System.Environment.Compat`
  * `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
+
+## What is not covered
+
+### Data types and type classes
+`base-compat` purposefully does not export any data types or type classes that
+were introduced in more recent versions of `base`. The main reasoning for this
+policy is that it is not some data types and type classes have had their APIs
+change in different versions of `base`, which makes having a consistent
+compatibility API for them practically impossible.
+
+As an example, consider the `FiniteBits` type class. It was introduced in
+[`base-4.7.0.0`](http://hackage.haskell.org/package/base-4.7.0.0/docs/Data-Bits.html#t:FiniteBits)
+with the following API:
+
+```haskell
+class Bits b => FiniteBits b where
+    finiteBitSize :: b -> Int
+```
+
+However, in [`base-4.8.0.0`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Bits.html#t:FiniteBits),
+`FiniteBits` gained additional functions:
+
+```haskell
+class Bits b => FiniteBits b where
+    finiteBitSize :: b -> Int
+    countLeadingZeros :: b -> Int
+    countTrailingZeros :: b -> Int
+```
+
+This raises the question: how can `FiniteBits` be backported consistently
+across all versions of `base`? One approach is to backport the API exposed in
+`base-4.8.0.0` on versions prior to `4.7.0.0`. The problem with this is that
+`countLeadingZeros` and `countTrailingZeros` are not exposed in `base-4.7.0.0`,
+so instances of `FiniteBits` would have to be declared like this:
+
+```haskell
+instance FiniteBits Foo where
+    finiteBitSize = ...
+#if MIN_VERSION_base(4,8,0) || !(MIN_VERSION_base(4,7,0))
+    countLeadingZeros = ...
+    countTrailingZeros = ...
+#endif
+```
+
+This is a very unsatisfactory solution, and for this reason, we do not pursue
+it. For similar reasons, we do not backport data types.
+
+### Other compatibility packages
+
+If you _really_ need your favorite data type or type class in `base` to be
+backported, you might be in luck, since several data types have their own
+compatibility packages on Hackage. Here is a list of such packages:
+
+* [`bifunctors`](http://hackage.haskell.org/package/bifunctors)
+  for the [`Bifunctor`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Bifunctor.html#t:Bifunctor)
+  type class, introduced in `base-4.8.0.0`
+* [`nats`](http://hackage.haskell.org/package/nats)
+  for the [`Natural`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Numeric-Natural.html)
+  data type, introduced in `base-4.8.0.0`
+* [`tagged`](http://hackage.haskell.org/package/tagged)
+  for the [`Proxy`](http://hackage.haskell.org/package/base-4.7.0.0/docs/Data-Proxy.html#t:Proxy)
+  data type, introduced in `base-4.7.0.0`
+* [`transformers`](http://hackage.haskell.org/package/transformers)
+  for the [`Identity](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Functor-Identity.html#t:Identity)
+  data type, introduced in `base-4.8.0.0`
+* [`void`](http://hackage.haskell.org/package/void)
+  for the [`Void`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Void.html#t:Void)
+  data type, introduced in `base-4.8.0.0`
 
 ## Supported versions of GHC/base
 

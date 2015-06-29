@@ -176,6 +176,9 @@ compatibility packages on Hackage. Here is a list of such packages:
 * [`bifunctors`](http://hackage.haskell.org/package/bifunctors)
   for the [`Bifunctor`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Bifunctor.html#t:Bifunctor)
   type class, introduced in `base-4.8.0.0`
+* [`generic-deriving`](http://hackage.haskell.org/package/generic-deriving)
+  for everything in the [`GHC.Generics`](http://hackage.haskell.org/package/base-4.8.0.0/docs/GHC-Generics.html)
+  module, introduced to `ghc-prim` in GHC 7.2 (and later moved to `base-4.6.0.0`)
 * [`nats`](http://hackage.haskell.org/package/nats)
   for the [`Natural`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Numeric-Natural.html)
   data type, introduced in `base-4.8.0.0`

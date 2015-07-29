@@ -194,6 +194,7 @@ compatibility packages on Hackage. Here is a list of such packages:
 
 ## Supported versions of GHC/base
 
+ * `ghc-7.10.2` / `base-4.8.1.0`
  * `ghc-7.10.1` / `base-4.8.0.0`
  * `ghc-7.8.4`  / `base-4.7.0.2`
  * `ghc-7.8.3`  / `base-4.7.0.1`

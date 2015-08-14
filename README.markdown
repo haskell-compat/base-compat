@@ -212,4 +212,8 @@ compatibility packages on Hackage. Here is a list of such packages:
  * `ghc-7.0.2`  / `base-4.3.1.0`
  * `ghc-7.0.1`  / `base-4.3.0.0`
 
+We also make an attempt to keep `base-orphans` building with GHC HEAD, but due
+to its volatility, it may not work at any given point in time. If it doesn't,
+please report it!
+
 Patches are welcome; add tests for new code!

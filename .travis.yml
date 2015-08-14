@@ -36,14 +36,16 @@ install:
 script:
   - cabal configure --ghc-options=-Werror
   - cabal build
-  - cabal install --only-dependencies --enable-tests
+  - cabal install -j --only-dependencies --enable-tests
   - cabal configure --enable-tests --ghc-options=-Werror
   - cabal build
-  - cabal test
+  - cabal test --show-details=always
+  - cabal copy
+  - cabal register
   - cd check/
-  - cabal install --only-dependencies --enable-tests
+  - cabal install -j --only-dependencies --enable-tests
   - wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.0/typediff
   - chmod +x typediff
   - cabal configure --enable-tests
   - cabal build
-  - PATH=./:$PATH cabal test
+  - PATH=./:$PATH cabal test --show-details=always

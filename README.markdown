@@ -1,4 +1,20 @@
-# A compatibility layer for `base` [![Hackage version](https://img.shields.io/hackage/v/base-compat.svg?style=flat)](http://hackage.haskell.org/package/base-compat) [![Build Status](https://img.shields.io/travis/haskell-compat/base-compat.svg?style=flat)](https://travis-ci.org/haskell-compat/base-compat)
+# A compatibility layer for `base`
+[![Hackage](https://img.shields.io/hackage/v/base-compat.svg)][Hackage: base-compat]
+[![Hackage Dependencies](https://img.shields.io/hackage-deps/v/base-compat.svg)](http://packdeps.haskellers.com/reverse/base-compat)
+[![Haskell Programming Language](https://img.shields.io/badge/language-Haskell-blue.svg)][Haskell.org]
+[![BSD3 License](http://img.shields.io/badge/license-MIT-brightgreen.svg)][tl;dr Legal: MIT]
+[![Build](https://img.shields.io/travis/haskell-compat/base-compat.svg)](https://travis-ci.org/haskell-compat/base-compat)
+
+[Hackage: base-compat]:
+  http://hackage.haskell.org/package/base-compat
+  "base-compat package on Hackage"
+[Haskell.org]:
+  http://www.haskell.org
+  "The Haskell Programming Language"
+[tl;dr Legal: MIT]:
+  https://tldrlegal.com/license/mit-license
+  "MIT License"
+  
 ## Scope
 
 The scope of `base-compat` is to provide functions available in later versions

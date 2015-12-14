@@ -32,6 +32,12 @@ description:      Provides functions available in later versions of @base@ to
                   or type classes. See
                   @<https://github.com/haskell-compat/base-compat#data-types-and-type-classes this section of the README>@
                   for more info.
+tested-with:        GHC == 7.0.1,  GHC == 7.0.2,  GHC == 7.0.3,  GHC == 7.0.4
+                  , GHC == 7.2.1,  GHC == 7.2.2
+                  , GHC == 7.4.1,  GHC == 7.4.2
+                  , GHC == 7.6.1,  GHC == 7.6.2,  GHC == 7.6.3
+                  , GHC == 7.8.1,  GHC == 7.8.2,  GHC == 7.8.3,  GHC == 7.8.4
+                  , GHC == 7.10.1, GHC == 7.10.2, GHC == 7.10.3
 extra-source-files: CHANGES.markdown, README.markdown
 
 source-repository head

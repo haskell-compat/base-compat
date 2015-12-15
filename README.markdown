@@ -208,8 +208,9 @@ compatibility packages on Hackage. Here is a list of such packages:
   for the [`Void`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Void.html#t:Void)
   data type, introduced in `base-4.8.0.0`
 
-## Supported versions of GHC/base
+## Supported versions of GHC/`base`
 
+ * `ghc-7.10.3` / `base-4.8.2.0`
  * `ghc-7.10.2` / `base-4.8.1.0`
  * `ghc-7.10.1` / `base-4.8.0.0`
  * `ghc-7.8.4`  / `base-4.7.0.2`
@@ -228,7 +229,7 @@ compatibility packages on Hackage. Here is a list of such packages:
  * `ghc-7.0.2`  / `base-4.3.1.0`
  * `ghc-7.0.1`  / `base-4.3.0.0`
 
-We also make an attempt to keep `base-orphans` building with GHC HEAD, but due
+We also make an attempt to keep `base-compat` building with GHC HEAD, but due
 to its volatility, it may not work at any given point in time. If it doesn't,
 please report it!
 

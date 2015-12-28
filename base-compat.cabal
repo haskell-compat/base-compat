@@ -44,13 +44,21 @@ source-repository head
   type: git
   location: https://github.com/haskell-compat/base-compat
 
+flag needs-unix
+  description: With base >=4.7, we don't depend on unix
+  default: False
+  manual: False
+
 library
   ghc-options:
       -Wall
   build-depends:
       base >= 4.3 && < 5
   if !os(windows)
-      build-depends: unix
+      if flag(needs-unix)
+          build-depends: base >= 4.3 && <4.7, unix
+      else
+          build-depends: base >= 4.7 && <5
   ghc-options:
       -fno-warn-duplicate-exports
 

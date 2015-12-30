@@ -1,6 +1,6 @@
 # This file has been generated -- see https://github.com/hvr/multi-ghc-travis
 language: c
-sudo: false
+sudo: true
 
 cache:
   directories:
@@ -85,6 +85,10 @@ install:
    then
      zcat $HOME/.cabal/packages/hackage.haskell.org/00-index.tar.gz >
           $HOME/.cabal/packages/hackage.haskell.org/00-index.tar;
+   fi
+ - |
+   if [ "$GHCVER" = "7.2.1" ]; then
+     sudo /opt/ghc/$GHCVER/bin/ghc-pkg trust base # To avoid a SafeHaskell bug on GHC 7.2.1
    fi
  - travis_retry cabal update -v
  - sed -i 's/^jobs:/-- jobs:/' ${HOME}/.cabal/config

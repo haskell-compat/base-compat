@@ -63,6 +63,7 @@ enumFromThenTo
 enumFromTo
 EQ
 error
+errorWithoutStackTrace
 even
 exp
 exponent

@@ -19,13 +19,30 @@ module Control.Monad.Compat (
 
 , (<$!>)
 #endif
+#if !(MIN_VERSION_base(4,9,0))
+, forever
+, filterM
+, mapAndUnzipM
+, zipWithM
+, zipWithM_
+, replicateM
+, replicateM_
+#endif
 ) where
 
-#if MIN_VERSION_base(4,8,0)
+#if MIN_VERSION_base(4,9,0)
 import Control.Monad as Base
 #else
 import Control.Monad as Base hiding (
-    foldM
+    forever
+  , filterM
+  , mapAndUnzipM
+  , zipWithM
+  , zipWithM_
+  , replicateM
+  , replicateM_
+# if !(MIN_VERSION_base(4,8,0))
+  , foldM
   , foldM_
   , forM
   , forM_
@@ -37,8 +54,9 @@ import Control.Monad as Base hiding (
   , sequence_
   , unless
   , when
+# endif
   )
-import Control.Applicative (Alternative(..))
+import Control.Applicative
 import Data.Foldable.Compat
 import Data.Traversable
 import Prelude.Compat
@@ -115,4 +133,52 @@ f <$!> m = do
   x <- m
   let z = f x
   z `seq` return z
+#endif
+
+#if !(MIN_VERSION_base(4,9,0))
+-- | @'forever' act@ repeats the action infinitely.
+forever     :: (Applicative f) => f a -> f b
+{-# INLINE forever #-}
+forever a   = let a' = a *> a' in a'
+-- Use explicit sharing here, as it is prevents a space leak regardless of
+-- optimizations.
+
+-- | This generalizes the list-based 'filter' function.
+{-# INLINE filterM #-}
+filterM          :: (Applicative m) => (a -> m Bool) -> [a] -> m [a]
+filterM p        = foldr (\ x -> liftA2 (\ flg -> if flg then (x:) else id) (p x)) (pure [])
+
+-- | The 'mapAndUnzipM' function maps its first argument over a list, returning
+-- the result as a pair of lists. This function is mainly used with complicated
+-- data structures or a state-transforming monad.
+mapAndUnzipM      :: (Applicative m) => (a -> m (b,c)) -> [a] -> m ([b], [c])
+{-# INLINE mapAndUnzipM #-}
+mapAndUnzipM f xs =  unzip <$> traverse f xs
+
+-- | The 'zipWithM' function generalizes 'zipWith' to arbitrary applicative functors.
+zipWithM          :: (Applicative m) => (a -> b -> m c) -> [a] -> [b] -> m [c]
+{-# INLINE zipWithM #-}
+zipWithM f xs ys  =  sequenceA (zipWith f xs ys)
+
+-- | 'zipWithM_' is the extension of 'zipWithM' which ignores the final result.
+zipWithM_         :: (Applicative m) => (a -> b -> m c) -> [a] -> [b] -> m ()
+{-# INLINE zipWithM_ #-}
+zipWithM_ f xs ys =  sequenceA_ (zipWith f xs ys)
+
+-- | @'replicateM' n act@ performs the action @n@ times,
+-- gathering the results.
+replicateM        :: (Applicative m) => Int -> m a -> m [a]
+{-# INLINEABLE replicateM #-}
+{-# SPECIALISE replicateM :: Int -> IO a -> IO [a] #-}
+{-# SPECIALISE replicateM :: Int -> Maybe a -> Maybe [a] #-}
+replicateM 0 _    = pure []
+replicateM n x    = liftA2 (:) x (replicateM (pred n) x)
+
+-- | Like 'replicateM', but discards the result.
+replicateM_       :: (Applicative m) => Int -> m a -> m ()
+{-# INLINEABLE replicateM_ #-}
+{-# SPECIALISE replicateM_ :: Int -> IO a -> IO () #-}
+{-# SPECIALISE replicateM_ :: Int -> Maybe a -> Maybe () #-}
+replicateM_ 0 _   = pure ()
+replicateM_ n x   = x *> replicateM_ (pred n) x
 #endif

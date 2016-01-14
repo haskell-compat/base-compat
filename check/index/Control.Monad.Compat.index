@@ -13,6 +13,7 @@ foldM_
 forever
 forM
 forM_
+(GHC.Base.<$)
 guard
 join
 liftM

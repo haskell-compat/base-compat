@@ -1,6 +1,6 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Prelude.Compat (
-#if MIN_VERSION_base(4,8,0)
+#if MIN_VERSION_base(4,9,0)
   module Base
 #else
   either
@@ -101,6 +101,7 @@ module Prelude.Compat (
 , (||)
 , ($)
 , error
+, errorWithoutStackTrace
 , undefined
 , seq
 
@@ -257,7 +258,7 @@ module Prelude.Compat (
 ) where
 
 
-#if MIN_VERSION_base(4,8,0)
+#if MIN_VERSION_base(4,9,0)
 
 import Prelude as Base
 
@@ -290,9 +291,21 @@ import Prelude hiding (
   , sum
   )
 
-import Data.Word
 import Data.Foldable.Compat
 import Data.Traversable
-import Data.Monoid
+
+# if !(MIN_VERSION_base(4,8,0))
 import Control.Applicative
+import Data.Monoid
+import Data.Word
+# endif
+#endif
+
+#if !(MIN_VERSION_base(4,9,0))
+-- | A variant of 'error' that does not produce a stack trace.
+--
+-- /Since: 4.9.0.0/
+errorWithoutStackTrace :: [Char] -> a
+errorWithoutStackTrace s = error s
+{-# NOINLINE errorWithoutStackTrace #-}
 #endif

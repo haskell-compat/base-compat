@@ -1,4 +1,20 @@
-# A compatibility layer for `base` [![Hackage version](https://img.shields.io/hackage/v/base-compat.svg?style=flat)](http://hackage.haskell.org/package/base-compat) [![Build Status](https://img.shields.io/travis/haskell-compat/base-compat.svg?style=flat)](https://travis-ci.org/haskell-compat/base-compat)
+# A compatibility layer for `base`
+[![Hackage](https://img.shields.io/hackage/v/base-compat.svg)][Hackage: base-compat]
+[![Hackage Dependencies](https://img.shields.io/hackage-deps/v/base-compat.svg)](http://packdeps.haskellers.com/reverse/base-compat)
+[![Haskell Programming Language](https://img.shields.io/badge/language-Haskell-blue.svg)][Haskell.org]
+[![BSD3 License](http://img.shields.io/badge/license-MIT-brightgreen.svg)][tl;dr Legal: MIT]
+[![Build](https://img.shields.io/travis/haskell-compat/base-compat.svg)](https://travis-ci.org/haskell-compat/base-compat)
+
+[Hackage: base-compat]:
+  http://hackage.haskell.org/package/base-compat
+  "base-compat package on Hackage"
+[Haskell.org]:
+  http://www.haskell.org
+  "The Haskell Programming Language"
+[tl;dr Legal: MIT]:
+  https://tldrlegal.com/license/mit-license
+  "MIT License"
+  
 ## Scope
 
 The scope of `base-compat` is to provide functions available in later versions
@@ -11,6 +27,12 @@ replace `base`, but to complement it.
 Note that `base-compat` does not add any orphan instances.  There is a separate
 package [`base-orphans`](https://github.com/haskell-compat/base-orphans) for
 that.
+
+In addition, `base-compat` only backports functions. In particular, we
+purposefully do not backport data types or type classes introduced in newer
+versions of `base`. For more info, see the
+[Data types and type classes](#data-types-and-type-classes)
+section.
 
 ## Basic usage
 
@@ -93,6 +115,7 @@ So far the following is covered.
  * Added `toIntegralSized` to `Data.Bits.Compat` (if using `base-4.7`)
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft` and `isRight` to `Data.Either.Compat`
+ * Added `forkFinally` to `Control.Concurrent.Compat`
  * Added `withMVarMasked` function to `Control.Concurrent.MVar.Compat`
  * Added `(<$!>)` function to `Control.Monad.Compat`
  * Weakened `RealFloat` constraints on `realPart`, `imagPart`, `conjugate`, `mkPolar`,
@@ -100,8 +123,11 @@ So far the following is covered.
  * Added `($>)` and `void` functions to `Data.Functor.Compat`
  * `(&)` function to `Data.Function.Compat`
  * `($>)` and `void` functions to `Data.Functor.Compat`
+ * `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to `Data.IORef.Compat`
  * `dropWhileEnd`, `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List.Compat`
  * Correct versions of `nub`, `nubBy`, `union`, and `unionBy` to `Data.List.Compat`
+ * `modifySTRef'` to `Data.STRef.Compat`
+ * `String`, `lines`, `words`, `unlines`, and `unwords` to `Data.String.Compat`
  * `makeVersion` function to `Data.Version.Compat`
  * `traceId`, `traceShowId`, `traceM`, and `traceShowM` functions to `Debug.Trace.Compat`
  * `byteSwap16`, `byteSwap32`, and `byteSwap64` to `Data.Word.Compat`
@@ -111,9 +137,83 @@ So far the following is covered.
  * Added `Data.List.Compat.scanl'`
  * `showFFloatAlt` and `showGFloatAlt` to `Numeric.Compat`
  * `lookupEnv`, `setEnv` and `unsetEnv` to `System.Environment.Compat`
+ * `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
 
-## Supported versions of GHC/base
+## What is not covered
 
+### Data types and type classes
+`base-compat` purposefully does not export any data types or type classes that
+were introduced in more recent versions of `base`. The main reasoning for this
+policy is that it is not some data types and type classes have had their APIs
+change in different versions of `base`, which makes having a consistent
+compatibility API for them practically impossible.
+
+As an example, consider the `FiniteBits` type class. It was introduced in
+[`base-4.7.0.0`](http://hackage.haskell.org/package/base-4.7.0.0/docs/Data-Bits.html#t:FiniteBits)
+with the following API:
+
+```haskell
+class Bits b => FiniteBits b where
+    finiteBitSize :: b -> Int
+```
+
+However, in [`base-4.8.0.0`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Bits.html#t:FiniteBits),
+`FiniteBits` gained additional functions:
+
+```haskell
+class Bits b => FiniteBits b where
+    finiteBitSize :: b -> Int
+    countLeadingZeros :: b -> Int
+    countTrailingZeros :: b -> Int
+```
+
+This raises the question: how can `FiniteBits` be backported consistently
+across all versions of `base`? One approach is to backport the API exposed in
+`base-4.8.0.0` on versions prior to `4.7.0.0`. The problem with this is that
+`countLeadingZeros` and `countTrailingZeros` are not exposed in `base-4.7.0.0`,
+so instances of `FiniteBits` would have to be declared like this:
+
+```haskell
+instance FiniteBits Foo where
+    finiteBitSize = ...
+#if MIN_VERSION_base(4,8,0) || !(MIN_VERSION_base(4,7,0))
+    countLeadingZeros = ...
+    countTrailingZeros = ...
+#endif
+```
+
+This is a very unsatisfactory solution, and for this reason, we do not pursue
+it. For similar reasons, we do not backport data types.
+
+### Other compatibility packages
+
+If you _really_ need your favorite data type or type class in `base` to be
+backported, you might be in luck, since several data types have their own
+compatibility packages on Hackage. Here is a list of such packages:
+
+* [`bifunctors`](http://hackage.haskell.org/package/bifunctors)
+  for the [`Bifunctor`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Bifunctor.html#t:Bifunctor)
+  type class, introduced in `base-4.8.0.0`
+* [`generic-deriving`](http://hackage.haskell.org/package/generic-deriving)
+  for everything in the [`GHC.Generics`](http://hackage.haskell.org/package/base-4.8.0.0/docs/GHC-Generics.html)
+  module, introduced to `ghc-prim` in GHC 7.2 (and later moved to `base-4.6.0.0`)
+* [`nats`](http://hackage.haskell.org/package/nats)
+  for the [`Natural`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Numeric-Natural.html)
+  data type, introduced in `base-4.8.0.0`
+* [`tagged`](http://hackage.haskell.org/package/tagged)
+  for the [`Proxy`](http://hackage.haskell.org/package/base-4.7.0.0/docs/Data-Proxy.html#t:Proxy)
+  data type, introduced in `base-4.7.0.0`
+* [`transformers`](http://hackage.haskell.org/package/transformers)
+  for the [`Identity`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Functor-Identity.html#t:Identity)
+  data type, introduced in `base-4.8.0.0`
+* [`void`](http://hackage.haskell.org/package/void)
+  for the [`Void`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Void.html#t:Void)
+  data type, introduced in `base-4.8.0.0`
+
+## Supported versions of GHC/`base`
+
+ * `ghc-7.10.3` / `base-4.8.2.0`
+ * `ghc-7.10.2` / `base-4.8.1.0`
  * `ghc-7.10.1` / `base-4.8.0.0`
  * `ghc-7.8.4`  / `base-4.7.0.2`
  * `ghc-7.8.3`  / `base-4.7.0.1`
@@ -130,5 +230,9 @@ So far the following is covered.
  * `ghc-7.0.3`  / `base-4.3.1.0`
  * `ghc-7.0.2`  / `base-4.3.1.0`
  * `ghc-7.0.1`  / `base-4.3.0.0`
+
+We also make an attempt to keep `base-compat` building with GHC HEAD, but due
+to its volatility, it may not work at any given point in time. If it doesn't,
+please report it!
 
 Patches are welcome; add tests for new code!

@@ -6,7 +6,8 @@ module Debug.Trace.Compat (
 , traceM
 , traceShowM
 ) where
-#if !(MIN_VERSION_base(4,7,0))
+
+#if !(MIN_VERSION_base(4,7,0)) || MIN_VERSION_base(4,9,0)
 import Debug.Trace as Base
 #else
 import Debug.Trace as Base hiding (

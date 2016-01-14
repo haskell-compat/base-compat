@@ -1,4 +1,6 @@
 ## Changes in next
+ - Weakened `RealFloat` constraints on `realPart`, `imagPart`, `conjugate`,
+   `mkPolar`, and `cis` in `Data.Complex.Compat`
  - Backport `Foreign.ForeignPtr.Safe` and `Foreign.Marshal.Safe`
  - Backport `.Unsafe.Compat` modules (for `Control.Monad.ST`,
    `Control.Monad.ST.Lazy`, `Foreign.ForeignPtr`, and `Foreign.Marshal`)

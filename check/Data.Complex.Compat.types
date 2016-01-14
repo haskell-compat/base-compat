@@ -1,0 +1,8 @@
+cis :: GHC.Float.Floating a => a -> Complex a
+conjugate :: GHC.Num.Num a => Complex a -> Complex a
+imagPart :: Complex a -> a
+magnitude :: GHC.Float.RealFloat a => Complex a -> a
+mkPolar :: GHC.Float.Floating a => a -> a -> Complex a
+phase :: GHC.Float.RealFloat a => Complex a -> a
+polar :: GHC.Float.RealFloat a => Complex a -> (a, a)
+realPart :: Complex a -> a

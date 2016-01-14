@@ -65,6 +65,7 @@ library
       Control.Monad.ST.Unsafe.Compat
       Data.Bits.Compat
       Data.Bool.Compat
+      Data.Complex.Compat
       Data.Either.Compat
       Data.Foldable.Compat
       Data.Function.Compat

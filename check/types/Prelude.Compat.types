@@ -63,6 +63,7 @@ enumFromThenTo :: Enum a => a -> a -> a -> [a]
 enumFromTo :: Enum a => a -> a -> [a]
 EQ :: Ordering
 error :: [Char] -> a
+errorWithoutStackTrace :: [Char] -> a
 even :: Integral a => a -> Bool
 exp :: Floating a => a -> a
 exponent :: RealFloat a => a -> Int

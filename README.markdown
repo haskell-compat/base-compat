@@ -14,7 +14,7 @@
 [tl;dr Legal: MIT]:
   https://tldrlegal.com/license/mit-license
   "MIT License"
-  
+
 ## Scope
 
 The scope of `base-compat` is to provide functions available in later versions
@@ -105,7 +105,7 @@ So far the following is covered.
 ### For compatibility with the latest released version of `base`
 
  * `Prelude.Compat` incorporates the AMP/Foldable/Traversable changes and
-   exposes the same interface as `Prelude` from `base-4.8.0.0`
+   exposes the same interface as `Prelude` from `base-4.9.0.0`
  * `System.IO.Error.catch` is not re-exported from `Prelude.Compat` for older
    versions of `base`
  * `Text.Read.Compat.readMaybe`
@@ -200,18 +200,49 @@ compatibility packages on Hackage. Here is a list of such packages:
 * [`nats`](http://hackage.haskell.org/package/nats)
   for the [`Natural`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Numeric-Natural.html)
   data type, introduced in `base-4.8.0.0`
+* [`semigroups`](http://hackage.haskell.org/package/semigroups)
+  for the [`Semigroup`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Semigroup)
+  typeclass and the
+  [`NonEmpty`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-List-NonEmpty.html#t:NonEmpty),
+  [`Min`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Min),
+  [`Max`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Max),
+  [`First`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:First),
+  [`Last`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Last),
+  [`WrappedMonoid`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:WrappedMonoid),
+  [`Option`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Option),
+  and
+  [`Arg`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Arg)
+  data types, introduced in `base-4.9.0.0`
 * [`tagged`](http://hackage.haskell.org/package/tagged)
   for the [`Proxy`](http://hackage.haskell.org/package/base-4.7.0.0/docs/Data-Proxy.html#t:Proxy)
   data type, introduced in `base-4.7.0.0`
 * [`transformers`](http://hackage.haskell.org/package/transformers)
-  for the [`Identity`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Functor-Identity.html#t:Identity)
-  data type, introduced in `base-4.8.0.0`
+  for:
+  * The [`Identity`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Functor-Identity.html#t:Identity)
+    data type, introduced in `base-4.8.0.0`
+  * The [`MonadIO`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Control-Monad-IO-Class.html#t:MonadIO),
+    [`Eq1`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Classes.html#t:Eq1),
+    [`Eq2`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Classes.html#t:Eq2),
+    [`Ord1`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Classes.html#t:Ord1),
+    [`Ord2`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Classes.html#t:Ord2),
+    [`Read1`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Classes.html#t:Read1),
+    [`Read2`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Classes.html#t:Read2),
+    [`Show1`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Classes.html#t:Show1),
+    and
+    [`Show2`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Classes.html#t:Show2)
+    typeclasses; and the
+    [`Compose`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Compose.html#t:Compose),
+    [`Product`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Product.html#t:Product),
+    and
+    [`Sum`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Sum.html#t:Sum)
+    data types, introduced in `base-4.9.0.0`
 * [`void`](http://hackage.haskell.org/package/void)
   for the [`Void`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Void.html#t:Void)
   data type, introduced in `base-4.8.0.0`
 
 ## Supported versions of GHC/`base`
 
+ * `ghc-8.0.1`  / `base-4.9.0.0`
  * `ghc-7.10.3` / `base-4.8.2.0`
  * `ghc-7.10.2` / `base-4.8.1.0`
  * `ghc-7.10.1` / `base-4.8.0.0`

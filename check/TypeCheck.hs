@@ -34,6 +34,7 @@ modules = do
       excluded = [
 #if !(MIN_VERSION_base(4,4,0))
           "Data.Complex.Compat"
+        , "Data.Ratio.Compat"
 #endif
         ]
 

@@ -1,3 +1,3 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 module Test where
-import Data.Complex.Compat
+import Data.Ratio.Compat

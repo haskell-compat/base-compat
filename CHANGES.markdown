@@ -1,16 +1,25 @@
 ## Changes in next
+ - Sync with `base-4.9`/GHC 8.0
  - Weakened `RealFloat` constraints on `realPart`, `imagPart`, `conjugate`,
    `mkPolar`, and `cis` in `Data.Complex.Compat`
  - Backport `Foreign.ForeignPtr.Safe` and `Foreign.Marshal.Safe`
+ - Generalize `filterM`, `forever`, `mapAndUnzipM`, `zipWithM`, `zipWithM_`,
+   `replicateM`, and `replicateM_` in `Control.Monad` from `Monad` to
+   `Applicative`
  - Backport `.Unsafe.Compat` modules (for `Control.Monad.ST`,
    `Control.Monad.ST.Lazy`, `Foreign.ForeignPtr`, and `Foreign.Marshal`)
- - Backport `forkFinally` to `Control.Concurrent.Compat`
+ - Backport `forkFinally` and `forkOSWithUnmask` to `Control.Concurrent.Compat`
+ - Backport `Data.Functor.Const`
  - Backport `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to
    `Data.IORef.Compat`
+ - `Data.Ratio.{denominator,numerator}` have no `Integral` constraint anymore
  - Backport `modifySTRef'` to `Data.STRef.Compat`
  - Export `String`, `lines`, `words`, `unlines`, and `unwords` to
    `Data.String.Compat`
- - Backport `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
+ - Generalize `Debug.Trace.{traceM, traceShowM}` from `Monad` to `Applicative`
+ - Backport `errorWithoutStackTrace` to `Prelude.Compat`
+ - Backport `unsafeFixIO` and `unsafeDupablePerformIO` to
+   `System.IO.Unsafe.Compat`
 
 ## Changes in 0.8.2
  - Backport `bitDefault`, `testBitDefault`, and `popCountDefault` in

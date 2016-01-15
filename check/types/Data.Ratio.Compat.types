@@ -1,0 +1,4 @@
+(%) :: GHC.Real.Integral a => a -> a -> Ratio a
+approxRational :: GHC.Real.RealFrac a => a -> a -> Rational
+denominator :: Ratio a -> a
+numerator :: Ratio a -> a

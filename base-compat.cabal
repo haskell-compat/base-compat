@@ -70,9 +70,11 @@ library
       Data.Foldable.Compat
       Data.Function.Compat
       Data.Functor.Compat
+      Data.Functor.Const.Compat
       Data.IORef.Compat
       Data.List.Compat
       Data.Monoid.Compat
+      Data.Ratio.Compat
       Data.STRef.Compat
       Data.String.Compat
       Data.Version.Compat

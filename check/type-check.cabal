@@ -50,4 +50,4 @@ test-suite type-check-test
     , hspec >= 1.8
     , HUnit >= 1.2.5
     , process >= 1.0.1.1
-    , temporary-rc
+    , temporary

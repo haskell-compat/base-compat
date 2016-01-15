@@ -1,4 +1,4 @@
-## Changes in next
+## Changes in 0.9.0
  - Sync with `base-4.9`/GHC 8.0
  - Weakened `RealFloat` constraints on `realPart`, `imagPart`, `conjugate`,
    `mkPolar`, and `cis` in `Data.Complex.Compat`

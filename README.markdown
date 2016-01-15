@@ -40,7 +40,7 @@ In your cabal file, you should have something like this:
 
 ```
   build-depends:      base              >= 4.3
-                    , base-compat       >= 0.8.0
+                    , base-compat       >= 0.9.0
 ```
 
 Then, lets say you want to use the `isRight` function introduced with

@@ -7,9 +7,9 @@ author:              Simon Hengel <sol@typeful.net>,
 maintainer:          Simon Hengel <sol@typeful.net>,
                      João Cristóvão <jmacristovao@gmail.com>,
                      Ryan Scott <ryan.gl.scott@gmail.com>
-copyright:           (c) 2012-2015 Simon Hengel,
-                     (c) 2014 João Cristóvão,
-                     (c) 2015 Ryan Scott
+copyright:           (c) 2012-2016 Simon Hengel,
+                     (c) 2014-2016 João Cristóvão,
+                     (c) 2015-2016 Ryan Scott
 category:            Compatibility
 build-type:          Simple
 cabal-version:       >=1.10

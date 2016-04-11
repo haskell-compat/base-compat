@@ -171,14 +171,22 @@ replicateM        :: (Applicative m) => Int -> m a -> m [a]
 {-# INLINEABLE replicateM #-}
 {-# SPECIALISE replicateM :: Int -> IO a -> IO [a] #-}
 {-# SPECIALISE replicateM :: Int -> Maybe a -> Maybe [a] #-}
-replicateM 0 _    = pure []
-replicateM n x    = liftA2 (:) x (replicateM (pred n) x)
+replicateM cnt0 f =
+    loop cnt0
+  where
+    loop cnt
+        | cnt <= 0  = pure []
+        | otherwise = liftA2 (:) f (loop (cnt - 1))
 
 -- | Like 'replicateM', but discards the result.
 replicateM_       :: (Applicative m) => Int -> m a -> m ()
 {-# INLINEABLE replicateM_ #-}
 {-# SPECIALISE replicateM_ :: Int -> IO a -> IO () #-}
 {-# SPECIALISE replicateM_ :: Int -> Maybe a -> Maybe () #-}
-replicateM_ 0 _   = pure ()
-replicateM_ n x   = x *> replicateM_ (pred n) x
+replicateM_ cnt0 f =
+    loop cnt0
+  where
+    loop cnt
+        | cnt <= 0  = pure ()
+        | otherwise = f *> loop (cnt - 1)
 #endif

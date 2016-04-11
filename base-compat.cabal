@@ -50,7 +50,7 @@ library
       -Wall
   build-depends:
       base >= 4.3 && < 5
-  if !os(windows)
+  if !os(windows) && !os(halvm)
       build-depends: unix
   ghc-options:
       -fno-warn-duplicate-exports

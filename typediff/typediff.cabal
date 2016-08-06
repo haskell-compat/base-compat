@@ -1,4 +1,4 @@
--- This file has been generated from package.yaml by hpack.
+-- This file has been generated from package.yaml by hpack version 0.14.1.
 --
 -- see: https://github.com/sol/hpack
 
@@ -8,31 +8,34 @@ build-type:       Simple
 cabal-version:    >= 1.10
 
 executable typediff
-  hs-source-dirs: driver, src
+  hs-source-dirs:
+      driver
+    , src
   main-is: Main.hs
   other-modules:
       TypeDiff
   build-depends:
-      base == 4.*
+      base >= 4.7
     , containers
     , uniplate
-    , haskell-src-exts
+    , haskell-src-exts-simple
   ghc-options: -Wall
   default-language: Haskell2010
 
 test-suite spec
   type: exitcode-stdio-1.0
-  hs-source-dirs: test, src
+  hs-source-dirs:
+      test
+    , src
   main-is: Spec.hs
   other-modules:
       TypeDiffSpec
       TypeDiff
   build-depends:
-      base == 4.*
+      base >= 4.7
     , containers
     , uniplate
-    , haskell-src-exts
-
+    , haskell-src-exts-simple
     , hspec == 2.*
   ghc-options: -Wall
   default-language: Haskell2010

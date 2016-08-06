@@ -13,8 +13,8 @@ import           Data.Maybe
 import           Data.List
 import           Data.Map as Map (Map)
 import qualified Data.Map as Map
-import           Language.Haskell.Exts.Syntax
-import           Language.Haskell.Exts.Parser
+import           Language.Haskell.Exts.Simple.Syntax
+import           Language.Haskell.Exts.Simple.Parser
 
 import           Data.Generics.Uniplate.Data
 
@@ -73,13 +73,23 @@ typeEq t1 t2 = normalize t1 == normalize t2
 
 sortConstrains :: Type -> Type
 sortConstrains x = case x of
-  TyForall a1 constrains a2 -> TyForall a1 (sort constrains) a2
+  TyForall a1 constrains a2 -> TyForall a1 (fmap sortContext constrains) a2
   _ -> x
+
+sortContext :: Context -> Context
+sortContext x = case x of
+  CxTuple assts -> CxTuple (sort assts)
+  _             -> x
 
 normalizeConstrains :: Type -> Type
 normalizeConstrains t = case t of
-  TyForall a1 [ParenA a2] a3 -> TyForall a1 [a2] a3
+  TyForall a1 a2 a3 -> TyForall a1 (fmap normalizeContext a2) a3
   _ -> t
+
+normalizeContext :: Context -> Context
+normalizeContext x = case x of
+  CxSingle (ParenA a) -> CxSingle a
+  _                   -> x
 
 alphaNormalize :: Type -> Type
 alphaNormalize t = transformBi f t

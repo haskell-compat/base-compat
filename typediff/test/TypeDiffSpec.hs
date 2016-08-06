@@ -3,7 +3,7 @@ module TypeDiffSpec (main, spec) where
 import           Test.Hspec
 
 import           Data.Map (fromList)
-import           Language.Haskell.Exts.Parser
+import           Language.Haskell.Exts.Simple.Parser
 import           TypeDiff
 
 main :: IO ()

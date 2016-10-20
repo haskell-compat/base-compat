@@ -1,6 +1,6 @@
 # This file has been generated -- see https://github.com/hvr/multi-ghc-travis
 language: c
-sudo: true
+sudo: false
 
 cache:
   directories:
@@ -81,6 +81,11 @@ matrix:
 before_install:
  - unset CC
  - export PATH=$HOME/.cabal/bin:/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH
+# Sadly, we can't install the tests on GHC 7.2.1 due to a Safe Haskell bug
+ - if [ "$GHCVER" != "7.2.1" ];
+   then
+     export TEST_OPTS=--enable-tests;
+   fi
 
 install:
  - cabal --version
@@ -90,13 +95,14 @@ install:
      zcat $HOME/.cabal/packages/hackage.haskell.org/00-index.tar.gz >
           $HOME/.cabal/packages/hackage.haskell.org/00-index.tar;
    fi
- - |
-   if [ "$GHCVER" = "7.2.1" ]; then
-     sudo /opt/ghc/$GHCVER/bin/ghc-pkg trust base # To avoid a SafeHaskell bug on GHC 7.2.1
-   fi
  - travis_retry cabal update -v
  - sed -i 's/^jobs:/-- jobs:/' ${HOME}/.cabal/config
- - cabal install --only-dependencies --enable-tests --enable-benchmarks . check/ --dry -v > installplan.txt
+ - if [ -n "$TEST_OPTS" ];
+   then
+     cabal install --only-dependencies $TEST_OPTS . check/ --dry -v > installplan.txt;
+   else
+     cabal install --only-dependencies --dry -v > installplan.txt;
+   fi
  - sed -i -e '1,/^Resolving /d' installplan.txt; cat installplan.txt
 
 # check whether current requested install-plan matches cached package-db snapshot
@@ -110,7 +116,12 @@ install:
      echo "cabal build-cache MISS";
      rm -rf $HOME/.cabsnap;
      mkdir -p $HOME/.ghc $HOME/.cabal/lib $HOME/.cabal/share $HOME/.cabal/bin;
-     cabal install -j --only-dependencies --enable-tests --enable-benchmarks . check/;
+     if [ -n "$TEST_OPTS" ];
+     then
+       cabal install -j --only-dependencies $TEST_OPTS . check/;
+     else
+       cabal install -j --only-dependencies;
+     fi
    fi
 
 # snapshot package-db on cache miss
@@ -125,18 +136,24 @@ install:
 # Here starts the actual work to be performed for the package under test;
 # any command which exits with a non-zero exit code causes the build to fail.
 script:
- - cabal configure --enable-tests --enable-benchmarks --ghc-options=-Werror -v2  # -v2 provides useful information for debugging
+ - cabal configure $TEST_OPTS --ghc-options=-Werror -v2  # -v2 provides useful information for debugging
  - cabal build # this builds all libraries and executables (including tests/benchmarks)
- - cabal test --show-details=always
+ - if [ -n "$TEST_OPTS" ];
+   then
+     cabal test --show-details=always;
+   fi
  - cabal check
  - cabal sdist
- - cabal copy
- - cabal register
- - cd check/
- - wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.0/typediff
- - chmod +x typediff
- - cabal configure --enable-tests --enable-benchmarks -v2
- - cabal build
- - PATH=./:$PATH cabal test --show-details=always
+ - if [ -n "$TEST_OPTS" ];
+   then
+     cabal copy;
+     cabal register;
+     cd check/;
+     wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.0/typediff;
+     chmod +x typediff;
+     cabal configure $TEST_OPTS -v2;
+     cabal build;
+     PATH=./:$PATH cabal test --show-details=always;
+   fi
 
 # EOF

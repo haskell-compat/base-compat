@@ -2,9 +2,9 @@ name:             base-compat
 version:          0.9.1
 license:          MIT
 license-file:     LICENSE
-copyright:        (c) 2012-2016 Simon Hengel,
-                  (c) 2014-2016 João Cristóvão,
-                  (c) 2015-2016 Ryan Scott
+copyright:        (c) 2012-2017 Simon Hengel,
+                  (c) 2014-2017 João Cristóvão,
+                  (c) 2015-2017 Ryan Scott
 author:           Simon Hengel <sol@typeful.net>,
                   João Cristóvão <jmacristovao@gmail.com>,
                   Ryan Scott <ryan.gl.scott@gmail.com>

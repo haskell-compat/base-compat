@@ -1,3 +1,13 @@
+## Changes in next
+ - Sync with `base-4.10`/GHC 8.2
+ - Backport `fromLeft`/`fromRight` to `Data.Either.Compat`
+ - Backport implementations of `maximumBy`/`minimumBy` which use constant stack
+   space to `Data.Foldable.Compat`
+ - Backport `asProxyTypeOf` with a generalized type signature to
+   `Data.Proxy.Compat`
+ - Backport `gcoerceWith` to `Data.Type.Coercion.Compat`
+ - Backport `plusForeignPtr` to `Foreign.ForeignPtr.Compat`
+
 ## Changes in 0.9.1
  - Use the more efficient version of `replicateM` and `replicateM_` introduced
    in `base-4.9`

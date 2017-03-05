@@ -75,13 +75,16 @@ library
       Data.IORef.Compat
       Data.List.Compat
       Data.Monoid.Compat
+      Data.Proxy.Compat
       Data.Ratio.Compat
       Data.STRef.Compat
       Data.String.Compat
+      Data.Type.Coercion.Compat
       Data.Version.Compat
       Data.Word.Compat
       Debug.Trace.Compat
       Foreign.Compat
+      Foreign.ForeignPtr.Compat
       Foreign.ForeignPtr.Safe.Compat
       Foreign.ForeignPtr.Unsafe.Compat
       Foreign.Marshal.Alloc.Compat
@@ -111,6 +114,7 @@ test-suite spec
       Data.Bits.CompatSpec
       Data.Bool.CompatSpec
       Data.Either.CompatSpec
+      Data.Foldable.CompatSpec
       Data.Function.CompatSpec
       Data.Functor.CompatSpec
       Data.IORef.CompatSpec

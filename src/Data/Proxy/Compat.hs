@@ -1,9 +1,9 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Data.Proxy.Compat (
 #if MIN_VERSION_base(4,7,0)
-  module Base
+  module Base,
 #endif
-, asProxyTypeOf
+  asProxyTypeOf
 ) where
 
 #if MIN_VERSION_base(4,7,0)

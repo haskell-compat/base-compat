@@ -1,3 +1,6 @@
+## Changes in 0.9.2
+ - Allow building on the HaLVM
+
 ## Changes in 0.9.1
  - Use the more efficient version of `replicateM` and `replicateM_` introduced
    in `base-4.9`

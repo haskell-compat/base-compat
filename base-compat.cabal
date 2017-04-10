@@ -39,6 +39,7 @@ tested-with:        GHC == 7.0.1,  GHC == 7.0.2,  GHC == 7.0.3,  GHC == 7.0.4
                   , GHC == 7.8.1,  GHC == 7.8.2,  GHC == 7.8.3,  GHC == 7.8.4
                   , GHC == 7.10.1, GHC == 7.10.2, GHC == 7.10.3
                   , GHC == 8.0.1,  GHC == 8.0.2
+                  , GHC == 8.2.1
 extra-source-files: CHANGES.markdown, README.markdown
 
 source-repository head
@@ -75,13 +76,16 @@ library
       Data.IORef.Compat
       Data.List.Compat
       Data.Monoid.Compat
+      Data.Proxy.Compat
       Data.Ratio.Compat
       Data.STRef.Compat
       Data.String.Compat
+      Data.Type.Coercion.Compat
       Data.Version.Compat
       Data.Word.Compat
       Debug.Trace.Compat
       Foreign.Compat
+      Foreign.ForeignPtr.Compat
       Foreign.ForeignPtr.Safe.Compat
       Foreign.ForeignPtr.Unsafe.Compat
       Foreign.Marshal.Alloc.Compat
@@ -111,6 +115,7 @@ test-suite spec
       Data.Bits.CompatSpec
       Data.Bool.CompatSpec
       Data.Either.CompatSpec
+      Data.Foldable.CompatSpec
       Data.Function.CompatSpec
       Data.Functor.CompatSpec
       Data.IORef.CompatSpec

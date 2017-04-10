@@ -114,23 +114,27 @@ So far the following is covered.
  * Added `bitDefault`, `testBitDefault`, and `popCountDefault` to `Data.Bits.Compat`
  * Added `toIntegralSized` to `Data.Bits.Compat` (if using `base-4.7`)
  * Added `bool` function to `Data.Bool.Compat`
- * Added `isLeft` and `isRight` to `Data.Either.Compat`
+ * Added `isLeft`, `isRight`, `fromLeft`, and `fromRight` to `Data.Either.Compat`
  * Added `forkFinally` to `Control.Concurrent.Compat`
  * Added `withMVarMasked` function to `Control.Concurrent.MVar.Compat`
  * Added `(<$!>)` function to `Control.Monad.Compat`
  * Weakened `RealFloat` constraints on `realPart`, `imagPart`, `conjugate`, `mkPolar`,
    and `cis` in `Data.Complex.Compat`
+ * Added more efficient `maximumBy`/`minimumBy` to `Data.Foldable.Compat`
  * Added `($>)` and `void` functions to `Data.Functor.Compat`
  * `(&)` function to `Data.Function.Compat`
  * `($>)` and `void` functions to `Data.Functor.Compat`
  * `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to `Data.IORef.Compat`
  * `dropWhileEnd`, `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List.Compat`
  * Correct versions of `nub`, `nubBy`, `union`, and `unionBy` to `Data.List.Compat`
+ * `asProxyTypeOf` with a generalized type signature to `Data.Proxy.Compat`
  * `modifySTRef'` to `Data.STRef.Compat`
  * `String`, `lines`, `words`, `unlines`, and `unwords` to `Data.String.Compat`
+ * `gcoerceWith` to `Data.Type.Coercion.Compat`
  * `makeVersion` function to `Data.Version.Compat`
  * `traceId`, `traceShowId`, `traceM`, and `traceShowM` functions to `Debug.Trace.Compat`
  * `byteSwap16`, `byteSwap32`, and `byteSwap64` to `Data.Word.Compat`
+ * `plusForeignPtr` to `Foreign.ForeignPtr.Compat`
  * `calloc` and `callocBytes` functions to `Foreign.Marshal.Alloc.Compat`
  * `callocArray` and `callocArray0` functions to `Foreign.Marshal.Array.Compat`
  * `fillBytes` to `Foreign.Marshal.Utils.Compat`
@@ -192,8 +196,12 @@ backported, you might be in luck, since several data types have their own
 compatibility packages on Hackage. Here is a list of such packages:
 
 * [`bifunctors`](http://hackage.haskell.org/package/bifunctors)
-  for the [`Bifunctor`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Bifunctor.html#t:Bifunctor)
-  type class, introduced in `base-4.8.0.0`
+  for:
+  * The [`Bifunctor`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Bifunctor.html#t:Bifunctor)
+    type class, introduced in `base-4.8.0.0`
+  * The [`Bifoldable`](http://hackage.haskell.org/package/base-4.10.0.0/docs/Data-Bifoldable.html#t:Bifoldable)
+    and [`Bitraversable`](http://hackage.haskell.org/package/base-4.10.0.0/docs/Data-Bitraversable.html#t:Bitraversable)
+    type classes, introduced in `base-4.10.0.0`
 * [`fail`](http://hackage.haskell.org/package/fail)
   for the [`MonadFail`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Control-Monad-Fail.html#t:MonadFail)
   type class, introduced in `base-4.9.0.0`
@@ -245,6 +253,7 @@ compatibility packages on Hackage. Here is a list of such packages:
 
 ## Supported versions of GHC/`base`
 
+ * `ghc-8.2.1`  / `base-4.10.0.0`
  * `ghc-8.0.2`  / `base-4.9.1.0`
  * `ghc-8.0.1`  / `base-4.9.0.0`
  * `ghc-7.10.3` / `base-4.8.2.0`

@@ -10,9 +10,9 @@ module Data.Type.Coercion.Compat (
 #if MIN_VERSION_base(4,7,0)
 import Data.Type.Coercion as Base
 
+# if !(MIN_VERSION_base(4,10,0))
 import Data.Coerce (Coercible)
 
-# if !(MIN_VERSION_base(4,10,0))
 -- | Generalized form of type-safe cast using representational equality
 --
 -- /Since: 4.10.0.0/

@@ -1,4 +1,4 @@
-## Changes in next
+## Changes in 0.9.3 [2017.04.10]
  - Sync with `base-4.10`/GHC 8.2
  - Backport `fromLeft`/`fromRight` to `Data.Either.Compat`
  - Backport implementations of `maximumBy`/`minimumBy` which use constant stack

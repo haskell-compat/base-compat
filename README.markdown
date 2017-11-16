@@ -167,13 +167,13 @@ However, in [`base-4.8.0.0`](http://hackage.haskell.org/package/base-4.8.0.0/doc
 ```haskell
 class Bits b => FiniteBits b where
     finiteBitSize :: b -> Int
-    countLeadingZeros :: b -> Int
-    countTrailingZeros :: b -> Int
+    countLeadingZeros :: b -> Int   -- ^ @since 4.8.0.0
+    countTrailingZeros :: b -> Int  -- ^ @since 4.8.0.0
 ```
 
 This raises the question: how can `FiniteBits` be backported consistently
 across all versions of `base`? One approach is to backport the API exposed in
-`base-4.8.0.0` on versions prior to `4.7.0.0`. The problem with this is that
+`base-4.8.0.0` on versions prior to `4.7.0.0`.  The problem with this is that
 `countLeadingZeros` and `countTrailingZeros` are not exposed in `base-4.7.0.0`,
 so instances of `FiniteBits` would have to be declared like this:
 
@@ -186,8 +186,33 @@ instance FiniteBits Foo where
 #endif
 ```
 
-This is a very unsatisfactory solution, and for this reason, we do not pursue
-it. For similar reasons, we do not backport data types.
+Another approach is to backport the API from `base-4.7.0.0` and to declare
+additional methods outside of the class:
+
+```haskell
+#if MIN_VERSION_base(4,7,0) && !(MIN_VERSION_base(4,8,0))
+countLeadingZeros :: FiniteBits b => b -> Int
+countLeadingZeros = {- default implementation #-}
+#endif
+```
+
+The situation is only slightly better for classes which exist across all versions of `base`,
+but have grown their API. For example, it's tempting to define
+
+```haskell
+#if !(MIN_VERSION_base(4,8,0))
+displayException :: Exception e => e -> String
+displayException = show
+#endif
+```
+
+As with the previous approach, you won't be able to define new members of the type
+class without CPP guards. In other words, the non-CPP approach would limit
+uses to the lowest common denominator.
+
+As neither approach is a very satisfactory solution, and to embrace
+consistency, we do not pursue either approach. For similar reasons, we do not
+backport data types.
 
 ### Other compatibility packages
 

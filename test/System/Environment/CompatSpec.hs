@@ -2,7 +2,9 @@
 module System.Environment.CompatSpec (main, spec) where
 
 import           Test.Hspec
+#if __GLASGOW_HASKELL__ >= 702
 import           Test.QuickCheck
+#endif
 
 import qualified Control.Exception as E
 import           GHC.IO.Exception (IOErrorType (InvalidArgument))

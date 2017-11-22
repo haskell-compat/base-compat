@@ -114,7 +114,9 @@ spec = do
     it "throws an exception if key contains '='" $ do
       setEnv "some=key" "foo" `shouldThrow` (== InvalidArgument) . ioeGetErrorType
 
+#if __GLASGOW_HASKELL__ >= 702
     it "works for arbitrary keys" $
       property $ \k -> ('\NUL' `notElem` k && '=' `notElem` k && (not . null) k) ==> do
         setEnv k "foo"
         getEnv k `shouldReturn` "foo"
+#endif

@@ -14,7 +14,7 @@ deleteFirstsBy :: (a -> a -> GHC.Types.Bool) -> [a] -> [a] -> [a]
 drop :: GHC.Types.Int -> [a] -> [a]
 dropWhile :: (a -> GHC.Types.Bool) -> [a] -> [a]
 dropWhileEnd :: (a -> GHC.Types.Bool) -> [a] -> [a]
-elem :: (GHC.Classes.Eq a, Data.Foldable.Foldable t) =>    a -> t a -> GHC.Types.Bool
+elem :: (Data.Foldable.Foldable t, GHC.Classes.Eq a) =>    a -> t a -> GHC.Types.Bool
 elemIndex :: GHC.Classes.Eq a => a -> [a] -> GHC.Base.Maybe GHC.Types.Int
 elemIndices :: GHC.Classes.Eq a => a -> [a] -> [GHC.Types.Int]
 filter :: (a -> GHC.Types.Bool) -> [a] -> [a]
@@ -49,6 +49,7 @@ isPrefixOf :: GHC.Classes.Eq a => [a] -> [a] -> GHC.Types.Bool
 isSubsequenceOf :: GHC.Classes.Eq a => [a] -> [a] -> GHC.Types.Bool
 isSuffixOf :: GHC.Classes.Eq a => [a] -> [a] -> GHC.Types.Bool
 iterate :: (a -> a) -> a -> [a]
+iterate' :: (a -> a) -> a -> [a]
 last :: [a] -> a
 length :: Data.Foldable.Foldable t => t a -> GHC.Types.Int
 lines :: GHC.Base.String -> [GHC.Base.String]
@@ -56,18 +57,18 @@ lookup :: GHC.Classes.Eq a => a -> [(a, b)] -> GHC.Base.Maybe b
 map :: (a -> b) -> [a] -> [b]
 mapAccumL :: Data.Traversable.Traversable t =>    (a -> b -> (a, c)) -> a -> t b -> (a, t c)
 mapAccumR :: Data.Traversable.Traversable t =>    (a -> b -> (a, c)) -> a -> t b -> (a, t c)
-maximum :: (GHC.Classes.Ord a, Data.Foldable.Foldable t) => t a -> a
+maximum :: (Data.Foldable.Foldable t, GHC.Classes.Ord a) => t a -> a
 maximumBy :: Data.Foldable.Foldable t =>    (a -> a -> GHC.Types.Ordering) -> t a -> a
-minimum :: (GHC.Classes.Ord a, Data.Foldable.Foldable t) => t a -> a
+minimum :: (Data.Foldable.Foldable t, GHC.Classes.Ord a) => t a -> a
 minimumBy :: Data.Foldable.Foldable t =>    (a -> a -> GHC.Types.Ordering) -> t a -> a
-notElem :: (GHC.Classes.Eq a, Data.Foldable.Foldable t) =>    a -> t a -> GHC.Types.Bool
+notElem :: (Data.Foldable.Foldable t, GHC.Classes.Eq a) =>    a -> t a -> GHC.Types.Bool
 nub :: GHC.Classes.Eq a => [a] -> [a]
 nubBy :: (a -> a -> GHC.Types.Bool) -> [a] -> [a]
 null :: Data.Foldable.Foldable t => t a -> GHC.Types.Bool
 or :: Data.Foldable.Foldable t => t GHC.Types.Bool -> GHC.Types.Bool
 partition :: (a -> GHC.Types.Bool) -> [a] -> ([a], [a])
 permutations :: [a] -> [[a]]
-product :: (GHC.Num.Num a, Data.Foldable.Foldable t) => t a -> a
+product :: (Data.Foldable.Foldable t, GHC.Num.Num a) => t a -> a
 repeat :: a -> [a]
 replicate :: GHC.Types.Int -> a -> [a]
 reverse :: [a] -> [a]
@@ -83,7 +84,7 @@ span :: (a -> GHC.Types.Bool) -> [a] -> ([a], [a])
 splitAt :: GHC.Types.Int -> [a] -> ([a], [a])
 stripPrefix :: GHC.Classes.Eq a => [a] -> [a] -> GHC.Base.Maybe [a]
 subsequences :: [a] -> [[a]]
-sum :: (GHC.Num.Num a, Data.Foldable.Foldable t) => t a -> a
+sum :: (Data.Foldable.Foldable t, GHC.Num.Num a) => t a -> a
 tail :: [a] -> [a]
 tails :: [a] -> [[a]]
 take :: GHC.Types.Int -> [a] -> [a]

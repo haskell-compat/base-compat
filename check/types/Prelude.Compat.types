@@ -1,6 +1,7 @@
 (^^) :: (Fractional a, Integral b) => a -> b -> a
 (^) :: (Integral b, Num a) => a -> b -> a
 (<=) :: Ord a => a -> a -> Bool
+(<>) :: Semigroup a => a -> a -> a
 (<) :: Ord a => a -> a -> Bool
 (<$>) :: Functor f => (a -> b) -> f a -> f b
 (<$) :: Functor f => a -> f b -> f a
@@ -40,7 +41,7 @@ atan :: Floating a => a -> a
 atan2 :: RealFloat a => a -> a -> a
 atanh :: Floating a => a -> a
 break :: (a -> Bool) -> [a] -> ([a], [a])
-ceiling :: (Integral b, RealFrac a) => a -> b
+ceiling :: (RealFrac a, Integral b) => a -> b
 compare :: Ord a => a -> a -> Ordering
 concat :: Foldable t => t [a] -> [a]
 concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
@@ -55,7 +56,7 @@ divMod :: Integral a => a -> a -> (a, a)
 drop :: Int -> [a] -> [a]
 dropWhile :: (a -> Bool) -> [a] -> [a]
 either :: (a -> c) -> (b -> c) -> Either a b -> c
-elem :: (Eq a, Foldable t) => a -> t a -> Bool
+elem :: (Foldable t, Eq a) => a -> t a -> Bool
 encodeFloat :: RealFloat a => Integer -> Int -> a
 enumFrom :: Enum a => a -> [a]
 enumFromThen :: Enum a => a -> a -> [a]
@@ -74,7 +75,7 @@ flip :: (a -> b -> c) -> b -> a -> c
 floatDigits :: RealFloat a => a -> Int
 floatRadix :: RealFloat a => a -> Integer
 floatRange :: RealFloat a => a -> (Int, Int)
-floor :: (Integral b, RealFrac a) => a -> b
+floor :: (RealFrac a, Integral b) => a -> b
 fmap :: Functor f => (a -> b) -> f a -> f b
 foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
 foldl1 :: Foldable t => (a -> a -> a) -> t a -> a
@@ -114,22 +115,22 @@ logBase :: Floating a => a -> a -> a
 lookup :: Eq a => a -> [(a, b)] -> Maybe b
 LT :: Ordering
 map :: (a -> b) -> [a] -> [b]
-mapM :: (Monad m, Traversable t) => (a -> m b) -> t a -> m (t b)
-mapM_ :: (Monad m, Foldable t) => (a -> m b) -> t a -> m ()
+mapM :: (Traversable t, Monad m) => (a -> m b) -> t a -> m (t b)
+mapM_ :: (Foldable t, Monad m) => (a -> m b) -> t a -> m ()
 mappend :: Monoid a => a -> a -> a
 max :: Ord a => a -> a -> a
 maxBound :: Bounded a => a
-maximum :: (Ord a, Foldable t) => t a -> a
+maximum :: (Foldable t, Ord a) => t a -> a
 maybe :: b -> (a -> b) -> Maybe a -> b
 mconcat :: Monoid a => [a] -> a
 mempty :: Monoid a => a
 min :: Ord a => a -> a -> a
 minBound :: Bounded a => a
-minimum :: (Ord a, Foldable t) => t a -> a
+minimum :: (Foldable t, Ord a) => t a -> a
 mod :: Integral a => a -> a -> a
 negate :: Num a => a -> a
 not :: Bool -> Bool
-notElem :: (Eq a, Foldable t) => a -> t a -> Bool
+notElem :: (Foldable t, Eq a) => a -> t a -> Bool
 Nothing :: Maybe a
 null :: Foldable t => t a -> Bool
 odd :: Integral a => a -> Bool
@@ -138,8 +139,8 @@ otherwise :: Bool
 pi :: Floating a => a
 pred :: Enum a => a -> a
 print :: Show a => a -> IO ()
-product :: (Num a, Foldable t) => t a -> a
-properFraction :: (Integral b, RealFrac a) => a -> (b, a)
+product :: (Foldable t, Num a) => t a -> a
+properFraction :: (RealFrac a, Integral b) => a -> (b, a)
 pure :: Applicative f => a -> f a
 putChar :: Char -> IO ()
 putStr :: String -> IO ()
@@ -154,7 +155,7 @@ readLn :: Read a => IO a
 readParen :: Bool -> ReadS a -> ReadS a
 reads :: Read a => ReadS a
 readsPrec :: Read a => Int -> ReadS a
-realToFrac :: (Fractional b, Real a) => a -> b
+realToFrac :: (Real a, Fractional b) => a -> b
 recip :: Fractional a => a -> a
 rem :: Integral a => a -> a -> a
 repeat :: a -> [a]
@@ -162,16 +163,16 @@ replicate :: Int -> a -> [a]
 return :: Monad m => a -> m a
 reverse :: [a] -> [a]
 Right :: b -> Either a b
-round :: (Integral b, RealFrac a) => a -> b
+round :: (RealFrac a, Integral b) => a -> b
 scaleFloat :: RealFloat a => Int -> a -> a
 scanl :: (b -> a -> b) -> b -> [a] -> [b]
 scanl1 :: (a -> a -> a) -> [a] -> [a]
 scanr :: (a -> b -> b) -> b -> [a] -> [b]
 scanr1 :: (a -> a -> a) -> [a] -> [a]
 seq :: a -> b -> b
-sequence :: (Monad m, Traversable t) => t (m a) -> m (t a)
-sequence_ :: (Monad m, Foldable t) => t (m a) -> m ()
-sequenceA :: (Applicative f, Traversable t) => t (f a) -> f (t a)
+sequence :: (Traversable t, Monad m) => t (m a) -> m (t a)
+sequence_ :: (Foldable t, Monad m) => t (m a) -> m ()
+sequenceA :: (Traversable t, Applicative f) => t (f a) -> f (t a)
 show :: Show a => a -> String
 showChar :: Char -> ShowS
 showList :: Show a => [a] -> ShowS
@@ -189,7 +190,7 @@ splitAt :: Int -> [a] -> ([a], [a])
 sqrt :: Floating a => a -> a
 subtract :: Num a => a -> a -> a
 succ :: Enum a => a -> a
-sum :: (Num a, Foldable t) => t a -> a
+sum :: (Foldable t, Num a) => t a -> a
 tail :: [a] -> [a]
 take :: Int -> [a] -> [a]
 takeWhile :: (a -> Bool) -> [a] -> [a]
@@ -198,11 +199,11 @@ tanh :: Floating a => a -> a
 toEnum :: Enum a => Int -> a
 toInteger :: Integral a => a -> Integer
 toRational :: Real a => a -> Rational
-traverse :: (Applicative f, Traversable t) => (a -> f b) -> t a -> f (t b)
+traverse :: (Traversable t, Applicative f) => (a -> f b) -> t a -> f (t b)
 True :: Bool
-truncate :: (Integral b, RealFrac a) => a -> b
+truncate :: (RealFrac a, Integral b) => a -> b
 uncurry :: (a -> b -> c) -> (a, b) -> c
-undefined :: t
+undefined :: a
 unlines :: [String] -> String
 until :: (a -> Bool) -> (a -> a) -> a -> a
 unwords :: [String] -> String

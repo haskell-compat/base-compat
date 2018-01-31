@@ -1,0 +1,2 @@
+packages: ./base-compat
+          ./base-compat-batteries

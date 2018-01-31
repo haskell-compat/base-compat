@@ -18,6 +18,7 @@ foldr1
 foldrM
 for_
 forM_
+-- imported via Data.Foldable.Compat
 length
 mapM_
 maximum

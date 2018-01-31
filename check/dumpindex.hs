@@ -13,7 +13,7 @@ main = do
 index :: String -> IO ()
 index module_ = ghci ["check-hs/" ++ module_ ++ ".check.hs"] input >>= putStr . normalize
   where
-    input = ":browse " ++ module_
+    input = ":browse! " ++ module_
 
 normalize :: String -> String
 normalize = unlines . map removeSignature . removeTypeDefinitions . lines . normalizeSignatures . unlines . removeClasses . normalizeClasses . lines

@@ -13,8 +13,8 @@ foldM_
 forever
 forM
 forM_
-(GHC.Base.<$)
 guard
+-- imported via Control.Monad.Compat
 join
 liftM
 liftM2

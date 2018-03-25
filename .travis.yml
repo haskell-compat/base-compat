@@ -159,10 +159,9 @@ script:
 
  - if [ "x$TEST" = "x--enable-tests" ];
    then
-     # base-compat-batteries
      cd base-compat-batteries/;
-     cabal configure ${TEST} --ghc-options=-Werror -v2 ${CABALFLAGS};  # -v2 provides useful information for debugging
-     cabal build; # this builds all libraries and executables (including tests/benchmarks)
+     cabal configure ${TEST} --ghc-options=-Werror -v2 ${CABALFLAGS};
+     cabal build;
      cabal test --show-details=always;
      cabal check;
      cabal sdist;
@@ -170,7 +169,6 @@ script:
      cabal register;
      cd ..;
 
-    # check
      cd check/;
      wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.0/typediff;
      chmod +x typediff;

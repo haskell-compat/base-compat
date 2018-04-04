@@ -121,3 +121,57 @@ library
       System.IO.Unsafe.Compat
       Text.Read.Compat
       Type.Reflection.Compat
+
+      Control.Concurrent.Compat.Repl
+      Control.Concurrent.MVar.Compat.Repl
+      Control.Monad.Compat.Repl
+      Control.Monad.Fail.Compat.Repl
+      Control.Monad.IO.Class.Compat.Repl
+      Control.Monad.ST.Lazy.Unsafe.Compat.Repl
+      Control.Monad.ST.Unsafe.Compat.Repl
+      Data.Bifoldable.Compat.Repl
+      Data.Bifunctor.Compat.Repl
+      Data.Bitraversable.Compat.Repl
+      Data.Bits.Compat.Repl
+      Data.Bool.Compat.Repl
+      Data.Complex.Compat.Repl
+      Data.Either.Compat.Repl
+      Data.Foldable.Compat.Repl
+      Data.Function.Compat.Repl
+      Data.Functor.Compat.Repl
+      Data.Functor.Compose.Compat.Repl
+      Data.Functor.Const.Compat.Repl
+      Data.Functor.Identity.Compat.Repl
+      Data.Functor.Product.Compat.Repl
+      Data.Functor.Sum.Compat.Repl
+      Data.IORef.Compat.Repl
+      Data.List.Compat.Repl
+      Data.Monoid.Compat.Repl
+      Data.Proxy.Compat.Repl
+      Data.Ratio.Compat.Repl
+      Data.Semigroup.Compat.Repl
+      Data.STRef.Compat.Repl
+      Data.String.Compat.Repl
+      Data.Type.Coercion.Compat.Repl
+      Data.Version.Compat.Repl
+      Data.Void.Compat.Repl
+      Data.Word.Compat.Repl
+      Debug.Trace.Compat.Repl
+      Foreign.Compat.Repl
+      Foreign.ForeignPtr.Compat.Repl
+      Foreign.ForeignPtr.Safe.Compat.Repl
+      Foreign.ForeignPtr.Unsafe.Compat.Repl
+      Foreign.Marshal.Alloc.Compat.Repl
+      Foreign.Marshal.Array.Compat.Repl
+      Foreign.Marshal.Compat.Repl
+      Foreign.Marshal.Safe.Compat.Repl
+      Foreign.Marshal.Unsafe.Compat.Repl
+      Foreign.Marshal.Utils.Compat.Repl
+      Numeric.Compat.Repl
+      Numeric.Natural.Compat.Repl
+      Prelude.Compat.Repl
+      System.Environment.Compat.Repl
+      System.Exit.Compat.Repl
+      System.IO.Unsafe.Compat.Repl
+      Text.Read.Compat.Repl
+      Type.Reflection.Compat.Repl

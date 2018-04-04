@@ -78,6 +78,7 @@ library
       Control.Concurrent.MVar.Compat
       Control.Monad.Compat
       Control.Monad.Fail.Compat
+      Control.Monad.IO.Class.Compat
       Control.Monad.ST.Lazy.Unsafe.Compat
       Control.Monad.ST.Unsafe.Compat
       Data.Bifoldable.Compat
@@ -127,6 +128,59 @@ library
       Text.Read.Compat
       Type.Reflection.Compat
 
+      Control.Concurrent.Compat.Repl.Batteries
+      Control.Concurrent.MVar.Compat.Repl.Batteries
+      Control.Monad.Compat.Repl.Batteries
+      Control.Monad.Fail.Compat.Repl.Batteries
+      Control.Monad.IO.Class.Compat.Repl.Batteries
+      Control.Monad.ST.Lazy.Unsafe.Compat.Repl.Batteries
+      Control.Monad.ST.Unsafe.Compat.Repl.Batteries
+      Data.Bifoldable.Compat.Repl.Batteries
+      Data.Bifunctor.Compat.Repl.Batteries
+      Data.Bitraversable.Compat.Repl.Batteries
+      Data.Bits.Compat.Repl.Batteries
+      Data.Bool.Compat.Repl.Batteries
+      Data.Complex.Compat.Repl.Batteries
+      Data.Either.Compat.Repl.Batteries
+      Data.Foldable.Compat.Repl.Batteries
+      Data.Function.Compat.Repl.Batteries
+      Data.Functor.Compat.Repl.Batteries
+      Data.Functor.Compose.Compat.Repl.Batteries
+      Data.Functor.Const.Compat.Repl.Batteries
+      Data.Functor.Identity.Compat.Repl.Batteries
+      Data.Functor.Product.Compat.Repl.Batteries
+      Data.Functor.Sum.Compat.Repl.Batteries
+      Data.IORef.Compat.Repl.Batteries
+      Data.List.Compat.Repl.Batteries
+      Data.Monoid.Compat.Repl.Batteries
+      Data.Proxy.Compat.Repl.Batteries
+      Data.Ratio.Compat.Repl.Batteries
+      Data.Semigroup.Compat.Repl.Batteries
+      Data.STRef.Compat.Repl.Batteries
+      Data.String.Compat.Repl.Batteries
+      Data.Type.Coercion.Compat.Repl.Batteries
+      Data.Version.Compat.Repl.Batteries
+      Data.Void.Compat.Repl.Batteries
+      Data.Word.Compat.Repl.Batteries
+      Debug.Trace.Compat.Repl.Batteries
+      Foreign.Compat.Repl.Batteries
+      Foreign.ForeignPtr.Compat.Repl.Batteries
+      Foreign.ForeignPtr.Safe.Compat.Repl.Batteries
+      Foreign.ForeignPtr.Unsafe.Compat.Repl.Batteries
+      Foreign.Marshal.Alloc.Compat.Repl.Batteries
+      Foreign.Marshal.Array.Compat.Repl.Batteries
+      Foreign.Marshal.Compat.Repl.Batteries
+      Foreign.Marshal.Safe.Compat.Repl.Batteries
+      Foreign.Marshal.Unsafe.Compat.Repl.Batteries
+      Foreign.Marshal.Utils.Compat.Repl.Batteries
+      Numeric.Compat.Repl.Batteries
+      Numeric.Natural.Compat.Repl.Batteries
+      Prelude.Compat.Repl.Batteries
+      System.Environment.Compat.Repl.Batteries
+      System.Exit.Compat.Repl.Batteries
+      System.IO.Unsafe.Compat.Repl.Batteries
+      Text.Read.Compat.Repl.Batteries
+      Type.Reflection.Compat.Repl.Batteries
 test-suite spec
   type:
       exitcode-stdio-1.0

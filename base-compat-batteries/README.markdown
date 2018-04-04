@@ -25,6 +25,10 @@ This package provides the same API as the
 depends on compatibility packages (such as `semigroups`) to offer a wider
 support window than `base-compat`, which has no dependencies.
 
+Like `base-compat`, `base-compat-batteries` does not add any orphan instances.
+There is a separate package
+[`base-orphans`](https://github.com/haskell-compat/base-orphans) for that.
+
 See [here](https://github.com/haskell-compat/base-compat/blob/master/base-compat/README.markdown#dependencies)
 for a more comprehensive list of differences between `base-compat` and
 `base-compat-batteries`.

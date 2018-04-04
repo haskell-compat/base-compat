@@ -37,7 +37,12 @@ description:      Provides functions available in later versions of @base@ to
                   version of @base-compat@ that depends on compatibility
                   libraries for a wider support window, see the
                   @<http://hackage.haskell.org/package/base-compat-batteries base-compat-batteries>@
-                  package.
+                  package. Most of the modules in this library have the same
+                  names as in @base-compat-batteries@ to make it easier to
+                  switch between the two. There also exist versions of each
+                  module with the suffix @.Repl@, which are distinct from
+                  anything in @base-compat-batteries@, to allow for easier
+                  use in GHCi.
 tested-with:        GHC == 7.0.1,  GHC == 7.0.2,  GHC == 7.0.3,  GHC == 7.0.4
                   , GHC == 7.2.1,  GHC == 7.2.2
                   , GHC == 7.4.1,  GHC == 7.4.2

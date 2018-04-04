@@ -240,6 +240,14 @@ reexporting things from compatibility libraries whenever necessary. (For
 instance, `base-compat-batteries` exports the `Semigroup` class from the
 `semigroups` library when built against versions of `base` older than 4.9.)
 
+Because `base-compat` and `base-compat-batteries` have the same module names,
+they are quite easy to switch out for one another in library projects, at the
+expense of having clashing names if one tries to import them in GHCi. To
+work around this issue, `base-compat` and `base-compat-batteries` also provide
+copies of each module with the suffix `.Repl` (for `base-compat`) and
+`.Repl.Batteries` (for `base-compat-batteries`) to give them globally unique
+namespaces in the event one wants to import them into GHCi.
+
 Here is a list of compatibility libraries that `base-compat-batteries` depends
 on, paired with the things that each library backports:
 

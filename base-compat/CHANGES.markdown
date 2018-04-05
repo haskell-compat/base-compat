@@ -1,4 +1,4 @@
-## Changes in 0.10.0 [????.??.??]
+## Changes in 0.10.0 [2018.04.05]
  - Sync with `base-4.11`/GHC 8.4
  - Backport `Semigroup((<>))` to `Prelude.Compat`.
 
@@ -26,6 +26,11 @@
    - `Data.Semigroup.Compat` (back until `base-4.9`/GHC 8.0)
    - `Data.Void.Compat` (back until `base-4.8`/GHC 7.10)
    - `Numeric.Natural.Compat` (back until `base-4.8`/GHC 7.10)
+ - Introduce versions of modules with the suffix `.Repl`. These simply reexport
+   the contents of their counterparts without the `.Repl` suffix to provide
+   a globally unique namespace to import from in the event one wants to import
+   `base-compat` modules into GHCi. (In `base-compat-batteries`, the
+   corresponding suffix is `.Repl.Batteries`.)
 
 ## Changes in 0.9.3 [2017.04.10]
  - Sync with `base-4.10`/GHC 8.2

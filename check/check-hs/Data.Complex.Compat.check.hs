@@ -1,3 +1,3 @@
-{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE NoImplicitPrelude, PackageImports #-}
 module Test where
-import Data.Complex.Compat
+import "base-compat-batteries" Data.Complex.Compat

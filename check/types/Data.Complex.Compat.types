@@ -1,3 +1,4 @@
+(:+) :: a -> a -> Complex a
 cis :: GHC.Float.Floating a => a -> Complex a
 conjugate :: GHC.Num.Num a => Complex a -> Complex a
 imagPart :: Complex a -> a

@@ -1,6 +1,9 @@
+(:+)
 cis
 conjugate
+data Complex a = ...
 imagPart
+-- imported via Data.Complex.Compat
 magnitude
 mkPolar
 phase

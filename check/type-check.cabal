@@ -43,6 +43,9 @@ test-suite type-check-test
       .
   main-is:
       TypeCheck.hs
+  other-modules:
+      TypeDump
+      Util
   build-depends:
       base >= 4.3 && < 5
     , directory

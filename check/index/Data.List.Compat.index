@@ -36,6 +36,7 @@ genericTake
 group
 groupBy
 head
+-- imported via Data.List.Compat
 init
 inits
 insert
@@ -49,6 +50,7 @@ isPrefixOf
 isSubsequenceOf
 isSuffixOf
 iterate
+iterate'
 last
 length
 lines

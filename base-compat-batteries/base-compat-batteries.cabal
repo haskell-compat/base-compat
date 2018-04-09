@@ -103,6 +103,7 @@ library
       Data.Functor.Sum.Compat
       Data.IORef.Compat
       Data.List.Compat
+      Data.List.NonEmpty.Compat
       Data.Monoid.Compat
       Data.Proxy.Compat
       Data.Ratio.Compat
@@ -157,6 +158,7 @@ library
       Data.Functor.Sum.Compat.Repl.Batteries
       Data.IORef.Compat.Repl.Batteries
       Data.List.Compat.Repl.Batteries
+      Data.List.NonEmpty.Compat.Repl.Batteries
       Data.Monoid.Compat.Repl.Batteries
       Data.Proxy.Compat.Repl.Batteries
       Data.Ratio.Compat.Repl.Batteries

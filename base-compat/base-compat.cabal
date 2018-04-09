@@ -97,6 +97,7 @@ library
       Data.Functor.Sum.Compat
       Data.IORef.Compat
       Data.List.Compat
+      Data.List.NonEmpty.Compat
       Data.Monoid.Compat
       Data.Proxy.Compat
       Data.Ratio.Compat
@@ -151,6 +152,7 @@ library
       Data.Functor.Sum.Compat.Repl
       Data.IORef.Compat.Repl
       Data.List.Compat.Repl
+      Data.List.NonEmpty.Compat.Repl
       Data.Monoid.Compat.Repl
       Data.Proxy.Compat.Repl
       Data.Ratio.Compat.Repl

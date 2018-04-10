@@ -1,13 +1,11 @@
 (<>) :: Data.Semigroup.Semigroup a => a -> a -> a
 All :: GHC.Types.Bool -> All
-Alt :: f a -> Alt f a
 Any :: GHC.Types.Bool -> Any
 appEndo :: Endo a -> a -> a
 Dual :: a -> Dual a
 Endo :: (a -> a) -> Endo a
 First :: GHC.Base.Maybe a -> First a
 getAll :: All -> GHC.Types.Bool
-getAlt :: Alt f a -> f a
 getAny :: Any -> GHC.Types.Bool
 getDual :: Dual a -> a
 getFirst :: First a -> GHC.Base.Maybe a

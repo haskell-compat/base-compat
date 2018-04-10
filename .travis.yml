@@ -170,7 +170,7 @@ script:
      cd ..;
 
      cd check/;
-     wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.1/typediff;
+     wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.2/typediff;
      chmod +x typediff;
      cabal configure ${TEST} -v2 ${CABALFLAGS};
      cabal build;

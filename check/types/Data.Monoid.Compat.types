@@ -1,4 +1,4 @@
-(<>) :: GHC.Base.Semigroup a => a -> a -> a
+(<>) :: Data.Semigroup.Semigroup a => a -> a -> a
 All :: GHC.Types.Bool -> All
 Alt :: f a -> Alt f a
 Any :: GHC.Types.Bool -> Any

@@ -1,0 +1,32 @@
+(<>)
+All
+Alt
+Any
+appEndo
+Dual
+Endo
+First
+getAll
+getAlt
+getAny
+getDual
+getFirst
+getLast
+getProduct
+getSum
+-- imported via Data.Monoid.Compat
+Last
+mappend
+mconcat
+mempty
+newtype All = ...
+newtype Alt (f
+newtype Any = ...
+newtype Dual a = ...
+newtype Endo a = ...
+newtype First a = ...
+newtype Last a = ...
+newtype Product a = ...
+newtype Sum a = ...
+Product
+Sum

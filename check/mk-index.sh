@@ -7,4 +7,5 @@ runhaskell dumpindex.hs Control.Monad.Compat | sort > index/Control.Monad.Compat
 runhaskell dumpindex.hs Data.Complex.Compat  | sort > index/Data.Complex.Compat.index
 runhaskell dumpindex.hs Data.Foldable.Compat | sort > index/Data.Foldable.Compat.index
 runhaskell dumpindex.hs Data.List.Compat     | sort > index/Data.List.Compat.index
+runhaskell dumpindex.hs Data.Monoid.Compat   | sort > index/Data.Monoid.Compat.index
 runhaskell dumpindex.hs Data.Ratio.Compat    | sort > index/Data.Ratio.Compat.index

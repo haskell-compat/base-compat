@@ -8,9 +8,20 @@ import System.FilePath
 main :: IO ()
 main = do
   cwd <- getCurrentDirectory
-  let rootDir = takeDirectory cwd
+  rootDir <- findRootDir cwd
+  putStrLn $ "Root dir: " ++ rootDir
   mkReplModules (rootDir </> "base-compat")           ["Repl"]
   mkReplModules (rootDir </> "base-compat-batteries") ["Repl", "Batteries"]
+
+-- Go up until there is 'cabal.project'
+findRootDir :: FilePath -> IO FilePath
+findRootDir fp
+  | isDrive fp = return fp
+  | otherwise = do
+    exists <- doesFileExist $ fp </> "cabal.project"
+    if exists
+    then return fp
+    else findRootDir (takeDirectory fp)
 
 mkReplModules :: FilePath -> [String] -> IO ()
 mkReplModules dir suffixes = do

@@ -1,5 +1,5 @@
 name:             base-compat-batteries
-version:          0.10.0
+version:          0.10.1
 license:          MIT
 license-file:     LICENSE
 copyright:        (c) 2012-2018 Simon Hengel,
@@ -54,8 +54,8 @@ library
   ghc-options:
       -Wall
   build-depends:
-      base        >= 4.3  && < 5,
-      base-compat >= 0.10 && < 0.11
+      base        >= 4.3    && < 5,
+      base-compat >= 0.10.1 && < 0.11
   if !impl(ghc >= 7.8)
     build-depends:
       tagged >= 0.8.5 && < 0.9

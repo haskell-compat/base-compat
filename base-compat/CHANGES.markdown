@@ -1,4 +1,4 @@
-## Changes in 0.10.1 [2018.04.xx]
+## Changes in 0.10.1 [2018.04.10]
 - Add `Data.List.NonEmpty.Compat`.
 - Reexport `(Data.Semigroup.<>)` from `Data.Monoid.Compat` back to `base-4.9`.
 

@@ -2,10 +2,10 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: aeccb4ed03ab58cceb2d2bbccef31b84051008346fbb6ce2913b40304befca25
+-- hash: 6ee0c0d533001e4bc69607b3101712c058e3b59e6f5d9c61b4b72c346e1d3204
 
 name:             typediff
-version:          0.1.1
+version:          0.1.2
 build-type:       Simple
 cabal-version:    >= 1.10
 

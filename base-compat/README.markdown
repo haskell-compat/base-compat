@@ -297,6 +297,7 @@ on, paired with the things that each library backports:
 
 ## Supported versions of GHC/`base`
 
+ * `ghc-8.4.2`  / `base-4.11.1.0`
  * `ghc-8.4.1`  / `base-4.11.0.0`
  * `ghc-8.2.2`  / `base-4.10.1.0`
  * `ghc-8.2.1`  / `base-4.10.0.0`

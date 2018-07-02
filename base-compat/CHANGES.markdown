@@ -1,4 +1,4 @@
-## Changes in next [????.??.??]
+## Changes in 0.10.2 [2018.07.02]
  - Sync with `base-4.12`/GHC 8.6
  - Backport `RuntimeRep`-polymorphic versions of `($!)` and `throw` to
    `Prelude.Compat` and `Control.Exception.Compat`, respectively

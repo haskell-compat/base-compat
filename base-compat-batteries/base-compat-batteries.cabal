@@ -43,6 +43,7 @@ tested-with:        GHC == 7.0.1,  GHC == 7.0.2,  GHC == 7.0.3,  GHC == 7.0.4
                   , GHC == 8.0.1,  GHC == 8.0.2
                   , GHC == 8.2.1,  GHC == 8.2.2
                   , GHC == 8.4.1,  GHC == 8.4.2,  GHC == 8.4.3
+                  , GHC == 8.6.1
 extra-source-files: CHANGES.markdown, README.markdown
 
 source-repository head
@@ -55,7 +56,7 @@ library
       -Wall
   build-depends:
       base        >= 4.3    && < 5,
-      base-compat >= 0.10.1 && < 0.11
+      base-compat == 0.10.1
   if !impl(ghc >= 7.8)
     build-depends:
       tagged >= 0.8.5 && < 0.9
@@ -72,6 +73,9 @@ library
   if !impl(ghc >= 8.2)
     build-depends:
       bifunctors >= 5.5.2 && < 5.6
+  if !impl(ghc >= 8.6)
+    build-depends:
+      contravariant >= 1.5 && < 1.6
   ghc-options:
       -fno-warn-duplicate-exports
 
@@ -81,6 +85,7 @@ library
   exposed-modules:
       Control.Concurrent.Compat
       Control.Concurrent.MVar.Compat
+      Control.Exception.Compat
       Control.Monad.Compat
       Control.Monad.Fail.Compat
       Control.Monad.IO.Class.Compat
@@ -98,6 +103,7 @@ library
       Data.Functor.Compat
       Data.Functor.Compose.Compat
       Data.Functor.Const.Compat
+      Data.Functor.Contravariant.Compat
       Data.Functor.Identity.Compat
       Data.Functor.Product.Compat
       Data.Functor.Sum.Compat
@@ -136,6 +142,7 @@ library
 
       Control.Concurrent.Compat.Repl.Batteries
       Control.Concurrent.MVar.Compat.Repl.Batteries
+      Control.Exception.Compat.Repl.Batteries
       Control.Monad.Compat.Repl.Batteries
       Control.Monad.Fail.Compat.Repl.Batteries
       Control.Monad.IO.Class.Compat.Repl.Batteries
@@ -154,6 +161,7 @@ library
       Data.Functor.Compose.Compat.Repl.Batteries
       Data.Functor.Const.Compat.Repl.Batteries
       Data.Functor.Identity.Compat.Repl.Batteries
+      Data.Functor.Contravariant.Compat.Repl.Batteries
       Data.Functor.Product.Compat.Repl.Batteries
       Data.Functor.Sum.Compat.Repl.Batteries
       Data.IORef.Compat.Repl.Batteries

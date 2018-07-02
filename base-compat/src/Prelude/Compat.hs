@@ -1,6 +1,10 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
+#if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE TypeInType #-}
+#endif
 module Prelude.Compat (
-#if MIN_VERSION_base(4,11,0)
+#if MIN_VERSION_base(4,12,0)
   module Base
 #else
   either
@@ -267,6 +271,9 @@ module Prelude.Compat (
 #if MIN_VERSION_base(4,9,0)
 
 import Prelude as Base
+# if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
+  hiding (($!))
+# endif
 
 #else
 
@@ -311,6 +318,10 @@ import Data.Word
 import Data.Semigroup as Base (Semigroup((<>)))
 #endif
 
+#if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
+import GHC.Exts (TYPE)
+#endif
+
 #if !(MIN_VERSION_base(4,9,0))
 -- | A variant of 'error' that does not produce a stack trace.
 --
@@ -318,4 +329,13 @@ import Data.Semigroup as Base (Semigroup((<>)))
 errorWithoutStackTrace :: [Char] -> a
 errorWithoutStackTrace s = error s
 {-# NOINLINE errorWithoutStackTrace #-}
+#endif
+
+#if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
+-- | Strict (call-by-value) application operator. It takes a function and an
+-- argument, evaluates the argument to weak head normal form (WHNF), then calls
+-- the function with that value.
+
+($!) :: forall r a (b :: TYPE r). (a -> b) -> a -> b
+f $! x = let !vx = x in f vx  -- see #2273
 #endif

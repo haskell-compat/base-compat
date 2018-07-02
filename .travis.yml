@@ -88,6 +88,9 @@ matrix:
     - env: CABALVER=2.2 GHCVER=8.4.3
       compiler: ": #GHC 8.4.3"
       addons: {apt: {packages: [cabal-install-2.2,ghc-8.4.3], sources: [hvr-ghc]}}
+    - env: CABALVER=head GHCVER=8.6.1 CABALFLAGS=--allow-newer
+      compiler: ": #GHC 8.6.1"
+      addons: {apt: {packages: [cabal-install-head,ghc-8.6.1], sources: [hvr-ghc]}}
     - env: CABALVER=head GHCVER=head CABALFLAGS=--allow-newer
       compiler: ": #GHC head"
       addons: {apt: {packages: [cabal-install-head,ghc-head], sources: [hvr-ghc]}}
@@ -97,6 +100,7 @@ matrix:
     - env: CABALVER=1.24 GHCVER=7.0.2
     - env: CABALVER=1.24 GHCVER=7.0.3
     - env: CABALVER=1.24 GHCVER=7.2.1
+    - env: CABALVER=head GHCVER=8.6.1 CABALFLAGS=--allow-newer
     - env: CABALVER=head GHCVER=head CABALFLAGS=--allow-newer
 
 before_install:
@@ -176,7 +180,7 @@ script:
      cd ..;
 
      cd check/;
-     wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.2/typediff;
+     wget https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.3/typediff;
      chmod +x typediff;
      cabal configure ${TEST} -v2 ${CABALFLAGS};
      cabal build;

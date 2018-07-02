@@ -148,6 +148,8 @@ So far the following is covered.
  * `showFFloatAlt` and `showGFloatAlt` to `Numeric.Compat`
  * `lookupEnv`, `setEnv` and `unsetEnv` to `System.Environment.Compat`
  * `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
+ * `RuntimeRep`-polymorphic `($!)` to `Prelude.Compat`
+ * `RuntimeRep`-polymorphic `throw` to `Control.Exception.Compat`
 
 ## What is not covered
 
@@ -258,6 +260,9 @@ on, paired with the things that each library backports:
   * The [`Bifoldable`](http://hackage.haskell.org/package/base-4.10.0.0/docs/Data-Bifoldable.html#t:Bifoldable)
     and [`Bitraversable`](http://hackage.haskell.org/package/base-4.10.0.0/docs/Data-Bitraversable.html#t:Bitraversable)
     type classes, introduced in `base-4.10.0.0`
+* [`contravariant`](http://hackage.haskell.org/package/contravariant)
+  for the [`Contravariant`](http://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Functor-Contravariant.html#t:Contravariant)
+  type class, introduced in `base-4.12.0.0`.
 * [`fail`](http://hackage.haskell.org/package/fail)
   for the [`MonadFail`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Control-Monad-Fail.html#t:MonadFail)
   type class, introduced in `base-4.9.0.0`
@@ -297,6 +302,7 @@ on, paired with the things that each library backports:
 
 ## Supported versions of GHC/`base`
 
+ * `ghc-8.6.1`  / `base-4.12.0.0`
  * `ghc-8.4.3`  / `base-4.11.1.0`
  * `ghc-8.4.2`  / `base-4.11.1.0`
  * `ghc-8.4.1`  / `base-4.11.0.0`

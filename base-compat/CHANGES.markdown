@@ -1,6 +1,17 @@
+## Changes in next [????.??.??]
+ - Sync with `base-4.12`/GHC 8.6
+ - Backport `RuntimeRep`-polymorphic versions of `($!)` and `throw` to
+   `Prelude.Compat` and `Control.Exception.Compat`, respectively
+   (if using `base-4.10`/GHC 8.2 or later).
+ - Introduce the `Data.Functor.Contravariant.Compat` module, which reexports
+   `Data.Functor.Contravariant` if using `base-4.12`/GHC 8.6 or later.
+
+   See `Data.Functor.Contravariant.Compat` in the corresponding
+   `base-compat-batteries` release for a version with a wider support window.
+
 ## Changes in 0.10.1 [2018.04.10]
-- Add `Data.List.NonEmpty.Compat`.
-- Reexport `(Data.Semigroup.<>)` from `Data.Monoid.Compat` back to `base-4.9`.
+ - Add `Data.List.NonEmpty.Compat`.
+ - Reexport `(Data.Semigroup.<>)` from `Data.Monoid.Compat` back to `base-4.9`.
 
 ## Changes in 0.10.0 [2018.04.05]
  - Sync with `base-4.11`/GHC 8.4

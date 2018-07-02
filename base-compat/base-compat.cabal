@@ -52,6 +52,7 @@ tested-with:        GHC == 7.0.1,  GHC == 7.0.2,  GHC == 7.0.3,  GHC == 7.0.4
                   , GHC == 8.0.1,  GHC == 8.0.2
                   , GHC == 8.2.1,  GHC == 8.2.2
                   , GHC == 8.4.1,  GHC == 8.4.2,  GHC == 8.4.3
+                  , GHC == 8.6.1
 extra-source-files: CHANGES.markdown, README.markdown
 
 source-repository head
@@ -75,6 +76,7 @@ library
   exposed-modules:
       Control.Concurrent.Compat
       Control.Concurrent.MVar.Compat
+      Control.Exception.Compat
       Control.Monad.Compat
       Control.Monad.Fail.Compat
       Control.Monad.IO.Class.Compat
@@ -92,6 +94,7 @@ library
       Data.Functor.Compat
       Data.Functor.Compose.Compat
       Data.Functor.Const.Compat
+      Data.Functor.Contravariant.Compat
       Data.Functor.Identity.Compat
       Data.Functor.Product.Compat
       Data.Functor.Sum.Compat
@@ -130,6 +133,7 @@ library
 
       Control.Concurrent.Compat.Repl
       Control.Concurrent.MVar.Compat.Repl
+      Control.Exception.Compat.Repl
       Control.Monad.Compat.Repl
       Control.Monad.Fail.Compat.Repl
       Control.Monad.IO.Class.Compat.Repl
@@ -147,6 +151,7 @@ library
       Data.Functor.Compat.Repl
       Data.Functor.Compose.Compat.Repl
       Data.Functor.Const.Compat.Repl
+      Data.Functor.Contravariant.Compat.Repl
       Data.Functor.Identity.Compat.Repl
       Data.Functor.Product.Compat.Repl
       Data.Functor.Sum.Compat.Repl

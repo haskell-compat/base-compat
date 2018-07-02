@@ -1,5 +1,5 @@
 name:             base-compat-batteries
-version:          0.10.2
+version:          0.10.3
 license:          MIT
 license-file:     LICENSE
 copyright:        (c) 2012-2018 Simon Hengel,
@@ -55,8 +55,8 @@ library
   ghc-options:
       -Wall
   build-depends:
-      base        >= 4.3    && < 5,
-      base-compat == 0.10.2
+      base        >= 4.3 && < 5,
+      base-compat == 0.10.3
   if !impl(ghc >= 7.8)
     build-depends:
       tagged >= 0.8.5 && < 0.9
@@ -222,6 +222,7 @@ test-suite spec
       Foreign.Marshal.Alloc.CompatSpec
       Foreign.Marshal.Utils.CompatSpec
       Numeric.CompatSpec
+      Prelude.CompatSpec
       System.Environment.CompatSpec
       Text.Read.CompatSpec
   build-depends:

@@ -122,6 +122,7 @@ normalizeConstrainNames t = transformBi f t
       Qual (ModuleName "GHC.Base") (Ident "Maybe") -> Qual (ModuleName "Data.Maybe") (Ident "Maybe")
       Qual (ModuleName "GHC.Base") (Ident "Monoid") -> Qual (ModuleName "Data.Monoid") (Ident "Monoid")
       Qual (ModuleName "GHC.Base") (Ident "Semigroup") -> Qual (ModuleName "Data.Semigroup") (Ident "Semigroup")
+      Qual (ModuleName "GHC.Maybe") (Ident "Maybe") -> Qual (ModuleName "Data.Maybe") (Ident "Maybe")
       Qual (ModuleName "GHC.Types") (Ident "Bool") -> Qual (ModuleName "GHC.Bool") (Ident "Bool")
       Qual (ModuleName "GHC.Types") (Ident "Ordering") -> Qual (ModuleName "GHC.Ordering") (Ident "Ordering")
       UnQual (Ident "Foldable") -> Qual (ModuleName "Data.Foldable") (Ident "Foldable")

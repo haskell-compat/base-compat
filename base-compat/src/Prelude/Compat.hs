@@ -335,7 +335,7 @@ errorWithoutStackTrace s = error s
 -- | Strict (call-by-value) application operator. It takes a function and an
 -- argument, evaluates the argument to weak head normal form (WHNF), then calls
 -- the function with that value.
-
+infixr 0 $!
 ($!) :: forall r a (b :: TYPE r). (a -> b) -> a -> b
 f $! x = let !vx = x in f vx  -- see #2273
 #endif

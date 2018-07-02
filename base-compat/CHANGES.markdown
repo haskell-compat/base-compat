@@ -1,3 +1,7 @@
+## Changes in 0.10.3 [2018.07.02]
+ - Backport the proper fixity for `($!)`, which was accidentally omitted in
+   `base-compat-0.10.2`.
+
 ## Changes in 0.10.2 [2018.07.02]
  - Sync with `base-4.12`/GHC 8.6
  - Backport `RuntimeRep`-polymorphic versions of `($!)` and `throw` to

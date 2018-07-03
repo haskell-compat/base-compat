@@ -1,3 +1,10 @@
+## Changes in 0.10.4 [2018.07.03]
+ - Add a `SafeHaskellSpec` test which ensures that certain modules (such as
+   `Prelude.Compat`) can be imported in the presence of `Safe`.
+ - This coincides with the `base-compat-0.10.4` release. Refer to the
+   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0104-20180703)
+   for more details.
+
 ## Changes in 0.10.3 [2018.07.02]
  - This coincides with the `base-compat-0.10.3` release. Refer to the
    [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0103-20180702)

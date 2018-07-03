@@ -1,4 +1,7 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
+#if __GLASGOW_HASKELL__ >= 702
+{-# LANGUAGE Trustworthy #-}
+#endif
 module Data.STRef.Compat (
   module Base
 , modifySTRef'

@@ -1,3 +1,8 @@
+## Changes in 0.10.4 [2018.07.03]
+ - Make more modules `Trustworthy`. In particular, fix a regression in which
+   `Prelude.Compat` was inferred as `Unsafe` by explicitly marking it as
+   `Trustwothy`.
+
 ## Changes in 0.10.3 [2018.07.02]
  - Backport the proper fixity for `($!)`, which was accidentally omitted in
    `base-compat-0.10.2`.

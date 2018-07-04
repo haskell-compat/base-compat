@@ -1,5 +1,8 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
 {-# LANGUAGE BangPatterns #-}
+#if __GLASGOW_HASKELL__ >= 702
+{-# LANGUAGE Trustworthy #-}
+#endif
 module Data.List.Compat (
   module Base
 #if !(MIN_VERSION_base(4,11,0))

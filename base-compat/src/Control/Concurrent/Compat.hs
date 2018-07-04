@@ -1,5 +1,8 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
 {-# LANGUAGE RankNTypes #-}
+#if __GLASGOW_HASKELL__ >= 702
+{-# LANGUAGE Trustworthy #-}
+#endif
 module Control.Concurrent.Compat (
   module Base
 , forkFinally

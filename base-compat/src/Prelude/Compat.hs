@@ -3,6 +3,7 @@
 {-# LANGUAGE Trustworthy #-}
 #endif
 #if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
+{-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE TypeInType #-}
 #endif

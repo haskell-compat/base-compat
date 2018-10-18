@@ -1,3 +1,6 @@
+## Changes in 0.10.5 [2018.10.18]
+ - Enable `BangPatterns` in `Prelude.Compat`.
+
 ## Changes in 0.10.4 [2018.07.03]
  - Make more modules `Trustworthy`. In particular, fix a regression in which
    `Prelude.Compat` was inferred as `Unsafe` by explicitly marking it as

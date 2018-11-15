@@ -25,4 +25,8 @@ First, download the `typediff` executable (if you haven't already):
 Then run the test suite, ensuring that `typediff` is added to the user `PATH`
 when the tests are run:
 
-    PATH=./:$PATH cabal test
+    export PATH=./:$PATH
+    export HC=ghc-8.4.4
+    cabal new-test -w $HC type-check
+
+Note: setting HC is optional; that way you can control which GHC is used.

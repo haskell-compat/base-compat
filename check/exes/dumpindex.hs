@@ -11,12 +11,12 @@ main = do
   index module_
 
 index :: String -> IO ()
-index module_ = ghci ["check-hs/" ++ module_ ++ ".check.hs"] input >>= putStr . normalize
+index module_ = inCabalNewRepl ("check-hs/" ++ module_ ++ ".check.hs") input >>= putStr . normalize
   where
     input = ":browse! " ++ module_
 
 normalize :: String -> String
-normalize = unlines . map removeSignature . removeTypeDefinitions . lines . normalizeSignatures . unlines . removeClasses . normalizeClasses . lines
+normalize = unlines . map removeSignature . removeTypeDefinitions . lines . normalizeLines . unlines . removeClasses . normalizeClasses . lines
 
 removeTypeDefinitions :: [String] -> [String]
 removeTypeDefinitions = filter (not . isPrefixOf "type ")

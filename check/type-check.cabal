@@ -1,6 +1,14 @@
+cabal-version:       2.4
 name:                type-check
 version:             0.1.0
+
+-- Note: we need to have cabal-version 2.4 for globbing to work.
+
 synopsis:            Checks that exported type signatures match what's expected
+description:
+  Checks that exported type signatures match what's expected.
+  
+
 author:              Simon Hengel <sol@typeful.net>,
                      João Cristóvão <jmacristovao@gmail.com>,
                      Ryan Scott <ryan.gl.scott@gmail.com>
@@ -11,43 +19,80 @@ copyright:           (c) 2012-2017 Simon Hengel,
                      (c) 2014-2017 João Cristóvão,
                      (c) 2015-2017 Ryan Scott
 category:            Compatibility
+license:             BSD-3-Clause
+license-file:        LICENSE
 build-type:          Simple
-cabal-version:       >=1.10
-extra-source-files:  README.markdown,
-                     check-hs/*.check.hs,
-                     index/*.index,
-                     types/*.types
 
+extra-source-files:
+  check-hs/*.hs
+  index/*.index
+  types/*.types
+
+tested-with:        GHC == 7.0.*
+                  , GHC == 7.2.*
+                  , GHC == 7.4.*
+                  , GHC == 7.6.*
+                  , GHC == 7.8.*
+                  , GHC == 7.10.*
+                  , GHC == 8.0.*
+                  , GHC == 8.2.*
+                  , GHC == 8.4.*
+                  , GHC == 8.6.*
 library
   exposed-modules:
       TypeDump
       Util
-  ghc-options:
-      -Wall
-  default-language:
-      Haskell2010
+  ghc-options: -Wall
+  hs-source-dirs: lib
+  default-language: Haskell2010
   hs-source-dirs:
       .
   build-depends:
       base >= 4.3 && < 5
     , process
+    , parsec >=3.1.11 && <3.2
+
+-- This executable is used to drop us into REPL (via `new-repl`) with right environment
+executable for-repl
+  default-language: Haskell2010
+  hs-source-dirs: exes
+  main-is: for-repl.hs
+
+  build-depends:
+    base,
+    base-compat-batteries
+
+-- Run with
+-- (cd check && cabal new-run dumptypes Control.Monad.Compat)
+--
+executable dumptypes
+  default-language: Haskell2010
+  hs-source-dirs: exes
+  main-is: dumptypes.hs
+  build-depends:
+    base,
+    type-check
+
+-- Run with
+-- (cd check && cabal new-run dumpindex Control.Monad.Compat)
+-- 
+executable dumpindex
+  default-language: Haskell2010
+  hs-source-dirs: exes
+  main-is: dumpindex.hs
+  build-depends:
+    base,
+    type-check
 
 test-suite type-check-test
-  type:
-      exitcode-stdio-1.0
-  ghc-options:
-      -Wall
-  default-language:
-      Haskell2010
-  hs-source-dirs:
-      .
-  main-is:
-      TypeCheck.hs
-  other-modules:
-      TypeDump
-      Util
+  type: exitcode-stdio-1.0
+  ghc-options: -Wall
+  default-language: Haskell2010
+  hs-source-dirs: test
+  main-is: TypeCheck.hs
   build-depends:
       base >= 4.3 && < 5
+    , type-check
     , directory
     , filepath
     , hspec >= 1.8

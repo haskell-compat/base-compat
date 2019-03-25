@@ -1,0 +1,3 @@
+env: 7.0.1:BATTERIES=NO TEST=--disable-tests,
+     7.2.1:BATTERIES=NO TEST=--disable-tests,
+     7.4.1:TEST=--disable-tests

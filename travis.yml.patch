@@ -1,5 +1,5 @@
 diff --git a/.travis.yml b/.travis.yml
-index 6bc054d..ff5a69f 100644
+index 6bc054d..59bc906 100644
 --- a/.travis.yml
 +++ b/.travis.yml
 @@ -6,6 +6,13 @@
@@ -65,11 +65,11 @@ index 6bc054d..ff5a69f 100644
 -  - "printf 'packages: \"type-check-*/*.cabal\"\\n' >> cabal.project"
 +  - >
 +    if [ "x$BATTERIES" = "xNO" ]; then
-+      printf 'packages: ./base-compat-*/*.cabal\n' >> cabal.project;
++      printf 'packages: ./base-compat\n' >> cabal.project;
 +    else
-+      printf 'packages: ./base-compat-*/*.cabal\n' >> cabal.project;
-+      printf 'packages: ./base-compat-batteries-*/*.cabal\n' >> cabal.project;
-+      printf 'packages: ./type-check-*/*.cabal\n' >> cabal.project;
++      printf 'packages: ./base-compat\n' >> cabal.project;
++      printf 'packages: ./base-compat-batteries\n' >> cabal.project;
++      printf 'packages: ./check\n' >> cabal.project;
 +    fi
    - "printf 'write-ghc-environment-files: always\\n' >> cabal.project"
    - touch cabal.project.local

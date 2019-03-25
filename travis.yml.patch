@@ -1,5 +1,5 @@
 diff --git a/.travis.yml b/.travis.yml
-index 6bc054d..4857151 100644
+index 6bc054d..4ded5f4 100644
 --- a/.travis.yml
 +++ b/.travis.yml
 @@ -6,6 +6,13 @@
@@ -16,18 +16,17 @@ index 6bc054d..4857151 100644
  language: c
  dist: xenial
  
-@@ -100,6 +107,10 @@ before_install:
+@@ -100,6 +107,9 @@ before_install:
    - unset CC
    - CABAL=/opt/ghc/bin/cabal
    - CABALHOME=$HOME/.cabal
 +  # install typediff
-+  - mkdir -p $HOME/.local/bin
 +  - curl -L https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.3/typediff > $HOME/.local/bin/typediff
 +  - chmod +x $HOME/.local/bin/typediff
    - export PATH="$CABALHOME/bin:$PATH"
    - ROOTDIR=$(pwd)
    - HCNUMVER=$(( $(${HC} --numeric-version|sed -E 's/([0-9]+)\.([0-9]+)\.([0-9]+).*/\1 * 10000 + \2 * 100 + \3/') ))
-@@ -117,9 +128,14 @@ install:
+@@ -117,9 +127,14 @@ install:
    - grep -Ev -- '^\s*--' $CABALHOME/config | grep -Ev '^\s*$'
    - rm -f cabal.project
    - touch cabal.project
@@ -45,7 +44,7 @@ index 6bc054d..4857151 100644
    - "printf 'write-ghc-environment-files: always\\n' >> cabal.project"
    - touch cabal.project.local
    - "for pkg in $($HCPKG list --simple-output); do echo $pkg | sed 's/-[^-]*$//' | grep -vE -- '^(base-compat|base-compat-batteries|type-check)$' | sed 's/^/constraints: /' | sed 's/$/ installed/' >> cabal.project.local; done"
-@@ -132,8 +148,8 @@ install:
+@@ -132,8 +147,8 @@ install:
    - ${CABAL} new-freeze -w ${HC} ${TEST} ${BENCH} --project-file="cabal.project" --dry
    - "cat \"cabal.project.freeze\" | sed -E 's/^(constraints: *| *)//' | sed 's/any.//'"
    - rm  "cabal.project.freeze"
@@ -56,7 +55,7 @@ index 6bc054d..4857151 100644
    - rm -rf .ghc.environment.* "./base-compat"/dist "./base-compat-batteries"/dist "./check"/dist
    - DISTDIR=$(mktemp -d /tmp/dist-test.XXXX)
  
-@@ -147,9 +163,14 @@ script:
+@@ -147,9 +162,14 @@ script:
    - find . -maxdepth 1 -name '*.tar.gz' -exec tar -xvf '{}' \;
    - rm -f cabal.project
    - touch cabal.project
@@ -74,7 +73,7 @@ index 6bc054d..4857151 100644
    - "printf 'write-ghc-environment-files: always\\n' >> cabal.project"
    - touch cabal.project.local
    - "for pkg in $($HCPKG list --simple-output); do echo $pkg | sed 's/-[^-]*$//' | grep -vE -- '^(base-compat|base-compat-batteries|type-check)$' | sed 's/^/constraints: /' | sed 's/$/ installed/' >> cabal.project.local; done"
-@@ -164,8 +185,8 @@ script:
+@@ -164,8 +184,8 @@ script:
  
    # cabal check
    - (cd base-compat-* && ${CABAL} check)

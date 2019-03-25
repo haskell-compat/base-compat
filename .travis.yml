@@ -165,11 +165,11 @@ script:
   - touch cabal.project
   - >
     if [ "x$BATTERIES" = "xNO" ]; then
-      printf 'packages: ./base-compat\n' >> cabal.project;
+      printf 'packages: ./base-compat-*/*.cabal\n' >> cabal.project;
     else
-      printf 'packages: ./base-compat\n' >> cabal.project;
-      printf 'packages: ./base-compat-batteries\n' >> cabal.project;
-      printf 'packages: ./check\n' >> cabal.project;
+      printf 'packages: ./base-compat-*/*.cabal\n' >> cabal.project;
+      printf 'packages: ./base-compat-batteries-*/*.cabal\n' >> cabal.project;
+      printf 'packages: ./type-check-*/*.cabal\n' >> cabal.project;
     fi
   - "printf 'write-ghc-environment-files: always\\n' >> cabal.project"
   - touch cabal.project.local

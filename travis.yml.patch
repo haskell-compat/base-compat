@@ -1,10 +1,10 @@
 diff --git a/.travis.yml b/.travis.yml
-index 0ff3a04..1c864f3 100644
+index 6bc054d..4ded5f4 100644
 --- a/.travis.yml
 +++ b/.travis.yml
-@@ -4,6 +4,13 @@
+@@ -6,6 +6,13 @@
  #
- # For more information, see https://github.com/haskell-CI/haskell-ci
+ # version: 0.2.1
  #
 +# The file is patched:
 +# - We install typediff utility from the repoistory
@@ -14,65 +14,73 @@ index 0ff3a04..1c864f3 100644
 +# - These changes are in travis.yml.patch
 +#
  language: c
- sudo: false
+ dist: xenial
  
-@@ -119,6 +126,9 @@ before_install:
+@@ -100,6 +107,9 @@ before_install:
    - unset CC
-   - ROOTDIR=$(pwd)
-   - mkdir -p $HOME/.local/bin
+   - CABAL=/opt/ghc/bin/cabal
+   - CABALHOME=$HOME/.cabal
 +  # install typediff
 +  - curl -L https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.3/typediff > $HOME/.local/bin/typediff
 +  - chmod +x $HOME/.local/bin/typediff
-   - "PATH=/opt/ghc/bin:/opt/ghc-ppa-tools/bin:$HOME/local/bin:$PATH"
+   - export PATH="$CABALHOME/bin:$PATH"
+   - ROOTDIR=$(pwd)
    - HCNUMVER=$(( $(${HC} --numeric-version|sed -E 's/([0-9]+)\.([0-9]+)\.([0-9]+).*/\1 * 10000 + \2 * 100 + \3/') ))
-   - echo $HCNUMVER
-@@ -136,7 +146,12 @@ install:
-   - "sed -i.bak 's/^jobs:/-- jobs:/' ${HOME}/.cabal/config"
-   - rm -fv cabal.project cabal.project.local
-   - grep -Ev -- '^\s*--' ${HOME}/.cabal/config | grep -Ev '^\s*$'
--  - "printf 'packages: \"./base-compat\" \"./base-compat-batteries\" \"./check\"\\n' > cabal.project"
+@@ -117,9 +127,14 @@ install:
+   - grep -Ev -- '^\s*--' $CABALHOME/config | grep -Ev '^\s*$'
+   - rm -f cabal.project
+   - touch cabal.project
+-  - "printf 'packages: \"./base-compat\"\\n' >> cabal.project"
+-  - "printf 'packages: \"./base-compat-batteries\"\\n' >> cabal.project"
+-  - "printf 'packages: \"./check\"\\n' >> cabal.project"
 +  - >
 +    if [ "x$BATTERIES" = "xNO" ]; then
-+      printf 'packages: ./base-compat\n' > cabal.project;
++      "printf 'packages: \"./base-compat\"\\n' >> cabal.project";
 +    else
-+      printf 'packages: ./base-compat ./base-compat-batteries ./check\n' > cabal.project;
++      "printf 'packages: \"./base-compat\"\\n' >> cabal.project";
++      "printf 'packages: \"./base-compat-batteries\"\\n' >> cabal.project";
++      "printf 'packages: \"./check\"\\n' >> cabal.project";
 +    fi
+   - "printf 'write-ghc-environment-files: always\\n' >> cabal.project"
    - touch cabal.project.local
-   - "if ! $NOINSTALLEDCONSTRAINTS; then for pkg in $($HCPKG list --simple-output); do echo $pkg  | grep -vw -- base-compat | grep -vw -- base-compat-batteries | grep -vw -- type-check | sed 's/^/constraints: /' | sed 's/-[^-]*$/ installed/' >> cabal.project.local; done; fi"
-   - cat cabal.project || true
-@@ -151,8 +166,8 @@ install:
-       (cd "./check" && autoreconf -i);
-     fi
-   - rm -f cabal.project.freeze
--  - cabal new-build -w ${HC} ${TEST} ${BENCH} --project-file="cabal.project" --dep -j2 all
--  - cabal new-build -w ${HC} --disable-tests --disable-benchmarks --project-file="cabal.project" --dep -j2 all
-+  - travis_wait cabal new-build -w ${HC} ${TEST} ${BENCH} --project-file="cabal.project" --dep -j2 all
-+  - travis_wait cabal new-build -w ${HC} --disable-tests --disable-benchmarks --project-file="cabal.project" --dep -j2 all
+   - "for pkg in $($HCPKG list --simple-output); do echo $pkg | sed 's/-[^-]*$//' | grep -vE -- '^(base-compat|base-compat-batteries|type-check)$' | sed 's/^/constraints: /' | sed 's/$/ installed/' >> cabal.project.local; done"
+@@ -132,8 +147,8 @@ install:
+   - ${CABAL} new-freeze -w ${HC} ${TEST} ${BENCH} --project-file="cabal.project" --dry
+   - "cat \"cabal.project.freeze\" | sed -E 's/^(constraints: *| *)//' | sed 's/any.//'"
+   - rm  "cabal.project.freeze"
+-  - ${CABAL} new-build -w ${HC} ${TEST} ${BENCH} --project-file="cabal.project" --dep -j2 all
+-  - ${CABAL} new-build -w ${HC} --disable-tests --disable-benchmarks --project-file="cabal.project" --dep -j2 all
++  - travis_wait ${CABAL} new-build -w ${HC} ${TEST} ${BENCH} --project-file="cabal.project" --dep -j2 all
++  - travis_wait ${CABAL} new-build -w ${HC} --disable-tests --disable-benchmarks --project-file="cabal.project" --dep -j2 all
    - rm -rf .ghc.environment.* "./base-compat"/dist "./base-compat-batteries"/dist "./check"/dist
    - DISTDIR=$(mktemp -d /tmp/dist-test.XXXX)
  
-@@ -164,7 +179,12 @@ script:
-   - mv dist-newstyle/sdist/*.tar.gz ${DISTDIR}/
-   - cd ${DISTDIR} || false
+@@ -147,9 +162,14 @@ script:
    - find . -maxdepth 1 -name '*.tar.gz' -exec tar -xvf '{}' \;
--  - "printf 'packages: base-compat-*/*.cabal base-compat-batteries-*/*.cabal type-check-*/*.cabal\\n' > cabal.project"
+   - rm -f cabal.project
+   - touch cabal.project
+-  - "printf 'packages: \"base-compat-*/*.cabal\"\\n' >> cabal.project"
+-  - "printf 'packages: \"base-compat-batteries-*/*.cabal\"\\n' >> cabal.project"
+-  - "printf 'packages: \"type-check-*/*.cabal\"\\n' >> cabal.project"
 +  - >
 +    if [ "x$BATTERIES" = "xNO" ]; then
-+       printf 'packages: base-compat-*/*.cabal\n' > cabal.project
++      "printf 'packages: \"./base-compat\"\\n' >> cabal.project";
 +    else
-+       printf 'packages: base-compat-*/*.cabal base-compat-batteries-*/*.cabal type-check-*/*.cabal\n' > cabal.project
++      "printf 'packages: \"./base-compat\"\\n' >> cabal.project";
++      "printf 'packages: \"./base-compat-batteries\"\\n' >> cabal.project";
++      "printf 'packages: \"./check\"\\n' >> cabal.project";
 +    fi
+   - "printf 'write-ghc-environment-files: always\\n' >> cabal.project"
    - touch cabal.project.local
-   - "if ! $NOINSTALLEDCONSTRAINTS; then for pkg in $($HCPKG list --simple-output); do echo $pkg  | grep -vw -- base-compat | grep -vw -- base-compat-batteries | grep -vw -- type-check | sed 's/^/constraints: /' | sed 's/-[^-]*$/ installed/' >> cabal.project.local; done; fi"
-   - cat cabal.project || true
-@@ -178,8 +198,8 @@ script:
+   - "for pkg in $($HCPKG list --simple-output); do echo $pkg | sed 's/-[^-]*$//' | grep -vE -- '^(base-compat|base-compat-batteries|type-check)$' | sed 's/^/constraints: /' | sed 's/$/ installed/' >> cabal.project.local; done"
+@@ -164,8 +184,8 @@ script:
  
    # cabal check
-   - (cd base-compat-* && cabal check)
--  - (cd base-compat-batteries-* && cabal check)
--  - (cd type-check-* && cabal check)
-+  - if [ ! "x$BATTERIES" = "xNO" ]; then (cd base-compat-batteries-* && cabal check); fi
-+  - if [ ! "x$BATTERIES" = "xNO" ]; then (cd type-check-* && cabal check); fi
+   - (cd base-compat-* && ${CABAL} check)
+-  - (cd base-compat-batteries-* && ${CABAL} check)
+-  - (cd type-check-* && ${CABAL} check)
++  - if [ ! "x$BATTERIES" = "xNO" ]; then (cd base-compat-batteries-* && ${CABAL} check); fi
++  - if [ ! "x$BATTERIES" = "xNO" ]; then (cd type-check-* && ${CABAL} check); fi
  
    # haddock
-   - if $HADDOCK; then cabal new-haddock -w ${HC} ${TEST} ${BENCH} all; else echo "Skipping haddock generation";fi
+   - ${CABAL} new-haddock -w ${HC} ${TEST} ${BENCH} all

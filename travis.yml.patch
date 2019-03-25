@@ -1,5 +1,5 @@
 diff --git a/.travis.yml b/.travis.yml
-index 6bc054d..ff5a69f 100644
+index 6bc054d..8005984 100644
 --- a/.travis.yml
 +++ b/.travis.yml
 @@ -6,6 +6,13 @@
@@ -16,17 +16,19 @@ index 6bc054d..ff5a69f 100644
  language: c
  dist: xenial
  
-@@ -100,6 +107,10 @@ before_install:
+@@ -100,7 +107,11 @@ before_install:
    - unset CC
    - CABAL=/opt/ghc/bin/cabal
    - CABALHOME=$HOME/.cabal
+-  - export PATH="$CABALHOME/bin:$PATH"
 +  # install typediff
 +  - mkdir -p $HOME/.local/bin
 +  - curl -L https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.3/typediff > $HOME/.local/bin/typediff
 +  - chmod +x $HOME/.local/bin/typediff
-   - export PATH="$CABALHOME/bin:$PATH"
++  - export PATH="$CABALHOME/bin:$HOME/.local/bin:$PATH"
    - ROOTDIR=$(pwd)
    - HCNUMVER=$(( $(${HC} --numeric-version|sed -E 's/([0-9]+)\.([0-9]+)\.([0-9]+).*/\1 * 10000 + \2 * 100 + \3/') ))
+   - echo $HCNUMVER
 @@ -117,9 +128,14 @@ install:
    - grep -Ev -- '^\s*--' $CABALHOME/config | grep -Ev '^\s*$'
    - rm -f cabal.project

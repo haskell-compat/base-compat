@@ -108,6 +108,7 @@ before_install:
   - CABAL=/opt/ghc/bin/cabal
   - CABALHOME=$HOME/.cabal
   # install typediff
+  - mkdir -p $HOME/.local/bin
   - curl -L https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.3/typediff > $HOME/.local/bin/typediff
   - chmod +x $HOME/.local/bin/typediff
   - export PATH="$CABALHOME/bin:$PATH"

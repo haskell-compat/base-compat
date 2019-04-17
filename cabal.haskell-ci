@@ -1,3 +1,4 @@
-env: 7.0.1:BATTERIES=NO TEST=--disable-tests,
-     7.2.1:BATTERIES=NO TEST=--disable-tests,
-     7.4.1:TEST=--disable-tests
+env:            7.0.1:BATTERIES=NO,
+                7.2.1:BATTERIES=NO
+tests:          (>=7.0.2 && <7.2.1) || (>=7.2.2 && <7.4.1) || >=7.4.2
+travis-patches: travis.yml.patch

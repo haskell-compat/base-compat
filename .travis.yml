@@ -50,6 +50,7 @@ before_install:
   - chmod +x $HOME/.local/bin/typediff
   - export PATH="$CABALHOME/bin:$HOME/.local/bin:$PATH"
   - which typediff
+  - typediff || true
   - TOP=$(pwd)
   - HCNUMVER=$(( $(${HC} --numeric-version|sed -E 's/([0-9]+)\.([0-9]+)\.([0-9]+).*/\1 * 10000 + \2 * 100 + \3/') ))
   - echo $HCNUMVER

@@ -15,9 +15,12 @@ import           Test.Hspec (Spec, describe, hspec, it)
 import           Test.HUnit (assertFailure)
 
 import           TypeDump (typeDump)
+import System.Environment (getEnv)
 
 main :: IO ()
 main = do
+  getEnv "PATH" >>= print
+
   pwd  <- getCurrentDirectory
   mods <- modules
   hspec $ mapM_ (typeCheck pwd) mods

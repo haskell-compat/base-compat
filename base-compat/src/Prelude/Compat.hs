@@ -235,6 +235,9 @@ module Prelude.Compat (
 , Functor
 , Integral
 , Monad
+#if MIN_VERSION_base(4,9,0)
+, MonadFail
+#endif
 , Monoid
 , Num (fromInteger)
 , Ord
@@ -274,10 +277,14 @@ module Prelude.Compat (
 
 #if MIN_VERSION_base(4,9,0)
 
-import Prelude as Base
-# if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
-  hiding (($!))
+import Prelude as Base hiding (
+# if !(MIN_VERSION_base(4,13,0))
+    fail
+#  if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
+  , ($!)
+#  endif
 # endif
+  )
 
 #else
 
@@ -320,6 +327,10 @@ import Data.Word
 
 #if MIN_VERSION_base(4,9,0) && !(MIN_VERSION_base(4,11,0))
 import Data.Semigroup as Base (Semigroup((<>)))
+#endif
+
+#if MIN_VERSION_base(4,9,0) && !(MIN_VERSION_base(4,13,0))
+import Control.Monad.Fail as Base (MonadFail(fail))
 #endif
 
 #if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))

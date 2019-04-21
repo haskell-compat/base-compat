@@ -6,3 +6,5 @@ env:            7.0.1:BATTERIES=NO,
 -- TODO: Have `BATTERIES=NO` imply no tests
 tests:          (>=7.0.2 && <7.2.1) || (>=7.2.2 && <7.4.1) || (>=7.4.2 && <7.8.1) || >=7.8.2
 travis-patches: travis.yml.patch
+-- travis_wait interacts poorly with color_cabal_output
+color:          False

@@ -1,7 +1,11 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Control.Monad.Compat (
   module Base
-, Monad(..)
+, Monad
+#if MIN_VERSION_base(4,9,0)
+, MonadFail
+#endif
+, fail
 , MonadPlus(..)
 #if !(MIN_VERSION_base(4,8,0))
 , foldM
@@ -31,7 +35,8 @@ module Control.Monad.Compat (
 ) where
 
 #if MIN_VERSION_base(4,9,0)
-import Control.Monad as Base
+import Control.Monad as Base hiding (fail)
+import Control.Monad.Fail as Base
 #else
 import Control.Monad as Base hiding (
     forever

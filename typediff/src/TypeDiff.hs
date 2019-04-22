@@ -126,5 +126,6 @@ normalizeConstrainNames t = transformBi f t
       Qual (ModuleName "GHC.Types") (Ident "Bool") -> Qual (ModuleName "GHC.Bool") (Ident "Bool")
       Qual (ModuleName "GHC.Types") (Ident "Ordering") -> Qual (ModuleName "GHC.Ordering") (Ident "Ordering")
       UnQual (Ident "Foldable") -> Qual (ModuleName "Data.Foldable") (Ident "Foldable")
+      UnQual (Ident "MonadFail") -> Qual (ModuleName "Control.Monad.Fail") (Ident "MonadFail")
       UnQual (Ident "Traversable") -> Qual (ModuleName "Data.Traversable") (Ident "Traversable")
       _ -> name

@@ -1,18 +1,18 @@
-(<>) :: Data.Semigroup.Semigroup a => a -> a -> a
+(<>) :: GHC.Base.Semigroup a => a -> a -> a
 All :: GHC.Types.Bool -> All
 Any :: GHC.Types.Bool -> Any
 appEndo :: Endo a -> a -> a
 Dual :: a -> Dual a
 Endo :: (a -> a) -> Endo a
-First :: GHC.Base.Maybe a -> First a
+First :: GHC.Maybe.Maybe a -> First a
 getAll :: All -> GHC.Types.Bool
 getAny :: Any -> GHC.Types.Bool
 getDual :: Dual a -> a
-getFirst :: First a -> GHC.Base.Maybe a
-getLast :: Last a -> GHC.Base.Maybe a
+getFirst :: First a -> GHC.Maybe.Maybe a
+getLast :: Last a -> GHC.Maybe.Maybe a
 getProduct :: Product a -> a
 getSum :: Sum a -> a
-Last :: GHC.Base.Maybe a -> Last a
+Last :: GHC.Maybe.Maybe a -> Last a
 mappend :: Monoid a => a -> a -> a
 mconcat :: Monoid a => [a] -> a
 mempty :: Monoid a => a

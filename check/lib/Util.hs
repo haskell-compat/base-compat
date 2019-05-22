@@ -115,7 +115,8 @@ normalizeSignatures
             -- something that we shouldn't.
             --
             _ <- P.choice
-                [ P.try (P.string "ghc-prim")
+                [ P.try (P.string "fail")
+                , P.try (P.string "ghc-prim")
                 , P.try (P.string "semigroups")
                 ]
 

@@ -1,3 +1,41 @@
+## Changes in 0.11.0 [????.??.??]
+ - Sync with `base-4.13`/GHC 8.8
+ - Backport `MonadFail(fail)` to `Prelude.Compat` and `Control.Monad.Compat`.
+
+   Because `Prelude.Compat.fail` now corresponds to the `fail` from `MonadFail`
+   instead of `Monad`, some care is required to implement `Monad.fail` on
+   pre-8.8 versions of GHC. The following template is recommended:
+
+   ```haskell
+   import Prelude.Compat
+   #if !(MIN_VERSION_base(4,13,0))
+   import qualified Control.Monad
+   #endif
+
+   data Blah a = ...
+
+   instance Functor Blah where ...
+   instance Applicative Blah where ...
+
+   instance Monad Blah where
+     (>>=) = ...
+   #if !(MIN_VERSION_base(4,13,0))
+     fail = fail -- The RHS fail corresponds to MonadFail.fail,
+                 -- /not/ Monad.fail
+   #endif
+
+   instance MonadFail Blah where
+     fail = ...
+   ```
+
+   Note that the `MonadFail` class has only been in `base` since
+   `base-4.9`/GHC 8.0, so accordingly, this can only be backported back
+   to GHC 8.0. If you wish to have a version of
+   `Prelude.Compat`/`Control.Monad.Compat` that backports
+   `MonadFail` to older GHCs (by conditionally depending on the `fail`
+   library), use the `Prelude.Compat`/`Control.Monad.Compat` modules from the
+   `base-compat-batteries` package.
+
 ## Changes in 0.10.5 [2018.10.18]
  - Enable `BangPatterns` in `Prelude.Compat`.
 

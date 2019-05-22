@@ -68,7 +68,7 @@ errorWithoutStackTrace :: [Char] -> a
 even :: Integral a => a -> Bool
 exp :: Floating a => a -> a
 exponent :: RealFloat a => a -> Int
-fail :: Monad m => String -> m a
+fail :: MonadFail m => String -> m a
 False :: Bool
 filter :: (a -> Bool) -> [a] -> [a]
 flip :: (a -> b -> c) -> b -> a -> c

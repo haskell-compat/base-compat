@@ -1,3 +1,36 @@
+## Changes in 0.11.0 [????.??.??]
+ - Reexport `MonadFail(fail)` from `Prelude.Compat` and `Control.Monad.Compat`.
+
+   Because `Prelude.Compat.fail` now corresponds to the `fail` from `MonadFail`
+   instead of `Monad`, some care is required to implement `Monad.fail` on
+   pre-8.8 versions of GHC. The following template is recommended:
+
+   ```haskell
+   import Prelude.Compat
+   #if !(MIN_VERSION_base(4,13,0))
+   import qualified Control.Monad
+   #endif
+
+   data Blah a = ...
+
+   instance Functor Blah where ...
+   instance Applicative Blah where ...
+
+   instance Monad Blah where
+     (>>=) = ...
+   #if !(MIN_VERSION_base(4,13,0))
+     fail = fail -- The RHS fail corresponds to MonadFail.fail,
+                 -- /not/ Monad.fail
+   #endif
+
+   instance MonadFail Blah where
+     fail = ...
+   ```
+
+ - This coincides with the `base-compat-???` release. Refer to the
+   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-????-????????)
+   for more details.
+
 ## Changes in 0.10.5 [2018.10.18]
  - This coincides with the `base-compat-0.10.5` release. Refer to the
    [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0105-20181018)

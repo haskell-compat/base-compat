@@ -36,6 +36,14 @@
    library), use the `Prelude.Compat`/`Control.Monad.Compat` modules from the
    `base-compat-batteries` package.
 
+ - Add `Data.Type.Equality.Compat` module, which re-exports `Data.Type.Equality`
+   module with `base-4.7`/GHC-7.8 and otherwise is empty.
+   If you wish to have a version of
+   `Data.Type.Equality.Compat` with older GHCs
+   (by conditionally depending on the `type-equality` library),
+   use the `Data.Type.Equality.Compat` module from the
+   `base-compat-batteries` package.
+
 ## Changes in 0.10.5 [2018.10.18]
  - Enable `BangPatterns` in `Prelude.Compat`.
 

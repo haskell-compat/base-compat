@@ -31,6 +31,8 @@
    [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-????-????????)
    for more details.
 
+ - Add `Data.Type.Equality.Compat` module
+
 ## Changes in 0.10.5 [2018.10.18]
  - This coincides with the `base-compat-0.10.5` release. Refer to the
    [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0105-20181018)

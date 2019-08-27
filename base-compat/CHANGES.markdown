@@ -8,25 +8,26 @@
 
    ```haskell
    import Prelude.Compat
-   #if !(MIN_VERSION_base(4,13,0))
-   import qualified Control.Monad
-   #endif
+   import qualified Control.Monad      as Monad
+   import qualified Control.Monad.Fail as Fail
 
    data Blah a = ...
 
    instance Functor Blah where ...
    instance Applicative Blah where ...
 
-   instance Monad Blah where
+   instance Monad.Monad Blah where
      (>>=) = ...
    #if !(MIN_VERSION_base(4,13,0))
-     fail = fail -- The RHS fail corresponds to MonadFail.fail,
-                 -- /not/ Monad.fail
+     fail = Fail.fail
    #endif
 
-   instance MonadFail Blah where
+   instance Fail.MonadFail Blah where
      fail = ...
    ```
+
+   This approach is also backwards-compatible with previous releases of
+   `base-compat`.
 
    Note that the `MonadFail` class has only been in `base` since
    `base-4.9`/GHC 8.0, so accordingly, this can only be backported back

@@ -212,7 +212,7 @@ script:
   - if [ ! "x$BATTERIES" = "xNO" ] ; then (cd ${PKGDIR_base_compat_batteries} && ${CABAL} -vnormal check) ; fi
   - if [ ! "x$BATTERIES" = "xNO" ] ; then (cd ${PKGDIR_type_check} && ${CABAL} -vnormal check) ; fi
   # haddock...
-  - ${CABAL} v2-haddock $WITHCOMPILER ${TEST} ${BENCH} all
+  - if [ $HCNUMVER -lt 70202 ] || [ $HCNUMVER -ge 70400 ] && [ $HCNUMVER -lt 70600 ] || [ $HCNUMVER -ge 70800 ] ; then ${CABAL} v2-haddock $WITHCOMPILER ${TEST} ${BENCH} all ; fi
   # Building without installed constraints for packages in global-db...
   - rm -f cabal.project.local
   - ${CABAL} v2-build $WITHCOMPILER --disable-tests --disable-benchmarks all

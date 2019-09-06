@@ -9,3 +9,11 @@ travis-patches: travis.yml.patch
 head-hackage:   >=8.8
 -- travis_wait interacts poorly with color_cabal_output
 color:          False
+-- Old versions of Haddock have trouble building the documentation for
+-- base-compat-batteries' Data.Type.Equality.Compat module:
+--
+-- * GHC 7.2.2 runs into "synifyType: PredTys are not, in themselves, source-level types."
+--   This bug is apparently so obscure that no issue was ever filed about it!
+--
+-- * GHC 7.6 runs into https://github.com/haskell/haddock/issues/242
+haddock:        <7.2.2 || (>=7.4.1 && <7.6.1) || >=7.8.1

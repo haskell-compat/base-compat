@@ -111,6 +111,7 @@ library
       Data.STRef.Compat
       Data.String.Compat
       Data.Type.Coercion.Compat
+      Data.Type.Equality.Compat
       Data.Version.Compat
       Data.Void.Compat
       Data.Word.Compat
@@ -168,6 +169,7 @@ library
       Data.STRef.Compat.Repl
       Data.String.Compat.Repl
       Data.Type.Coercion.Compat.Repl
+      Data.Type.Equality.Compat.Repl
       Data.Version.Compat.Repl
       Data.Void.Compat.Repl
       Data.Word.Compat.Repl

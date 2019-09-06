@@ -73,7 +73,8 @@ library
       transformers-compat >= 0.6     && < 0.7
   if !impl(ghc >= 8.2)
     build-depends:
-      bifunctors >= 5.5.2 && < 5.6
+      bifunctors           >= 5.5.2 && < 5.6,
+      type-equality        >= 1     && < 1.1
   if !impl(ghc >= 8.6)
     build-depends:
       contravariant >= 1.5 && < 1.6
@@ -118,6 +119,7 @@ library
       Data.STRef.Compat
       Data.String.Compat
       Data.Type.Coercion.Compat
+      Data.Type.Equality.Compat
       Data.Version.Compat
       Data.Void.Compat
       Data.Word.Compat
@@ -175,6 +177,7 @@ library
       Data.STRef.Compat.Repl.Batteries
       Data.String.Compat.Repl.Batteries
       Data.Type.Coercion.Compat.Repl.Batteries
+      Data.Type.Equality.Compat.Repl.Batteries
       Data.Version.Compat.Repl.Batteries
       Data.Void.Compat.Repl.Batteries
       Data.Word.Compat.Repl.Batteries

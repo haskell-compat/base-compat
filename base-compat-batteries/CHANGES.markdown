@@ -28,11 +28,13 @@
    This approach is also backwards-compatible with previous releases of
    `base-compat-batteries`.
 
- - This coincides with the `base-compat-???` release. Refer to the
-   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-????-????????)
-   for more details.
+ - Introduce the `Data.Type.Equality.Compat` module, which
+   reexports `Data.Type.Equality` from `base` (if using a sufficiently recent
 
- - Add `Data.Type.Equality.Compat` module
+ - This coincides with the `base-compat-0.11.0` release. Refer to the
+   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0110-????????)
+   for more details.
+   version of GHC) or the `type-equality` library (if using an old GHC).
 
 ## Changes in 0.10.5 [2018.10.18]
  - This coincides with the `base-compat-0.10.5` release. Refer to the

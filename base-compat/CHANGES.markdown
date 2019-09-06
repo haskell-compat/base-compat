@@ -1,4 +1,4 @@
-## Changes in 0.11.0 [????.??.??]
+## Changes in 0.11.0 [2019.09.06]
  - Sync with `base-4.13`/GHC 8.8
  - Backport `MonadFail(fail)` to `Prelude.Compat` and `Control.Monad.Compat`.
 

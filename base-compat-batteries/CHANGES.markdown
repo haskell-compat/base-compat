@@ -1,4 +1,4 @@
-## Changes in 0.11.0 [????.??.??]
+## Changes in 0.11.0 [2019.09.06]
  - Reexport `MonadFail(fail)` from `Prelude.Compat` and `Control.Monad.Compat`.
 
    Because `Prelude.Compat.fail` now corresponds to the `fail` from `MonadFail`
@@ -30,11 +30,11 @@
 
  - Introduce the `Data.Type.Equality.Compat` module, which
    reexports `Data.Type.Equality` from `base` (if using a sufficiently recent
+   version of GHC) or the `type-equality` library (if using an old GHC).
 
  - This coincides with the `base-compat-0.11.0` release. Refer to the
-   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0110-????????)
+   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0110-20190906)
    for more details.
-   version of GHC) or the `type-equality` library (if using an old GHC).
 
 ## Changes in 0.10.5 [2018.10.18]
  - This coincides with the `base-compat-0.10.5` release. Refer to the

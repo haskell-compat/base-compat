@@ -80,6 +80,8 @@ library
       contravariant >= 1.5 && < 1.6
   ghc-options:
       -fno-warn-duplicate-exports
+  if impl(ghc >= 7.10)
+    ghc-options: -fno-warn-trustworthy-safe
 
   hs-source-dirs:
       src

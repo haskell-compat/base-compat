@@ -1,23 +1,18 @@
 diff --git a/.travis.yml b/.travis.yml
-index b80218d..6a350de 100644
+index 29dd5de..3f8bfbe 100644
 --- a/.travis.yml
 +++ b/.travis.yml
-@@ -6,6 +6,14 @@
+@@ -6,6 +6,9 @@
  #
- # version: 0.3.20190815
+ # version: 0.8
  #
-+# This file is patched:
-+# - We install the typediff utility from its repoistory.
-+# - We amend the cabal.project with the BATTERIES environment variable.
-+#   When BATTERIES=NO is set, we exclude the `base-compat-batteries` and
-+#   `check` package/directories from the build.
-+#   We assume that BATTERIES=NO implies that the tests are disabled as well.
-+# - These changes are stored in travis.yml.patch.
++# This file is patched to install the typediff utility from its repoistory
++# (see travis.yml.patch).
 +#
+ version: ~> 1.0
  language: c
- dist: xenial
- git:
-@@ -102,7 +110,11 @@ before_install:
+ os: linux
+@@ -70,7 +73,11 @@ before_install:
    - unset CC
    - CABAL=/opt/ghc/bin/cabal
    - CABALHOME=$HOME/.cabal
@@ -30,45 +25,3 @@ index b80218d..6a350de 100644
    - TOP=$(pwd)
    - "HCNUMVER=$(${HC} --numeric-version|perl -ne '/^(\\d+)\\.(\\d+)\\.(\\d+)(\\.(\\d+))?$/; print(10000 * $1 + 100 * $2 + ($3 == 0 ? $5 != 1 : $3))')"
    - echo $HCNUMVER
-@@ -152,8 +164,7 @@ install:
-   - touch cabal.project
-   - |
-     echo "packages: ./base-compat" >> cabal.project
--    echo "packages: ./base-compat-batteries" >> cabal.project
--    echo "packages: ./check" >> cabal.project
-+    if [ ! "x$BATTERIES" = "xNO" ] ; then (echo "packages: ./base-compat-batteries" >> cabal.project; echo "packages: ./check" >> cabal.project) ; fi
-   - |
-   - "for pkg in $($HCPKG list --simple-output); do echo $pkg | sed 's/-[^-]*$//' | (grep -vE -- '^(base-compat|base-compat-batteries|type-check)$' || true) | sed 's/^/constraints: /' | sed 's/$/ installed/' >> cabal.project.local; done"
-   - cat cabal.project || true
-@@ -164,8 +175,8 @@ install:
-   - ${CABAL} v2-freeze $WITHCOMPILER ${TEST} ${BENCH}
-   - "cat cabal.project.freeze | sed -E 's/^(constraints: *| *)//' | sed 's/any.//'"
-   - rm  cabal.project.freeze
--  - ${CABAL} v2-build $WITHCOMPILER ${TEST} ${BENCH} --dep -j2 all
--  - ${CABAL} v2-build $WITHCOMPILER --disable-tests --disable-benchmarks --dep -j2 all
-+  - travis_wait ${CABAL} v2-build $WITHCOMPILER ${TEST} ${BENCH} --dep -j2 all
-+  - travis_wait ${CABAL} v2-build $WITHCOMPILER --disable-tests --disable-benchmarks --dep -j2 all
- script:
-   - DISTDIR=$(mktemp -d /tmp/dist-test.XXXX)
-   # Packaging...
-@@ -183,8 +194,7 @@ script:
-   - touch cabal.project
-   - |
-     echo "packages: ${PKGDIR_base_compat}" >> cabal.project
--    echo "packages: ${PKGDIR_base_compat_batteries}" >> cabal.project
--    echo "packages: ${PKGDIR_type_check}" >> cabal.project
-+    if [ ! "x$BATTERIES" = "xNO" ] ; then (echo "packages: ${PKGDIR_base_compat_batteries}" >> cabal.project; echo "packages: ${PKGDIR_type_check}" >> cabal.project) ; fi
-   - |
-   - "for pkg in $($HCPKG list --simple-output); do echo $pkg | sed 's/-[^-]*$//' | (grep -vE -- '^(base-compat|base-compat-batteries|type-check)$' || true) | sed 's/^/constraints: /' | sed 's/$/ installed/' >> cabal.project.local; done"
-   - cat cabal.project || true
-@@ -199,8 +209,8 @@ script:
-   - if [ $HCNUMVER -ge 70002 ] && [ $HCNUMVER -lt 70200 ] || [ $HCNUMVER -ge 70202 ] && [ $HCNUMVER -lt 70400 ] || [ $HCNUMVER -ge 70402 ] && [ $HCNUMVER -lt 70800 ] || [ $HCNUMVER -ge 70802 ] ; then ${CABAL} v2-test $WITHCOMPILER ${TEST} ${BENCH} all ; fi
-   # cabal check...
-   - (cd ${PKGDIR_base_compat} && ${CABAL} -vnormal check)
--  - (cd ${PKGDIR_base_compat_batteries} && ${CABAL} -vnormal check)
--  - (cd ${PKGDIR_type_check} && ${CABAL} -vnormal check)
-+  - if [ ! "x$BATTERIES" = "xNO" ] ; then (cd ${PKGDIR_base_compat_batteries} && ${CABAL} -vnormal check) ; fi
-+  - if [ ! "x$BATTERIES" = "xNO" ] ; then (cd ${PKGDIR_type_check} && ${CABAL} -vnormal check) ; fi
-   # haddock...
-   - ${CABAL} v2-haddock $WITHCOMPILER ${TEST} ${BENCH} all
-   # Building without installed constraints for packages in global-db...

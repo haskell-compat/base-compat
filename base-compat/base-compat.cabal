@@ -53,7 +53,8 @@ tested-with:        GHC == 7.0.4
                   , GHC == 8.2.2
                   , GHC == 8.4.4
                   , GHC == 8.6.5
-                  , GHC == 8.8.1
+                  , GHC == 8.8.2
+                  , GHC == 8.10.1
 extra-source-files: CHANGES.markdown, README.markdown
 
 source-repository head
@@ -131,6 +132,7 @@ library
       Prelude.Compat
       System.Environment.Compat
       System.Exit.Compat
+      System.IO.Error.Compat
       System.IO.Unsafe.Compat
       Text.Read.Compat
       Type.Reflection.Compat
@@ -189,6 +191,7 @@ library
       Prelude.Compat.Repl
       System.Environment.Compat.Repl
       System.Exit.Compat.Repl
+      System.IO.Error.Compat.Repl
       System.IO.Unsafe.Compat.Repl
       Text.Read.Compat.Repl
       Type.Reflection.Compat.Repl

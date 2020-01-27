@@ -1,3 +1,8 @@
+## Changes in ?.??.? [????.??.??]
+ - This coincides with the `base-compat-?.??.?` release. Refer to the
+   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-????-????????)
+   for more details.
+
 ## Changes in 0.11.0 [2019.09.06]
  - Reexport `MonadFail(fail)` from `Prelude.Compat` and `Control.Monad.Compat`.
 

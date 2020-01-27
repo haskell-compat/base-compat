@@ -150,6 +150,8 @@ So far the following is covered.
  * `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
  * `RuntimeRep`-polymorphic `($!)` to `Prelude.Compat`
  * `RuntimeRep`-polymorphic `throw` to `Control.Exception.Compat`
+ * `isResourceVanishedError`, `resourceVanishedErrorType`, and
+   `isResourceVanishedErrorType` to `System.IO.Error.Compat`
 
 ## What is not covered
 
@@ -302,38 +304,18 @@ on, paired with the things that each library backports:
 
 ## Supported versions of GHC/`base`
 
- * `ghc-8.8.1`  / `base-4.13.0.0`
- * `ghc-8.6.5`  / `base-4.12.0.0`
- * `ghc-8.6.4`  / `base-4.12.0.0`
- * `ghc-8.6.3`  / `base-4.12.0.0`
- * `ghc-8.6.2`  / `base-4.12.0.0`
- * `ghc-8.6.1`  / `base-4.12.0.0`
- * `ghc-8.4.4`  / `base-4.11.1.0`
- * `ghc-8.4.3`  / `base-4.11.1.0`
- * `ghc-8.4.2`  / `base-4.11.1.0`
- * `ghc-8.4.1`  / `base-4.11.0.0`
- * `ghc-8.2.2`  / `base-4.10.1.0`
- * `ghc-8.2.1`  / `base-4.10.0.0`
- * `ghc-8.0.2`  / `base-4.9.1.0`
- * `ghc-8.0.1`  / `base-4.9.0.0`
- * `ghc-7.10.3` / `base-4.8.2.0`
- * `ghc-7.10.2` / `base-4.8.1.0`
- * `ghc-7.10.1` / `base-4.8.0.0`
- * `ghc-7.8.4`  / `base-4.7.0.2`
- * `ghc-7.8.3`  / `base-4.7.0.1`
- * `ghc-7.8.2`  / `base-4.7.0.0`
- * `ghc-7.8.1`  / `base-4.7.0.0`
- * `ghc-7.6.3`  / `base-4.6.0.1`
- * `ghc-7.6.2`  / `base-4.6.0.1`
- * `ghc-7.6.1`  / `base-4.6.0.0`
- * `ghc-7.4.2`  / `base-4.5.1.0`
- * `ghc-7.4.1`  / `base-4.5.0.0`
- * `ghc-7.2.2`  / `base-4.4.1.0`
- * `ghc-7.2.1`  / `base-4.4.0.0`
- * `ghc-7.0.4`  / `base-4.3.1.0`
- * `ghc-7.0.3`  / `base-4.3.1.0`
- * `ghc-7.0.2`  / `base-4.3.1.0`
- * `ghc-7.0.1`  / `base-4.3.0.0`
+ * `ghc-8.10.*` / `base-4.14.*`
+ * `ghc-8.8.*`  / `base-4.13.*`
+ * `ghc-8.6.*`  / `base-4.12.*`
+ * `ghc-8.4.*`  / `base-4.11.*`
+ * `ghc-8.2.*`  / `base-4.10.*`
+ * `ghc-8.0.*`  / `base-4.9.*`
+ * `ghc-7.10.*` / `base-4.8.*`
+ * `ghc-7.8.*`  / `base-4.7.*`
+ * `ghc-7.6.*`  / `base-4.6.*`
+ * `ghc-7.4.*`  / `base-4.5.*`
+ * `ghc-7.2.*`  / `base-4.4.*`
+ * `ghc-7.0.*`  / `base-4.3.*`
 
 We also make an attempt to keep `base-compat` building with GHC HEAD, but due
 to its volatility, it may not work at any given point in time. If it doesn't,

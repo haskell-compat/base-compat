@@ -1,4 +1,4 @@
-## Changes in ?.??.? [????.??.??]
+## Changes in 0.11.1 [2020.01.27]
  - Sync with `base-4.14`/GHC 8.10
  - Backport `isResourceVanishedError`, `resourceVanishedErrorType`, and
    `isResourceVanishedErrorType` to `System.IO.Error.Compat`.

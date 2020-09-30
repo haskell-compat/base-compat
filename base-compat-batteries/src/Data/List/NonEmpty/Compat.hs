@@ -1,6 +1,4 @@
 {-# LANGUAGE CPP, NoImplicitPrelude, PackageImports #-}
--- | This backports the modern "Data.Semigroup" interface back to
--- @base-4.9@/GHC 8.0.
 module Data.List.NonEmpty.Compat (
   -- * The type of non-empty streams
     NonEmpty(..)
@@ -21,6 +19,7 @@ module Data.List.NonEmpty.Compat (
   , tail        
   , last        
   , init        
+  , singleton
   , (<|), cons  
   , uncons      
   , unfoldr     
@@ -75,4 +74,12 @@ module Data.List.NonEmpty.Compat (
 import "base-compat" Data.List.NonEmpty.Compat
 #else
 import "semigroups" Data.List.NonEmpty
+#endif
+
+#if !(MIN_VERSION_base(4,9,0))
+-- | Construct a 'NonEmpty' list from a single element.
+--
+-- /Since: 4.15/
+singleton :: a -> NonEmpty a
+singleton a = a :| []
 #endif

@@ -1,6 +1,6 @@
-## Changes in ?.??.? [????.??.??]
- - This coincides with the `base-compat-?.??.?` release. Refer to the
-   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-????-????????)
+## Changes in 0.11.2 [2020.09.30]
+ - This coincides with the `base-compat-0.11.2` release. Refer to the
+   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0112-20200930)
    for more details.
 
 ## Changes in 0.11.1 [2020.01.27]

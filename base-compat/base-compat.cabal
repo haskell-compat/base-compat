@@ -134,6 +134,7 @@ library
       Prelude.Compat
       System.Environment.Compat
       System.Exit.Compat
+      System.IO.Compat
       System.IO.Error.Compat
       System.IO.Unsafe.Compat
       Text.Read.Compat
@@ -193,6 +194,7 @@ library
       Prelude.Compat.Repl
       System.Environment.Compat.Repl
       System.Exit.Compat.Repl
+      System.IO.Compat.Repl
       System.IO.Error.Compat.Repl
       System.IO.Unsafe.Compat.Repl
       Text.Read.Compat.Repl

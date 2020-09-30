@@ -5,6 +5,10 @@
 #endif
 module Data.List.Compat (
   module Base
+#if !(MIN_VERSION_base(4,15,0))
+, singleton
+#endif
+
 #if !(MIN_VERSION_base(4,11,0))
 , iterate'
 #endif
@@ -234,4 +238,16 @@ iterate'FB c f x0 = go x0
 "iterate'"    [~1] forall f x.   iterate' f x = build (\c _n -> iterate'FB c f x)
 "iterate'FB"  [1]                iterate'FB (:) = iterate'
  #-}
+#endif
+
+#if !(MIN_VERSION_base(4,15,0))
+-- | Produce singleton list.
+--
+-- >>> singleton True
+-- [True]
+--
+-- /Since: 4.14.0.0/
+--
+singleton :: a -> [a]
+singleton x = [x]
 #endif

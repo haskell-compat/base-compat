@@ -22,6 +22,7 @@ module Data.List.NonEmpty.Compat (
   , tail        
   , last        
   , init        
+  , singleton
   , (<|), cons  
   , uncons      
   , unfoldr     
@@ -75,4 +76,12 @@ module Data.List.NonEmpty.Compat (
 
 #if MIN_VERSION_base(4,9,0)
 import Data.List.NonEmpty
+#endif
+
+#if MIN_VERSION_base(4,9,0) && !(MIN_VERSION_base(4,15,0))
+-- | Construct a 'NonEmpty' list from a single element.
+--
+-- /Since: 4.15/
+singleton :: a -> NonEmpty a
+singleton a = a :| []
 #endif

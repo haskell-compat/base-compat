@@ -144,6 +144,7 @@ library
       Prelude.Compat
       System.Environment.Compat
       System.Exit.Compat
+      System.IO.Compat
       System.IO.Error.Compat
       System.IO.Unsafe.Compat
       Text.Read.Compat
@@ -203,6 +204,7 @@ library
       Prelude.Compat.Repl.Batteries
       System.Environment.Compat.Repl.Batteries
       System.Exit.Compat.Repl.Batteries
+      System.IO.Compat.Repl.Batteries
       System.IO.Error.Compat.Repl.Batteries
       System.IO.Unsafe.Compat.Repl.Batteries
       Text.Read.Compat.Repl.Batteries

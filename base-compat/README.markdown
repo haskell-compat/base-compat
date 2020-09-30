@@ -152,6 +152,8 @@ So far the following is covered.
  * `RuntimeRep`-polymorphic `throw` to `Control.Exception.Compat`
  * `isResourceVanishedError`, `resourceVanishedErrorType`, and
    `isResourceVanishedErrorType` to `System.IO.Error.Compat`
+ * `singleton` to `Data.List.Compat` and `Data.List.NonEmpty.Compat`
+ * `hGetContents'`, `getContents'`, and `readFile'` to `System.IO`
 
 ## What is not covered
 
@@ -304,6 +306,7 @@ on, paired with the things that each library backports:
 
 ## Supported versions of GHC/`base`
 
+ * `ghc-9.0.*`  / `base-4.15.*`
  * `ghc-8.10.*` / `base-4.14.*`
  * `ghc-8.8.*`  / `base-4.13.*`
  * `ghc-8.6.*`  / `base-4.12.*`

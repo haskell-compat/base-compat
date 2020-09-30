@@ -1,3 +1,8 @@
+## Changes in ?.??.?? [????.??.??]
+ - Sync with `base-4.15`/GHC 9.0
+ - Backport `singleton` to `Data.List` and `Data.List.NonEmpty`
+ - Backport `hGetContents'`, `getContents'`, and `readFile'` added to `System.IO`
+
 ## Changes in 0.11.1 [2020.01.27]
  - Sync with `base-4.14`/GHC 8.10
  - Backport `isResourceVanishedError`, `resourceVanishedErrorType`, and

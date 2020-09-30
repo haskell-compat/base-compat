@@ -153,7 +153,7 @@ So far the following is covered.
  * `isResourceVanishedError`, `resourceVanishedErrorType`, and
    `isResourceVanishedErrorType` to `System.IO.Error.Compat`
  * `singleton` to `Data.List.Compat` and `Data.List.NonEmpty.Compat`
- * `hGetContents'`, `getContents'`, and `readFile'` to `System.IO`
+ * `hGetContents'`, `getContents'`, and `readFile'` to `System.IO.Compat`
 
 ## What is not covered
 

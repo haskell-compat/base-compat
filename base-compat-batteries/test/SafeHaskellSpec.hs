@@ -56,7 +56,8 @@ import Numeric.Natural.Compat ()
 import Prelude.Compat
 import System.Environment.Compat ()
 import System.Exit.Compat ()
-import System.IO.Error ()
+import System.IO.Compat ()
+import System.IO.Error.Compat ()
 import Text.Read.Compat ()
 import Type.Reflection.Compat ()
 

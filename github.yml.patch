@@ -1,0 +1,35 @@
+diff --git a/.github/workflows/haskell-ci.yml b/.github/workflows/haskell-ci.yml
+index 62af3e0..44bfd0b 100644
+--- a/.github/workflows/haskell-ci.yml
++++ b/.github/workflows/haskell-ci.yml
+@@ -12,6 +12,9 @@
+ #
+ # REGENDATA ("0.11.20210101",["github","cabal.project"])
+ #
++# This file is patched to install the typediff utility from its repository
++# (see github.yml.patch).
++#
+ name: Haskell-CI
+ on:
+   - push
+@@ -64,6 +67,8 @@ jobs:
+       - name: Set PATH and environment variables
+         run: |
+           echo "$HOME/.cabal/bin" >> $GITHUB_PATH
++          echo "$HOME/.local/bin" >> $GITHUB_PATH
++          echo "/opt/ghc/bin" >> $GITHUB_PATH
+           echo "LANG=C.UTF-8" >> $GITHUB_ENV
+           echo "CABAL_DIR=$HOME/.cabal" >> $GITHUB_ENV
+           echo "CABAL_CONFIG=$HOME/.cabal/config" >> $GITHUB_ENV
+@@ -120,6 +125,11 @@ jobs:
+           rm -f cabal-plan.xz
+           chmod a+x $HOME/.cabal/bin/cabal-plan
+           cabal-plan --version
++      - name: install typediff
++        run: |
++          mkdir -p $HOME/.local/bin
++          curl -L https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.4/typediff > $HOME/.local/bin/typediff
++          chmod a+x $HOME/.local/bin/typediff
+       - name: checkout
+         uses: actions/checkout@v2
+         with:

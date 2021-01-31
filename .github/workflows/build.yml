@@ -1,0 +1,80 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: ${{ matrix.os }} / GHC ${{ matrix.ghc }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-16.04 # https://launchpad.net/~hvr/+archive/ubuntu/ghc?field.series_filter=xenial
+        ghc:
+          - 7.0.4
+          - 7.2.2
+          - 7.4.2
+          - 7.6.3
+          - 7.8.4
+          - '7.10'
+          - '8.0'
+          - '8.2'
+          - '8.4'
+          - '8.6'
+          - '8.8'
+          - '8.10'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: haskell/actions/setup@v1
+        with:
+          ghc-version: ${{ matrix.ghc }}
+
+      - name: install typediff
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          curl -L https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.4/typediff > "$HOME/.local/bin/typediff"
+          chmod a+x "$HOME/.local/bin/typediff"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - run: cabal update
+
+      - name: enable documentation
+        run: echo "enable_documentation=--enable-documentation" >> $GITHUB_ENV
+        if: matrix.ghc != '7.2.2'
+
+      - name: cabal configure
+        run: |
+          cabal configure --enable-tests ${{ env.enable_documentation }}
+          echo -e "$EXTRAS" >> cabal.project.local
+        env:
+          EXTRAS: |
+            package base-compat
+              ghc-options: -Werror
+            package base-compat-batteries
+              ghc-options: -Werror
+            package type-check
+              ghc-options: -Werror
+
+      - run: cabal build all
+      - run: cabal test all --test-show-details=direct
+        env:
+          HSPEC_OPTIONS: --color
+
+      - run: cd base-compat && cabal check
+      - run: cd base-compat-batteries && cabal check
+
+  success:
+    needs: build
+    runs-on: ubuntu-latest
+    if: always() # this is required as GitHub considers "skipped" jobs as "passed" when checking branch protection rules
+
+    steps:
+      - run: false
+        if: needs.build.result != 'success'

@@ -34,18 +34,6 @@ description:      Provides functions available in later versions of @base@ to
                   @<https://github.com/haskell-compat/base-compat/blob/master/base-compat/README.markdown#dependencies here>@
                   for a more comprehensive list of differences between
                   @base-compat@ and @base-compat-batteries@.
-tested-with:        GHC == 7.0.4
-                  , GHC == 7.2.2
-                  , GHC == 7.4.2
-                  , GHC == 7.6.3
-                  , GHC == 7.8.4
-                  , GHC == 7.10.3
-                  , GHC == 8.0.2
-                  , GHC == 8.2.2
-                  , GHC == 8.4.4
-                  , GHC == 8.6.5
-                  , GHC == 8.8.3
-                  , GHC == 8.10.1
 extra-source-files: CHANGES.markdown, README.markdown
 
 source-repository head

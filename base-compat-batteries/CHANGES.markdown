@@ -1,3 +1,12 @@
+## Changes in 0.12.0 [????.??.??]
+ - `Data.Semigroup.Compat{.Repl.Batteries}` no longer re-exports the `Option`
+   data type or the `option` function, as both have been removed in
+   `base-4.16`.
+
+ - This coincides with the `base-compat-0.12.0` release. Refer to the
+   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0120-????????)
+   for more details.
+
 ## Changes in 0.11.2 [2020.09.30]
  - This coincides with the `base-compat-0.11.2` release. Refer to the
    [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0112-20200930)

@@ -21,9 +21,6 @@ module Data.Semigroup.Compat (
   , Any(..)
   , Sum(..)
   , Product(..)
-  -- * A better monoid for Maybe
-  , Option(..)
-  , option
   -- * Difference lists of a semigroup
   , diff
   , cycle1

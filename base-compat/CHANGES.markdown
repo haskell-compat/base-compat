@@ -1,3 +1,8 @@
+## Changes in 0.12.0 [????.??.??]
+ - Sync with `base-4.16`/GHC 9.2
+ - `Data.Semigroup.Compat{.Repl}` no longer re-exports the `Option` data type
+   or the `option` function, as both have been removed in `base-4.16`.
+
 ## Changes in 0.11.2 [2020.09.30]
  - Sync with `base-4.15`/GHC 9.0
  - Backport `singleton` to `Data.List.Compat` and `Data.List.NonEmpty.Compat`

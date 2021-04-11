@@ -1,6 +1,6 @@
 module Main (main) where
 
-import           Data.List
+import qualified Data.List as List
 import           System.Environment
 
 import           Util
@@ -19,7 +19,7 @@ normalize :: String -> String
 normalize = unlines . map removeSignature . removeTypeDefinitions . lines . normalizeLines . unlines . removeClasses . normalizeClasses . lines
 
 removeTypeDefinitions :: [String] -> [String]
-removeTypeDefinitions = filter (not . isPrefixOf "type ")
+removeTypeDefinitions = filter (not . List.isPrefixOf "type ")
 
 removeClasses :: [String] -> [String]
 removeClasses = removeOmissionDots . go
@@ -27,14 +27,14 @@ removeClasses = removeOmissionDots . go
     removeOmissionDots = filter (/= "...")
 
     go input = case input of
-      x : xs | "class " `isPrefixOf` x -> case span ("  " `isPrefixOf`) xs of
+      x : xs | "class " `List.isPrefixOf` x -> case span ("  " `List.isPrefixOf`) xs of
         (ys, zs) -> map (drop 2) ys ++ go zs
       x : xs -> x : go xs
       [] -> []
 
 normalizeClasses :: [String] -> [String]
 normalizeClasses input = case input of
-  x : y : ys | "class " `isPrefixOf` x && "      " `isPrefixOf` y -> normalizeClasses ((x ++ y) : ys)
+  x : y : ys | "class " `List.isPrefixOf` x && "      " `List.isPrefixOf` y -> normalizeClasses ((x ++ y) : ys)
   y : ys -> y : normalizeClasses ys
   [] -> []
 
@@ -42,6 +42,6 @@ removeSignature :: String -> String
 removeSignature = go
   where
     go input = case input of
-      x : xs | " :: " `isPrefixOf` xs -> [x]
+      x : xs | " :: " `List.isPrefixOf` xs -> [x]
       x : xs -> x : go xs
       [] -> []

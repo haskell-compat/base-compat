@@ -10,7 +10,7 @@ module TypeDiff (
 
 import           Data.Char
 import           Data.Maybe
-import           Data.List
+import qualified Data.List as List
 import           Data.Map as Map (Map)
 import qualified Data.Map as Map
 import           Language.Haskell.Exts.Simple.Syntax
@@ -27,12 +27,12 @@ typeDiff input1 input2 = unlines (missing ++ extra ++ wrongSigs)
     names1 = Map.keys sigs1
     names2 = Map.keys sigs2
 
-    missing = map format (names1 \\ names2)
+    missing = map format (names1 List.\\ names2)
       where
         format :: String -> String
         format = ("missing " ++)
 
-    extra = map format (names2 \\ names1)
+    extra = map format (names2 List.\\ names1)
       where
         format :: String -> String
         format = ("extra " ++)
@@ -78,7 +78,7 @@ sortConstrains x = case x of
 
 sortContext :: Context -> Context
 sortContext x = case x of
-  CxTuple assts -> CxTuple (sort assts)
+  CxTuple assts -> CxTuple (List.sort assts)
   _             -> x
 
 normalizeConstrains :: Type -> Type
@@ -98,7 +98,7 @@ alphaNormalize t = transformBi f t
     f name = fromMaybe name $ lookup name mapping
 
     names :: [Name]
-    names = (nub . filter isTyVar . universeBi) t
+    names = (List.nub . filter isTyVar . universeBi) t
 
     isTyVar :: Name -> Bool
     isTyVar x = case x of

@@ -1,7 +1,7 @@
 module Main (main) where
 
 import Control.Monad (when)
-import Data.List
+import qualified Data.List as List
 import System.Directory
 import System.FilePath
 
@@ -32,11 +32,11 @@ mkReplModules dir suffixes = do
       when (takeFileName entry == "Compat.hs") $ do
         let parentDir      = takeDirectory entry
             sepStr         = [pathSeparator]
-            Just modPrefix = stripPrefix (dir </> "src" ++ sepStr) parentDir
+            Just modPrefix = List.stripPrefix (dir </> "src" ++ sepStr) parentDir
             modName        = replace sepStr "." modPrefix <.> "Compat"
             replFileName   = parentDir </> "Compat"
-                                     </> intercalate sepStr suffixes
-                                     <.> "hs"
+                                       </> List.intercalate sepStr suffixes
+                                       <.> "hs"
             replFileDir  = takeDirectory replFileName
         createDirectoryIfMissing True replFileDir
         writeFile replFileName $ fileTemplate modName suffixes
@@ -47,7 +47,7 @@ fileTemplate modName suffixes = unlines
   , "{-# OPTIONS_GHC -fno-warn-dodgy-exports -fno-warn-unused-imports #-}"
   , "-- | Reexports \"" ++ modName ++ "\""
   , "-- from a globally unique namespace."
-  , "module " ++ modName ++ "." ++ intercalate "." suffixes ++ " ("
+  , "module " ++ modName ++ "." ++ List.intercalate "." suffixes ++ " ("
   , "  module " ++ modName
   , ") where"
   , "import \"this\" " ++ modName
@@ -59,7 +59,7 @@ fileTemplate modName suffixes = unlines
 -- Taken from the @extra@ library.
 replace :: Eq a => [a] -> [a] -> [a] -> [a]
 replace [] _ _ = error "replace: first argument cannot be empty"
-replace from to xs | Just xs <- stripPrefix from xs = to ++ replace from to xs
+replace from to xs | Just xs <- List.stripPrefix from xs = to ++ replace from to xs
 replace from to (x:xs) = x : replace from to xs
 replace from to [] = []
 

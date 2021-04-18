@@ -136,6 +136,7 @@ library
       System.IO.Error.Compat
       System.IO.Unsafe.Compat
       Text.Read.Compat
+      Text.Read.Lex.Compat
       Type.Reflection.Compat
 
       Control.Concurrent.Compat.Repl.Batteries
@@ -196,6 +197,7 @@ library
       System.IO.Error.Compat.Repl.Batteries
       System.IO.Unsafe.Compat.Repl.Batteries
       Text.Read.Compat.Repl.Batteries
+      Text.Read.Lex.Compat.Repl.Batteries
       Type.Reflection.Compat.Repl.Batteries
 test-suite spec
   type:

@@ -2,6 +2,8 @@
  - Sync with `base-4.16`/GHC 9.2
  - `Data.Semigroup.Compat{.Repl}` no longer re-exports the `Option` data type
    or the `option` function, as both have been removed in `base-4.16`.
+ - Backport `readBin` and `showBin` to `Numeric.Compat`
+ - Backport `readBinP` to `Text.Read.Lex.Compat`
 
 ## Changes in 0.11.2 [2020.09.30]
  - Sync with `base-4.15`/GHC 9.0

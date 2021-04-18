@@ -145,7 +145,7 @@ So far the following is covered.
  * `callocArray` and `callocArray0` functions to `Foreign.Marshal.Array.Compat`
  * `fillBytes` to `Foreign.Marshal.Utils.Compat`
  * Added `Data.List.Compat.scanl'`
- * `showFFloatAlt` and `showGFloatAlt` to `Numeric.Compat`
+ * `showFFloatAlt`, `showGFloatAlt`, `readBin`, and `showBin` to `Numeric.Compat`
  * `lookupEnv`, `setEnv` and `unsetEnv` to `System.Environment.Compat`
  * `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
  * `RuntimeRep`-polymorphic `($!)` to `Prelude.Compat`
@@ -154,6 +154,7 @@ So far the following is covered.
    `isResourceVanishedErrorType` to `System.IO.Error.Compat`
  * `singleton` to `Data.List.Compat` and `Data.List.NonEmpty.Compat`
  * `hGetContents'`, `getContents'`, and `readFile'` to `System.IO.Compat`
+ * `readBinP` to `Text.Read.Lex.Compat`
 
 ## What is not covered
 
@@ -306,6 +307,7 @@ on, paired with the things that each library backports:
 
 ## Supported versions of GHC/`base`
 
+ * `ghc-9.2.*`  / `base-4.16.*`
  * `ghc-9.0.*`  / `base-4.15.*`
  * `ghc-8.10.*` / `base-4.14.*`
  * `ghc-8.8.*`  / `base-4.13.*`

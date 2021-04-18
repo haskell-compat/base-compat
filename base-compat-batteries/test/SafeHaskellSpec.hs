@@ -59,6 +59,7 @@ import System.Exit.Compat ()
 import System.IO.Compat ()
 import System.IO.Error.Compat ()
 import Text.Read.Compat ()
+import Text.Read.Lex.Compat ()
 import Type.Reflection.Compat ()
 
 main :: IO ()

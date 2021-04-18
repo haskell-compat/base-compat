@@ -1,20 +1,24 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Numeric.Compat (
   module Base
+, showBin
 , showFFloatAlt
 , showGFloatAlt
 , showHFloat
+, readBin
 ) where
 
 import Numeric as Base
 
 #if !(MIN_VERSION_base(4,7,0))
-import Data.Char (intToDigit)
 import GHC.Float
 #endif
 
-#if !(MIN_VERSION_base(4,11,0))
+#if !(MIN_VERSION_base(4,16,0))
+import Data.Char (intToDigit)
 import Prelude
+import Text.ParserCombinators.ReadP (readP_to_S)
+import qualified Text.Read.Lex.Compat as L
 #endif
 
 #if !(MIN_VERSION_base(4,7,0))
@@ -150,4 +154,17 @@ showHFloat = showString . fmt
   allZ xs = case xs of
               x : more -> x == 0 && allZ more
               []       -> True
+#endif
+
+#if !(MIN_VERSION_base(4,16,0))
+-- | Read an unsigned number in binary notation.
+--
+-- >>> readBin "10011"
+-- [(19,"")]
+readBin :: (Eq a, Num a) => ReadS a
+readBin = readP_to_S L.readBinP
+
+-- | Show /non-negative/ 'Integral' numbers in base 2.
+showBin :: (Integral a, Show a) => a -> ShowS
+showBin = showIntAtBase 2  intToDigit
 #endif

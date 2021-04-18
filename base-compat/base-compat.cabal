@@ -126,6 +126,7 @@ library
       System.IO.Error.Compat
       System.IO.Unsafe.Compat
       Text.Read.Compat
+      Text.Read.Lex.Compat
       Type.Reflection.Compat
 
       Control.Concurrent.Compat.Repl
@@ -186,4 +187,5 @@ library
       System.IO.Error.Compat.Repl
       System.IO.Unsafe.Compat.Repl
       Text.Read.Compat.Repl
+      Text.Read.Lex.Compat.Repl
       Type.Reflection.Compat.Repl

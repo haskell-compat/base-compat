@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-16.04 # https://launchpad.net/~hvr/+archive/ubuntu/ghc?field.series_filter=xenial
+          - ubuntu-18.04 # https://launchpad.net/~hvr/+archive/ubuntu/ghc?field.series_filter=bionic
         ghc:
           - 7.0.4
           - 7.2.2

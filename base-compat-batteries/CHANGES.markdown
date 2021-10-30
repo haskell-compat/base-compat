@@ -1,3 +1,12 @@
+## Changes in next [????.??.??]
+ - Backport `Solo` to the `Data.Tuple.Compat` module. If using `ghc-prim-0.7.0`
+   or later, `Solo` is taken from `ghc-prim`. If using an older version of
+   `ghc-prim`, `Solo` is taken from the `OneTuple` compatibility library.
+
+ - This coincides with the `base-compat-???` release. Refer to the
+   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-????-????????)
+   for more details.
+
 ## Changes in 0.12.0 [2021.08.29]
  - `Data.Semigroup.Compat{.Repl.Batteries}` no longer re-exports the `Option`
    data type or the `option` function, as both have been removed in

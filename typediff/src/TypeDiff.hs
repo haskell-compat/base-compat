@@ -13,6 +13,7 @@ import           Data.Maybe
 import qualified Data.List as List
 import           Data.Map as Map (Map)
 import qualified Data.Map as Map
+import           Language.Haskell.Exts.Simple.Extension
 import           Language.Haskell.Exts.Simple.Syntax
 import           Language.Haskell.Exts.Simple.Parser
 
@@ -54,9 +55,15 @@ typeDiff input1 input2 = unlines (missing ++ extra ++ wrongSigs)
         format name type_ = "  " ++ name ++ " :: " ++ type_
 
 parseType_ :: String -> Type
-parseType_ type_ = case parseType type_ of
-  ParseOk t -> t
-  _ -> error ("can not parse type " ++ show type_)
+parseType_ type_ =
+  case parseTypeWithMode
+         (defaultParseMode
+           { extensions = EnableExtension FlexibleContexts
+                        : extensions defaultParseMode
+           })
+         type_ of
+    ParseOk t -> t
+    _ -> error ("can not parse type " ++ show type_)
 
 sigMap :: String -> Map String String
 sigMap = Map.fromList . map splitType . lines
@@ -69,7 +76,41 @@ sigMap = Map.fromList . map splitType . lines
 
 typeEq :: Type -> Type -> Bool
 typeEq t1 t2 = normalize t1 == normalize t2
-  where normalize = alphaNormalize . sortConstrains . normalizeConstrainNames . normalizeConstrains
+
+normalize :: Type -> Type
+normalize = alphaNormalize
+          . sortConstrains
+          . normalizeConstrainNames
+          . normalizeConstrains
+          . stripCallStacksFromType
+
+-- GHC 9.2+ are more likely to display to display HasCallStack constraints in
+-- :type output. For compatibility with older GHCs, which do not do this, we
+-- remove HasCallStack constraints entirely.
+stripCallStacksFromType :: Type -> Type
+stripCallStacksFromType x = case x of
+  TyForall a1 constrains a2 -> TyForall a1 (fmap stripCallStacksFromContext constrains) a2
+  _ -> x
+
+stripCallStacksFromContext :: Context -> Context
+stripCallStacksFromContext x = case x of
+  CxSingle asst | isAsstCallStack asst
+                -> CxEmpty
+  CxTuple assts -> CxTuple (filter (not . isAsstCallStack) assts)
+  _             -> x
+
+isAsstCallStack :: Asst -> Bool
+isAsstCallStack (TypeA t) = isTypeCallStack t
+isAsstCallStack IParam{}  = False
+  -- It's possible that the HasCallStack type synonym could be expanded to its
+  -- underlying implicit parameter, but let's wait for that to happen in
+  -- practice before worrying about it.
+isAsstCallStack (ParenA asst) = isAsstCallStack asst
+isAsstCallStack _             = False
+
+isTypeCallStack :: Type -> Bool
+isTypeCallStack (TyCon name) = name == Qual (ModuleName "GHC.Stack.Types") (Ident "HasCallStack")
+isTypeCallStack _            = False
 
 sortConstrains :: Type -> Type
 sortConstrains x = case x of
@@ -83,8 +124,22 @@ sortContext x = case x of
 
 normalizeConstrains :: Type -> Type
 normalizeConstrains t = case t of
-  TyForall a1 a2 a3 -> TyForall a1 (fmap normalizeContext a2) a3
+  TyForall a1 a2 a3
+    |  isNothingOrPred null a1, isNothingOrPred nullContext a2
+    -> a3
+    |  otherwise
+    -> TyForall a1 (fmap normalizeContext a2) a3
   _ -> t
+  where
+    isNothingOrPred :: (a -> Bool) -> Maybe a -> Bool
+    isNothingOrPred _ Nothing  = True
+    isNothingOrPred f (Just x) = f x
+
+    nullContext :: Context -> Bool
+    nullContext CxEmpty = True
+      -- It's possible that there could be a (CxTuple []), but let's wait for
+      -- that to happen in practice before worrying about it.
+    nullContext _       = False
 
 normalizeContext :: Context -> Context
 normalizeContext x = case x of

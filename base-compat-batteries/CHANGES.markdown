@@ -1,10 +1,10 @@
-## Changes in next [????.??.??]
+## Changes in 0.12.1 [2021.10.30]
  - Backport `Solo` to the `Data.Tuple.Compat` module. If using `ghc-prim-0.7.0`
    or later, `Solo` is taken from `ghc-prim`. If using an older version of
    `ghc-prim`, `Solo` is taken from the `OneTuple` compatibility library.
 
- - This coincides with the `base-compat-???` release. Refer to the
-   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-????-????????)
+ - This coincides with the `base-compat-0.12.1` release. Refer to the
+   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0121-20211030)
    for more details.
 
 ## Changes in 0.12.0 [2021.08.29]

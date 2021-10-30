@@ -29,10 +29,14 @@ jobs:
           - 8.4.4
           - 8.6.5
           - 8.8.4
-          - 8.10.4
+          - 8.10.7
           - 9.0.1
     steps:
       - uses: actions/checkout@v2
+        # https://gitlab.haskell.org/ghc/ghc/-/issues/15444
+      - name: Install libnuma-dev for ghc 8.4.4
+        if: matrix.ghc == '8.4.4'
+        run: sudo apt-get install libnuma-dev
       - uses: haskell/actions/setup@v1
         with:
           ghc-version: ${{ matrix.ghc }}

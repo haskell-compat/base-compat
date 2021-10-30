@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 module Util (inCabalNewRepl, normalizeLines, normalizeSignatures) where
 
 import Data.Char (isAlphaNum, isDigit, isUpper)
@@ -25,6 +26,10 @@ inCabalNewRepl module_ input_ = do
         [ "new-repl"
         , "for-repl"
         , "--ghc-option=-ignore-dot-ghci"
+#if __GLASGOW_HASKELL__ == 710
+          -- https://gitlab.haskell.org/haskell/ghcup-hs/-/issues/123
+        , "--ghc-option=-optl-no-pie"
+#endif
         , "--enable-tests"
         , "--enable-benchmarks"
         ] ++ withCompiler ++

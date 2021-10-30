@@ -49,6 +49,11 @@ jobs:
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - run: cabal update
+        # https://gitlab.haskell.org/haskell/ghcup-hs/-/issues/123
+      - name: Enable -optl-no-pie for ghc 7.10.3
+        if: matrix.ghc == '7.10.3'
+        run: |
+          sed -i "s/-- ghc-options:.*/ghc-options: -optl-no-pie/" ~/.cabal/config
 
       - name: cabal configure
         run: |

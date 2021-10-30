@@ -274,6 +274,9 @@ on, paired with the things that each library backports:
 * [`nats`](http://hackage.haskell.org/package/nats)
   for the [`Natural`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Numeric-Natural.html)
   data type, introduced in `base-4.8.0.0`
+* [`OneTuple`](http://hackage.haskell.org/package/OneTuple)
+  for the [`Solo`](https://hackage.haskell.org/package/base-4.16.0.0/docs/Data-Tuple.html#t:Solo)
+  data type, introduced in `ghc-prim-0.7.0`
 * [`semigroups`](http://hackage.haskell.org/package/semigroups)
   for the [`Semigroup`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Semigroup)
   typeclass and the

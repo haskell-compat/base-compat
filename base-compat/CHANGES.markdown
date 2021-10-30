@@ -1,3 +1,7 @@
+## Changes in next [????.??.??]
+ - Backport `Solo` to `Data.Tuple.Compat` when building with `ghc-prim-0.7.0`
+   or later
+
 ## Changes in 0.12.0 [2021.08.29]
  - Sync with `base-4.16`/GHC 9.2
  - `Data.Semigroup.Compat{.Repl}` no longer re-exports the `Option` data type

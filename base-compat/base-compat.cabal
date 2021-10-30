@@ -56,7 +56,8 @@ library
   default-language:
       Haskell2010
   build-depends:
-      base >= 4.3 && < 5
+      base >= 4.3 && < 5,
+      ghc-prim
   if !os(windows) && !os(halvm)
       build-depends: unix
   ghc-options:
@@ -101,6 +102,7 @@ library
       Data.Semigroup.Compat
       Data.STRef.Compat
       Data.String.Compat
+      Data.Tuple.Compat
       Data.Type.Coercion.Compat
       Data.Type.Equality.Compat
       Data.Version.Compat
@@ -162,6 +164,7 @@ library
       Data.Semigroup.Compat.Repl
       Data.STRef.Compat.Repl
       Data.String.Compat.Repl
+      Data.Tuple.Compat.Repl
       Data.Type.Coercion.Compat.Repl
       Data.Type.Equality.Compat.Repl
       Data.Version.Compat.Repl

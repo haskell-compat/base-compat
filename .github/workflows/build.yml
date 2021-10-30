@@ -44,7 +44,7 @@ jobs:
       - name: install typediff
         run: |
           mkdir -p "$HOME/.local/bin"
-          curl -L https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.4/typediff > "$HOME/.local/bin/typediff"
+          curl -L https://github.com/haskell-compat/base-compat/releases/download/typediff-0.1.5/typediff > "$HOME/.local/bin/typediff"
           chmod a+x "$HOME/.local/bin/typediff"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 

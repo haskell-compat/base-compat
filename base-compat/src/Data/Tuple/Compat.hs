@@ -15,6 +15,6 @@ module Data.Tuple.Compat
 
 import Data.Tuple
 
-#if MIN_VERSION_ghc_prim(0,7,0)
+#if !(MIN_VERSION_base(4,16,0)) && MIN_VERSION_ghc_prim(0,7,0)
 import GHC.Tuple (Solo(..))
 #endif

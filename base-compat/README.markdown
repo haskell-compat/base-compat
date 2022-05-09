@@ -156,6 +156,7 @@ So far the following is covered.
  * `singleton` to `Data.List.Compat` and `Data.List.NonEmpty.Compat`
  * `hGetContents'`, `getContents'`, and `readFile'` to `System.IO.Compat`
  * `readBinP` to `Text.Read.Lex.Compat`
+ * `withTypeable` and `pattern TypeRep` to `Type.Reflection.Compat`
 
 ## What is not covered
 

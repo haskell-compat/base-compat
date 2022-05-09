@@ -1,3 +1,6 @@
+## Changes in next [????.??.??]
+ - Backport `oneBits` to `Data.Bits.Compat`
+
 ## Changes in 0.12.1 [2021.10.30]
  - Backport `Solo` to `Data.Tuple.Compat` when building with `ghc-prim-0.7.0`
    or later

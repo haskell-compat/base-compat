@@ -118,7 +118,7 @@ So far the following is covered.
  * `Text.Read.Compat.readEither`
  * `Data.Monoid.Compat.<>`
  * Added `bitDefault`, `testBitDefault`, and `popCountDefault` to `Data.Bits.Compat`
- * Added `toIntegralSized` to `Data.Bits.Compat` (if using `base-4.7`)
+ * Added `toIntegralSized` and `oneBits` to `Data.Bits.Compat` (if using `base-4.7` or later)
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft`, `isRight`, `fromLeft`, and `fromRight` to `Data.Either.Compat`
  * Added `forkFinally` to `Control.Concurrent.Compat`

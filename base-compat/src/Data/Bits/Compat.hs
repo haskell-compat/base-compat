@@ -7,6 +7,7 @@ module Data.Bits.Compat (
 , popCountDefault
 #if MIN_VERSION_base(4,7,0)
 , toIntegralSized
+, oneBits
 #endif
 ) where
 
@@ -49,7 +50,8 @@ popCountDefault = go 0
 {-# INLINABLE popCountDefault #-}
 #endif
 
-#if MIN_VERSION_base(4,7,0) && !(MIN_VERSION_base(4,8,0))
+#if MIN_VERSION_base(4,7,0)
+# if !(MIN_VERSION_base(4,8,0))
 -- | Attempt to convert an 'Integral' type @a@ to an 'Integral' type @b@ using
 -- the size of the types as measured by 'Bits' methods.
 --
@@ -123,4 +125,26 @@ isBitSubType x y
     yWidth  = bitSizeMaybe y
     ySigned = isSigned     y
 {-# INLINE isBitSubType #-}
+# endif
+
+# if !(MIN_VERSION_base(4,16,0))
+-- | A more concise version of @complement zeroBits@.
+--
+-- >>> complement (zeroBits :: Word) == (oneBits :: Word)
+-- True
+--
+-- >>> complement (oneBits :: Word) == (zeroBits :: Word)
+-- True
+--
+-- = Note
+--
+-- The constraint on 'oneBits' is arguably too strong. However, as some types
+-- (such as 'Natural') have undefined 'complement', this is the only safe
+-- choice.
+--
+-- /Since: 4.16/
+oneBits :: (FiniteBits a) => a
+oneBits = complement zeroBits
+{-# INLINE oneBits #-}
+# endif
 #endif

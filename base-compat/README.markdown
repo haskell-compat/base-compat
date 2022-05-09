@@ -117,7 +117,8 @@ So far the following is covered.
  * `Text.Read.Compat.readMaybe`
  * `Text.Read.Compat.readEither`
  * `Data.Monoid.Compat.<>`
- * Added `bitDefault`, `testBitDefault`, and `popCountDefault` to `Data.Bits.Compat`
+ * Added `bitDefault`, `testBitDefault`, `popCountDefault`, `(.^.)`, `(.>>.)`,
+   `(.<<.)`, `(!>>.)`, and `(!<<.)` to `Data.Bits.Compat`
  * Added `toIntegralSized` and `oneBits` to `Data.Bits.Compat` (if using `base-4.7` or later)
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft`, `isRight`, `fromLeft`, and `fromRight` to `Data.Either.Compat`
@@ -310,6 +311,7 @@ on, paired with the things that each library backports:
 
 ## Supported versions of GHC/`base`
 
+ * `ghc-9.4.*`  / `base-4.17.*`
  * `ghc-9.2.*`  / `base-4.16.*`
  * `ghc-9.0.*`  / `base-4.15.*`
  * `ghc-8.10.*` / `base-4.14.*`

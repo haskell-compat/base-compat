@@ -5,6 +5,13 @@ module Data.Bits.Compat (
 , bitDefault
 , testBitDefault
 , popCountDefault
+, (.^.)
+, (.>>.)
+, (.<<.)
+#if MIN_VERSION_base(4,5,0)
+, (!>>.)
+, (!<<.)
+#endif
 #if MIN_VERSION_base(4,7,0)
 , toIntegralSized
 , oneBits
@@ -13,7 +20,7 @@ module Data.Bits.Compat (
 
 import Data.Bits as Base
 
-#if !(MIN_VERSION_base(4,8,0))
+#if !(MIN_VERSION_base(4,17,0))
 import Prelude
 #endif
 
@@ -48,6 +55,50 @@ popCountDefault = go 0
    go !c 0 = c
    go c w = go (c+1) (w .&. (w - 1)) -- clear the least significant
 {-# INLINABLE popCountDefault #-}
+#endif
+
+#if !(MIN_VERSION_base(4,17,0))
+-- | Infix version of 'xor'.
+--
+-- /Since: 4.17/
+(.^.) :: (Bits a) => a -> a -> a
+(.^.) = xor
+
+infixl 6 .^.
+
+-- | Infix version of 'shiftR'.
+--
+-- /Since: 4.17/
+(.>>.) :: (Bits a) => a -> Int -> a
+(.>>.) = shiftR
+
+infixl 8 .>>.
+
+-- | Infix version of 'shiftL'.
+--
+-- /Since: 4.17/
+(.<<.) :: (Bits a) => a -> Int -> a
+(.<<.) = shiftL
+
+infixl 8 .<<.
+
+# if MIN_VERSION_base(4,5,0)
+-- | Infix version of 'unsafeShiftR'.
+--
+-- /Since: 4.17/
+(!>>.) :: (Bits a) => a -> Int -> a
+(!>>.) = unsafeShiftR
+
+infixl 8 !>>.
+
+-- | Infix version of 'unsafeShiftL'.
+--
+-- /Since: 4.17/
+(!<<.) :: (Bits a) => a -> Int -> a
+(!<<.) = unsafeShiftL
+
+infixl 8 !<<.
+# endif
 #endif
 
 #if MIN_VERSION_base(4,7,0)

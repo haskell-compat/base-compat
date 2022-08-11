@@ -1,4 +1,4 @@
-## Changes in next [????.??.??]
+## Changes in 0.12.2 [2022.08.11]
  - Sync with `base-4.17`/GHC 9.4
  - Backport `(.^.)`, `(.>>.)`, `(.<<.)`, `(!>>.)`, `(!<<.)`, `oneBits` to
    `Data.Bits.Compat`

@@ -160,6 +160,7 @@ So far the following is covered.
  * `hGetContents'`, `getContents'`, and `readFile'` to `System.IO.Compat`
  * `readBinP` to `Text.Read.Lex.Compat`
  * `withTypeable` and `pattern TypeRep` to `Type.Reflection.Compat`
+ * `minusNaturalMaybe` to `Numeric.Natural.Compat`
 
 ## What is not covered
 

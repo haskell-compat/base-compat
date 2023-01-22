@@ -310,6 +310,24 @@ on, paired with the things that each library backports:
   for the [`Void`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Void.html#t:Void)
   data type, introduced in `base-4.8.0.0`
 
+## Version policy
+
+This package follows the [Haskell Package Versioning
+Policy](https://pvp.haskell.org/). As such, if a new `base-compat` release only
+adds new exports, then as a general rule, we will release it with a minor
+version bump. Moreover, since `base-compat` does not backport data type or
+class definitions (see the "What is not covered" section above), `base-compat`
+usually has fewer major version bumps than `base` itself.
+
+An exception to the general rule about adding new exports is the
+`Prelude.Compat` module. If a new `base-compat` release adds any new exports,
+then it will _always_ be accompanied by a major version bump, even if there are
+no other API changes. This is because of the special nature of
+`Prelude.Compat`, which is designed to be imported unqualified. Pre-emptively
+bumping the major version number is meant to signal to downstream libraries
+that they should check to see if the new `Prelude.Compat` additions will clash
+with identifiers of the same names in their code.
+
 ## Supported versions of GHC/`base`
 
  * `ghc-9.4.*`  / `base-4.17.*`

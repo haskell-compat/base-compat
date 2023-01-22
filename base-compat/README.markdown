@@ -139,7 +139,8 @@ So far the following is covered.
  * `String`, `lines`, `words`, `unlines`, and `unwords` to `Data.String.Compat`
  * `gcoerceWith` to `Data.Type.Coercion.Compat`
  * `makeVersion` function to `Data.Version.Compat`
- * `traceId`, `traceShowId`, `traceM`, and `traceShowM` functions to `Debug.Trace.Compat`
+ * `traceId`, `traceShowId`, `traceM`, `traceShowM`, `traceWith`,
+   `traceShowWith`, and `traceEventWith` functions to `Debug.Trace.Compat`
  * `byteSwap16`, `byteSwap32`, and `byteSwap64` to `Data.Word.Compat`
  * `plusForeignPtr` to `Foreign.ForeignPtr.Compat`
  * `calloc` and `callocBytes` functions to `Foreign.Marshal.Alloc.Compat`

@@ -7,6 +7,10 @@
    `MkSolo` being preferred over `Solo`. If you want to backport `MkSolo` to
    earlier versions of GHC, import `Data.Tuple.Compat` from
    `base-compat-batteries` instead.
+ - Backport `traceWith`, `traceShowWith`, and `traceEventWith` to `Debug.Trace`.
+   Note that `traceEventWith` is only provided when building with `base-4.5` or
+   later, as that is the first version of `base` to provide the `traceEvent`
+   primitive on which `traceEventWith` is defined.
 
 ## Changes in 0.12.2 [2022.08.11]
  - Sync with `base-4.17`/GHC 9.4

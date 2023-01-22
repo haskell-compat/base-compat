@@ -150,6 +150,7 @@ So far the following is covered.
  * `lookupEnv`, `setEnv` and `unsetEnv` to `System.Environment.Compat`
  * `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
  * `RuntimeRep`-polymorphic `($!)` to `Prelude.Compat`
+ * `liftA2` is re-exported from `Prelude.Compat`
  * `RuntimeRep`-polymorphic `throw` to `Control.Exception.Compat`
  * `isResourceVanishedError`, `resourceVanishedErrorType`, and
    `isResourceVanishedErrorType` to `System.IO.Error.Compat`

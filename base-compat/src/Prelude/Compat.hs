@@ -7,8 +7,11 @@
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE TypeInType #-}
 #endif
+#if MIN_VERSION_base(4,17,0) && !(MIN_VERSION_base(4,18,0))
+{-# LANGUAGE ExplicitNamespaces #-}
+#endif
 module Prelude.Compat (
-#if MIN_VERSION_base(4,12,0)
+#if MIN_VERSION_base(4,18,0)
   module Base
 #else
   either
@@ -133,6 +136,7 @@ module Prelude.Compat (
 , (<*)
 , (<*>)
 , pure
+, liftA2
 , (<$)
 , fmap
 , (>>)
@@ -271,6 +275,11 @@ module Prelude.Compat (
 , ReadS
 , ShowS
 , String
+
+# if MIN_VERSION_base(4,17,0)
+-- The equality types
+, type (~)
+# endif
 #endif
 ) where
 
@@ -285,6 +294,8 @@ import Prelude as Base hiding (
 #  endif
 # endif
   )
+
+import Control.Applicative (liftA2)
 
 #else
 
@@ -315,11 +326,11 @@ import Prelude hiding (
   , sum
   )
 
+import Control.Applicative
 import Data.Foldable.Compat
 import Data.Traversable
 
 # if !(MIN_VERSION_base(4,8,0))
-import Control.Applicative
 import Data.Monoid
 import Data.Word
 # endif

@@ -117,6 +117,7 @@ library
       Data.String.Compat
       Data.Traversable.Compat
       Data.Tuple.Compat
+      Data.Typeable.Compat
       Data.Type.Coercion.Compat
       Data.Type.Equality.Compat
       Data.Version.Compat
@@ -180,6 +181,7 @@ library
       Data.String.Compat.Repl.Batteries
       Data.Traversable.Compat.Repl.Batteries
       Data.Tuple.Compat.Repl.Batteries
+      Data.Typeable.Compat.Repl.Batteries
       Data.Type.Coercion.Compat.Repl.Batteries
       Data.Type.Equality.Compat.Repl.Batteries
       Data.Version.Compat.Repl.Batteries

@@ -15,6 +15,9 @@
  - Backport `minusNaturalMaybe` to `Numeric.Natural.Compat`.
  - Backport `applyWhen` to `Data.Function.Compat`.
  - Backport `mapAccumM` and `forAccumM` to `Data.Traversable.Compat`.
+ - Backport `heqT` to `Data.Typeable.Compat`. Note that `heqT` is only defined
+   when building with `base-4.10` or later, as that is the first version of
+   `base` to provide the primitives needed to define `heqT`.
 
 ## Changes in 0.12.2 [2022.08.11]
  - Sync with `base-4.17`/GHC 9.4

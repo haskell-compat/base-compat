@@ -3,9 +3,13 @@
 {-# LANGUAGE Trustworthy #-}
 #endif
 #if MIN_VERSION_base(4,10,0)
+{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE MagicHash #-}
+{-# LANGUAGE PolyKinds #-}
 {-# LANGUAGE RankNTypes #-}
+# if __GLASGOW_HASKELL__ < 806
 {-# LANGUAGE TypeInType #-}
+# endif
 #endif
 module Control.Exception.Compat (
   module Base

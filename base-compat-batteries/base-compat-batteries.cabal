@@ -115,6 +115,7 @@ library
       Data.Semigroup.Compat
       Data.STRef.Compat
       Data.String.Compat
+      Data.Traversable.Compat
       Data.Tuple.Compat
       Data.Type.Coercion.Compat
       Data.Type.Equality.Compat
@@ -177,6 +178,7 @@ library
       Data.Semigroup.Compat.Repl.Batteries
       Data.STRef.Compat.Repl.Batteries
       Data.String.Compat.Repl.Batteries
+      Data.Traversable.Compat.Repl.Batteries
       Data.Tuple.Compat.Repl.Batteries
       Data.Type.Coercion.Compat.Repl.Batteries
       Data.Type.Equality.Compat.Repl.Batteries

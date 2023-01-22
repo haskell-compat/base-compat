@@ -102,6 +102,7 @@ library
       Data.Semigroup.Compat
       Data.STRef.Compat
       Data.String.Compat
+      Data.Traversable.Compat
       Data.Tuple.Compat
       Data.Type.Coercion.Compat
       Data.Type.Equality.Compat
@@ -164,6 +165,7 @@ library
       Data.Semigroup.Compat.Repl
       Data.STRef.Compat.Repl
       Data.String.Compat.Repl
+      Data.Traversable.Compat.Repl
       Data.Tuple.Compat.Repl
       Data.Type.Coercion.Compat.Repl
       Data.Type.Equality.Compat.Repl

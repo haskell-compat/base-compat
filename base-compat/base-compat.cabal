@@ -104,6 +104,7 @@ library
       Data.String.Compat
       Data.Traversable.Compat
       Data.Tuple.Compat
+      Data.Typeable.Compat
       Data.Type.Coercion.Compat
       Data.Type.Equality.Compat
       Data.Version.Compat
@@ -167,6 +168,7 @@ library
       Data.String.Compat.Repl
       Data.Traversable.Compat.Repl
       Data.Tuple.Compat.Repl
+      Data.Typeable.Compat.Repl
       Data.Type.Coercion.Compat.Repl
       Data.Type.Equality.Compat.Repl
       Data.Version.Compat.Repl

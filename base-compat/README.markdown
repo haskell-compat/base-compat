@@ -162,6 +162,7 @@ So far the following is covered.
  * `withTypeable` and `pattern TypeRep` to `Type.Reflection.Compat`
  * `minusNaturalMaybe` to `Numeric.Natural.Compat`
  * `mapAccumM` and `forAccumM` to `Data.Traversable.Compat`
+ * `heqT` to `Data.Typeable.Compat`
 
 ## What is not covered
 

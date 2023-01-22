@@ -129,7 +129,7 @@ So far the following is covered.
    and `cis` in `Data.Complex.Compat`
  * Added more efficient `maximumBy`/`minimumBy` to `Data.Foldable.Compat`
  * Added `($>)` and `void` functions to `Data.Functor.Compat`
- * `(&)` function to `Data.Function.Compat`
+ * `(&)` and `applyWhen` functions to `Data.Function.Compat`
  * `($>)` and `void` functions to `Data.Functor.Compat`
  * `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to `Data.IORef.Compat`
  * `dropWhileEnd`, `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List.Compat`

@@ -161,6 +161,7 @@ So far the following is covered.
  * `readBinP` to `Text.Read.Lex.Compat`
  * `withTypeable` and `pattern TypeRep` to `Type.Reflection.Compat`
  * `minusNaturalMaybe` to `Numeric.Natural.Compat`
+ * `mapAccumM` and `forAccumM` to `Data.Traversable.Compat`
 
 ## What is not covered
 

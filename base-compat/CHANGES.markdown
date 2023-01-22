@@ -1,5 +1,6 @@
 ## Changes in 0.13.0 [????.??.??]
  - Sync with `base-4.18`/GHC 9.6
+ - Backport `liftA2` being re-exported from `Prelude.Compat`.
  - `Data.Tuple.Compat`'s `Solo` API now matches what is present in `Data.Tuple`
    in `base-4.18`. In particular, we now re-export both the `MkSolo` and `Solo`
    data constructors when building with `ghc-prim-0.10.0` or later, with

@@ -11,6 +11,7 @@
    Note that `traceEventWith` is only provided when building with `base-4.5` or
    later, as that is the first version of `base` to provide the `traceEvent`
    primitive on which `traceEventWith` is defined.
+ - Backport `inits1` and `tails1` to `Data.List.NonEmpty.Compat`.
 
 ## Changes in 0.12.2 [2022.08.11]
  - Sync with `base-4.17`/GHC 9.4

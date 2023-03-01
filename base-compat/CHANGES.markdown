@@ -1,3 +1,12 @@
+## Changes in 0.13.0 [????.??.??]
+ - Sync with `base-4.18`/GHC 9.6
+ - `Data.Tuple.Compat`'s `Solo` API now matches what is present in `Data.Tuple`
+   in `base-4.18`. In particular, we now re-export both the `MkSolo` and `Solo`
+   data constructors when building with `ghc-prim-0.10.0` or later, with
+   `MkSolo` being preferred over `Solo`. If you want to backport `MkSolo` to
+   earlier versions of GHC, import `Data.Tuple.Compat` from
+   `base-compat-batteries` instead.
+
 ## Changes in 0.12.2 [2022.08.11]
  - Sync with `base-4.17`/GHC 9.4
  - Backport `(.^.)`, `(.>>.)`, `(.<<.)`, `(!>>.)`, `(!<<.)`, `oneBits` to

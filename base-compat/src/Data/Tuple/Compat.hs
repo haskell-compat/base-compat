@@ -2,14 +2,23 @@
 #if __GLASGOW_HASKELL__ >= 702
 {-# LANGUAGE Safe #-}
 #endif
+#if MIN_VERSION_ghc_prim(0,7,0)
+{-# LANGUAGE PatternSynonyms #-}
+#endif
+-- | Note that we only re-export @MkSolo@ when building with @ghc-prim-0.10.0@
+-- (bundled with GHC 9.6) or later. If you want to backport @MkSolo@ to older
+-- versions of GHC, import @Data.Tuple.Compat@ from @base-compat-batteries@
+-- instead.
 module Data.Tuple.Compat
   ( fst
   , snd
   , curry
   , uncurry
   , swap
-#if MIN_VERSION_ghc_prim(0,7,0)
-  , Solo(..)
+#if MIN_VERSION_ghc_prim(0,10,0)
+  , Solo(MkSolo,Solo)
+#elif MIN_VERSION_ghc_prim(0,7,0)
+  , Solo(Solo)
 #endif
   ) where
 

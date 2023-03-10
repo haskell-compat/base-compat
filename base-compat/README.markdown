@@ -279,6 +279,10 @@ on, paired with the things that each library backports:
 * [`fail`](http://hackage.haskell.org/package/fail)
   for the [`MonadFail`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Control-Monad-Fail.html#t:MonadFail)
   type class, introduced in `base-4.9.0.0`
+* [`foldable1-classes-compat`](https://hackage.haskell.org/package/foldable1-classes-compat)
+  for the [`Foldable1`](https://hackage.haskell.org/package/foldable1-classes-compat-0.1/docs/Data-Foldable1.html#t:Foldable1)
+  and [`Bifoldable1`](https://hackage.haskell.org/package/foldable1-classes-compat-0.1/docs/Data-Bifoldable1.html#t:Bifoldable1)
+  type classes, introduced in `base-4.18.0.0`
 * [`nats`](http://hackage.haskell.org/package/nats)
   for the [`Natural`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Numeric-Natural.html)
   data type, introduced in `base-4.8.0.0`

@@ -6,5 +6,5 @@ module Data.Bifoldable.Compat (
 #if MIN_VERSION_base(4,10,0)
 import "base-compat" Data.Bifoldable.Compat as Base
 #else
-import "bifunctors" Data.Bifoldable as Base
+import "bifunctor-classes-compat" Data.Bifoldable as Base
 #endif

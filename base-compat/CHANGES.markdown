@@ -1,4 +1,4 @@
-## Changes in 0.13.0 [????.??.??]
+## Changes in 0.13.0 [2023.03.10]
  - Sync with `base-4.18`/GHC 9.6
  - Backport `liftA2` being re-exported from `Prelude.Compat`.
  - `Data.Tuple.Compat`'s `Solo` API now matches what is present in `Data.Tuple`

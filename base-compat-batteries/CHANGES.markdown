@@ -1,6 +1,6 @@
-## Changes in 0.13.0 [????.??.??]
+## Changes in 0.13.0 [2023.03.10]
  - This coincides with the `base-compat-0.13.0` release. Refer to the
-   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0130-????????)
+   [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0130-20230310)
    for more details.
  - Require `OneTuple-0.4` or later on GHC 7.4+, as that is the first `OneTuple`
    release to backport the `MkSolo` data constuctor for `Solo`. See

@@ -266,7 +266,7 @@ namespaces in the event one wants to import them into GHCi.
 Here is a list of compatibility libraries that `base-compat-batteries` depends
 on, paired with the things that each library backports:
 
-* [`bifunctors`](http://hackage.haskell.org/package/bifunctors)
+* [`bifunctor-classes-compat`](http://hackage.haskell.org/package/bifunctor-classes-compat)
   for:
   * The [`Bifunctor`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Bifunctor.html#t:Bifunctor)
     type class, introduced in `base-4.8.0.0`

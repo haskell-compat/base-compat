@@ -5,6 +5,9 @@
  - Require `OneTuple-0.4` or later on GHC 7.4+, as that is the first `OneTuple`
    release to backport the `MkSolo` data constuctor for `Solo`. See
    `Data.Tuple.Compat`.
+ - Depend on `bifunctor-classes-compat` to backport the `Bifunctor`,
+   `Bifoldable`, and `Bitraversable` classes instead of the
+   `bifunctors` library, which has more dependencies.
 
 ## Changes in 0.12.2 [2022.08.11]
  - This coincides with the `base-compat-0.12.2` release. Refer to the

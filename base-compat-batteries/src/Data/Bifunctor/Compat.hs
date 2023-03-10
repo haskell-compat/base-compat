@@ -6,5 +6,5 @@ module Data.Bifunctor.Compat (
 #if MIN_VERSION_base(4,8,0)
 import "base-compat" Data.Bifunctor.Compat as Base
 #else
-import "bifunctors" Data.Bifunctor as Base
+import "bifunctor-classes-compat" Data.Bifunctor as Base
 #endif

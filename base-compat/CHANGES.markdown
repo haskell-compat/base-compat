@@ -18,6 +18,10 @@
  - Backport `heqT` to `Data.Typeable.Compat`. Note that `heqT` is only defined
    when building with `base-4.10` or later, as that is the first version of
    `base` to provide the primitives needed to define `heqT`.
+ - Introduce `Data.Foldable1.Compat` and `Data.Bifoldable1.Compat` modules,
+   which correspond to changes made in `base-4.18.0.0`. You may consider using
+   `base-compat-batteries` instead if you want increase the range of `base`
+   versions that are supported.
 
 ## Changes in 0.12.2 [2022.08.11]
  - Sync with `base-4.17`/GHC 9.4

@@ -78,6 +78,7 @@ library
       Control.Monad.ST.Lazy.Unsafe.Compat
       Control.Monad.ST.Unsafe.Compat
       Data.Bifoldable.Compat
+      Data.Bifoldable1.Compat
       Data.Bifunctor.Compat
       Data.Bitraversable.Compat
       Data.Bits.Compat
@@ -85,6 +86,7 @@ library
       Data.Complex.Compat
       Data.Either.Compat
       Data.Foldable.Compat
+      Data.Foldable1.Compat
       Data.Function.Compat
       Data.Functor.Compat
       Data.Functor.Compose.Compat
@@ -142,6 +144,7 @@ library
       Control.Monad.ST.Lazy.Unsafe.Compat.Repl
       Control.Monad.ST.Unsafe.Compat.Repl
       Data.Bifoldable.Compat.Repl
+      Data.Bifoldable1.Compat.Repl
       Data.Bifunctor.Compat.Repl
       Data.Bitraversable.Compat.Repl
       Data.Bits.Compat.Repl
@@ -149,6 +152,7 @@ library
       Data.Complex.Compat.Repl
       Data.Either.Compat.Repl
       Data.Foldable.Compat.Repl
+      Data.Foldable1.Compat.Repl
       Data.Function.Compat.Repl
       Data.Functor.Compat.Repl
       Data.Functor.Compose.Compat.Repl

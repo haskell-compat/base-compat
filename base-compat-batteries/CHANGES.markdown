@@ -5,6 +5,10 @@
  - Require `OneTuple-0.4` or later on GHC 7.4+, as that is the first `OneTuple`
    release to backport the `MkSolo` data constuctor for `Solo`. See
    `Data.Tuple.Compat`.
+ - Introduce `Data.Foldable1.Compat` and `Data.Bifoldable1.Compat` modules,
+   which correspond to changes made in `base-4.18.0.0`. `base-compat-batteries`
+   uses the `foldable1-classes-compat` library to backport this code to older
+   versions of `base`.
  - Depend on `bifunctor-classes-compat` to backport the `Bifunctor`,
    `Bifoldable`, and `Bitraversable` classes instead of the
    `bifunctors` library, which has more dependencies.

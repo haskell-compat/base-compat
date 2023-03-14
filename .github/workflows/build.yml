@@ -33,6 +33,7 @@ jobs:
           - 9.0.2
           - 9.2.7
           - 9.4.4
+          - 9.6.1
     steps:
       - uses: actions/checkout@v2
         # https://gitlab.haskell.org/ghc/ghc/-/issues/15444

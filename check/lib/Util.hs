@@ -25,7 +25,7 @@ inCabalNewRepl module_ input_ = do
     args withCompiler =
         [ "new-repl"
         , "for-repl"
-        , "--ghc-option=-ignore-dot-ghci"
+        , "--ghc-options=\"-ignore-dot-ghci -package-env=-\""
 #if __GLASGOW_HASKELL__ == 710
           -- https://gitlab.haskell.org/haskell/ghcup-hs/-/issues/123
         , "--ghc-option=-optl-no-pie"

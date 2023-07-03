@@ -2,7 +2,7 @@
 module System.Environment.CompatSpec (main, spec) where
 
 import           Test.Hspec
-#if __GLASGOW_HASKELL__ >= 702
+#if __GLASGOW_HASKELL__ >= 704
 import           Test.QuickCheck
 #endif
 
@@ -56,7 +56,7 @@ spec = do
     it "throws an exception if key contains '='" $ do
       unsetEnv "some=key" `shouldThrow` (== InvalidArgument) . ioeGetErrorType
 
-#if __GLASGOW_HASKELL__ >= 702
+#if __GLASGOW_HASKELL__ >= 704
     it "works for arbitrary keys" $
       property $ \k -> ('\NUL' `notElem` k && '=' `notElem` k && (not . null) k) ==> do
         setEnv k "foo"
@@ -96,7 +96,7 @@ spec = do
       setEnv "FOO\NULBAR" "foo"
       getEnv "FOO" `shouldReturn` "foo"
 
-#if __GLASGOW_HASKELL__ >= 702
+#if __GLASGOW_HASKELL__ >= 704
     it "works for unicode" $ do
       unsetEnv "FOO"
       setEnv "FOO" "foo-\955-bar"

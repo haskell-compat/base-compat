@@ -1,3 +1,8 @@
+## Changes in 0.12.3 [????.??.??]
+ - This coincides with the `base-compat-batteries-0.12.3` release. Refer to the
+   [`base-compat-batteries` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat-batteries/CHANGES.markdown#changes-in-0123-????????)
+   for more details.
+
 ## Changes in 0.12.2 [2022.08.11]
  - Sync with `base-4.17`/GHC 9.4
  - Backport `(.^.)`, `(.>>.)`, `(.<<.)`, `(!>>.)`, `(!<<.)`, `oneBits` to

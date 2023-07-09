@@ -1,5 +1,5 @@
 name:             base-compat-batteries
-version:          0.12.2
+version:          0.12.3
 license:          MIT
 license-file:     LICENSE
 copyright:        (c) 2012-2018 Simon Hengel,
@@ -64,7 +64,7 @@ library
       Haskell2010
   build-depends:
       base        >= 4.3 && < 5,
-      base-compat == 0.12.2,
+      base-compat == 0.12.3,
       ghc-prim
   if !impl(ghc >= 7.8)
     build-depends:
@@ -88,7 +88,17 @@ library
       contravariant >= 1.5 && < 1.6
   if !impl(ghc >= 9.0)
     build-depends:
-      OneTuple >= 0.3 && < 0.4
+      OneTuple >= 0.3 && < 0.5
+
+    -- We want to consistently use `Solo` as the name of the data constructor
+    -- for the base-compat-0.12.* series when building with a pre-9.6 version
+    -- of GHC. This is only possible on pre-7.8 versions of GHC (which do not
+    -- support pattern synonyms) with OneTuple-0.3.*, which defines a `Solo`
+    -- data constructor. (In OneTuple-0.4.* and later, the data constructor is
+    -- instead named `MkSolo`.)
+    if !impl(ghc >= 7.8)
+      build-depends:
+        OneTuple == 0.3.*
   ghc-options:
       -fno-warn-duplicate-exports
   if impl(ghc >= 7.10)
@@ -256,6 +266,7 @@ test-suite spec
       -- Other tests
       SafeHaskellSpec
       TestHspecTrustworthy
+      T91Spec
   build-depends:
       base >= 4.3 && < 5
     , base-compat-batteries

@@ -8,8 +8,10 @@ module Data.Tuple.Compat
   , curry
   , uncurry
   , swap
-#if MIN_VERSION_ghc_prim(0,7,0)
-  , Solo(..)
+#if MIN_VERSION_ghc_prim(0,10,0)
+  , Solo(MkSolo, Solo)
+#elif MIN_VERSION_ghc_prim(0,7,0)
+  , Solo(Solo)
 #endif
   ) where
 

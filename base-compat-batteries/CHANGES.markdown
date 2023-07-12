@@ -1,4 +1,4 @@
-## Changes in 0.12.3 [????.??.??]
+## Changes in 0.12.3 [2023.07.12]
  - Allow building with `OneTuple-0.4.*`.
 
 ## Changes in 0.12.2 [2022.08.11]

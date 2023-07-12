@@ -13,6 +13,9 @@
    `Bifoldable`, and `Bitraversable` classes instead of the
    `bifunctors` library, which has more dependencies.
 
+## Changes in 0.12.3 [2023.07.12]
+ - Allow building with `OneTuple-0.4.*`.
+
 ## Changes in 0.12.2 [2022.08.11]
  - This coincides with the `base-compat-0.12.2` release. Refer to the
    [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0122-20220811)

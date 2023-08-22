@@ -340,6 +340,7 @@ with identifiers of the same names in their code.
 
 ## Supported versions of GHC/`base`
 
+ * `ghc-9.8.*`  / `base-4.19.*`
  * `ghc-9.6.*`  / `base-4.18.*`
  * `ghc-9.4.*`  / `base-4.17.*`
  * `ghc-9.2.*`  / `base-4.16.*`

@@ -1,3 +1,6 @@
+## Changes in ???? [????.??.??]
+ - Sync with `base-4.19`/GHC 9.8
+
 ## Changes in 0.13.0 [2023.03.10]
  - Sync with `base-4.18`/GHC 9.6
  - Backport `liftA2` being re-exported from `Prelude.Compat`.

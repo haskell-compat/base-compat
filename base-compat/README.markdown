@@ -163,6 +163,7 @@ So far the following is covered.
  * `minusNaturalMaybe` to `Numeric.Natural.Compat`
  * `mapAccumM` and `forAccumM` to `Data.Traversable.Compat`
  * `heqT` to `Data.Typeable.Compat`
+ * `unzip` to `Data.Functor.Compat`
 
 ## What is not covered
 

@@ -20,10 +20,17 @@ module Data.Tuple.Compat
 #elif MIN_VERSION_ghc_prim(0,7,0)
   , Solo(Solo)
 #endif
+#if MIN_VERSION_ghc_prim(0,8,0)
+  , getSolo
+#endif
   ) where
 
 import Data.Tuple
 
 #if !(MIN_VERSION_base(4,16,0)) && MIN_VERSION_ghc_prim(0,7,0)
 import GHC.Tuple (Solo(..))
+#endif
+
+#if MIN_VERSION_ghc_prim(0,8,0) && !(MIN_VERSION_ghc_prim(0,11,0))
+import GHC.Tuple (getSolo)
 #endif

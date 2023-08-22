@@ -22,6 +22,7 @@ module Data.Tuple.Compat
 #else
     Solo(MkSolo)
 #endif
+  , getSolo
   , fst
   , snd
   , curry
@@ -31,9 +32,12 @@ module Data.Tuple.Compat
 
 #if MIN_VERSION_ghc_prim(0,10,0)
 import "base-compat" Data.Tuple.Compat
-#elif MIN_VERSION_ghc_prim(0,7,0)
+#elif MIN_VERSION_ghc_prim(0,8,0)
 import "base-compat" Data.Tuple.Compat
 import "OneTuple" Data.Tuple.Solo (pattern MkSolo)
+#elif MIN_VERSION_ghc_prim(0,7,0)
+import "base-compat" Data.Tuple.Compat
+import "OneTuple" Data.Tuple.Solo (pattern MkSolo, getSolo)
 #else
 import "base" Data.Tuple
 import "OneTuple" Data.Tuple.Solo

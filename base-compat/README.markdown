@@ -165,6 +165,7 @@ So far the following is covered.
  * `heqT` to `Data.Typeable.Compat`
  * `unzip` to `Data.Functor.Compat`
  * `(!?)` and `unsnoc` to `Data.List.Compat`
+ * `getSolo` to `Data.Tuple.Compat`
 
 ## What is not covered
 

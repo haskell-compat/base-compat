@@ -164,6 +164,7 @@ So far the following is covered.
  * `mapAccumM` and `forAccumM` to `Data.Traversable.Compat`
  * `heqT` to `Data.Typeable.Compat`
  * `unzip` to `Data.Functor.Compat`
+ * `(!?)` and `unsnoc` to `Data.List.Compat`
 
 ## What is not covered
 

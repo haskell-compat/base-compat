@@ -5,12 +5,17 @@ module Data.Functor.Compat (
 , ($>)
 , void
 , (<&>)
+, unzip
 ) where
 import Data.Functor as Base
 
 #if !(MIN_VERSION_base(4,7,0))
 import Control.Monad.Compat (void)
 import Data.Function (flip)
+#endif
+
+#if !(MIN_VERSION_base(4,19,0))
+import Data.Tuple (fst, snd)
 #endif
 
 #if !(MIN_VERSION_base(4,7,0))
@@ -48,4 +53,12 @@ infixl 4 $>
 as <&> f = f <$> as
 
 infixl 1 <&>
+#endif
+
+#if !(MIN_VERSION_base(4,19,0))
+-- | Generalization of @Data.List.@'Data.List.unzip'.
+--
+-- /Since: 4.19.0.0/
+unzip :: Functor f => f (a, b) -> (f a, f b)
+unzip xs = (fst <$> xs, snd <$> xs)
 #endif

@@ -166,6 +166,8 @@ So far the following is covered.
  * `unzip` to `Data.Functor.Compat`
  * `(!?)` and `unsnoc` to `Data.List.Compat`
  * `getSolo` to `Data.Tuple.Compat`
+ * `decT` and `hdecT` to `Data.Typeable.Compat`
+ * `decTypeRep` to `Type.Reflection.Compat`
 
 ## What is not covered
 

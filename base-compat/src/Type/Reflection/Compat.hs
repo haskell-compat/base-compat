@@ -8,6 +8,7 @@
 {-# LANGUAGE PolyKinds #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE ViewPatterns #-}
 # if !(MIN_VERSION_base(4,11,0))
 {-# LANGUAGE TypeInType #-}
@@ -18,6 +19,7 @@ module Type.Reflection.Compat (
   module Base
 , withTypeable
 , pattern TypeRep
+, decTypeRep
 #endif
 ) where
 
@@ -31,8 +33,16 @@ import Type.Reflection as Base hiding (withTypeable)
 # if !(MIN_VERSION_base(4,11,0))
 import GHC.Exts (TYPE)
 import Type.Reflection (Typeable, TypeRep)
-import Unsafe.Coerce (unsafeCoerce)
+# endif
 
+# if !(MIN_VERSION_base(4,19,0))
+import Data.Void (Void)
+import Prelude.Compat
+import Type.Reflection.Unsafe (typeRepFingerprint)
+import Unsafe.Coerce (unsafeCoerce)
+# endif
+
+# if !(MIN_VERSION_base(4,11,0))
 -- | Use a 'TypeRep' as 'Typeable' evidence.
 withTypeable :: forall (a :: k) (r :: TYPE rep). ()
              => TypeRep a -> (Typeable a => r) -> r
@@ -78,5 +88,21 @@ typeableInstance rep = withTypeable rep TypeableInstance
 pattern TypeRep :: forall a. () => Typeable a => TypeRep a
 pattern TypeRep <- (typeableInstance -> TypeableInstance)
   where TypeRep = typeRep
+# endif
+
+# if !(MIN_VERSION_base(4,19,0))
+-- | Type equality decision
+--
+-- /Since: 4.19.0.0/
+decTypeRep :: forall k1 k2 (a :: k1) (b :: k2).
+             TypeRep a -> TypeRep b -> Either (a :~~: b -> Void) (a :~~: b)
+decTypeRep a b
+  | sameTypeRep a b = Right (unsafeCoerce HRefl)
+  | otherwise       = Left (\HRefl -> errorWithoutStackTrace ("decTypeRep: Impossible equality proof " ++ show a ++ " :~: " ++ show b))
+{-# INLINEABLE decTypeRep #-}
+
+sameTypeRep :: forall k1 k2 (a :: k1) (b :: k2).
+               TypeRep a -> TypeRep b -> Bool
+sameTypeRep a b = typeRepFingerprint a == typeRepFingerprint b
 # endif
 #endif

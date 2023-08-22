@@ -5,6 +5,8 @@
  - Backport `getSolo` to `Data.Tuple.Compat` when building against
    `ghc-prim-0.8.0` (GHC 9.2) or later. To backport `getSolo` to older versions
    of GHC, import `Data.Tuple.Compat` from `base-compat-batteries` instead.
+ - Backport `decT` and `hdecT` to `Data.Typeable.Compat`
+ - Backport `decTypeRep` to `Type.Reflection.Compat`
 
 ## Changes in 0.13.0 [2023.03.10]
  - Sync with `base-4.18`/GHC 9.6

@@ -32,6 +32,9 @@ module Data.List.NonEmpty.Compat (
   , inits1
   , tails
   , tails1
+  , append
+  , appendList
+  , prependList
   -- * Building streams
   , iterate
   , repeat
@@ -134,4 +137,42 @@ tails1 =
   --   `init (tails xs)`, we have a nonempty list of nonempty lists
   fromList . Prelude.map fromList . List.init . List.tails . Foldable.toList
 # endif
+
+# if !(MIN_VERSION_base(4,16,0))
+-- | A monomorphic version of 'Prelude.<>' for 'NonEmpty'.
+--
+-- >>> append (1 :| []) (2 :| [3])
+-- 1 :| [2,3]
+--
+-- /Since: 4.16/
+append :: NonEmpty a -> NonEmpty a -> NonEmpty a
+append = (Prelude.<>)
+
+-- | Attach a list at the end of a 'NonEmpty'.
+--
+-- >>> appendList (1 :| [2,3]) []
+-- 1 :| [2,3]
+--
+-- >>> appendList (1 :| [2,3]) [4,5]
+-- 1 :| [2,3,4,5]
+--
+-- /Since: 4.16/
+appendList :: NonEmpty a -> [a] -> NonEmpty a
+appendList (x :| xs) ys = x :| xs Prelude.<> ys
+
+-- | Attach a list at the beginning of a 'NonEmpty'.
+--
+-- >>> prependList [] (1 :| [2,3])
+-- 1 :| [2,3]
+--
+-- >>> prependList [negate 1, 0] (1 :| [2, 3])
+-- -1 :| [0,1,2,3]
+--
+-- /Since: 4.16/
+prependList :: [a] -> NonEmpty a -> NonEmpty a
+prependList ls ne = case ls of
+  [] -> ne
+  (x : xs) -> x :| xs Prelude.<> toList ne
+# endif
+
 #endif

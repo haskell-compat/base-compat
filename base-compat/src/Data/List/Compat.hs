@@ -5,6 +5,11 @@
 #endif
 module Data.List.Compat (
   module Base
+
+#if MIN_VERSION_base(4,18,0) && !(MIN_VERSION_base(4,20,0))
+, List
+#endif
+
 #if !(MIN_VERSION_base(4,19,0))
 , (!?)
 , unsnoc
@@ -103,6 +108,10 @@ import GHC.Exts (build)
 
 #if !(MIN_VERSION_base(4,19,0))
 import Prelude.Compat hiding (foldr, null)
+#endif
+
+#if MIN_VERSION_base(4,18,0) && !(MIN_VERSION_base(4,20,0))
+import GHC.List (List)
 #endif
 
 #if !(MIN_VERSION_base(4,5,0))

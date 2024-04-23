@@ -2,6 +2,8 @@
  - Sync with `base-4.20`/GHC 9.10
  - Backport `foldl'` to `Prelude.Compat`
  - Backport `List` to `Data.List.Compat` (when building with GHC 9.6 or later)
+ - Backport `permutations`, `permutations1`, and `sortOn` to
+   `Data.List.NonEmpty.Compat`
 
 ## Changes in 0.13.1 [2023.10.11]
  - Sync with `base-4.19`/GHC 9.8

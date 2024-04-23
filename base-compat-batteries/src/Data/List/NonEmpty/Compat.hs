@@ -24,6 +24,7 @@ module Data.List.NonEmpty.Compat (
   , uncons
   , unfoldr
   , sort
+  , sortOn
   , reverse
   , inits
   , inits1
@@ -57,6 +58,8 @@ module Data.List.NonEmpty.Compat (
   , groupBy1
   , groupWith1
   , groupAllWith1
+  , permutations
+  , permutations1
   -- * Sublist predicates
   , isPrefixOf
   -- * \"Set\" operations
@@ -88,6 +91,40 @@ import qualified "this" Data.List.Compat as List
 #endif
 
 #if !(MIN_VERSION_base(4,9,0))
+-- | A monomorphic version of 'Prelude.<>' for 'NonEmpty'.
+--
+-- >>> append (1 :| []) (2 :| [3])
+-- 1 :| [2,3]
+--
+-- /Since: 4.16/
+append :: NonEmpty a -> NonEmpty a -> NonEmpty a
+append = (Prelude.<>)
+
+-- | Attach a list at the end of a 'NonEmpty'.
+--
+-- >>> appendList (1 :| [2,3]) []
+-- 1 :| [2,3]
+--
+-- >>> appendList (1 :| [2,3]) [4,5]
+-- 1 :| [2,3,4,5]
+--
+-- /Since: 4.16/
+appendList :: NonEmpty a -> [a] -> NonEmpty a
+appendList (x :| xs) ys = x :| xs Prelude.<> ys
+
+-- | Attach a list at the beginning of a 'NonEmpty'.
+--
+-- >>> prependList [] (1 :| [2,3])
+-- 1 :| [2,3]
+--
+-- >>> prependList [negate 1, 0] (1 :| [2, 3])
+-- -1 :| [0,1,2,3]
+--
+-- /Since: 4.16/
+prependList :: [a] -> NonEmpty a -> NonEmpty a
+prependList ls ne = case ls of
+  [] -> ne
+  (x : xs) -> x :| xs Prelude.<> toList ne
 -- | Construct a 'NonEmpty' list from a single element.
 --
 -- /Since: 4.15/
@@ -130,38 +167,67 @@ tails1 =
   --   `init (tails xs)`, we have a nonempty list of nonempty lists
   fromList . Prelude.map fromList . List.init . List.tails . Foldable.toList
 
--- | A monomorphic version of 'Prelude.<>' for 'NonEmpty'.
+-- | The 'permutations' function returns the list of all permutations of the argument.
 --
--- >>> append (1 :| []) (2 :| [3])
--- 1 :| [2,3]
---
--- /Since: 4.16/
-append :: NonEmpty a -> NonEmpty a -> NonEmpty a
-append = (Prelude.<>)
+-- /Since: 4.20.0.0/
+permutations            :: [a] -> NonEmpty [a]
+permutations xs0        =  xs0 :| perms xs0 []
+  where
+    perms []     _  = []
+    perms (t:ts) is = List.foldr interleave (perms ts (t:is)) (permutations is)
+      where interleave    xs     r = let (_,zs) = interleave' Prelude.id xs r in zs
+            interleave' _ []     r = (ts, r)
+            interleave' f (y:ys) r = let (us,zs) = interleave' (f . (y:)) ys r
+                                     in  (y:us, f (t:y:us) : zs)
+-- The implementation of 'permutations' is adopted from 'GHC.Internal.Data.List.permutations',
+-- see there for discussion and explanations.
 
--- | Attach a list at the end of a 'NonEmpty'.
+-- | 'permutations1' operates like 'permutations', but uses the knowledge that its input is
+-- non-empty to produce output where every element is non-empty.
 --
--- >>> appendList (1 :| [2,3]) []
--- 1 :| [2,3]
+-- > permutations1 = fmap fromList . permutations . toList
 --
--- >>> appendList (1 :| [2,3]) [4,5]
--- 1 :| [2,3,4,5]
---
--- /Since: 4.16/
-appendList :: NonEmpty a -> [a] -> NonEmpty a
-appendList (x :| xs) ys = x :| xs Prelude.<> ys
+-- /Since: 4.20.0.0/
+permutations1 :: NonEmpty a -> NonEmpty (NonEmpty a)
+permutations1 xs = fromList Prelude.<$> permutations (toList xs)
 
--- | Attach a list at the beginning of a 'NonEmpty'.
+-- | Sort a 'NonEmpty' on a user-supplied projection of its elements.
+-- See 'List.sortOn' for more detailed information.
 --
--- >>> prependList [] (1 :| [2,3])
--- 1 :| [2,3]
+-- ==== __Examples__
 --
--- >>> prependList [negate 1, 0] (1 :| [2, 3])
--- -1 :| [0,1,2,3]
+-- >>> sortOn fst $ (2, "world") :| [(4, "!"), (1, "Hello")]
+-- (1,"Hello") :| [(2,"world"),(4,"!")]
 --
--- /Since: 4.16/
-prependList :: [a] -> NonEmpty a -> NonEmpty a
-prependList ls ne = case ls of
-  [] -> ne
-  (x : xs) -> x :| xs Prelude.<> toList ne
+-- >>> sortOn length $ "jim" :| ["creed", "pam", "michael", "dwight", "kevin"]
+-- "jim" :| ["pam","creed","kevin","dwight","michael"]
+--
+-- ==== __Performance notes__
+--
+-- This function minimises the projections performed, by materialising
+-- the projections in an intermediate list.
+--
+-- For trivial projections, you should prefer using 'sortBy' with
+-- 'comparing', for example:
+--
+-- >>> sortBy (comparing fst) $ (3, 1) :| [(2, 2), (1, 3)]
+-- (1,3) :| [(2,2),(3,1)]
+--
+-- Or, for the exact same API as 'sortOn', you can use `sortBy . comparing`:
+--
+-- >>> (sortBy . comparing) fst $ (3, 1) :| [(2, 2), (1, 3)]
+-- (1,3) :| [(2,2),(3,1)]
+--
+-- 'sortWith' is an alias for `sortBy . comparing`.
+--
+-- /Since: 4.20.0.0/
+sortOn :: Prelude.Ord b => (a -> b) -> NonEmpty a -> NonEmpty a
+sortOn f = lift (List.sortOn f)
+
+-- | Lift list operations to work on a 'NonEmpty' stream.
+--
+-- /Beware/: If the provided function returns an empty list,
+-- this will raise an error.
+lift :: Foldable.Foldable f => ([a] -> [b]) -> f a -> NonEmpty b
+lift f = fromList . f . Foldable.toList
 #endif

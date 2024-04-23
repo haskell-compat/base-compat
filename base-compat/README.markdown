@@ -158,6 +158,7 @@ So far the following is covered.
    `isResourceVanishedErrorType` to `System.IO.Error.Compat`
  * `singleton` to `Data.List.Compat` and `Data.List.NonEmpty.Compat`
  * `inits1` and `tails1` to `Data.List.NonEmpty.Compat`
+ * `permutations`, `permutations1`, and `sortOn` to `Data.List.NonEmpty.Compat`
  * `hGetContents'`, `getContents'`, and `readFile'` to `System.IO.Compat`
  * `readBinP` to `Text.Read.Lex.Compat`
  * `withTypeable` and `pattern TypeRep` to `Type.Reflection.Compat`

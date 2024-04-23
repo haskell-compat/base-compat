@@ -7,11 +7,11 @@
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE TypeInType #-}
 #endif
-#if MIN_VERSION_base(4,17,0) && !(MIN_VERSION_base(4,18,0))
+#if MIN_VERSION_base(4,17,0) && !(MIN_VERSION_base(4,20,0))
 {-# LANGUAGE ExplicitNamespaces #-}
 #endif
 module Prelude.Compat (
-#if MIN_VERSION_base(4,18,0)
+#if MIN_VERSION_base(4,20,0)
   module Base
 #else
   either
@@ -119,6 +119,7 @@ module Prelude.Compat (
 , elem
 , foldMap
 , foldl
+, foldl'
 , foldl1
 , foldr
 , foldr1
@@ -297,6 +298,10 @@ import Prelude as Base hiding (
 
 # if !(MIN_VERSION_base(4,18,0))
 import Control.Applicative (liftA2)
+# endif
+
+# if !(MIN_VERSION_base(4,20,0))
+import Data.Foldable (foldl')
 # endif
 
 #else

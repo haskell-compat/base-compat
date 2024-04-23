@@ -1,3 +1,6 @@
+## Changes in ???? [????.??.??]
+ - Sync with `base-4.20`/GHC 9.10
+
 ## Changes in 0.13.1 [2023.10.11]
  - Sync with `base-4.19`/GHC 9.8
  - Backport `unzip` to `Data.Functor.Compat`

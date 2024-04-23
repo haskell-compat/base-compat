@@ -109,7 +109,8 @@ isAsstCallStack (ParenA asst) = isAsstCallStack asst
 isAsstCallStack _             = False
 
 isTypeCallStack :: Type -> Bool
-isTypeCallStack (TyCon name) = name == Qual (ModuleName "GHC.Stack.Types") (Ident "HasCallStack")
+isTypeCallStack (TyCon name) = name == Qual (ModuleName "GHC.Stack.Types")          (Ident "HasCallStack") ||
+                               name == Qual (ModuleName "GHC.Internal.Stack.Types") (Ident "HasCallStack")
 isTypeCallStack _            = False
 
 sortConstrains :: Type -> Type
@@ -180,6 +181,21 @@ normalizeConstrainNames t = transformBi f t
       Qual (ModuleName "GHC.Maybe") (Ident "Maybe") -> Qual (ModuleName "Data.Maybe") (Ident "Maybe")
       Qual (ModuleName "GHC.Types") (Ident "Bool") -> Qual (ModuleName "GHC.Bool") (Ident "Bool")
       Qual (ModuleName "GHC.Types") (Ident "Ordering") -> Qual (ModuleName "GHC.Ordering") (Ident "Ordering")
+
+      Qual (ModuleName "GHC.Internal.Base") (Ident "Applicative") -> Qual (ModuleName "Control.Applicative") (Ident "Applicative")
+      Qual (ModuleName "GHC.Internal.Base") (Ident "Alternative") -> Qual (ModuleName "Control.Applicative") (Ident "Alternative")
+      Qual (ModuleName "GHC.Internal.Base") (Ident "MonadPlus") -> Qual (ModuleName "Control.Monad") (Ident "MonadPlus")
+      Qual (ModuleName "GHC.Internal.Base") (Ident "Monoid") -> Qual (ModuleName "Data.Monoid") (Ident "Monoid")
+      Qual (ModuleName "GHC.Internal.Base") (Ident "Semigroup") -> Qual (ModuleName "Data.Semigroup") (Ident "Semigroup")
+      Qual (ModuleName "GHC.Internal.Base") i -> Qual (ModuleName "GHC.Base") i
+      Qual (ModuleName "GHC.Internal.Data.Foldable") i -> Qual (ModuleName "Data.Foldable") i
+      Qual (ModuleName "GHC.Internal.Data.Traversable") i -> Qual (ModuleName "Data.Traversable") i
+      Qual (ModuleName "GHC.Internal.Float") i -> Qual (ModuleName "GHC.Float") i
+      Qual (ModuleName "GHC.Internal.Maybe") (Ident "Maybe") -> Qual (ModuleName "Data.Maybe") (Ident "Maybe")
+      Qual (ModuleName "GHC.Internal.Maybe") i -> Qual (ModuleName "GHC.Maybe") i
+      Qual (ModuleName "GHC.Internal.Num") i -> Qual (ModuleName "GHC.Num") i
+      Qual (ModuleName "GHC.Internal.Real") i -> Qual (ModuleName "GHC.Real") i
+
       UnQual (Ident "Foldable") -> Qual (ModuleName "Data.Foldable") (Ident "Foldable")
       UnQual (Ident "MonadFail") -> Qual (ModuleName "Control.Monad.Fail") (Ident "MonadFail")
       UnQual (Ident "Traversable") -> Qual (ModuleName "Data.Traversable") (Ident "Traversable")

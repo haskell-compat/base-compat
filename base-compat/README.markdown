@@ -152,6 +152,7 @@ So far the following is covered.
  * `unsafeFixIO` and `unsafeDupablePerformIO` to `System.IO.Unsafe.IO`
  * `RuntimeRep`-polymorphic `($!)` to `Prelude.Compat`
  * `liftA2` is re-exported from `Prelude.Compat`
+ * `foldl'` is re-exported from `Prelude.Compat`
  * `RuntimeRep`-polymorphic `throw` to `Control.Exception.Compat`
  * `isResourceVanishedError`, `resourceVanishedErrorType`, and
    `isResourceVanishedErrorType` to `System.IO.Error.Compat`

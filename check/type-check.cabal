@@ -69,6 +69,13 @@ executable for-repl
   build-depends:
     base,
     base-compat-batteries
+  if impl(ghc >= 9.10)
+    -- This depends on `ghc-internal` to ensure that GHCi prints things like
+    -- GHC.Internal.Maybe.Maybe rather than
+    -- ghc-internal:GHC.Internal.Maybe.Maybe, the latter of which typediff
+    -- cannot parse.
+    build-depends:
+      ghc-internal
 
 -- Run with
 -- (cd check && cabal new-run dumptypes Control.Monad.Compat)

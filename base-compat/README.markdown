@@ -166,6 +166,7 @@ So far the following is covered.
  * `heqT` to `Data.Typeable.Compat`
  * `unzip` to `Data.Functor.Compat`
  * `(!?)` and `unsnoc` to `Data.List.Compat`
+ * `List` to `Data.List.Compat` (when building with GHC 9.6 or later)
  * `getSolo` to `Data.Tuple.Compat`
  * `decT` and `hdecT` to `Data.Typeable.Compat`
  * `decTypeRep` to `Type.Reflection.Compat`

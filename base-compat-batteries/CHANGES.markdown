@@ -1,6 +1,6 @@
-## Changes in ???? [????.??.??]
- - This coincides with the `base-compat-batteries-????` release. Refer to the
-   [`base-compat-batteries` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat-batteries/CHANGES.markdown#changes-in-????-????????)
+## Changes in 0.14.0 [2024.04.30]
+ - This coincides with the `base-compat-batteries-0.14.0` release. Refer to the
+   [`base-compat-batteries` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat-batteries/CHANGES.markdown#changes-in-0140-20240430)
    for more details.
 
 ## Changes in 0.13.1 [2023.10.11]

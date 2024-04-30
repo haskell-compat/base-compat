@@ -1,4 +1,4 @@
-## Changes in 0.14.0 [????.??.??]
+## Changes in 0.14.0 [2024.04.30]
  - Sync with `base-4.20`/GHC 9.10
  - Backport `foldl'` to `Prelude.Compat`
  - Backport `List` to `Data.List.Compat` (when building with GHC 9.6 or later)

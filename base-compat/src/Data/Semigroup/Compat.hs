@@ -1,8 +1,7 @@
-{-# LANGUAGE CPP, NoImplicitPrelude #-}
+{-# LANGUAGE NoImplicitPrelude #-}
 -- | This backports the modern "Data.Semigroup" interface back to
 -- @base-4.9@/GHC 8.0.
 module Data.Semigroup.Compat (
-#if MIN_VERSION_base(4,9,0)
     Semigroup(..)
   , stimesMonoid
   , stimesIdempotent
@@ -28,9 +27,6 @@ module Data.Semigroup.Compat (
   , Arg(..)
   , ArgMin
   , ArgMax
-#endif
   ) where
 
-#if MIN_VERSION_base(4,9,0)
 import Data.Semigroup
-#endif

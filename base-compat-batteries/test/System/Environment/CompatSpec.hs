@@ -1,10 +1,7 @@
-{-# LANGUAGE CPP #-}
 module System.Environment.CompatSpec (main, spec) where
 
 import           Test.Hspec
-#if __GLASGOW_HASKELL__ >= 704
 import           Test.QuickCheck
-#endif
 
 import qualified Control.Exception as E
 import           GHC.IO.Exception (IOErrorType (InvalidArgument))
@@ -56,13 +53,11 @@ spec = do
     it "throws an exception if key contains '='" $ do
       unsetEnv "some=key" `shouldThrow` (== InvalidArgument) . ioeGetErrorType
 
-#if __GLASGOW_HASKELL__ >= 704
     it "works for arbitrary keys" $
       property $ \k -> ('\NUL' `notElem` k && '=' `notElem` k && (not . null) k) ==> do
         setEnv k "foo"
         unsetEnv k
         getEnv k `shouldThrow` isDoesNotExistError
-#endif
 
   describe "setEnv" $ do
     it "sets specified environment variable to given value" $ do
@@ -96,7 +91,6 @@ spec = do
       setEnv "FOO\NULBAR" "foo"
       getEnv "FOO" `shouldReturn` "foo"
 
-#if __GLASGOW_HASKELL__ >= 704
     it "works for unicode" $ do
       unsetEnv "FOO"
       setEnv "FOO" "foo-\955-bar"
@@ -106,7 +100,6 @@ spec = do
       property $ \v -> ('\NUL' `notElem` v && (not . null) v) ==> do
         setEnv "FOO" v
         getEnv "FOO" `shouldReturn` v
-#endif
 
     it "works for unicode keys" $ do
       setEnv "foo-\955-bar" "foo"
@@ -118,9 +111,7 @@ spec = do
     it "throws an exception if key contains '='" $ do
       setEnv "some=key" "foo" `shouldThrow` (== InvalidArgument) . ioeGetErrorType
 
-#if __GLASGOW_HASKELL__ >= 704
     it "works for arbitrary keys" $
       property $ \k -> ('\NUL' `notElem` k && '=' `notElem` k && (not . null) k) ==> do
         setEnv k "foo"
         getEnv k `shouldReturn` "foo"
-#endif

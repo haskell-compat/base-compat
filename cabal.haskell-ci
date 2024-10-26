@@ -1,18 +1,4 @@
--- Old versions of Haddock have trouble with base-compat-batteries:
---
--- * GHC 7.0's Haddock fails to parse test/Prelude/CompatSpec.hs, claiming
---   that there is an "Empty 'do' construct". I have no idea why.
---
--- * GHC 7.2 runs into "synifyType: PredTys are not, in themselves, source-level
---   types" when building the documentation for base-compat-batteries'
---   Data.Type.Equality.Compat module. This bug is apparently so obscure that no
---   issue was ever filed about it!
---
--- * GHC 7.4, 7.8, 7.10, and 8.0 fail to parse test/Prelude.CompatSpec.hs with
---   "parse error on input `('". I have no idea why.
---
--- * GHC 7.6 runs into https://github.com/haskell/haddock/issues/242 when
---   building the documentation for base-compat-batteries'
---   Data.Type.Equality.Compat module.
+-- GHC 8.0's version of Haddock fails to parse test/Prelude.CompatSpec.hs with
+-- "parse error on input `('". I have no idea why.
 haddock:        >=8.2
 github-patches: github.yml.patch

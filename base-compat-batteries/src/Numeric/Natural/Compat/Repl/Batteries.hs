@@ -1,5 +1,5 @@
 {-# LANGUAGE PackageImports #-}
-{-# OPTIONS_GHC -fno-warn-dodgy-exports -fno-warn-unused-imports #-}
+{-# OPTIONS_GHC -Wno-dodgy-exports -Wno-unused-imports #-}
 -- | Reexports "Numeric.Natural.Compat"
 -- from a globally unique namespace.
 module Numeric.Natural.Compat.Repl.Batteries (

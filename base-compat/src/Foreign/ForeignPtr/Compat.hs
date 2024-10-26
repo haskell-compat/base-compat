@@ -1,8 +1,6 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
 {-# LANGUAGE MagicHash #-}
-#if __GLASGOW_HASKELL__ >= 702
 {-# LANGUAGE Trustworthy #-}
-#endif
 module Foreign.ForeignPtr.Compat (
   module Base
 , plusForeignPtr

@@ -1,4 +1,4 @@
-{-# LANGUAGE CPP, NoImplicitPrelude, PackageImports #-}
+{-# LANGUAGE NoImplicitPrelude, PackageImports #-}
 module Data.Semigroup.Compat (
     Semigroup(..)
   , stimesMonoid
@@ -27,8 +27,4 @@ module Data.Semigroup.Compat (
   , ArgMax
   ) where
 
-#if MIN_VERSION_base(4,9,0)
 import "base-compat" Data.Semigroup.Compat
-#else
-import "semigroups" Data.Semigroup
-#endif

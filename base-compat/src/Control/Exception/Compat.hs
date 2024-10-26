@@ -1,7 +1,5 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
-#if __GLASGOW_HASKELL__ >= 702
 {-# LANGUAGE Trustworthy #-}
-#endif
 #if MIN_VERSION_base(4,10,0)
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE MagicHash #-}

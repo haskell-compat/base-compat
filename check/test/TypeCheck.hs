@@ -1,4 +1,3 @@
-{-# LANGUAGE CPP #-}
 module Main (main) where
 
 import           Control.Monad (unless)
@@ -27,16 +26,7 @@ modules = do
   contents <- getDirectoryContents "index"
   let noNavigation = contents \\ [".", ".."]
       noFileExts   = map dropExtension noNavigation
-      noExcluded   = noFileExts \\ excluded
-  return noExcluded
-    where
-      excluded :: [FilePath]
-      excluded = [
-#if !(MIN_VERSION_base(4,4,0))
-          "Data.Complex.Compat"
-        , "Data.Ratio.Compat"
-#endif
-        ]
+  return noFileExts
 
 typeCheck :: FilePath -> String -> Spec
 typeCheck pwd module_ =

@@ -1,5 +1,5 @@
 {-# LANGUAGE PackageImports #-}
-{-# OPTIONS_GHC -fno-warn-dodgy-exports -fno-warn-unused-imports #-}
+{-# OPTIONS_GHC -Wno-dodgy-exports -Wno-unused-imports #-}
 -- | Reexports "Control.Concurrent.Compat"
 -- from a globally unique namespace.
 module Control.Concurrent.Compat.Repl (

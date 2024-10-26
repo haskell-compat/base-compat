@@ -1,7 +1,5 @@
-{-# LANGUAGE CPP, NoImplicitPrelude #-}
-#if __GLASGOW_HASKELL__ >= 704
+{-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE Safe #-}
-#endif
 module SafeHaskellSpec (main, spec) where
 
 import TestHspecTrustworthy

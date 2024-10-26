@@ -1,7 +1,5 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
-#if __GLASGOW_HASKELL__ >= 702
 {-# LANGUAGE Trustworthy #-}
-#endif
 #if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
 {-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE RankNTypes #-}
@@ -147,9 +145,7 @@ module Prelude.Compat (
 , mappend
 , mconcat
 , mempty
-# if MIN_VERSION_base(4,9,0)
 , (<>)
-# endif
 , maxBound
 , minBound
 , enumFrom
@@ -240,9 +236,7 @@ module Prelude.Compat (
 , Functor
 , Integral
 , Monad
-#if MIN_VERSION_base(4,9,0)
 , MonadFail
-#endif
 , Monoid
 , Num (fromInteger)
 , Ord
@@ -250,9 +244,7 @@ module Prelude.Compat (
 , Real
 , RealFloat
 , RealFrac
-# if MIN_VERSION_base(4,9,0)
 , Semigroup
-# endif
 , Show
 , Traversable
 
@@ -285,83 +277,33 @@ module Prelude.Compat (
 ) where
 
 
-#if MIN_VERSION_base(4,9,0)
-
 import Prelude as Base hiding (
-# if !(MIN_VERSION_base(4,13,0))
+#if !(MIN_VERSION_base(4,13,0))
     fail
-#  if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
+# if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
   , ($!)
-#  endif
-# endif
-  )
-
-# if !(MIN_VERSION_base(4,18,0))
-import Control.Applicative (liftA2)
-# endif
-
-# if !(MIN_VERSION_base(4,20,0))
-import Data.Foldable (foldl')
-# endif
-
-#else
-
-import Prelude hiding (
-    length
-  , null
-  , foldr
-  , mapM
-  , sequence
-  , all
-  , and
-  , any
-  , concat
-  , concatMap
-  , mapM
-  , mapM_
-  , notElem
-  , or
-  , sequence
-  , sequence_
-  , elem
-  , foldl
-  , foldl1
-  , foldr1
-  , maximum
-  , minimum
-  , product
-  , sum
-  )
-
-import Control.Applicative
-import Data.Foldable.Compat
-import Data.Traversable
-
-# if !(MIN_VERSION_base(4,8,0))
-import Data.Monoid
-import Data.Word
 # endif
 #endif
+  )
 
-#if MIN_VERSION_base(4,9,0) && !(MIN_VERSION_base(4,11,0))
+#if !(MIN_VERSION_base(4,18,0))
+import Control.Applicative (liftA2)
+#endif
+
+#if !(MIN_VERSION_base(4,20,0))
+import Data.Foldable (foldl')
+#endif
+
+#if !(MIN_VERSION_base(4,11,0))
 import Data.Semigroup as Base (Semigroup((<>)))
 #endif
 
-#if MIN_VERSION_base(4,9,0) && !(MIN_VERSION_base(4,13,0))
+#if !(MIN_VERSION_base(4,13,0))
 import Control.Monad.Fail as Base (MonadFail(fail))
 #endif
 
 #if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))
 import GHC.Exts (TYPE)
-#endif
-
-#if !(MIN_VERSION_base(4,9,0))
--- | A variant of 'error' that does not produce a stack trace.
---
--- /Since: 4.9.0.0/
-errorWithoutStackTrace :: [Char] -> a
-errorWithoutStackTrace s = error s
-{-# NOINLINE errorWithoutStackTrace #-}
 #endif
 
 #if MIN_VERSION_base(4,10,0) && !(MIN_VERSION_base(4,12,0))

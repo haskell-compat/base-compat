@@ -1,7 +1,5 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
-#if __GLASGOW_HASKELL__ >= 702
 {-# LANGUAGE Safe #-}
-#endif
 #if MIN_VERSION_ghc_prim(0,7,0)
 {-# LANGUAGE PatternSynonyms #-}
 #endif

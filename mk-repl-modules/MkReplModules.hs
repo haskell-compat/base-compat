@@ -44,7 +44,7 @@ mkReplModules dir suffixes = do
 fileTemplate :: String -> [String] -> String
 fileTemplate modName suffixes = unlines
   [ "{-# LANGUAGE PackageImports #-}"
-  , "{-# OPTIONS_GHC -fno-warn-dodgy-exports -fno-warn-unused-imports #-}"
+  , "{-# OPTIONS_GHC -Wno-dodgy-exports -Wno-unused-imports #-}"
   , "-- | Reexports \"" ++ modName ++ "\""
   , "-- from a globally unique namespace."
   , "module " ++ modName ++ "." ++ List.intercalate "." suffixes ++ " ("

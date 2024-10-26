@@ -2,7 +2,6 @@
 -- | This backports the modern "Data.Semigroup" interface back to
 -- @base-4.9@/GHC 8.0.
 module Data.List.NonEmpty.Compat (
-#if MIN_VERSION_base(4,9,0)
   -- * The type of non-empty streams
     NonEmpty(..)
 
@@ -79,31 +78,27 @@ module Data.List.NonEmpty.Compat (
   , toList
   , nonEmpty
   , xor
-#endif
 ) where
 
-#if MIN_VERSION_base(4,9,0)
 import Data.List.NonEmpty
 
-# if !(MIN_VERSION_base(4,20,0))
+#if !(MIN_VERSION_base(4,20,0))
 import qualified Prelude.Compat as Prelude
 import Prelude.Compat ((.))
 
 import qualified Data.Foldable.Compat as Foldable
 import qualified Data.List.Compat as List
-# endif
 #endif
 
-#if MIN_VERSION_base(4,9,0)
-# if !(MIN_VERSION_base(4,15,0))
+#if !(MIN_VERSION_base(4,15,0))
 -- | Construct a 'NonEmpty' list from a single element.
 --
 -- /Since: 4.15/
 singleton :: a -> NonEmpty a
 singleton a = a :| []
-# endif
+#endif
 
-# if !(MIN_VERSION_base(4,16,0))
+#if !(MIN_VERSION_base(4,16,0))
 -- | A monomorphic version of 'Prelude.<>' for 'NonEmpty'.
 --
 -- >>> append (1 :| []) (2 :| [3])
@@ -138,9 +133,9 @@ prependList :: [a] -> NonEmpty a -> NonEmpty a
 prependList ls ne = case ls of
   [] -> ne
   (x : xs) -> x :| xs Prelude.<> toList ne
-# endif
+#endif
 
-# if !(MIN_VERSION_base(4,18,0))
+#if !(MIN_VERSION_base(4,18,0))
 -- | The 'inits1' function takes a 'NonEmpty' stream @xs@ and returns all the
 -- 'NonEmpty' finite prefixes of @xs@, starting with the shortest.
 --
@@ -176,9 +171,9 @@ tails1 =
   -- - Therefore, if we take all but the last element of `tails xs` i.e.
   --   `init (tails xs)`, we have a nonempty list of nonempty lists
   fromList . Prelude.map fromList . List.init . List.tails . Foldable.toList
-# endif
+#endif
 
-# if !(MIN_VERSION_base(4,20,0))
+#if !(MIN_VERSION_base(4,20,0))
 -- | The 'permutations' function returns the list of all permutations of the argument.
 --
 -- /Since: 4.20.0.0/
@@ -242,5 +237,4 @@ sortOn f = lift (List.sortOn f)
 -- this will raise an error.
 lift :: Foldable.Foldable f => ([a] -> [b]) -> f a -> NonEmpty b
 lift f = fromList . f . Foldable.toList
-# endif
 #endif

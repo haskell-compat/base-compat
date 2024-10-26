@@ -1,7 +1,5 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
-#if __GLASGOW_HASKELL__ >= 702
 {-# LANGUAGE Trustworthy #-}
-#endif
 #if !(MIN_VERSION_base(4,18,0))
 {-# LANGUAGE ScopedTypeVariables #-}
 #endif
@@ -18,11 +16,7 @@ import Prelude.Compat
 
 import Control.Monad.Compat (liftM)
 
-# if MIN_VERSION_base(4,8,0)
 import Data.Coerce (Coercible, coerce)
-# else
-import Unsafe.Coerce (unsafeCoerce)
-# endif
 #endif
 
 #if !(MIN_VERSION_base(4,18,0))
@@ -50,13 +44,8 @@ instance Monad m => Applicative (StateT s m) where
     m *> k = m >>= \_ -> k
     {-# INLINE (*>) #-}
 
-# if MIN_VERSION_base(4,8,0)
 (#.) :: Coercible b c => (b -> c) -> (a -> b) -> (a -> c)
 (#.) _f = coerce
-# else
-(#.) ::                  (b -> c) -> (a -> b) -> (a -> c)
-(#.) _f = unsafeCoerce
-# endif
 
 -- | /Since: 4.18.0.0/
 instance (Monad m) => Monad (StateT s m) where

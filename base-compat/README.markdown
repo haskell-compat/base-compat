@@ -275,58 +275,21 @@ Here is a list of compatibility libraries that `base-compat-batteries` depends
 on, paired with the things that each library backports:
 
 * [`bifunctor-classes-compat`](http://hackage.haskell.org/package/bifunctor-classes-compat)
-  for:
-  * The [`Bifunctor`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Bifunctor.html#t:Bifunctor)
-    type class, introduced in `base-4.8.0.0`
-  * The [`Bifoldable`](http://hackage.haskell.org/package/base-4.10.0.0/docs/Data-Bifoldable.html#t:Bifoldable)
-    and [`Bitraversable`](http://hackage.haskell.org/package/base-4.10.0.0/docs/Data-Bitraversable.html#t:Bitraversable)
-    type classes, introduced in `base-4.10.0.0`
+  for the
+  [`Bifoldable`](http://hackage.haskell.org/package/base-4.10.0.0/docs/Data-Bifoldable.html#t:Bifoldable)
+  and
+  [`Bitraversable`](http://hackage.haskell.org/package/base-4.10.0.0/docs/Data-Bitraversable.html#t:Bitraversable)
+  type classes, introduced in `base-4.10.0.0`
 * [`contravariant`](http://hackage.haskell.org/package/contravariant)
   for the [`Contravariant`](http://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Functor-Contravariant.html#t:Contravariant)
   type class, introduced in `base-4.12.0.0`.
-* [`fail`](http://hackage.haskell.org/package/fail)
-  for the [`MonadFail`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Control-Monad-Fail.html#t:MonadFail)
-  type class, introduced in `base-4.9.0.0`
 * [`foldable1-classes-compat`](https://hackage.haskell.org/package/foldable1-classes-compat)
   for the [`Foldable1`](https://hackage.haskell.org/package/foldable1-classes-compat-0.1/docs/Data-Foldable1.html#t:Foldable1)
   and [`Bifoldable1`](https://hackage.haskell.org/package/foldable1-classes-compat-0.1/docs/Data-Bifoldable1.html#t:Bifoldable1)
   type classes, introduced in `base-4.18.0.0`
-* [`nats`](http://hackage.haskell.org/package/nats)
-  for the [`Natural`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Numeric-Natural.html)
-  data type, introduced in `base-4.8.0.0`
 * [`OneTuple`](http://hackage.haskell.org/package/OneTuple)
   for the [`Solo`](https://hackage.haskell.org/package/base-4.16.0.0/docs/Data-Tuple.html#t:Solo)
   data type, introduced in `ghc-prim-0.7.0`
-* [`semigroups`](http://hackage.haskell.org/package/semigroups)
-  for the [`Semigroup`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Semigroup)
-  typeclass and the
-  [`NonEmpty`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-List-NonEmpty.html#t:NonEmpty),
-  [`Min`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Min),
-  [`Max`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Max),
-  [`First`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:First),
-  [`Last`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Last),
-  [`WrappedMonoid`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:WrappedMonoid),
-  [`Option`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Option),
-  and
-  [`Arg`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Semigroup.html#t:Arg)
-  data types, introduced in `base-4.9.0.0`
-* [`tagged`](http://hackage.haskell.org/package/tagged)
-  for the [`Proxy`](http://hackage.haskell.org/package/base-4.7.0.0/docs/Data-Proxy.html#t:Proxy)
-  data type, introduced in `base-4.7.0.0`
-* [`transformers`](http://hackage.haskell.org/package/transformers)
-  for:
-  * The [`Identity`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Functor-Identity.html#t:Identity)
-    data type, introduced in `base-4.8.0.0`
-  * The [`MonadIO`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Control-Monad-IO-Class.html#t:MonadIO)
-    type class; and the
-    [`Compose`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Compose.html#t:Compose),
-    [`Product`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Product.html#t:Product),
-    and
-    [`Sum`](http://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Functor-Sum.html#t:Sum)
-    data types, introduced in `base-4.9.0.0`
-* [`void`](http://hackage.haskell.org/package/void)
-  for the [`Void`](http://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Void.html#t:Void)
-  data type, introduced in `base-4.8.0.0`
 
 ## Version policy
 
@@ -360,12 +323,6 @@ with identifiers of the same names in their code.
  * `ghc-8.4.*`  / `base-4.11.*`
  * `ghc-8.2.*`  / `base-4.10.*`
  * `ghc-8.0.*`  / `base-4.9.*`
- * `ghc-7.10.*` / `base-4.8.*`
- * `ghc-7.8.*`  / `base-4.7.*`
- * `ghc-7.6.*`  / `base-4.6.*`
- * `ghc-7.4.*`  / `base-4.5.*`
- * `ghc-7.2.*`  / `base-4.4.*`
- * `ghc-7.0.*`  / `base-4.3.*`
 
 We also make an attempt to keep `base-compat` building with GHC HEAD, but due
 to its volatility, it may not work at any given point in time. If it doesn't,

@@ -1,17 +1,13 @@
 {-# LANGUAGE CPP, NoImplicitPrelude #-}
 module Data.Proxy.Compat (
-#if MIN_VERSION_base(4,7,0)
   module Base,
-#endif
   asProxyTypeOf
 ) where
 
-#if MIN_VERSION_base(4,7,0)
-# if MIN_VERSION_base(4,10,0)
+#if MIN_VERSION_base(4,10,0)
 import Data.Proxy as Base
-# else
+#else
 import Data.Proxy as Base hiding (asProxyTypeOf)
-# endif
 #endif
 
 #if !(MIN_VERSION_base(4,10,0))

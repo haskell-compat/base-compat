@@ -22,13 +22,7 @@ category:            Compatibility
 license:             BSD-3-Clause
 license-file:        LICENSE
 build-type:          Simple
-tested-with:         GHC == 7.0.4
-                   , GHC == 7.2.2
-                   , GHC == 7.4.2
-                   , GHC == 7.6.3
-                   , GHC == 7.8.4
-                   , GHC == 7.10.3
-                   , GHC == 8.0.2
+tested-with:         GHC == 8.0.2
                    , GHC == 8.2.2
                    , GHC == 8.4.4
                    , GHC == 8.6.5
@@ -37,7 +31,7 @@ tested-with:         GHC == 7.0.4
                    , GHC == 9.0.2
                    , GHC == 9.2.8
                    , GHC == 9.4.8
-                   , GHC == 9.6.5
+                   , GHC == 9.6.6
                    , GHC == 9.8.2
                    , GHC == 9.10.1
 
@@ -56,7 +50,7 @@ library
   hs-source-dirs:
       .
   build-depends:
-      base >= 4.3 && < 5
+      base >= 4.9 && < 5
     , process
     , parsec >=3.1.11 && <3.2
 
@@ -67,7 +61,7 @@ executable for-repl
   main-is: for-repl.hs
 
   build-depends:
-    base,
+    base >= 4.9 && < 5,
     base-compat-batteries
   if impl(ghc >= 9.10)
     -- This depends on `ghc-internal` to ensure that GHCi prints things like
@@ -85,7 +79,7 @@ executable dumptypes
   hs-source-dirs: exes
   main-is: dumptypes.hs
   build-depends:
-    base,
+    base >= 4.9 && < 5,
     type-check
 
 -- Run with
@@ -96,7 +90,7 @@ executable dumpindex
   hs-source-dirs: exes
   main-is: dumpindex.hs
   build-depends:
-    base,
+    base >= 4.9 && < 5,
     type-check
 
 test-suite type-check-test
@@ -106,7 +100,7 @@ test-suite type-check-test
   hs-source-dirs: test
   main-is: TypeCheck.hs
   build-depends:
-      base >= 4.3 && < 5
+      base >= 4.9 && < 5
     , type-check
     , directory
     , filepath

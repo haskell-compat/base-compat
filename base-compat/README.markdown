@@ -311,7 +311,8 @@ with identifiers of the same names in their code.
 
 ## Supported versions of GHC/`base`
 
- * `ghc-9.10.*`  / `base-4.20.*`
+ * `ghc-9.12.*` / `base-4.21.*`
+ * `ghc-9.10.*` / `base-4.20.*`
  * `ghc-9.8.*`  / `base-4.19.*`
  * `ghc-9.6.*`  / `base-4.18.*`
  * `ghc-9.4.*`  / `base-4.17.*`

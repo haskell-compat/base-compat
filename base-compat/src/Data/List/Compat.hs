@@ -4,6 +4,11 @@
 module Data.List.Compat (
   module Base
 
+#if !(MIN_VERSION_base(4,21,0))
+, inits1
+, tails1
+#endif
+
 #if MIN_VERSION_base(4,18,0) && !(MIN_VERSION_base(4,20,0))
 , List
 #endif
@@ -34,6 +39,11 @@ import Prelude.Compat hiding (foldr, null)
 
 #if MIN_VERSION_base(4,18,0) && !(MIN_VERSION_base(4,20,0))
 import GHC.List (List)
+#endif
+
+#if !(MIN_VERSION_base(4,21,0))
+import Data.List.NonEmpty (NonEmpty(..))
+import GHC.List (build)
 #endif
 
 #if !(MIN_VERSION_base(4,11,0))
@@ -132,4 +142,68 @@ unsnoc :: [a] -> Maybe ([a], a)
 -- Expressing the recursion via 'foldr' provides for list fusion.
 unsnoc = foldr (\x -> Just . maybe ([], x) (\(~(a, b)) -> (x : a, b))) Nothing
 {-# INLINABLE unsnoc #-}
+#endif
+
+#if !(MIN_VERSION_base(4,21,0))
+inits1, tails1 :: [a] -> [NonEmpty a]
+
+-- | The 'inits1' function returns all non-empty initial segments of the
+-- argument, shortest first.
+--
+-- @since 4.21.0.0
+--
+-- ==== __Laziness__
+--
+-- Note that 'inits1' has the following strictness property:
+-- @inits1 (xs ++ _|_) = inits1 xs ++ _|_@
+--
+-- In particular,
+-- @inits1 _|_ = _|_@
+--
+-- ==== __Examples__
+--
+-- >>> inits1 "abc"
+-- ['a' :| "",'a' :| "b",'a' :| "bc"]
+--
+-- >>> inits1 []
+-- []
+--
+-- inits1 is productive on infinite lists:
+--
+-- >>> take 3 $ inits1 [1..]
+-- [1 :| [],1 :| [2],1 :| [2,3]]
+inits1 [] = []
+inits1 (x : xs) = map (x :|) (inits xs)
+
+-- | \(\mathcal{O}(n)\). The 'tails1' function returns all non-empty final
+-- segments of the argument, longest first.
+--
+-- @since 4.21.0.0
+--
+-- ==== __Laziness__
+--
+-- Note that 'tails1' has the following strictness property:
+-- @tails1 _|_ = _|_@
+--
+-- >>> tails1 undefined
+-- *** Exception: Prelude.undefined
+--
+-- >>> drop 1 (tails1 [undefined, 1, 2])
+-- [1 :| [2],2 :| []]
+--
+-- ==== __Examples__
+--
+-- >>> tails1 "abc"
+-- ['a' :| "bc",'b' :| "c",'c' :| ""]
+--
+-- >>> tails1 [1, 2, 3]
+-- [1 :| [2,3],2 :| [3],3 :| []]
+--
+-- >>> tails1 []
+-- []
+{-# INLINABLE tails1 #-}
+tails1 lst = build (\c n ->
+  let tails1Go [] = n
+      tails1Go (x : xs) = (x :| xs) `c` tails1Go xs
+  in tails1Go lst)
 #endif

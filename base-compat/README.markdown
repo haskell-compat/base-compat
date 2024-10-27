@@ -135,6 +135,7 @@ So far the following is covered.
  * `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to `Data.IORef.Compat`
  * `dropWhileEnd`, `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List.Compat`
  * Correct versions of `nub`, `nubBy`, `union`, and `unionBy` to `Data.List.Compat`
+ * `inits1` and `tails1` to `Data.List.Compat`
  * `asProxyTypeOf` with a generalized type signature to `Data.Proxy.Compat`
  * `modifySTRef'` to `Data.STRef.Compat`
  * `String`, `lines`, `words`, `unlines`, and `unwords` to `Data.String.Compat`

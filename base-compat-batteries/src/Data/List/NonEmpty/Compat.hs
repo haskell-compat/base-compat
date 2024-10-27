@@ -15,6 +15,7 @@ module Data.List.NonEmpty.Compat (
   , sortWith
   -- * Basic functions
   , length
+  , compareLength
   , head
   , tail
   , last

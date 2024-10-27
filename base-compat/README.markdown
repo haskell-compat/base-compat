@@ -120,6 +120,7 @@ So far the following is covered.
  * Added `bitDefault`, `testBitDefault`, `popCountDefault`, `(.^.)`, `(.>>.)`,
    `(.<<.)`, `(!>>.)`, and `(!<<.)` to `Data.Bits.Compat`
  * Added `toIntegralSized` and `oneBits` to `Data.Bits.Compat` (if using `base-4.7` or later)
+ * Added `firstA` and `secondA` to `Data.Bitraversable.Compat`
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft`, `isRight`, `fromLeft`, and `fromRight` to `Data.Either.Compat`
  * Added `forkFinally` to `Control.Concurrent.Compat`

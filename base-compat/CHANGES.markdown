@@ -1,5 +1,6 @@
 ## Changes in next [????.??.??]
  - Sync with `base-4.21`/GHC 9.12
+ - Backport `inits1` and `tails1` to `Data.List.Compat`
  - Backport `firstA` and `secondA` to `Data.Bitraversable.Compat`
  - Drop support for pre-8.0 versions of GHC.
 

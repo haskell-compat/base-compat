@@ -4,6 +4,12 @@
 module Data.List.Compat (
   module Base
 
+#if !(MIN_VERSION_base(4,21,0))
+, compareLength
+, inits1
+, tails1
+#endif
+
 #if MIN_VERSION_base(4,18,0) && !(MIN_VERSION_base(4,20,0))
 , List
 #endif
@@ -24,16 +30,14 @@ module Data.List.Compat (
 
 import Data.List as Base
 
-#if !(MIN_VERSION_base(4,11,0))
-import GHC.Exts (build)
-#endif
-
-#if !(MIN_VERSION_base(4,19,0))
-import Prelude.Compat hiding (foldr, null)
-#endif
-
 #if MIN_VERSION_base(4,18,0) && !(MIN_VERSION_base(4,20,0))
 import GHC.List (List)
+#endif
+
+#if !(MIN_VERSION_base(4,21,0))
+import Data.List.NonEmpty (NonEmpty(..))
+import GHC.Exts (build)
+import Prelude.Compat hiding (foldr, null)
 #endif
 
 #if !(MIN_VERSION_base(4,11,0))
@@ -132,4 +136,102 @@ unsnoc :: [a] -> Maybe ([a], a)
 -- Expressing the recursion via 'foldr' provides for list fusion.
 unsnoc = foldr (\x -> Just . maybe ([], x) (\(~(a, b)) -> (x : a, b))) Nothing
 {-# INLINABLE unsnoc #-}
+#endif
+
+#if !(MIN_VERSION_base(4,21,0))
+-- | Use 'compareLength' @xs@ @n@ as a safer and faster alternative
+-- to 'compare' ('length' @xs@) @n@. Similarly, it's better
+-- to write @compareLength xs 10 == LT@ instead of @length xs < 10@.
+--
+-- While 'length' would force and traverse
+-- the entire spine of @xs@ (which could even diverge if @xs@ is infinite),
+-- 'compareLength' traverses at most @n@ elements to determine its result.
+--
+-- >>> compareLength [] 0
+-- EQ
+-- >>> compareLength [] 1
+-- LT
+-- >>> compareLength ['a'] 1
+-- EQ
+-- >>> compareLength ['a', 'b'] 1
+-- GT
+-- >>> compareLength [0..] 100
+-- GT
+-- >>> compareLength undefined (-1)
+-- GT
+-- >>> compareLength ('a' : undefined) 0
+-- GT
+--
+-- @since 4.21.0.0
+--
+compareLength :: [a] -> Int -> Ordering
+compareLength xs n
+  | n < 0 = GT
+  | otherwise = foldr
+    (\_ f m -> if m > 0 then f (m - 1) else GT)
+    (\m -> if m > 0 then LT else EQ)
+    xs
+    n
+
+inits1, tails1 :: [a] -> [NonEmpty a]
+
+-- | The 'inits1' function returns all non-empty initial segments of the
+-- argument, shortest first.
+--
+-- @since 4.21.0.0
+--
+-- ==== __Laziness__
+--
+-- Note that 'inits1' has the following strictness property:
+-- @inits1 (xs ++ _|_) = inits1 xs ++ _|_@
+--
+-- In particular,
+-- @inits1 _|_ = _|_@
+--
+-- ==== __Examples__
+--
+-- >>> inits1 "abc"
+-- ['a' :| "",'a' :| "b",'a' :| "bc"]
+--
+-- >>> inits1 []
+-- []
+--
+-- inits1 is productive on infinite lists:
+--
+-- >>> take 3 $ inits1 [1..]
+-- [1 :| [],1 :| [2],1 :| [2,3]]
+inits1 [] = []
+inits1 (x : xs) = map (x :|) (inits xs)
+
+-- | \(\mathcal{O}(n)\). The 'tails1' function returns all non-empty final
+-- segments of the argument, longest first.
+--
+-- @since 4.21.0.0
+--
+-- ==== __Laziness__
+--
+-- Note that 'tails1' has the following strictness property:
+-- @tails1 _|_ = _|_@
+--
+-- >>> tails1 undefined
+-- *** Exception: Prelude.undefined
+--
+-- >>> drop 1 (tails1 [undefined, 1, 2])
+-- [1 :| [2],2 :| []]
+--
+-- ==== __Examples__
+--
+-- >>> tails1 "abc"
+-- ['a' :| "bc",'b' :| "c",'c' :| ""]
+--
+-- >>> tails1 [1, 2, 3]
+-- [1 :| [2,3],2 :| [3],3 :| []]
+--
+-- >>> tails1 []
+-- []
+{-# INLINABLE tails1 #-}
+tails1 lst = build (\c n ->
+  let tails1Go [] = n
+      tails1Go (x : xs) = (x :| xs) `c` tails1Go xs
+  in tails1Go lst)
 #endif

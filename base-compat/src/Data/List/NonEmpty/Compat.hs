@@ -17,6 +17,7 @@ module Data.List.NonEmpty.Compat (
   , sortWith
   -- * Basic functions
   , length
+  , compareLength
   , head
   , tail
   , last
@@ -86,8 +87,13 @@ import Data.List.NonEmpty
 import qualified Prelude.Compat as Prelude
 import Prelude.Compat ((.))
 
-import qualified Data.Foldable.Compat as Foldable
 import qualified Data.List.Compat as List
+#endif
+
+#if !(MIN_VERSION_base(4,21,0))
+import Prelude.Compat (Int, Num(..), Ord(..), Ordering(..), otherwise)
+
+import qualified Data.Foldable.Compat as Foldable
 #endif
 
 #if !(MIN_VERSION_base(4,15,0))
@@ -237,4 +243,36 @@ sortOn f = lift (List.sortOn f)
 -- this will raise an error.
 lift :: Foldable.Foldable f => ([a] -> [b]) -> f a -> NonEmpty b
 lift f = fromList . f . Foldable.toList
+#endif
+
+#if !(MIN_VERSION_base(4,21,0))
+-- | Use 'compareLength' @xs@ @n@ as a safer and faster alternative
+-- to 'compare' ('length' @xs@) @n@. Similarly, it's better
+-- to write @compareLength xs 10 == LT@ instead of @length xs < 10@.
+--
+-- While 'length' would force and traverse
+-- the entire spine of @xs@ (which could even diverge if @xs@ is infinite),
+-- 'compareLength' traverses at most @n@ elements to determine its result.
+--
+-- >>> compareLength ('a' :| []) 1
+-- EQ
+-- >>> compareLength ('a' :| ['b']) 3
+-- LT
+-- >>> compareLength (0 :| [1..]) 100
+-- GT
+-- >>> compareLength undefined 0
+-- GT
+-- >>> compareLength ('a' :| 'b' : undefined) 1
+-- GT
+--
+-- @since 4.21.0.0
+--
+compareLength :: NonEmpty a -> Int -> Ordering
+compareLength xs n
+  | n < 1 = GT
+  | otherwise = Foldable.foldr
+    (\_ f m -> if m > 0 then f (m - 1) else GT)
+    (\m -> if m > 0 then LT else EQ)
+    xs
+    n
 #endif

@@ -120,6 +120,7 @@ So far the following is covered.
  * Added `bitDefault`, `testBitDefault`, `popCountDefault`, `(.^.)`, `(.>>.)`,
    `(.<<.)`, `(!>>.)`, and `(!<<.)` to `Data.Bits.Compat`
  * Added `toIntegralSized` and `oneBits` to `Data.Bits.Compat` (if using `base-4.7` or later)
+ * Added `firstA` and `secondA` to `Data.Bitraversable.Compat`
  * Added `bool` function to `Data.Bool.Compat`
  * Added `isLeft`, `isRight`, `fromLeft`, and `fromRight` to `Data.Either.Compat`
  * Added `forkFinally` to `Control.Concurrent.Compat`
@@ -134,6 +135,8 @@ So far the following is covered.
  * `modifyIORef'`, `atomicModifyIORef'` and `atomicWriteIORef` to `Data.IORef.Compat`
  * `dropWhileEnd`, `isSubsequenceOf`, `sortOn`, and `uncons` functions to `Data.List.Compat`
  * Correct versions of `nub`, `nubBy`, `union`, and `unionBy` to `Data.List.Compat`
+ * `inits1` and `tails1` to `Data.List.Compat`
+ * `compareLength` to `Data.List.Compat` and `Data.List.NonEmpty.Compat`
  * `asProxyTypeOf` with a generalized type signature to `Data.Proxy.Compat`
  * `modifySTRef'` to `Data.STRef.Compat`
  * `String`, `lines`, `words`, `unlines`, and `unwords` to `Data.String.Compat`
@@ -311,7 +314,8 @@ with identifiers of the same names in their code.
 
 ## Supported versions of GHC/`base`
 
- * `ghc-9.10.*`  / `base-4.20.*`
+ * `ghc-9.12.*` / `base-4.21.*`
+ * `ghc-9.10.*` / `base-4.20.*`
  * `ghc-9.8.*`  / `base-4.19.*`
  * `ghc-9.6.*`  / `base-4.18.*`
  * `ghc-9.4.*`  / `base-4.17.*`

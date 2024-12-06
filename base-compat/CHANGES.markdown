@@ -1,4 +1,4 @@
-## Changes in next [????.??.??]
+## Changes in 0.14.1 [2024.12.06]
  - Sync with `base-4.21`/GHC 9.12
  - Backport `compareLength` to `Data.List.Compat` and
    `Data.List.NonEmpty.Compat`

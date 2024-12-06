@@ -1,6 +1,6 @@
-## Changes in next [????.??.??]
- - This coincides with the `base-compat-batteries-?.??.?` release. Refer to the
-   [`base-compat-batteries` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat-batteries/CHANGES.markdown#changes-in-????-????????)
+## Changes in 0.14.1 [2024.12.06]
+ - This coincides with the `base-compat-batteries-0.14.1` release. Refer to the
+   [`base-compat-batteries` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat-batteries/CHANGES.markdown#changes-in-0141-20241206)
    for more details.
  - Drop support for pre-8.0 versions of GHC.
 

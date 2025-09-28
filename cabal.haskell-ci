@@ -2,3 +2,4 @@
 -- "parse error on input `('". I have no idea why.
 haddock:        >=8.2
 github-patches: github.yml.patch
+error-unused-packages: False

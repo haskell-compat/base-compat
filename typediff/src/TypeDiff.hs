@@ -94,10 +94,16 @@ stripCallStacksFromType x = case x of
 
 stripCallStacksFromContext :: Context -> Context
 stripCallStacksFromContext x = case x of
-  CxSingle asst | isAsstCallStack asst
-                -> CxEmpty
-  CxTuple assts -> CxTuple (filter (not . isAsstCallStack) assts)
-  _             -> x
+  CxSingle asst
+    | isAsstCallStack asst ->
+      CxEmpty
+  CxTuple assts ->
+    let asstsNoCallStacks = filter (not . isAsstCallStack) assts in
+    case asstsNoCallStacks of
+      [] -> CxEmpty
+      [asst] -> CxSingle asst
+      _ -> CxTuple asstsNoCallStacks
+  _ -> x
 
 isAsstCallStack :: Asst -> Bool
 isAsstCallStack (TypeA t) = isTypeCallStack t
@@ -188,6 +194,7 @@ normalizeConstrainNames t = transformBi f t
       Qual (ModuleName "GHC.Internal.Base") (Ident "Monoid") -> Qual (ModuleName "Data.Monoid") (Ident "Monoid")
       Qual (ModuleName "GHC.Internal.Base") (Ident "Semigroup") -> Qual (ModuleName "Data.Semigroup") (Ident "Semigroup")
       Qual (ModuleName "GHC.Internal.Base") i -> Qual (ModuleName "GHC.Base") i
+      Qual (ModuleName "GHC.Internal.Classes") i -> Qual (ModuleName "GHC.Classes") i
       Qual (ModuleName "GHC.Internal.Data.Foldable") i -> Qual (ModuleName "Data.Foldable") i
       Qual (ModuleName "GHC.Internal.Data.Traversable") i -> Qual (ModuleName "Data.Traversable") i
       Qual (ModuleName "GHC.Internal.Float") i -> Qual (ModuleName "GHC.Float") i
@@ -195,6 +202,9 @@ normalizeConstrainNames t = transformBi f t
       Qual (ModuleName "GHC.Internal.Maybe") i -> Qual (ModuleName "GHC.Maybe") i
       Qual (ModuleName "GHC.Internal.Num") i -> Qual (ModuleName "GHC.Num") i
       Qual (ModuleName "GHC.Internal.Real") i -> Qual (ModuleName "GHC.Real") i
+      Qual (ModuleName "GHC.Internal.Types") (Ident "Bool") -> Qual (ModuleName "GHC.Bool") (Ident "Bool")
+      Qual (ModuleName "GHC.Internal.Types") (Ident "Ordering") -> Qual (ModuleName "GHC.Ordering") (Ident "Ordering")
+      Qual (ModuleName "GHC.Internal.Types") i -> Qual (ModuleName "GHC.Types") i
 
       UnQual (Ident "Foldable") -> Qual (ModuleName "Data.Foldable") (Ident "Foldable")
       UnQual (Ident "MonadFail") -> Qual (ModuleName "Control.Monad.Fail") (Ident "MonadFail")

@@ -1,3 +1,9 @@
+## Changes in 0.15.0 [????.??.??]
+ - Sync with `base-4.22`/GHC 9.14
+ - Restrict `Data.List.NonEmpty.Compat.unzip` to be of type
+   `NonEmpty (a, b) -> (NonEmpty a, NonEmpty b)`, mirroring similar changes
+   introducted in `base-4.22`.
+
 ## Changes in 0.14.1 [2024.12.06]
  - Sync with `base-4.21`/GHC 9.12
  - Backport `compareLength` to `Data.List.Compat` and

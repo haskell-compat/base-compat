@@ -82,12 +82,18 @@ module Data.List.NonEmpty.Compat (
 ) where
 
 import Data.List.NonEmpty
+#if !(MIN_VERSION_base(4,22,0))
+  hiding (unzip)
+#endif
 
 #if !(MIN_VERSION_base(4,20,0))
-import qualified Prelude.Compat as Prelude
 import Prelude.Compat ((.))
 
 import qualified Data.List.Compat as List
+#endif
+
+#if !(MIN_VERSION_base(4,22,0))
+import qualified Prelude.Compat as Prelude
 #endif
 
 #if !(MIN_VERSION_base(4,21,0))
@@ -275,4 +281,10 @@ compareLength xs n
     (\m -> if m > 0 then LT else EQ)
     xs
     n
+#endif
+
+#if !(MIN_VERSION_base(4,22,0))
+-- | The 'unzip' function is the inverse of the 'zip' function.
+unzip :: NonEmpty (a, b) -> (NonEmpty a, NonEmpty b)
+unzip xs = (Prelude.fst Prelude.<$> xs, Prelude.snd Prelude.<$> xs)
 #endif

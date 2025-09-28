@@ -162,6 +162,7 @@ So far the following is covered.
  * `singleton` to `Data.List.Compat` and `Data.List.NonEmpty.Compat`
  * `inits1` and `tails1` to `Data.List.NonEmpty.Compat`
  * `permutations`, `permutations1`, and `sortOn` to `Data.List.NonEmpty.Compat`
+ * `Data.List.NonEmpty.Compat`'s `unzip` function is restricted to only work over `NonEmpty` lists
  * `hGetContents'`, `getContents'`, and `readFile'` to `System.IO.Compat`
  * `readBinP` to `Text.Read.Lex.Compat`
  * `withTypeable` and `pattern TypeRep` to `Type.Reflection.Compat`
@@ -314,6 +315,7 @@ with identifiers of the same names in their code.
 
 ## Supported versions of GHC/`base`
 
+ * `ghc-9.14.*` / `base-4.22.*`
  * `ghc-9.12.*` / `base-4.21.*`
  * `ghc-9.10.*` / `base-4.20.*`
  * `ghc-9.8.*`  / `base-4.19.*`

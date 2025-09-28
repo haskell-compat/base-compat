@@ -1,13 +1,13 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.36.0.
+-- This file has been generated from package.yaml by hpack version 0.38.2.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d7bf574d356a78d7a26c0e35894e8c0ccd30d6a6e2d66cf396fbe9cffdc8be56
+-- hash: 69ed4509f8e745d7ef07cb3f83e733a3078d6a0e283fb628b67b24eecf551d79
 
 name:             typediff
-version:          0.1.6
+version:          0.1.7
 build-type:       Simple
 
 executable typediff

@@ -72,8 +72,6 @@ library
   build-depends:
       base >= 4.9 && < 5,
       ghc-prim
-  if !os(windows) && !os(halvm)
-      build-depends: unix
   ghc-options:
       -Wno-duplicate-exports -Wno-trustworthy-safe
 

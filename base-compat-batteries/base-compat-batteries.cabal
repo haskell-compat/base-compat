@@ -62,7 +62,7 @@ library
       Haskell2010
   build-depends:
       base        >= 4.9 && < 5,
-      base-compat == 0.14.1,
+      base-compat == 0.15.0,
       ghc-prim
   if !impl(ghc >= 8.2)
     build-depends:

@@ -1,6 +1,5 @@
 # `base-compat` with extra batteries
 [![Hackage](https://img.shields.io/hackage/v/base-compat-batteries.svg)][Hackage: base-compat-batteries]
-[![Hackage Dependencies](https://img.shields.io/hackage-deps/v/base-compat-batteries.svg)](http://packdeps.haskellers.com/reverse/base-compat-batteries)
 [![Haskell Programming Language](https://img.shields.io/badge/language-Haskell-blue.svg)][Haskell.org]
 [![BSD3 License](http://img.shields.io/badge/license-MIT-brightgreen.svg)][tl;dr Legal: MIT]
 

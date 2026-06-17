@@ -1,6 +1,5 @@
 # A compatibility layer for `base`
 [![Hackage](https://img.shields.io/hackage/v/base-compat.svg)][Hackage: base-compat]
-[![Hackage Dependencies](https://img.shields.io/hackage-deps/v/base-compat.svg)](http://packdeps.haskellers.com/reverse/base-compat)
 [![Haskell Programming Language](https://img.shields.io/badge/language-Haskell-blue.svg)][Haskell.org]
 [![BSD3 License](http://img.shields.io/badge/license-MIT-brightgreen.svg)][tl;dr Legal: MIT]
 
